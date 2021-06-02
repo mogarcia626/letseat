@@ -1,22 +1,28 @@
-import { postUser, postSession, deleteSession } from '../util/session_util'
+import * as APUIUtil from '../util/session_api_util'
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const SIGNOUT_CURRENT_USER = 'SIGNOUT_CURRENT_USER';
+export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
+export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 
-const receiveCurrentUser = user => ({
+export const receiveCurrentUser = currentUser => ({
     type: RECEIVE_CURRENT_USER,
-    user,
+    currentUser,
 })
 
-const signoutCurrentUser = () => ({
-    type: SIGNOUT_CURRENT_USER,
+export const logoutCurrentUser = () => ({
+    type: LOGOUT_CURRENT_USER,
 });
 
-export const createNewUser = formUser => dispatch => postUser(formUser)
+export const receiveErrors = () => ({
+    type: RECEIVE_SESSION_ERRORS,
+    errors
+});
+
+export const signup = formUser => dispatch => APUIUtil.signup(formUser)
     .then(user => dispatch(receiveCurrentUser(user)));
 
-export const signIn = formUser => dispatch => postSession(formUser)
+export const login = formUser => dispatch => APUIUtil.login(formUser)
     .then(user => dispatch(receiveCurrentUser(user)));
 
-export const signout = () => dispatch => deleteSession()
-    .then(() => dispatch(signoutCurrentUser()));
+export const logout = () => dispatch => APUIUtil.logout()
+    .then(() => dispatch(logoutCurrentUser()));

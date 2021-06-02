@@ -1,22 +1,22 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from './nav_bar';
+import { signup, login, logout } from '../../actions/session_actions';
 
-// Comment this back in after you have built the login functionality
+let currId = state.session.id;
 
-import { signout } from '../../actions/session_actions';
+const mSTP = state => { 
+    let currId = state.session.id;
+    
+    return {
+    currentUserId: currId,
+    currentUser: state.entitites.users[currId]
+    }
+};
 
-const mapStateToProps = state => ({
-    currentUser: state.session.currentUser,
+const mDTP = dispatch => ({
+    // signup: () => dispatch(signup()),
+    // login: () => dispatch(login()),
+    logout: () => dispatch(logout()),
 });
 
-const mapDispatchToProps = dispatch => ({
-    signout: () => dispatch(signout()),
-});
-
-
-// Comment this out when you have built the login functionality
-// const mapStateToProps = null;
-// const mapDispatchToProps = null;
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(mSTP, mDTP)(NavBar);

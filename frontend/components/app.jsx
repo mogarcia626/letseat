@@ -2,10 +2,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
 
-{/* <Route path="/" component={NavBarContainer} /> */}
+
 const App = () => (
     <div>
-        <p>App should render</p>
+        <h1>Let S eat App</h1>
     </div>
 );
 

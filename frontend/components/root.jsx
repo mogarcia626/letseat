@@ -5,9 +5,11 @@ import { HashRouter } from 'react-router-dom';
 import App from './app';
 
 const Root = ({ store }) => (
-    <div>App should render</div>
+    <Provider store={store}>
+        <HashRouter>
+            <App />
+        </HashRouter>
+    </Provider>
 );
 
 export default Root;
-
-{/* <HashRouter></HashRouter> */}
