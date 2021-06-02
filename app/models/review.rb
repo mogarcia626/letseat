@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-    validates :star_ratings, 
+    # validates :star_ratings, 
 
     belongs_to :reservation, class_name: :Reservation, foreign_key: :reservation_id
     belongs_to :user, through: :reservation, source: :user

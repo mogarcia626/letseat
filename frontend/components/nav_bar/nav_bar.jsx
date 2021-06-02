@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default ({ currentUser, signout }) => {
+const NavBar = ({ currentUser, signout }) => {
+    
     const display = currentUser ? (
         <div>
             <p>Hello, {currentUser.firstName}</p>
@@ -18,8 +19,14 @@ export default ({ currentUser, signout }) => {
         <header>
             <h1>LetSeat</h1>
             <div>
+                <p>LetsEat</p>
+                <p>[location filter]</p>
+            </div>
+            <div>
                 {display}
             </div>
         </header>
     );
 };
+
+export default NavBar;
