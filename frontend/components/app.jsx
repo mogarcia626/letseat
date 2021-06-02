@@ -4,6 +4,7 @@ import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
 
 const App = () => (
     <div>
+        <Route path="/" component={NavBarContainer} />
         <h1>Welcome to LetSeat</h1>
     </div>
 );
