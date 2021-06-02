@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import WelcomeBar from './welcome_bar';
+// import { connect } from 'react-redux';
+// import WelcomeBar from './welcome_bar';
 
-const mapStateToProps = (state) => ({
-    user: state.session.currentUser
-});
+// const mapStateToProps = (state) => ({
+//     user: state.session.currentUser
+// });
 
-export default connect(mapStateToProps)(WelcomeBar);
+// export default connect(mapStateToProps)(WelcomeBar);

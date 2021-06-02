@@ -2,10 +2,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
 
+{/* <Route path="/" component={NavBarContainer} /> */}
 const App = () => (
     <div>
-        <Route path="/" component={NavBarContainer} />
-        <h1>Welcome to LetSeat</h1>
+        <p>App should render</p>
     </div>
 );
 
