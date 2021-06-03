@@ -8,4 +8,3 @@ const errorsReducer = combineReducers(
     });
 
 export default errorsReducer
-

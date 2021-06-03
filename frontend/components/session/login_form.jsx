@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            errors: [], users: {
             email: '',
             password: '',
-        };
+        }};
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -21,6 +23,18 @@ class LoginForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
+    }
+
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={`err-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
     }
 
     render() {
@@ -47,7 +61,12 @@ class LoginForm extends React.Component {
                     <br />
                     <button>Sign In</button>
                     <br />
-                    <p>New to LetsEat? {this.props.navLink}</p>
+                    {this.renderErrors()}
+                    <br />
+                    <p>
+                        New to LetsEat?
+                        <Link to="/signup">Create an Account</Link>
+                    </p>
                 </form>
             </div>
         );

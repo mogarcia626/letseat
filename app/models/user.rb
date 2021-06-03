@@ -11,7 +11,7 @@ class User < ApplicationRecord
    has_many :restaurants, class_name: :Restaurant, foreign_key: :owner_id
    has_many :reviews, through: :reservations, source: :review
 
-  def self.find_by_credentials(username, password)
+  def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return nil unless user
     return nil unless user.is_password?(password)

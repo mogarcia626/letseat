@@ -1,4 +1,3 @@
-import { useReducer } from 'react';
 import { combineReducers } from 'redux';
 
 import sessionReducer from './session_reducer';

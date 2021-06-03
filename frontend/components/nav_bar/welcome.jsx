@@ -3,24 +3,30 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 
 
-const mSTP = state => ({
-    currentUser: state.entitites.users[state.session.id],
+const mSTP = ({ session, entities: { users } }) => ({
+    currentUser: users[session.id],
 });
 
 const mDTP = dispatch => ({
-    logout: () => dispatch(logout()),
+    processLogout: () => dispatch(logout()),
 });
 
 class Welcome extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
     }
+
+    handleClick(e) {
+        e.preventDefault();
+        this.props.processLogout();
+    };
     
     render() {
         return (
             <div id="sub-nav-bar">
                 <p>Welcome, {this.props.currentUser.firstName}</p>
-                <button onClick={this.props.signout}>Log Out</button>
+                <button onClick={this.handleClick}>Log Out</button>
             </div>            
         )
     }

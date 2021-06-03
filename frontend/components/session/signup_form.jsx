@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class SignupForm extends React.Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
     }
 
     update(type) {
@@ -24,6 +26,20 @@ class SignupForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
+    }
+
+    renderErrors() {
+        
+        console.log(this.props.errors)
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
     }
 
     render() {
@@ -74,7 +90,12 @@ class SignupForm extends React.Component {
                     <br />
                     <button>Create Account</button>
                     <br />
-                    <p>Already have an account? {this.props.navLink}</p>
+                    {this.renderErrors()}
+                    <br />
+                    <p>
+                        Already have an account?
+                        <Link to="/login">Sign in Here</Link>
+                    </p>
                     
                 </form>
             </div>

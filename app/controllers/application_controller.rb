@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  include ActionController::ImplicitRender
   helper_method :current_user, :logged_in?
 
   private

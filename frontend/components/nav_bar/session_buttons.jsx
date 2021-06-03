@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import Modal from 'react-responsive-modal'
-// import { signup, login } from '../../actions/session_actions';
+import Modal from 'react-responsive-modal'
+import { signup, login } from '../../actions/session_actions';
 import SignupFormContainer from '../session/signup_form_container';
 import LoginFormContainer from '../session/login_form_container';
 
@@ -35,7 +35,6 @@ class SessionButtons extends React.Component {
     render() {
         return (
             <div id="sub-nav-bar">
-                SessionButons working
                 {/* <button onClick={this.openModal('signup')}>Sign Up</button>
                 <button onClick={this.openModal('login')}>Sign In</button> */}
                 <Link to="/signup" className="btn" >Sign Up</Link>
