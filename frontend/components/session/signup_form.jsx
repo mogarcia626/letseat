@@ -23,8 +23,6 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        console.log(user)
-        console.log(this.state)
         this.props.processForm(user);
     }
 
@@ -53,24 +51,24 @@ class SignupForm extends React.Component {
                     <label>First Name:
                         <input
                             type="text"
-                            value={this.state.firstName}
-                            onChange={this.update('firstName')}
+                            value={this.state.first_name}
+                            onChange={this.update('first_name')}
                         />
                     </label>
                     <br/>
                     <label>Last Name:
                         <input
                             type="text"
-                            value={this.state.lastName}
-                            onChange={this.update('lastName')}
+                            value={this.state.last_name}
+                            onChange={this.update('last_name')}
                         />
                     </label>
                     <br/>
                     <label>Phone:
                         <input
                             type="text"
-                            value={this.state.phoneNo}
-                            onChange={this.update('phoneNo')}
+                            value={this.state.phone_no}
+                            onChange={this.update('phone_no')}
                         />
                     </label>
                     <br />

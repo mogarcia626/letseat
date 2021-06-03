@@ -1,12 +1,14 @@
-import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions'
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions'
 
-const usersReducer = (state = {}, action) => {
-    Object.freeze(state);
+const usersReducer = (oldState = {}, action) => {
+    Object.freeze(oldState);
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            return Object.assign({}, state, { [action.currentuser.id]: action.currentuser });        
+            console.log(action.currentUser.id)
+            console.log(action.currentUser)
+            return Object.assign({}, oldState, { [action.currentUser.id]: action.currentUser });  
         default:
-            return state;
+            return oldState;
     }
 };
 
