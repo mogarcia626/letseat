@@ -24,7 +24,7 @@ class Welcome extends React.Component {
     
     render() {
         return (
-            <div id="sub-nav-bar">
+            <div className="sub-nav-bar">
                 <p>Welcome, {this.props.currentUser.firstName}</p>
                 <button onClick={this.handleClick}>Log Out</button>
             </div>            

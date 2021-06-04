@@ -393,7 +393,7 @@ var LocationSelector = /*#__PURE__*/function (_React$Component) {
       //Logo will link to home page
       //location selector must be dropdown of all cities
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "sub-nav-bar"
+        className: "sub-nav-bar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "[location selector]"));
     }
   }]);
@@ -472,7 +472,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
-        id: "nav-bar"
+        className: "nav-bar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "left-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
@@ -530,7 +530,7 @@ var mDTP = function mDTP(dispatch) {
 function SessionButtons(_ref2) {
   var openModal = _ref2.openModal;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    id: "sub-nav-bar"
+    id: "className-nav-bar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: function onClick() {
       return openModal('signup');
@@ -627,7 +627,7 @@ var Welcome = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "sub-nav-bar"
+        className: "sub-nav-bar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Welcome, ", this.props.currentUser.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.handleClick
       }, "Log Out"));

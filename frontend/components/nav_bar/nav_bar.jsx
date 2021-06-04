@@ -18,7 +18,7 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <header id="nav-bar">  
+            <header className="nav-bar">  
                 <div className='left-nav'>
                     <Link to="/">
                         <img src={window.logo} alt="Letseat logo" className='logo' />

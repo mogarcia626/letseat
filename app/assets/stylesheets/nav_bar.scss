@@ -1,11 +1,14 @@
-#nav-bar {
+.nav-bar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 2px solid black;
+    background-color: #f7d2b7;
+    color: white;
+    font-family: Bran; 
+
 }
 
-#sub-nav-bar {
+.sub-nav-bar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

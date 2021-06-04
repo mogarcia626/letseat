@@ -9,7 +9,7 @@ class LocationSelector extends React.Component {
         //Logo will link to home page
         //location selector must be dropdown of all cities
         return (
-            <div id="sub-nav-bar">
+            <div className="sub-nav-bar">
                 <p>[location selector]</p>
             </div>
         )
