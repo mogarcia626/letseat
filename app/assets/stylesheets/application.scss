@@ -16,11 +16,12 @@
 
  // CSS Reset
  @import './reset.scss';
+ 
+ // Core
+ @import './fonts.scss';
+ 
+ 
+ // Components                                
  @import './nav_bar.scss';
  @import './modal.scss';
 
- // Core
- @import './fonts.scss'
-
- // Components
-//  @import "components/s"                                   

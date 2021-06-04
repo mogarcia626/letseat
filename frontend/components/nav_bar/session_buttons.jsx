@@ -13,9 +13,19 @@ function SessionButtons({ openModal }) {
     
     return (
         
-        <div id="className-nav-bar">
-            <button onClick={() => openModal('signup')}>Sign Up</button>
-            <button onClick={() => openModal ('login')}>Sign In</button>
+        <div className='right-nav'>
+            <button 
+                onClick={() => openModal('signup')} 
+                className='session-button'
+                id='session-button-dark'>
+                    Sign Up
+            </button>
+            <button 
+                onClick={() => openModal('login')} 
+                className='session-button'
+                id='session-button-light'>
+                    Sign In
+            </button>
         </div>
     )
 }
