@@ -1,13 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
-import LoginForm from './login_form_container';
-import SignupForm from './signup_form_container';
+import LoginFormContainer from './login_form_container';
+import SignupFormContainer from './signup_form_container';
+
+const mSTP = state => {
+    return {
+        modal: state.ui.modal
+    };
+};
+
+const mDTP = dispatch => {
+    return {
+        closeModal: () => dispatch(closeModal())
+    };
+};
 
 function Modal({ modal, closeModal }) {
     if (!modal) {
         return null;
     }
+    console.log(modal)
     let component;
     switch (modal) {
         case 'login':
@@ -20,24 +33,14 @@ function Modal({ modal, closeModal }) {
             return null;
     }
     return (
+        render(
         <div className="modal-background" onClick={closeModal}>
             <div className="modal-child" onClick={e => e.stopPropagation()}>
                 {component}
             </div>
-        </div>
+        </div>)
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        modal: state.ui.modal
-    };
-};
 
-const mapDispatchToProps = dispatch => {
-    return {
-        closeModal: () => dispatch(closeModal())
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(mSTP, mDTP)(Modal);

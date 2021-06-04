@@ -30,7 +30,6 @@ class SignupForm extends React.Component {
 
     renderErrors() {
         
-        console.log(this.props.errors)
         return (
             <ul>
                 {this.props.errors.map((error, i) => (

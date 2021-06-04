@@ -19,7 +19,7 @@ class NavBar extends React.Component {
         return (
             <header id="nav-bar">     
                 <LocationSelector />
-                {Boolean(this.props.currentUser) ? <Welcome currentUser={this.props.currentUser} /> : <SessionButtons />}
+                {this.props.currentUser ? <Welcome currentUser={this.props.currentUser} /> : <SessionButtons />}
             </header>
         )
     }

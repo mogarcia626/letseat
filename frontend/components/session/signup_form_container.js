@@ -7,18 +7,18 @@ import SignupForm from './signup_form';
 const mapStateToProps = ({ errors }) => {
     return {
         errors: errors.session,
+        otherForm: (
+            <button onClick={() => dispatch(openModal('login'))}>
+                Login
+            </button>
+        ),
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         processForm: (user) => dispatch(signup(user)),
-        otherForm: (
-            <button onClick={() => dispatch(openModal('login'))}>
-                Login
-            </button>
-        ),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
     };
 };
 
