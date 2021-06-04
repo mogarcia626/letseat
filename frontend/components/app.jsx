@@ -12,11 +12,15 @@ const App = () => (
     <div>
         <Modal />
         <NavBar />
-        {/* <AuthRoute exact path="/signup" component={SignupFormContainer} />
-        <AuthRoute exact path="/login" component={LoginFormContainer} /> */}
-        <p>Body Will Go Here</p>
+        {/* <Switch> */}
+            <p>Body Will Go Here</p>
+            <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+        {/* </Switch> */}
         <p>Footer Will Go Here</p>
     </div>
 );
 
 export default App;
+
+{/* <AuthRoute exact path="/signup" component={SignupFormContainer} />
+<AuthRoute exact path="/login" component={LoginFormContainer} /> */}

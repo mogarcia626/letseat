@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -15,14 +14,16 @@ class LoginForm extends React.Component {
 
     update(type) {
         return (e) => {
-            this.setState({ [type]: e.target.value });
+            this.setState({ [type]: e.currentTarget.value });
         };
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.processForm(user).then(() => {
+            this.props.closeModal();
+        })
     }
 
     renderErrors() {
@@ -37,6 +38,10 @@ class LoginForm extends React.Component {
         );
     }
 
+    componentWillUnmount() {
+        this.props.resetErrors()
+    };
+
     render() {
         return (
             <div className="modal-form">
@@ -49,24 +54,24 @@ class LoginForm extends React.Component {
                             value={this.state.email}
                             onChange={this.update('email')}
                         />
-                    </label>
-                    <br />
+                    </label><br/>
+
                     <label>Password:
                         <input
                             type="password"
                             value={this.state.password}
                             onChange={this.update('password')}
                         />
-                    </label>
-                    <br />
+                    </label><br />
+
                     <button>Sign In</button>
                     <br />
+
                     {this.renderErrors()}
                     <br />
-                    <p>
-                        New to LetsEat?
-                        <Link to="/signup">Create an Account</Link>
-                    </p>
+                    <div> New to Letseat?
+                        {this.props.otherForm}
+                    </div>
                 </form>
             </div>
         );

@@ -20,7 +20,6 @@ function Modal({ modal, closeModal }) {
     if (!modal) {
         return null;
     }
-    console.log(modal)
     let component;
     switch (modal) {
         case 'login':
@@ -33,12 +32,11 @@ function Modal({ modal, closeModal }) {
             return null;
     }
     return (
-        render(
         <div className="modal-background" onClick={closeModal}>
             <div className="modal-child" onClick={e => e.stopPropagation()}>
                 {component}
             </div>
-        </div>)
+        </div>
     );
 }
 

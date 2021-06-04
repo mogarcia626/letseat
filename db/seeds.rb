@@ -5,8 +5,11 @@ Review.destroy_all
 Schedule.destroy_all
 
 # u1 = User.create!(
-#   username: 'guest',
-#   password: 'password'
+#     email: 'guest@letseat.com',
+#     password: '1a2b3c',
+#     first_name: 'Guest',
+#     last_name: 'User',
+#     phone: '0123456789'
 # )
 
 # b1 = Bench.create!(

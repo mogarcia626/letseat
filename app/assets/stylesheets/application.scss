@@ -15,11 +15,12 @@
  */
 
  // CSS Reset
- @import 'reset.scss';
- @import 'nav_bar.scss';
- @import 'modal.scss';
+ @import './reset.scss';
+ @import './nav_bar.scss';
+ @import './modal.scss';
 
  // Core
+ @import './fonts.scss'
 
  // Components
 //  @import "components/s"                                   

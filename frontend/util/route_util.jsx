@@ -9,7 +9,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
         ) : (
             <Redirect to="/" />
         )
-    )} />
+    )} /> 
 );
 
 const Protected = ({ component: Component, path, loggedIn, exact }) => (
@@ -17,10 +17,11 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
         loggedIn ? (
             <Component {...props} />
         ) : (
-            <Redirect to="/login" /> // add prop for login modal to be true
+            <Redirect to="/signup" /> // add prop for signup modal to be true
         )
     )} />
 );
+
 
 const mapStateToProps = state => (
     { loggedIn: Boolean(state.session.id) }

@@ -10,7 +10,6 @@ class LocationSelector extends React.Component {
         //location selector must be dropdown of all cities
         return (
             <div id="sub-nav-bar">
-                <p>LetsEat Logo</p>
                 <p>[location selector]</p>
             </div>
         )
