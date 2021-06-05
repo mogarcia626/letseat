@@ -27,7 +27,7 @@ class NavBar extends React.Component {
                         <img src={window.logo} alt="Letseat logo" className='logo' />
                         <h3>Letseat</h3>
                     </Link>
-                    <LocationSelector />                   
+                    <LocationSelector id='location-filter'/>                   
                 </div>
                 <div className='right-nav'>
                 {this.props.currentUser ?

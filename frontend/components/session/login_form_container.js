@@ -16,12 +16,13 @@ const mapDispatchToProps = dispatch => {
         closeModal: () => dispatch(closeModal()),
         resetErrors: () => dispatch(resetErrors()),
         otherForm: (
-            <button onClick={(e) => {
-                e.preventDefault();
-                dispatch(openModal('signup'))
-            }
+            <button className='button-link'
+                onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(openModal('signup'))
+                }
             }>
-                Sign up
+                Create an account
             </button>
         )
     };

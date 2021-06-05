@@ -44,32 +44,34 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className="modal-form">
-                <h2>Sign Up</h2>
-                <form onSubmit={this.handleSubmit}>
+            <div>
+                <form className="modal-form" id='login-modal'
+                    onSubmit={this.handleSubmit}>
 
-                    <label>Email:
-                        <input
-                            type="text"
-                            value={this.state.email}
-                            onChange={this.update('email')}
-                        />
-                    </label><br/>
+                    <h2 className='modal-title'>
+                        Please Sign in
+                        <hr class="solid" />
+                    </h2>
 
-                    <label>Password:
-                        <input
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.update('password')}
-                        />
-                    </label><br />
+                    <input className="modal-input"
+                        placeholder="Email"
+                        type="text"
+                        value={this.state.email}
+                        onChange={this.update('email')}
+                    />
 
-                    <button>Sign In</button>
-                    <br />
+                    <input className="modal-input"
+                        placeholder="Password"
+                        type="password"
+                        value={this.state.password}
+                        onChange={this.update('password')}
+                    />
+
+                    <button className="modal-button">Sign In</button>
 
                     {this.renderErrors()}
-                    <br />
-                    <div> New to Letseat?
+                    
+                    <div className='modal-link'> New to Letseat?
                         {this.props.otherForm}
                     </div>
                 </form>

@@ -8,8 +8,7 @@ Schedule.destroy_all
 #     email: 'guest@letseat.com',
 #     password: '1a2b3c',
 #     first_name: 'Guest',
-#     last_name: 'User',
-#     phone: '0123456789'
+#     last_name: 'User'
 # )
 
 # b1 = Bench.create!(

@@ -1,3 +1,7 @@
+// #f7d2b7 lightest
+// #df8963 dark
+// #f7986e light
+
 .nav-bar {
     display: flex;
     flex-direction: row;
@@ -8,7 +12,6 @@
     margin-bottom: 16px;
     height: 52px;
 }
-
 .right-nav {
     display: flex;
     flex-direction: row;
@@ -25,7 +28,7 @@
 }
 
 .left-nav > * {
-    padding: 0px 2px 0px 2px;
+    padding: 0px 0px 0px 2px;
 }
 
 .nav-logo {
@@ -40,23 +43,33 @@
     padding: 0px 2px 0px 2px;
 }
 
-.left-nav:nth-child(2) {
-    padding: 0px 8px 0px 0px;
-}
-
 .logo {
     resize: both;
-    height: 32px;
+    height: 36px;
 }
 
-.search-button {
+.location-button {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-content: flex-end;
     background-color: transparent;
     border: none;
     color: white;
-    font-weight: bolder;
-    font-weight: 900;
-    margin-left: 0;
-    padding-left: 0;
+    margin: 0;
+    padding: 0;
+}
+.location-button > * {
+    align-self: flex-end;    
+}
+
+.icon-button {
+    align-self: center;
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin: 0;
+    padding: 2px 1px 0 4px;
 }
 
 .session-button {
@@ -72,10 +85,18 @@
 #session-button-dark {
     background-color: #df8963;
     border: solid black 0px;
-    margin: 0px 4px 0px 12px;
+    margin: 0px 4px 0px 8px;
 }
 
 #session-button-light {
     background-color: transparent;
-    border: solid #181818 1px;
+    border: solid darkgrey 1px;
+    color: darkgrey;
+}
+
+.nav-text {
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    margin-right: 8px;
+    padding-top: 4px;
 }

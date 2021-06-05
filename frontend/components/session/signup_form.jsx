@@ -8,7 +8,6 @@ class SignupForm extends React.Component {
             last_name: '',
             email: '',
             password: '',
-            phone_no: '',
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,64 +53,57 @@ class SignupForm extends React.Component {
 
     render() {
         return (
-            <div className="modal-form">
-                <h2>Create a New Account</h2>
-                <form onSubmit={this.handleSubmit}>
+            <div className="modal-form" id="signup-modal">
+                <form className="modal-form" id='signup-modal'
+                    onSubmit={this.handleSubmit}>
 
-                    <label>Email:
-                        <input
-                            type="text"
-                            value={this.state.email}
-                            onChange={this.update('email')}
-                        />
-                    </label><br/>
+                <h2 className='modal-title'>
+                    Welcome to Letseat!
+                    <hr class="solid" />
+                </h2>
 
-                    <label>Password:
-                        <input
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.update('password')}
-                        />
-                    </label><br />
+                    <input className='modal-input'
+                        placeholder='Email'
+                        type="text"
+                        value={this.state.email}
+                        onChange={this.update('email')}
+                    />
 
-                    <br />
-                    <label>First Name:
-                        <input
+                    <input className='modal-input'
+                        placeholder='Password'
+                        type="password"
+                        value={this.state.password}
+                        onChange={this.update('password')}
+                    />
+
+                        <input className='modal-input'
+                            placeholder='First Name'
                             type="text"
                             value={this.state.first_name}
                             onChange={this.update('first_name')}
                         />
-                    </label><br/>
 
-                    <label>Last Name:
-                        <input
+                    <input className='modal-input'
+                            placeholder='Last Name'
                             type="text"
                             value={this.state.last_name}
                             onChange={this.update('last_name')}
-                        />
-                    </label><br/>
+                    />
 
-                    <label>Phone:
-                        <input
-                            type="text"
-                            value={this.state.phone_no}
-                            onChange={this.update('phone_no')}
-                        />
-                    </label><br />
-
-                    <button>Create Account</button>
-                    <br />
-
+                    <button className='modal-button'>Create Account</button>
+                    
                     {this.renderErrors()}
-                    <br />
-                    <div>Already have an account?
+                    
+                    <div className='modal-link'>Already have an account?
                         {this.props.otherForm}
                     </div>
-                    <br />
-                    <div>Try us out!
-                        <button onClick={this.demoLogin}>
-                            Demo
-                        </button>
+
+                    <div className='modal-link'>
+                        Try us out!
+                            <button className='button-link'
+                                onClick={this.demoLogin}>
+                                Demo
+                            </button>
                     </div>
                     
                 </form>

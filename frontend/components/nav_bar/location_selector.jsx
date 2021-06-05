@@ -1,5 +1,7 @@
 import React from 'react';
-import { MdSearch } from "react-icons/md";
+import { TiLocation } from 'react-icons/ti';
+import { BsCaretDownFill } from 'react-icons/bs';
+
 
 class LocationSelector extends React.Component {
     constructor(props) {
@@ -11,8 +13,9 @@ class LocationSelector extends React.Component {
         //location selector must be dropdown of all cities
         return (
             <div>
-                <button className="search-button" type="submit">
-                    <MdSearch size={24} />
+                <button className="location-button" type="submit">
+                    <TiLocation size={24} />
+                    <BsCaretDownFill size={16} height="24"/>
                 </button>
             </div>
         )

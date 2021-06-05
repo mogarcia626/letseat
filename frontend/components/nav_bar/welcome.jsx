@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
-
+import { BiCalendarEvent } from "react-icons/bi";
+import { ImSearch } from "react-icons/im";
 
 const mSTP = ({ session, entities: { users } }) => ({
     currentUser: users[session.id],
@@ -25,7 +26,17 @@ class Welcome extends React.Component {
     render() {
         return (
             <div className='right-nav'>
-                <p>Welcome {this.props.currentUser.firstName}</p>
+
+                <p className='nav-text'>Welcome {this.props.currentUser.firstName}</p>
+                
+                <button className="icon-button" type="submit">
+                    <BiCalendarEvent size={20} />
+                </button>
+
+                <button className="icon-button" type="submit">
+                    <ImSearch size={16} />
+                </button>
+
                 <button
                     onClick={this.handleClick}
                     className='session-button'
