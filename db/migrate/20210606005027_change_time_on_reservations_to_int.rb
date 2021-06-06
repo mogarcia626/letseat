@@ -4,5 +4,7 @@ class ChangeTimeOnReservationsToInt < ActiveRecord::Migration[5.2]
     remove_column :reservations, :time
     add_column :reservations, :time, :integer
 
+    remove_column :reviews, :filter_tags
+
   end
 end

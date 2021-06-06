@@ -10,62 +10,73 @@ Schedule.delete_all
 
 #Generates 1 Demo User & 20 restaurant owners that will own all seeded restaurants
 demo_user = User.create!(
-    email: 'letseatdemo@gmail.com',
+    email: 'letseatdemo+0@gmail.com',
     password: '1a2b3c',
     first_name: 'Guest',
     last_name: 'User'
 )
 count = 1
-until count == 21
-    restaurant_owners << User.create!(
-        first_name: "Owner_#{count}",
+until count == 20
+    User.create!(
+        first_name: "Owner#{count}",
         last_name: "Example",
-        email: 'letseatdemo@gmail.com',
+        email: "letseatdemo+#{count}@gmail.com",
         password: '1a2b3c'
     )
     count +=1
 end
-}
 
 # Generating Restaurants helper methods
 food = Cuisine.new
-def generate_double_name(cuisine_instance, cuisine_string)
+def generate_double_name(cuisine_instance, cuisine_string, restaurants_array)
+    len = restaurants_array.length + 1
     first = cuisine_instance.cuisines[cuisine_string][:first]
     second = cuisine_instance.cuisines[cuisine_string][:second]
-    first[rand(first.length)] + ' ' + second[rand(second.length)]
+    until restaurants_array.length == len
+        name = "#{first[rand(first.length)]} #{second[rand(second.length)]}"
+        restaurants_array << name if !restaurants_array.include?(name)
+    end
+    name
 end
 
-def generate_single_name(cuisine_instance, cuisine_string)
+def generate_single_name(cuisine_instance, cuisine_string, restaurants_array)
+    len = restaurants_array.length + 1
     first = cuisine_instance.cuisines[cuisine_string][:first]
-    first[rand(first.length)]
+    until restaurants_array.length == len
+        name = first[rand(first.length)]
+        restaurants_array << name if !restaurants_array.include?(name)
+    end
+    name
 end
 
 # Generates Restaurants in Orlando
 food.cuisines.keys.each do |cuisine|
     15.times do
+        arr = []
         Restaurant.create!(
-            name: generate_double_name(food, cuisine),
+            name: generate_double_name(food, cuisine, arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-            street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}"
+            street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
             city: 'Orlando',
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: 1
+            owner_id: rand(20)
         )
     end
     5.times do
+        arr=[]
         Restaurant.create!(
-            name: generate_single_name(food, cuisine),
+            name: generate_single_name(food, cuisine, arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-            street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}"
+            street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
             city: 'Orlando',
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: 1
+            owner_id: rand(20)
         )
     end
 end
@@ -73,29 +84,31 @@ end
 # Generates Restaurants in San Francisco
 food.cuisines.keys.each do |cuisine|
     15.times do
+        arr=[]
         Restaurant.create!(
-            name: generate_double_name(food, cuisine),
+            name: generate_double_name(food, cuisine, arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-            street_address: "#{Faker::Address.street_address} San Francisco, CA #{Faker::Address.zip}"
+            street_address: "#{Faker::Address.street_address} San Francisco, CA #{Faker::Address.zip}",
             city: 'San Francisco',
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: 1
+            owner_id: rand(20)
         )
     end
     5.times do
+        arr=[]
         Restaurant.create!(
-            name: generate_single_name(food, cuisine),
+            name: generate_single_name(food, cuisine, arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-            street_address: "#{Faker::Address.street_address} San Francisco, Fl #{Faker::Address.zip}"
+            street_address: "#{Faker::Address.street_address} San Francisco, Fl #{Faker::Address.zip}",
             city: 'San Francisco',
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: 1
+            owner_id: rand(20)
         )
     end
 end
@@ -103,29 +116,31 @@ end
 # Generates Restaurants in New York
 food.cuisines.keys.each do |cuisine|
     15.times do
+        arr=[]
         Restaurant.create!(
-            name: generate_double_name(food, cuisine),
+            name: generate_double_name(food, cuisine, arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-            street_address: "#{Faker::Address.street_address} New York City, NY #{Faker::Address.zip}"
+            street_address: "#{Faker::Address.street_address} New York City, NY #{Faker::Address.zip}",
             city: 'New York City',
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: 1
+            owner_id: rand(20)
         )
     end
     5.times do
+        arr=[]
         Restaurant.create!(
-            name: generate_single_name(food, cuisine),
+            name: generate_single_name(food, cuisine, arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-            street_address: "#{Faker::Address.street_address} New York City, NY #{Faker::Address.zip}"
+            street_address: "#{Faker::Address.street_address} New York City, NY #{Faker::Address.zip}",
             city: 'New York City',
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: 1
+            owner_id: rand(20)
         )
     end
 end
@@ -133,29 +148,31 @@ end
 # Generates Restaurants in Austin
 food.cuisines.keys.each do |cuisine|
     15.times do
+        arr=[]
         Restaurant.create!(
-            name: generate_double_name(food, cuisine),
+            name: generate_double_name(food, cuisine, arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-            street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}"
+            street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
             city: 'Austin',
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: 1
+            owner_id: rand(20)
         )
     end
     5.times do
+        arr=[]
         Restaurant.create!(
-            name: generate_single_name(food, cuisine),
+            name: generate_single_name(food, cuisine, arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-            street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}"
+            street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
             city: 'Austin',
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: 1
+            owner_id: rand(20)
         )
     end
 end

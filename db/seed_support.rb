@@ -1,5 +1,3 @@
-require 'tod'
-
 class Cuisine
 
     attr_reader :cuisines
