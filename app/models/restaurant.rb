@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: restaurants
+#
+#  id             :bigint           not null, primary key
+#  name           :string           not null
+#  email          :string           not null
+#  phone_no       :string           not null
+#  street_address :string           not null
+#  city           :string           not null
+#  description    :text
+#  capacity       :integer          not null
+#  cuisine        :string           not null
+#  owner_id       :integer          not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
 class Restaurant < ApplicationRecord
     validates :email, :street_address, :city, :capacity, :cuisine, presence: true
     validates :name, presence: true, uniqueness: {scope: :city, message:"This restaurant already exists in this city"}

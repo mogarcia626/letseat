@@ -17,25 +17,28 @@ const mSTP =  state  => {
 class NavBar extends React.Component {
     constructor(props) {
         super(props)
-    } package
+    }
 
     render() {
         return (
-            <header className="nav-bar">  
+            <div className="nav-bar">  
+
                 <div className='left-nav'>
                     <Link to="/" className='nav-logo'>
                         <img src={window.logo} alt="Letseat logo" className='logo' />
                         <h3>Letseat</h3>
                     </Link>
-                    <LocationSelector id='location-filter'/>                   
+                    <LocationSelector />                   
                 </div>
+
                 <div className='right-nav'>
-                {this.props.currentUser ?
-                    <Welcome currentUser={this.props.currentUser} />
-                    :
-                    <SessionButtons />}
+                    {this.props.currentUser ?
+                        <Welcome currentUser={this.props.currentUser} />
+                        :
+                        <SessionButtons />}
                 </div>
-            </header>
+
+            </div>
         )
     }
 }

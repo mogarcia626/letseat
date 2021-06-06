@@ -45,29 +45,29 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div>
-                <form className="modal-form" id='login-modal'
+                <form className="session-modal-form" id='login-modal'
                     onSubmit={this.handleSubmit}>
 
-                    <h2 className='modal-title'>
+                    <h2 className='session-modal-title'>
                         Please Sign in
                         <hr class="solid" />
                     </h2>
 
-                    <input className="modal-input"
+                    <input className="session-modal-input"
                         placeholder="Email"
                         type="text"
                         value={this.state.email}
                         onChange={this.update('email')}
                     />
 
-                    <input className="modal-input"
+                    <input className="session-modal-input"
                         placeholder="Password"
                         type="password"
                         value={this.state.password}
                         onChange={this.update('password')}
                     />
 
-                    <button className="modal-button">Sign In</button>
+                    <button className="session-modal-button">Sign In</button>
 
                     {this.renderErrors()}
                     

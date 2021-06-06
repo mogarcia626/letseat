@@ -63,6 +63,11 @@
     align-self: flex-end;    
 }
 
+.location-button:hover {
+    background-color: #f7986e;
+    border-radius: 3px;
+}
+
 .icon-button {
     align-self: center;
     background-color: transparent;
@@ -90,13 +95,50 @@
 
 #session-button-light {
     background-color: transparent;
-    border: solid darkgrey 1px;
-    color: darkgrey;
+    border: solid #696969 1px;
+    color:#696969;
 }
 
 .nav-text {
-    font-size: 14px;
-    letter-spacing: 0.25px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
     margin-right: 8px;
     padding-top: 4px;
 }
+
+.location-selector {
+    position: relative;
+}
+
+.drop-content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    border: black 1px solid;
+    border-radius: 3px;
+    background-color: white;
+    color:#696969;
+    position: absolute;
+    top: 120%;
+    left:60%;
+    width: 160px;
+    padding-right:1px;
+    margin:0;
+    
+}
+
+#drop-item {
+    padding: 8px 0 8px 4px;
+    width: 151px;
+    overflow: hidden;
+}
+#drop-item:hover {
+    color: black;
+    background-color: #f7d2b7;
+    border-left: #df8963 6px solid;
+    padding-left: 4px;
+}    
+
+
+// #f7d2b7
+// #f7986e

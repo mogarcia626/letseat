@@ -46,51 +46,51 @@ class SignupForm extends React.Component {
 
     demoLogin (e) {
         e.preventDefault();
-        const user = {email:'guest@letseat.com', password: '1a2b3c'};
+        const user = {email:'letseatdemo+0@gmail.com', password: '1a2b3c'};
         this.props.loginDemo(user);
         this.props.closeModal();
     }
 
     render() {
         return (
-            <div className="modal-form" id="signup-modal">
-                <form className="modal-form" id='signup-modal'
+            <div className="session-modal-form" id="signup-modal">
+                <form className="session-modal-form" id='signup-modal'
                     onSubmit={this.handleSubmit}>
 
-                <h2 className='modal-title'>
+                    <h2 className='session-modal-title'>
                     Welcome to Letseat!
                     <hr class="solid" />
                 </h2>
 
-                    <input className='modal-input'
+                    <input className='session-modal-input'
                         placeholder='Email'
                         type="text"
                         value={this.state.email}
                         onChange={this.update('email')}
                     />
 
-                    <input className='modal-input'
+                    <input className='session-modal-input'
                         placeholder='Password'
                         type="password"
                         value={this.state.password}
                         onChange={this.update('password')}
                     />
 
-                        <input className='modal-input'
+                    <input className='session-modal-input'
                             placeholder='First Name'
                             type="text"
                             value={this.state.first_name}
                             onChange={this.update('first_name')}
                         />
 
-                    <input className='modal-input'
+                    <input className='session-modal-input'
                             placeholder='Last Name'
                             type="text"
                             value={this.state.last_name}
                             onChange={this.update('last_name')}
                     />
 
-                    <button className='modal-button'>Create Account</button>
+                    <button className='session-modal-button'>Create Account</button>
                     
                     {this.renderErrors()}
                     
