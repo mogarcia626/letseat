@@ -15,8 +15,8 @@ demo_user = User.create!(
     first_name: 'Guest',
     last_name: 'User'
 )
-count = 1
-until count == 20
+count = 2
+until count == 21
     User.create!(
         first_name: "Owner#{count}",
         last_name: "Example",
@@ -34,7 +34,7 @@ def generate_double_name(cuisine_instance, cuisine_string, restaurants_array)
     second = cuisine_instance.cuisines[cuisine_string][:second]
     until restaurants_array.length == len
         name = "#{first[rand(first.length)]} #{second[rand(second.length)]}"
-        restaurants_array << name if !restaurants_array.include?(name)
+        restaurants_array << name unless restaurants_array.include?(name)
     end
     name
 end
@@ -44,7 +44,7 @@ def generate_single_name(cuisine_instance, cuisine_string, restaurants_array)
     first = cuisine_instance.cuisines[cuisine_string][:first]
     until restaurants_array.length == len
         name = first[rand(first.length)]
-        restaurants_array << name if !restaurants_array.include?(name)
+        restaurants_array << name unless restaurants_array.include?(name)
     end
     name
 end
@@ -62,7 +62,7 @@ food.cuisines.keys.each do |cuisine|
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: rand(20)
+            owner_id: rand(20) + 1
         )
     end
     5.times do
@@ -76,7 +76,7 @@ food.cuisines.keys.each do |cuisine|
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: rand(20)
+            owner_id: rand(20) + 1
         )
     end
 end
@@ -94,7 +94,7 @@ food.cuisines.keys.each do |cuisine|
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: rand(20)
+            owner_id: rand(20) + 1
         )
     end
     5.times do
@@ -108,7 +108,7 @@ food.cuisines.keys.each do |cuisine|
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: rand(20)
+            owner_id: rand(20) + 1
         )
     end
 end
@@ -126,7 +126,7 @@ food.cuisines.keys.each do |cuisine|
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: rand(20)
+            owner_id: rand(20) + 1
         )
     end
     5.times do
@@ -140,7 +140,7 @@ food.cuisines.keys.each do |cuisine|
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: rand(20)
+            owner_id: rand(20) + 1
         )
     end
 end
@@ -158,7 +158,7 @@ food.cuisines.keys.each do |cuisine|
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: rand(20)
+            owner_id: rand(20) + 1
         )
     end
     5.times do
@@ -172,7 +172,7 @@ food.cuisines.keys.each do |cuisine|
             description:"#{Faker::Restaurant.description}",
             capacity: rand(45)+15,
             cuisine: cuisine,
-            owner_id: rand(20)
+            owner_id: rand(20) + 1
         )
     end
 end
