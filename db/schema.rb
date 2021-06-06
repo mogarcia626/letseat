@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_05_041812) do
+ActiveRecord::Schema.define(version: 2021_06_06_002653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "reservations", force: :cascade do |t|
     t.datetime "time", null: false
@@ -60,28 +81,28 @@ ActiveRecord::Schema.define(version: 2021_06_05_041812) do
   create_table "schedules", force: :cascade do |t|
     t.integer "restaurant_id", null: false
     t.string "monday", null: false
-    t.time "monday_open"
-    t.time "monday_close"
     t.string "tuesday", null: false
-    t.time "tuesday_open"
-    t.time "tuesday_close"
     t.string "wednesday", null: false
-    t.time "wednesday_open"
-    t.time "wednesday_close"
     t.string "thursday", null: false
-    t.time "thursday_open"
-    t.time "thursday_close"
     t.string "friday", null: false
-    t.time "friday_open"
-    t.time "friday_close"
     t.string "saturday", null: false
-    t.time "saturday_open"
-    t.time "saturday_close"
     t.string "sunday", null: false
-    t.time "sunday_open"
-    t.time "sunday_close"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "monday_open"
+    t.integer "monday_close"
+    t.integer "tuesday_open"
+    t.integer "tuesday_close"
+    t.integer "wednesday_open"
+    t.integer "wednesday_close"
+    t.integer "thursday_open"
+    t.integer "thursday_close"
+    t.integer "friday_open"
+    t.integer "friday_close"
+    t.integer "saturday_open"
+    t.integer "saturday_close"
+    t.integer "sunday_open"
+    t.integer "sunday_close"
     t.index ["restaurant_id"], name: "index_schedules_on_restaurant_id"
   end
 
@@ -97,4 +118,5 @@ ActiveRecord::Schema.define(version: 2021_06_05_041812) do
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end

@@ -6,4 +6,6 @@ class Restaurant < ApplicationRecord
     belongs_to :owner, class_name: :User, foreign_key: :owner_id
     has_many :reviews, through: :reservations, source: :review
     has_one :schedule, class_name: :Schedule, foreign_key: :resaturant_id
+    
+    has_many_attached :photos
 end
