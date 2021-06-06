@@ -20,18 +20,18 @@ until count == 21
     User.create!(
         first_name: "Owner#{count}",
         last_name: "Example",
-        email: "letseatdemo+#{count}@gmail.com",
+        email: "letseatdemo+#{count.to_s}@gmail.com",
         password: '1a2b3c'
     )
     count +=1
 end
 
 # Generating Restaurants helper methods
-food = Cuisine.new
-def generate_double_name(cuisine_instance, cuisine_string, restaurants_array)
+
+def generate_double_name(cuisines_hash, cuisine_string, restaurants_array)
     len = restaurants_array.length + 1
-    first = cuisine_instance.cuisines[cuisine_string][:first]
-    second = cuisine_instance.cuisines[cuisine_string][:second]
+    first = cuisines_hash[cuisine_string][:first]
+    second = cuisines_hash[cuisine_string][:second]
     until restaurants_array.length == len
         name = "#{first[rand(first.length)]} #{second[rand(second.length)]}"
         restaurants_array << name unless restaurants_array.include?(name)
@@ -39,9 +39,9 @@ def generate_double_name(cuisine_instance, cuisine_string, restaurants_array)
     name
 end
 
-def generate_single_name(cuisine_instance, cuisine_string, restaurants_array)
+def generate_single_name(cuisines_hash, cuisine_string, restaurants_array)
     len = restaurants_array.length + 1
-    first = cuisine_instance.cuisines[cuisine_string][:first]
+    first = cuisines_hash[cuisine_string][:first]
     until restaurants_array.length == len
         name = first[rand(first.length)]
         restaurants_array << name unless restaurants_array.include?(name)
@@ -49,12 +49,15 @@ def generate_single_name(cuisine_instance, cuisine_string, restaurants_array)
     name
 end
 
+restaurants_arr = []
+food = Cuisine.new.cuisines
+
 # Generates Restaurants in Orlando
-food.cuisines.keys.each do |cuisine|
-    15.times do
-        arr = []
+food.keys.each do |cuisine|
+    restaurants_arr = []
+    2.times do
         Restaurant.create!(
-            name: generate_double_name(food, cuisine, arr),
+            name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
             street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
@@ -65,10 +68,9 @@ food.cuisines.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    5.times do
-        arr=[]
+    2.times do
         Restaurant.create!(
-            name: generate_single_name(food, cuisine, arr),
+            name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
             street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
@@ -82,11 +84,10 @@ food.cuisines.keys.each do |cuisine|
 end
 
 # Generates Restaurants in San Francisco
-food.cuisines.keys.each do |cuisine|
-    15.times do
-        arr=[]
+food.keys.each do |cuisine|
+    2.times do
         Restaurant.create!(
-            name: generate_double_name(food, cuisine, arr),
+            name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
             street_address: "#{Faker::Address.street_address} San Francisco, CA #{Faker::Address.zip}",
@@ -97,10 +98,9 @@ food.cuisines.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    5.times do
-        arr=[]
+    2.times do
         Restaurant.create!(
-            name: generate_single_name(food, cuisine, arr),
+            name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
             street_address: "#{Faker::Address.street_address} San Francisco, Fl #{Faker::Address.zip}",
@@ -114,11 +114,10 @@ food.cuisines.keys.each do |cuisine|
 end
 
 # Generates Restaurants in New York
-food.cuisines.keys.each do |cuisine|
-    15.times do
-        arr=[]
+food.keys.each do |cuisine|
+    2.times do
         Restaurant.create!(
-            name: generate_double_name(food, cuisine, arr),
+            name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
             street_address: "#{Faker::Address.street_address} New York City, NY #{Faker::Address.zip}",
@@ -129,10 +128,9 @@ food.cuisines.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    5.times do
-        arr=[]
+    2.times do
         Restaurant.create!(
-            name: generate_single_name(food, cuisine, arr),
+            name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
             street_address: "#{Faker::Address.street_address} New York City, NY #{Faker::Address.zip}",
@@ -146,11 +144,10 @@ food.cuisines.keys.each do |cuisine|
 end
 
 # Generates Restaurants in Austin
-food.cuisines.keys.each do |cuisine|
-    15.times do
-        arr=[]
+food.keys.each do |cuisine|
+    2.times do
         Restaurant.create!(
-            name: generate_double_name(food, cuisine, arr),
+            name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
             street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
@@ -161,10 +158,9 @@ food.cuisines.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    5.times do
-        arr=[]
+    2.times do
         Restaurant.create!(
-            name: generate_single_name(food, cuisine, arr),
+            name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
             street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
@@ -178,19 +174,25 @@ food.cuisines.keys.each do |cuisine|
 end
 
 #Generates a schedule for each restaurant
-sched = ['Open' 'Closed']
+sched = 0
+day = ['Open', 'Closed']
+open = 0
+close = 0
+count = 1
+
 Restaurant.all.ids.each do |rest_id|
     open = rand(8)+8
     close = rand(8)+17
+    
     Schedule.create!(
         restaurant_id: rest_id,
-        monday: sched[rand(2)],
+        monday: day[rand(2)],
         monday_open: open,
         monday_close:close,
-        tuesday: sched[rand(2)],
+        tuesday: day[rand(2)],
         tuesday_open: open,
         tuesday_close:close,
-        wednesday: sched[rand(2)],
+        wednesday: day[rand(2)],
         wednesday_open: open,
         wednesday_close:close,
         thursday: 'Open',
@@ -202,35 +204,40 @@ Restaurant.all.ids.each do |rest_id|
         saturday: 'Open',
         saturday_open: open + rand(2),
         saturday_close:close + rand(3),
-        sunday: sched[rand(2)],
+        sunday: day[rand(2)],
         sunday_open: open + rand(2),
         sunday_close: close
     )
-    rest.monday_open = '' if rest.monday = 'Closed'
-    rest.monday_close = '' if rest.monday = 'Closed'
-    rest.tuesday_open = '' if rest.tuesday = 'Closed'
-    rest.tuesday_close = '' if rest.tuesday = 'Closed'
-    rest.wednesday_open = '' if rest.wednesday = 'Closed'
-    rest.wednesday_close = '' if rest.wednesday = 'Closed'
-    rest.sunday_open = '' if rest.sunday = 'Closed'
-    rest.sunday_close = '' if rest.sunday = 'Closed'
+    
+    sched = Schedule.find_by_id(count)
+    sched.monday_open = nil if sched.monday == 'Closed'
+    sched.monday_close = nil if sched.monday == 'Closed'
+    sched.tuesday_open = nil if sched.tuesday == 'Closed'
+    sched.tuesday_close = nil if sched.tuesday == 'Closed'
+    sched.wednesday_open = nil if sched.wednesday == 'Closed'
+    sched.wednesday_close = nil if sched.wednesday == 'Closed'
+    sched.sunday_open = nil if sched.sunday == 'Closed'
+    sched.sunday_close = nil if sched.sunday == 'Closed'
+    count += 1
 end
 
 #Generates some past reservations for each restaurant
-Restaurant.all.each do |rest|
-    open = rest.schedule.thursday_open
-    diff = rest.schedule.thursday_close - open
+diff = 0
+Restaurant.all.ids.each do |rest|
+    sched = Restaurant.find_by_id(rest).schedule
+    open = sched.thursday_open
+    diff = sched.thursday_close - open
     Reservation.create!(
-        time: Time.new(2021, rand(6)+1, rand(28), rand(diff)+open),
+        time: Time.new(2021, rand(6)+1, rand(27)+1, rand(diff)+open),
         party_size: rand(6)+2,
-        user_id: rand(20),
-        restaurant_id: rest.id,
+        user_id: rand(20)+1,
+        restaurant_id: rest,
     )
 end
     
 #Generates a review for each reservation
 Reservation.all.ids.each do |res_id|
-    Review.new(
+    Review.create!(
         comment: Faker::Restaurant.review,
         food_rating: rand(6),
         service_rating: rand(6),
