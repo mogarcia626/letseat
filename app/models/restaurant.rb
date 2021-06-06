@@ -25,4 +25,10 @@ class Restaurant < ApplicationRecord
     has_one :schedule, class_name: :Schedule, foreign_key: :restaurant_id
     
     has_many_attached :photos
+
+    def self.restaurant_filter(city = nil, cuisine = nil)
+        city ? self.where("city = ? AND cuisine = ?", city, cuisine) : self.all
+    end
 end
+
+Restaurant.first
