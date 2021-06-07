@@ -16,11 +16,13 @@
 #orlando {
 	background-image: url('/assets/orlando.png');
 	background-size: contain;
+	color: white;
 }
 
 #new-york {
 	background-image: url('/assets/newyork.png');
 	background-size: contain;
+	color: white;
 }
 
 #san-francisco {
@@ -31,19 +33,10 @@
 #austin {
 	background-image: url('/assets/austin.png');
 	background-size: contain;
+	color: white;
 }
 
 #search-form-modal {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-image: none;
 	background-color: white;
-	min-width: 350px;
-	height: 200px;
-	border-radius: 3px; 
-	overflow-y: auto;
-	padding: 0; 
 }
 

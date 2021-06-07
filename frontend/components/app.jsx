@@ -1,10 +1,11 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
+// import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import NavBar from './nav_bar/nav_bar';
 import Modal from './session/modal';
 import SearchBar from './search_bar/search_bar';
+import RestaurantIndex from './restaurant_index/restaurant_index'
 
 
 const App = () => (
@@ -17,46 +18,16 @@ const App = () => (
 
         <main className='main-body'>
             <SearchBar />
-            <p>Restaurant Index Containers</p>
+            <RestaurantIndex />
         </main>
 
+        <br />
+        
         <footer className='footer-test' >
-            Footer
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>scroll test</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
-            <p>.</p>
+            Footer           
         </footer>
         <Switch>
-            
+
             <Redirect to="/" />
         </Switch>
     </div>

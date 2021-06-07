@@ -5,12 +5,13 @@ import {
 
 const restaurantsReducer = (state = {}, action) => {
     Object.freeze(state)
+    const nextState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_ALL_RESTAURANTS:
-            return action.restaurants;
+            return Object.assign({}, action.restaurants, state);
         case RECEIVE_SINGLE_RESTAURANT:
-            const newRestaurant = { [action.restaurant.id]: action.restaurant };
-            return Object.assign({}, state, newRestaurant);
+            nextState[action.payload.restaurant.id] = action.payload.restaurant;
+            return nexState
         default:
             return state;
     }

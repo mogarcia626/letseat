@@ -1,15 +1,15 @@
-import { fetchRestaurants } from './restaurant_actions'
+import { requestAllRestaurants } from './restaurant_actions'
 
-export const UPDATE_FILTER = 'UPDATE_FILTER';
+export const UPDATE_FILTERS = 'UPDATE_FILTERS';
 
-export const changeFilter = (filter, value) => ({
-    type: UPDATE_FILTER,
-    filter,
+export const changeFilters = (filters, value) => ({
+    type: UPDATE_FILTERS,
+    filters,
     value
 });
 
-export const updateFilter = (filter, value) => (dispatch, getState) => {
-    dispatch(changeFilter(filter, value));
-    return fetchRestaurants(getState().ui.filters)(dispatch);
+export const updateFilters = (filters, value) => (dispatch, getState) => {
+    dispatch(changeFilter(filters, value));
+    return requestAllRestaurants(getState().ui.filters)(dispatch);
 };
 

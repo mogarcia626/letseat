@@ -2,9 +2,10 @@ class Api::RestaurantsController < ApplicationController
     # before_action :require_logged_in, only: [:create]
 
     def index
-      city = params[:filter][:city]
-      cuisine = params[:filter][:cuisine]
-      @restaurants = Restaurant.apply_filter(city, cuisine)
+      city = params[:filters][:city]
+      cuisine = params[:filters][:cuisine]
+      @restaurants = 'test'
+      @restaurants = Restaurant.apply_filters(city, cuisine)
       render json: @restaurants
     end
 
@@ -36,7 +37,7 @@ class Api::RestaurantsController < ApplicationController
                 :description, :capacity, :cuisine)
         end
 
-        def filter
-          params[:filter]
+        def filters
+          params[:filters]
         end
 end

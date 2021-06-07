@@ -5,7 +5,7 @@ import SearchFormContainer from './search_form_container';
 
 const mSTP = state => {
     return {
-        location: this.state.ui.filter.location
+        location: 'default'
     }
 };
 

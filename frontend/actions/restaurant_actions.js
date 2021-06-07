@@ -8,24 +8,24 @@ export const receiveAllRestaurants = restaurants => ({
     restaurants
 })
 
-export const receiveSingleRestaurant = (restaurant) => ({
+export const receiveSingleRestaurant = (payload) => ({
     type: RECEIVE_SINGLE_RESTAURANT,
-    restaurant,
+    payload,
 });
 
-export const createReview = review => dispatch => (
-  APIUtil.createReview(review).then(review => (
-    dispatch(receiveReview(review))
-  ))
-);
+// export const createReview = review => dispatch => (
+//   APIUtil.createReview(review).then(review => (
+//     dispatch(receiveReview(review))
+//   ))
+// );
 
-export const fetchRestaurants = filters => dispatch => (
+export const requestAllRestaurants = filters => dispatch => (
     APIUtil.fetchRestaurants(filters).then(restaurants => (
         dispatch(receiveAllRestaurants(restaurants))
     ))
 );
 
-export const fetchRestaurant = id => dispatch => (
+export const requestSingleRestaurant = id => dispatch => (
     APIUtil.fetchRestaurant(id).then(restaurant => (
         dispatch(receiveSingleRestaurant(restaurant))
     ))
