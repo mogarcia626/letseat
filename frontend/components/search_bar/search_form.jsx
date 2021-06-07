@@ -10,7 +10,7 @@ class SearchForm extends React.Component {
             // }
         // };
 
-        // this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     // update(type) {
@@ -19,13 +19,13 @@ class SearchForm extends React.Component {
     //     };
     // }
 
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     const user = Object.assign({}, this.state);
-    //     this.props.processForm(user).then(() => {
-    //         this.props.closeModal();
-    //     })
-    // }
+    handleSubmit(e) {
+        e.preventDefault();
+        // const user = Object.assign({}, this.state);
+        // this.props.processForm(user).then(() => {
+            this.props.closeModal();
+        // })
+    }
 
     // renderErrors() {
     //     return (

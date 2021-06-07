@@ -59,7 +59,7 @@ class SignupForm extends React.Component {
 
                     <h2 className='session-modal-title'>
                     Welcome to Letseat!
-                    <hr class="solid" />
+                    <hr className="solid" />
                 </h2>
 
                     <input className='session-modal-input'

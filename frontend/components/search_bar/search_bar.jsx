@@ -5,20 +5,49 @@ import SearchFormContainer from './search_form_container';
 
 const mSTP = state => {
     return {
-        location: 'default'
+        location: '',
     }
 };
 
+const mDTP = dispatch => {
+    return {
+
+    };
+};
 class SearchBar extends React.Component {
     constructor(props) {
         super(props)
+        
+        this.selectBackground = this.selectBackground.bind(this);
     } 
-    // <img src={window.logo} alt="Letseat logo" className='logo' />
 
+    selectBackground() {
+        switch (this.props.location) {
+            case 'Orlando, FL':
+                return 'orlando'
+                break;
+            case 'New York, NY':
+                return 'new-york'
+                break;
+            case 'San Francisco, CA':
+                return 'san-francisco'
+                break;
+            case 'Austin, TX':
+                return 'austin'
+                break;
+            case 'search-modal':
+                return 'search-form-modal'
+                break;         
+            default:
+                return 'default';
+        };
+    };    
+    
     render() {
+        console.log(this.selectBackground())
         return (
-            <div className='search-bar' id="default">
-                <h1 className='search-bar' id="default">
+            <div className='search-bar' id={this.selectBackground()}  >
+                <h1>
                     Find your table for any occasion
                 </h1>
                 <SearchFormContainer />

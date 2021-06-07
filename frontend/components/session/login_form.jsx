@@ -50,7 +50,7 @@ class LoginForm extends React.Component {
 
                     <h2 className='session-modal-title'>
                         Please Sign in
-                        <hr class="solid" />
+                        <hr className="solid" />
                     </h2>
 
                     <input className="session-modal-input"

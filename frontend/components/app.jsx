@@ -15,7 +15,7 @@ const App = () => (
             <NavBar />
         </header>
 
-        <main>
+        <main className='main-body'>
             <SearchBar />
             <p>Restaurant Index Containers</p>
         </main>

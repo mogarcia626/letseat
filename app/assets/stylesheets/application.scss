@@ -19,11 +19,11 @@
  
  // Core
  @import './fonts.scss';
- 
- 
- // Components                                
  @import './nav_bar.scss';
+ @import './front_page_body.scss';
+ 
+ // Components   
  @import './nav_drop_down.scss';
  @import './session_modal.scss';
- @import './search_modal.scss';
+ @import './search_bar.scss';
 

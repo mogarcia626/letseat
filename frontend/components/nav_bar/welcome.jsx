@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+import { openModal } from '../../actions/modal_actions';
 import { BiCalendarEvent } from "react-icons/bi";
 import { ImSearch } from "react-icons/im";
 
@@ -10,6 +11,7 @@ const mSTP = ({ session, entities: { users } }) => ({
 
 const mDTP = dispatch => ({
     processLogout: () => dispatch(logout()),
+    openModal: modal => dispatch(openModal(modal))
 });
 
 class Welcome extends React.Component {
@@ -33,7 +35,8 @@ class Welcome extends React.Component {
                     <BiCalendarEvent size={20} />
                 </button>
 
-                <button className="icon-button" type="submit">
+                <button
+                    onClick={() => openModal('search')} className="icon-button">
                     <ImSearch size={16} />
                 </button>
 

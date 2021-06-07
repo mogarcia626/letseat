@@ -28,6 +28,9 @@ function Modal({ modal, closeModal }) {
         case 'signup':
             component = <SignupFormContainer />;
             break;
+        case 'search':
+            component = <SearchBar location="search-modal"/>;
+            break;
         default:
             return null;
     }

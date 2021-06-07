@@ -6,11 +6,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    position: sticky; top: 8px; left: 0; right: 0;
+    position: sticky; top: 8px; left: 5%; right: 5%;
+    height: 56px;
+    max-width: 1281px;
     background-color: #f7d2b7;
     color:white;
     margin-bottom: 16px;
-    height: 52px;
 }
 .right-nav {
     display: flex;
@@ -63,8 +64,8 @@
     align-self: flex-end;    
 }
 
-.location-button:hover {
-    background-color: #f7986e;
+.location-button:hover, .icon-button:hover {
+    background-color: #df8963;
     border-radius: 3px;
 }
 
@@ -80,7 +81,7 @@
 .session-button {
     font-size: small;
     font-weight: normal;    
-    color: white;    
+    color: white;   
     border-radius: 4px;
     margin: 0px 4px 0px 4px;
     padding: 8px 8px 8px 8px;
@@ -88,8 +89,8 @@
 }
 
 #session-button-dark {
-    background-color: #df8963;
-    border: solid black 0px;
+    background-color: #df8963;     
+    border: solid #df8963 1px;
     margin: 0px 4px 0px 8px;
 }
 
@@ -97,6 +98,12 @@
     background-color: transparent;
     border: solid #696969 1px;
     color:#696969;
+}
+
+#session-button-light:hover, #session-button-dark:hover {
+    background-color: rgb(112, 70, 18);
+    color: white;
+    border: rgb(112, 70, 18) 1px solid
 }
 
 .nav-text {

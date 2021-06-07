@@ -1,0 +1,48 @@
+.search-bar {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-image: url('/assets/default.png');
+	background-size: contain;
+	height: 427px;
+	width: 1281px;
+}
+
+#default {
+	background-image: url('/assets/default.png');
+	background-size: contain;
+}
+
+#orlando {
+	background-image: url('/assets/orlando.png');
+	background-size: contain;
+}
+
+#new-york {
+	background-image: url('/assets/newyork.png');
+	background-size: contain;
+}
+
+#san-francisco {
+	background-image: url('/assets/sanfran.png');
+	background-size: contain;
+}
+
+#austin {
+	background-image: url('/assets/austin.png');
+	background-size: contain;
+}
+
+#search-form-modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	min-width: 350px;
+	border-radius: 3px; 
+	overflow-y: auto;
+	padding: 0; 
+}
+

@@ -319,7 +319,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_modal__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_3__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_bar_search_bar__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Restaurant Index Containers")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_modal__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_3__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
+    className: "main-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_bar_search_bar__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Restaurant Index Containers")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
     className: "footer-test"
   }, "Footer", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "scroll test"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     render: function render() {
@@ -631,8 +633,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var react_icons_bi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/bi */ "./node_modules/react-icons/bi/index.esm.js");
-/* harmony import */ var react_icons_im__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/im */ "./node_modules/react-icons/im/index.esm.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var react_icons_bi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/bi */ "./node_modules/react-icons/bi/index.esm.js");
+/* harmony import */ var react_icons_im__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/im */ "./node_modules/react-icons/im/index.esm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -661,6 +664,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var mSTP = function mSTP(_ref) {
   var session = _ref.session,
       users = _ref.entities.users;
@@ -673,6 +677,9 @@ var mDTP = function mDTP(dispatch) {
   return {
     processLogout: function processLogout() {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.logout)());
+    },
+    openModal: function openModal(modal) {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)(modal));
     }
   };
 };
@@ -708,12 +715,14 @@ var Welcome = /*#__PURE__*/function (_React$Component) {
       }, "Welcome ", this.props.currentUser.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "icon-button",
         type: "submit"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_bi__WEBPACK_IMPORTED_MODULE_3__.BiCalendarEvent, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_bi__WEBPACK_IMPORTED_MODULE_4__.BiCalendarEvent, {
         size: 20
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "icon-button",
-        type: "submit"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_im__WEBPACK_IMPORTED_MODULE_4__.ImSearch, {
+        onClick: function onClick() {
+          return (0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)('search');
+        },
+        className: "icon-button"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_im__WEBPACK_IMPORTED_MODULE_5__.ImSearch, {
         size: 16
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.handleClick,
@@ -805,8 +814,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var mSTP = function mSTP(state) {
   return {
-    location: 'default'
+    location: ''
   };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {};
 };
 
 var SearchBar = /*#__PURE__*/function (_React$Component) {
@@ -815,22 +828,53 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(SearchBar);
 
   function SearchBar(props) {
+    var _this;
+
     _classCallCheck(this, SearchBar);
 
-    return _super.call(this, props);
-  } // <img src={window.logo} alt="Letseat logo" className='logo' />
-
+    _this = _super.call(this, props);
+    _this.selectBackground = _this.selectBackground.bind(_assertThisInitialized(_this));
+    return _this;
+  }
 
   _createClass(SearchBar, [{
+    key: "selectBackground",
+    value: function selectBackground() {
+      switch (this.props.location) {
+        case 'Orlando, FL':
+          return 'orlando';
+          break;
+
+        case 'New York, NY':
+          return 'new-york';
+          break;
+
+        case 'San Francisco, CA':
+          return 'san-francisco';
+          break;
+
+        case 'Austin, TX':
+          return 'austin';
+          break;
+
+        case 'search-modal':
+          return 'search-form-modal';
+          break;
+
+        default:
+          return 'default';
+      }
+
+      ;
+    }
+  }, {
     key: "render",
     value: function render() {
+      console.log(this.selectBackground());
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "search-bar",
-        id: "default"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
-        className: "search-bar",
-        id: "default"
-      }, "Find your table for any occasion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_form_container__WEBPACK_IMPORTED_MODULE_2__.default, null));
+        id: this.selectBackground()
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Find your table for any occasion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_form_container__WEBPACK_IMPORTED_MODULE_2__.default, null));
     }
   }]);
 
@@ -883,44 +927,49 @@ var SearchForm = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(SearchForm);
 
   function SearchForm(props) {
+    var _this;
+
     _classCallCheck(this, SearchForm);
 
-    return _super.call(this, props); // this.state = {
+    _this = _super.call(this, props); // this.state = {
     //     errors: [], users: {
     //         email: '',
     //         password: '',
     // }
     // };
-    // this.handleSubmit = this.handleSubmit.bind(this);
+
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   } // update(type) {
   //     return (e) => {
   //         this.setState({ [type]: e.currentTarget.value });
   //     };
   // }
-  // handleSubmit(e) {
-  //     e.preventDefault();
-  //     const user = Object.assign({}, this.state);
-  //     this.props.processForm(user).then(() => {
-  //         this.props.closeModal();
-  //     })
-  // }
-  // renderErrors() {
-  //     return (
-  //         <ul>
-  //             {this.props.errors.map((error, i) => (
-  //                 <li key={`err-${i}`}>
-  //                     {error}
-  //                 </li>
-  //             ))}
-  //         </ul>
-  //     );
-  // }
-  // componentWillUnmount() {
-  //     this.props.resetErrors()
-  // };
 
 
   _createClass(SearchForm, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault(); // const user = Object.assign({}, this.state);
+      // this.props.processForm(user).then(() => {
+
+      this.props.closeModal(); // })
+    } // renderErrors() {
+    //     return (
+    //         <ul>
+    //             {this.props.errors.map((error, i) => (
+    //                 <li key={`err-${i}`}>
+    //                     {error}
+    //                 </li>
+    //             ))}
+    //         </ul>
+    //     );
+    // }
+    // componentWillUnmount() {
+    //     this.props.resetErrors()
+    // };
+
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -995,32 +1044,9 @@ var mapStateToProps = function mapStateToProps(_ref) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    processForm: function processForm(user) {
-      return dispatch(login(user));
-    },
     closeModal: function closeModal() {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.closeModal)());
-    },
-    resetErrors: function (_resetErrors) {
-      function resetErrors() {
-        return _resetErrors.apply(this, arguments);
-      }
-
-      resetErrors.toString = function () {
-        return _resetErrors.toString();
-      };
-
-      return resetErrors;
-    }(function () {
-      return dispatch(resetErrors());
-    }),
-    otherForm: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-      className: "button-link",
-      onClick: function onClick(e) {
-        e.preventDefault();
-        dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.openModal)('signup'));
-      }
-    }, "Create an account")
+    }
   };
 };
 
@@ -1132,7 +1158,7 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "session-modal-title"
       }, "Please Sign in", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
-        "class": "solid"
+        className: "solid"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "session-modal-input",
         placeholder: "Email",
@@ -1268,6 +1294,12 @@ function Modal(_ref) {
 
     case 'signup':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_signup_form_container__WEBPACK_IMPORTED_MODULE_4__.default, null);
+      break;
+
+    case 'search':
+      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SearchBar, {
+        location: "search-modal"
+      });
       break;
 
     default:
@@ -1409,7 +1441,7 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "session-modal-title"
       }, "Welcome to Letseat!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
-        "class": "solid"
+        className: "solid"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "session-modal-input",
         placeholder: "Email",
