@@ -1,5 +1,5 @@
 import React from 'react';
-import LocationSelector from './location_selector'
+import LocationSelectorContainer from './location_selector_container'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import Welcome from './welcome';
@@ -28,7 +28,7 @@ class NavBar extends React.Component {
                         <img src={window.logo} alt="Letseat logo" className='logo' />
                         <h3>Letseat</h3>
                     </Link>
-                    <LocationSelector />                   
+                    <LocationSelectorContainer />                   
                 </div>
 
                 <div className='right-nav'>

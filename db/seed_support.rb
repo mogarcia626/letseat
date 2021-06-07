@@ -14,17 +14,17 @@ class Cuisine
         #     first: ['Wah Fung', 'Shanghai', 'Szechuan', 'Hunan', 'Golden', 'Empress', 'Great Wall', 'Shandong', 'Mandarin', 'Chow'],
         #     second: ['Noodle House', 'Tea House', 'Kitchen', 'Bistro', 'Garden', 'Dragon', 'Empress', 'Dumpling'] }        
         #@cuisines['vietnamese'] ={
-            first: ['Banh Mi', 'Pho', 'Saigon', 'Hanoi', 'Lemon Pepper', 'Fresh', 'Vien', 'Huong', 'Mekong'],
-            second: ['Cafe', 'Banh Mi', 'Pho', 'King', 'Vietnamese Cuisine', 'Bistro', 'House', 'Kitchen', 'Deli'] }  
+            # first: ['Banh Mi', 'Pho', 'Saigon', 'Hanoi', 'Lemon Pepper', 'Fresh', 'Vien', 'Huong', 'Mekong'],
+            # second: ['Cafe', 'Banh Mi', 'Pho', 'King', 'Vietnamese Cuisine', 'Bistro', 'House', 'Kitchen', 'Deli'] }  
         # @cuisines['japanese'] = {
         #     first: ['Sushi', 'Shimizu', 'Yojimbo', 'Kiraku', 'Toyosu', 'Banzai', 'Judoku', 'Demon Slayer', 'DomoDomo', 'Umami'],
         #     second: ['Bistro', 'Kitchen', 'Palace', 'Sushi', 'Ramen', 'Umami', 'Cafe', 'Kyoto'] }        
         # @cuisines['arabic'] = {
         #     first: ['Leyla\'s', 'Rami\'s', 'Moustafa\'s', 'Tajin', 'Camel', 'Kabob', 'Bedouin', 'Reem\'s', 'Za\'atar', 'Qahwah'],
         #     second: ['Bistro', 'Kitchen', 'Cafe', 'Shawarma', 'Eatery', 'Azama', 'Majlis', 'Grill'] }        
-        @cuisines['steakhouse'] = {
-            first: ['Salt', 'Ranchers', 'Tony\'s', 'Village', 'Quality', 'Texas', 'Wyoming', 'Brazil', 'Prime'],
-            second: ['Steakhouse', 'Meat Company', 'Company', ' and Charcoal', 'Prime Rib', 'Grill', 'Butchers'] }        
+        # @cuisines['steakhouse'] = {
+        #     first: ['Salt', 'Ranchers', 'Tony\'s', 'Village', 'Quality', 'Texas', 'Wyoming', 'Brazil', 'Prime'],
+        #     second: ['Steakhouse', 'Meat Company', 'Company', ' and Charcoal', 'Prime Rib', 'Grill', 'Butchers'] }        
         @cuisines['latin american'] = {
             first: ['Cholita', 'Casa', 'Havana', 'Sol', 'Platano', 'Empanada', 'La Bodeguita', 'Cafe', 'Arepa', 'Parada'],
             second: ['Cafe', 'Havana', 'Latina', 'Linda', '', 'Bistro', 'Cafe', 'Caracas', 'Ceviche'] }        

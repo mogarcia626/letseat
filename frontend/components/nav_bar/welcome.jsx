@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
-import { openModal } from '../../actions/modal_actions';
+import { openModal } from '../../actions/modal_actions'
 import { BiCalendarEvent } from "react-icons/bi";
 import { ImSearch } from "react-icons/im";
 
@@ -36,7 +36,8 @@ class Welcome extends React.Component {
                 </button>
 
                 <button
-                    onClick={() => openModal('search')} className="icon-button">
+                    onClick={() => this.props.openModal('search')}
+                    className="icon-button">
                     <ImSearch size={16} />
                 </button>
 
@@ -52,3 +53,4 @@ class Welcome extends React.Component {
 };
 
 export default connect(mSTP, mDTP)(Welcome);
+

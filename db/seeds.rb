@@ -2,11 +2,11 @@ require_relative './seed_support'
 require 'faker'
 require 'time'
 
-User.delete_all
-Restaurant.delete_all
-Reservation.delete_all
-Review.delete_all
-Schedule.delete_all
+# User.delete_all
+# Restaurant.delete_all
+# Reservation.delete_all
+# Review.delete_all
+# Schedule.delete_all
 
 #Generates 1 Demo User & 20 restaurant owners that will own all seeded restaurants
 demo_user = User.create!(
@@ -55,7 +55,7 @@ food = Cuisine.new.cuisines
 # Generates Restaurants in Orlando
 food.keys.each do |cuisine|
     restaurants_arr = []
-    2.times do
+    1.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -68,7 +68,7 @@ food.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    2.times do
+    1.times do
         Restaurant.create!(
             name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -85,7 +85,7 @@ end
 
 # Generates Restaurants in San Francisco
 food.keys.each do |cuisine|
-    2.times do
+    1.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -98,7 +98,7 @@ food.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    2.times do
+    1.times do
         Restaurant.create!(
             name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -115,7 +115,7 @@ end
 
 # Generates Restaurants in New York
 food.keys.each do |cuisine|
-    2.times do
+    1.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -128,7 +128,7 @@ food.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    2.times do
+    1.times do
         Restaurant.create!(
             name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -145,7 +145,7 @@ end
 
 # Generates Restaurants in Austin
 food.keys.each do |cuisine|
-    2.times do
+    1.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -158,7 +158,7 @@ food.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    2.times do
+    1.times do
         Restaurant.create!(
             name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',

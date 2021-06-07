@@ -1,9 +1,9 @@
 // Restaurant index
-export const fetchRestaurantIndex = restaurant => (
+export const fetchRestaurants = filters => (
     $.ajax({
         url: '/api/restaurants',
         method: 'GET',
-        data: { restaurant },
+        data: { filters },
     })
 );
 

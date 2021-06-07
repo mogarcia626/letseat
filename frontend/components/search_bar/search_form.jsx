@@ -3,45 +3,31 @@ import React from 'react';
 class SearchForm extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     errors: [], users: {
-        //         email: '',
-        //         password: '',
-            // }
-        // };
-
+        this.state = {
+            searchCriteria: {
+                date: '',
+                time: '',
+                party_size: '',
+                search: '',
+            }            
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // update(type) {
-    //     return (e) => {
-    //         this.setState({ [type]: e.currentTarget.value });
-    //     };
-    // }
+    update(type) {
+        return (e) => {
+            this.setState({ [type]: e.currentTarget.value });
+        };
+    }
 
     handleSubmit(e) {
         e.preventDefault();
-        // const user = Object.assign({}, this.state);
+        //Redirect to /api/restaurants with data from form passed in as props
+        // const restaurant = Object.assign({}, this.state);
         // this.props.processForm(user).then(() => {
             this.props.closeModal();
         // })
     }
-
-    // renderErrors() {
-    //     return (
-    //         <ul>
-    //             {this.props.errors.map((error, i) => (
-    //                 <li key={`err-${i}`}>
-    //                     {error}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     );
-    // }
-
-    // componentWillUnmount() {
-    //     this.props.resetErrors()
-    // };
 
     render() {
         return (
@@ -70,7 +56,7 @@ class SearchForm extends React.Component {
                         // onChange={this.update('party_size')}
                     />
 
-                    <input className="search-modal-saerch"
+                    <input className="search-modal-search"
                         placeholder="Location, Restaurant, or Cuisine"
                         type="text"
                         // value={this.state.reservation.search_criteria}

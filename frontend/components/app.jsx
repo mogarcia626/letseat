@@ -55,7 +55,10 @@ const App = () => (
             <p>.</p>
             <p>.</p>
         </footer>
-            <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+        <Switch>
+            
+            <Redirect to="/" />
+        </Switch>
     </div>
 );
 

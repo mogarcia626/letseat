@@ -26,9 +26,17 @@ class Restaurant < ApplicationRecord
     
     has_many_attached :photos
 
-    def self.restaurant_filter(city = nil, cuisine = nil)
-        city ? self.where("city = ? AND cuisine = ?", city, cuisine) : self.all
+    def self.apply_filter(city=nil, cuisine=nil)
+        if city && cuisine
+            self.where("city = ? AND cuisine = ?", city, cuisine)
+        elsif !city
+            self.where("cuisine = ?", cuisine)
+        elsif !cuisine
+            self.where("city = ?", city)
+        else
+            self.all
+        end
     end
-end
 
-Restaurant.first
+
+end

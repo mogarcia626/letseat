@@ -5,18 +5,19 @@ import SearchFormContainer from './search_form_container';
 
 const mSTP = state => {
     return {
-        location: '',
+        location: this.state.ui.filter.location
     }
 };
 
 const mDTP = dispatch => {
     return {
-
+        
     };
 };
 class SearchBar extends React.Component {
     constructor(props) {
         super(props)
+        
         
         this.selectBackground = this.selectBackground.bind(this);
     } 
@@ -44,7 +45,6 @@ class SearchBar extends React.Component {
     };    
     
     render() {
-        console.log(this.selectBackground())
         return (
             <div className='search-bar' id={this.selectBackground()}  >
                 <h1>
@@ -56,4 +56,4 @@ class SearchBar extends React.Component {
     }
 }
 
-export default connect(mSTP)(SearchBar);
+export default connect(mSTP, mDTP)(SearchBar);

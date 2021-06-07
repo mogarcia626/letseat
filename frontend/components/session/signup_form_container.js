@@ -4,13 +4,13 @@ import { signup, login, resetErrors } from '../../actions/session_actions';
 import { openModal, closeModal} from '../../actions/modal_actions';
 import SignupForm from './signup_form';
 
-const mapStateToProps = ({ errors }) => {
+const mSTP = ({ errors }) => {
     return {
         errors: errors.session,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mDTP = dispatch => {
     return {
         processForm: (user) => dispatch(signup(user)),
         loginDemo: (user) => dispatch(login(user)),
@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
+export default connect(mSTP, mDTP)(SignupForm);

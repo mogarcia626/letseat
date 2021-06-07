@@ -215,6 +215,63 @@ var closeModal = function closeModal() {
 
 /***/ }),
 
+/***/ "./frontend/actions/restaurant_actions.js":
+/*!************************************************!*\
+  !*** ./frontend/actions/restaurant_actions.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_ALL_RESTAURANTS": () => (/* binding */ RECEIVE_ALL_RESTAURANTS),
+/* harmony export */   "RECEIVE_SINGLE_RESTAURANT": () => (/* binding */ RECEIVE_SINGLE_RESTAURANT),
+/* harmony export */   "receiveAllRestaurants": () => (/* binding */ receiveAllRestaurants),
+/* harmony export */   "receiveSingleRestaurant": () => (/* binding */ receiveSingleRestaurant),
+/* harmony export */   "createReview": () => (/* binding */ createReview),
+/* harmony export */   "fetchRestaurants": () => (/* binding */ fetchRestaurants),
+/* harmony export */   "fetchRestaurant": () => (/* binding */ fetchRestaurant)
+/* harmony export */ });
+/* harmony import */ var _util_restaurant_api_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/restaurant_api_utils */ "./frontend/util/restaurant_api_utils.js");
+
+var RECEIVE_ALL_RESTAURANTS = 'RECEIVE_ALL_RESTAURANTS';
+var RECEIVE_SINGLE_RESTAURANT = 'RECEIVE_SINGLE_RESTAURANT';
+var receiveAllRestaurants = function receiveAllRestaurants(restaurants) {
+  return {
+    type: RECEIVE_ALL_RESTAURANTS,
+    restaurants: restaurants
+  };
+};
+var receiveSingleRestaurant = function receiveSingleRestaurant(restaurant) {
+  return {
+    type: RECEIVE_SINGLE_RESTAURANT,
+    restaurant: restaurant
+  };
+};
+var createReview = function createReview(review) {
+  return function (dispatch) {
+    return _util_restaurant_api_utils__WEBPACK_IMPORTED_MODULE_0__.createReview(review).then(function (review) {
+      return dispatch(receiveReview(review));
+    });
+  };
+};
+var fetchRestaurants = function fetchRestaurants(filters) {
+  return function (dispatch) {
+    return _util_restaurant_api_utils__WEBPACK_IMPORTED_MODULE_0__.fetchRestaurants(filters).then(function (restaurants) {
+      return dispatch(receiveAllRestaurants(restaurants));
+    });
+  };
+};
+var fetchRestaurant = function fetchRestaurant(id) {
+  return function (dispatch) {
+    return _util_restaurant_api_utils__WEBPACK_IMPORTED_MODULE_0__.fetchRestaurant(id).then(function (restaurant) {
+      return dispatch(receiveSingleRestaurant(restaurant));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -323,15 +380,9 @@ var App = function App() {
     className: "main-body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_bar_search_bar__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Restaurant Index Containers")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
     className: "footer-test"
-  }, "Footer", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "scroll test"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
-    render: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Redirect, {
-        to: {
-          pathname: "/"
-        }
-      });
-    }
-  }));
+  }, "Footer", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "scroll test"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Redirect, {
+    to: "/"
+  })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -428,11 +479,15 @@ var LocationSelector = /*#__PURE__*/function (_React$Component) {
           window.removeEventListener("click", _this2.closeDropDown);
         }
       }, 0);
-    }
+    } // allCities () => {
+    //     receive
+    // }
+
   }, {
     key: "render",
     value: function render() {
       //location selector must be dropdown of all cities
+      // console.log(this.props.receiveAllLocations())
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "location-selector"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -464,6 +519,39 @@ var LocationSelector = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/nav_bar/location_selector_container.js":
+/*!********************************************************************!*\
+  !*** ./frontend/components/nav_bar/location_selector_container.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _location_selector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./location_selector */ "./frontend/components/nav_bar/location_selector.jsx");
+
+ // import { receiveAllLocations, receiveCurrentLocation } from '../../actions/location_actions';
+
+
+
+var mapStateToProps = function mapStateToProps() {
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {// receiveAllLocations: () => dispatch(receiveAllLocations()),
+    // receiveCurrentLocation: () => dispatch(receiveCurrentLocation(location)),
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(_location_selector__WEBPACK_IMPORTED_MODULE_2__.default));
+
+/***/ }),
+
 /***/ "./frontend/components/nav_bar/nav_bar.jsx":
 /*!*************************************************!*\
   !*** ./frontend/components/nav_bar/nav_bar.jsx ***!
@@ -476,7 +564,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _location_selector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./location_selector */ "./frontend/components/nav_bar/location_selector.jsx");
+/* harmony import */ var _location_selector_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./location_selector_container */ "./frontend/components/nav_bar/location_selector_container.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _welcome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./welcome */ "./frontend/components/nav_bar/welcome.jsx");
@@ -541,7 +629,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         src: window.logo,
         alt: "Letseat logo",
         className: "logo"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Letseat")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_location_selector__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Letseat")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_location_selector_container__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "right-nav"
       }, this.props.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_welcome__WEBPACK_IMPORTED_MODULE_3__.default, {
         currentUser: this.props.currentUser
@@ -596,8 +684,10 @@ function SessionButtons(_ref2) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "right-nav"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: "icon-button",
-    type: "submit"
+    onClick: function onClick() {
+      return openModal('search');
+    },
+    className: "icon-button"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_im__WEBPACK_IMPORTED_MODULE_3__.ImSearch, {
     size: 16
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -708,6 +798,8 @@ var Welcome = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "right-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
@@ -719,7 +811,7 @@ var Welcome = /*#__PURE__*/function (_React$Component) {
         size: 20
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: function onClick() {
-          return (0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)('search');
+          return _this2.props.openModal('search');
         },
         className: "icon-button"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_im__WEBPACK_IMPORTED_MODULE_5__.ImSearch, {
@@ -787,6 +879,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _search_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_form_container */ "./frontend/components/search_bar/search_form_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+var _this = undefined;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -814,7 +908,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var mSTP = function mSTP(state) {
   return {
-    location: ''
+    location: _this.state.ui.filter.location
   };
 };
 
@@ -828,13 +922,13 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(SearchBar);
 
   function SearchBar(props) {
-    var _this;
+    var _this2;
 
     _classCallCheck(this, SearchBar);
 
-    _this = _super.call(this, props);
-    _this.selectBackground = _this.selectBackground.bind(_assertThisInitialized(_this));
-    return _this;
+    _this2 = _super.call(this, props);
+    _this2.selectBackground = _this2.selectBackground.bind(_assertThisInitialized(_this2));
+    return _this2;
   }
 
   _createClass(SearchBar, [{
@@ -870,7 +964,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.selectBackground());
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "search-bar",
         id: this.selectBackground()
@@ -881,7 +974,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   return SearchBar;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP)(SearchBar));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP, mDTP)(SearchBar));
 
 /***/ }),
 
@@ -898,6 +991,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -931,44 +1026,37 @@ var SearchForm = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, SearchForm);
 
-    _this = _super.call(this, props); // this.state = {
-    //     errors: [], users: {
-    //         email: '',
-    //         password: '',
-    // }
-    // };
-
+    _this = _super.call(this, props);
+    _this.state = {
+      searchCriteria: {
+        date: '',
+        time: '',
+        party_size: '',
+        search: ''
+      }
+    };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
-  } // update(type) {
-  //     return (e) => {
-  //         this.setState({ [type]: e.currentTarget.value });
-  //     };
-  // }
-
+  }
 
   _createClass(SearchForm, [{
+    key: "update",
+    value: function update(type) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, type, e.currentTarget.value));
+      };
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault(); // const user = Object.assign({}, this.state);
+      e.preventDefault(); //Redirect to /api/restaurants with data from form passed in as props
+      // const restaurant = Object.assign({}, this.state);
       // this.props.processForm(user).then(() => {
 
       this.props.closeModal(); // })
-    } // renderErrors() {
-    //     return (
-    //         <ul>
-    //             {this.props.errors.map((error, i) => (
-    //                 <li key={`err-${i}`}>
-    //                     {error}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     );
-    // }
-    // componentWillUnmount() {
-    //     this.props.resetErrors()
-    // };
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -995,7 +1083,7 @@ var SearchForm = /*#__PURE__*/function (_React$Component) {
         // onChange={this.update('party_size')}
 
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        className: "search-modal-saerch",
+        className: "search-modal-search",
         placeholder: "Location, Restaurant, or Cuisine",
         type: "text" // value={this.state.reservation.search_criteria}
         // onChange={this.update('search_criteria')}
@@ -1032,18 +1120,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _search_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./search_form */ "./frontend/components/search_bar/search_form.jsx");
 
 
+ // import { receiveAllLocations, receiveCurrentLocation } from '../../actions/location_actions';
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
-  var errors = _ref.errors;
-  return {
-    errors: errors.session
-  };
+var mapStateToProps = function mapStateToProps() {
+  return {};
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    // receiveAllLocations: () => dispatch(receiveAllLocations()),
+    // receiveCurrentLocation: () => dispatch(receiveCurrentLocation(location)),
     closeModal: function closeModal() {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.closeModal)());
     }
@@ -1257,6 +1345,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var _login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./login_form_container */ "./frontend/components/session/login_form_container.js");
 /* harmony import */ var _signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./signup_form_container */ "./frontend/components/session/signup_form_container.js");
+/* harmony import */ var _search_bar_search_bar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../search_bar/search_bar */ "./frontend/components/search_bar/search_bar.jsx");
+
 
 
 
@@ -1297,8 +1387,8 @@ function Modal(_ref) {
       break;
 
     case 'search':
-      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SearchBar, {
-        location: "search-modal"
+      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_bar_search_bar__WEBPACK_IMPORTED_MODULE_5__.default, {
+        id: "search-form-modal"
       });
       break;
 
@@ -1509,14 +1599,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
+var mSTP = function mSTP(_ref) {
   var errors = _ref.errors;
   return {
     errors: errors.session
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+var mDTP = function mDTP(dispatch) {
   return {
     processForm: function processForm(user) {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signup)(user));
@@ -1540,7 +1630,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(_signup_form__WEBPACK_IMPORTED_MODULE_4__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP, mDTP)(_signup_form__WEBPACK_IMPORTED_MODULE_4__.default));
 
 /***/ }),
 
@@ -1555,12 +1645,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _restaurants_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./restaurants_reducer */ "./frontend/reducers/restaurants_reducer.js");
 
 
-var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__.default
+
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
+  restaurants: _restaurants_reducer__WEBPACK_IMPORTED_MODULE_1__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
 
@@ -1619,6 +1712,45 @@ var modalReducer = function modalReducer() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modalReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/restaurants_reducer.js":
+/*!**************************************************!*\
+  !*** ./frontend/reducers/restaurants_reducer.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/restaurant_actions */ "./frontend/actions/restaurant_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var restaurantsReducer = function restaurantsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ALL_RESTAURANTS:
+      return action.restaurants;
+
+    case _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SINGLE_RESTAURANT:
+      var newRestaurant = _defineProperty({}, action.restaurant.id, action.restaurant);
+
+      return Object.assign({}, state, newRestaurant);
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (restaurantsReducer);
 
 /***/ }),
 
@@ -1816,6 +1948,53 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/restaurant_api_utils.js":
+/*!***********************************************!*\
+  !*** ./frontend/util/restaurant_api_utils.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchRestaurants": () => (/* binding */ fetchRestaurants),
+/* harmony export */   "fetchRestaurant": () => (/* binding */ fetchRestaurant)
+/* harmony export */ });
+// Restaurant index
+var fetchRestaurants = function fetchRestaurants(filters) {
+  return $.ajax({
+    url: '/api/restaurants',
+    method: 'GET',
+    data: {
+      filters: filters
+    }
+  });
+}; // Restaurant info
+
+var fetchRestaurant = function fetchRestaurant(id) {
+  return $.ajax({
+    url: "/api/restaurants/".concat(id),
+    method: 'GET'
+  });
+}; // Create a Restaurant
+// export const createRestaurant = restaurant => (
+//     $.ajax({
+//         url: '/api/restaurants',
+//         method: 'POST',
+//         data: { restaurant }
+//     })
+// );
+// Delete a Restaurant
+// export const deleteRestaurant = restaurant => (
+//     $.ajax({
+//         url: '/api/restaurants',
+//         method: 'DELETE',
+//         data: { restaurant }
+//     })
+// );
 
 /***/ }),
 

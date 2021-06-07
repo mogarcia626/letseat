@@ -32,10 +32,15 @@ class LocationSelector extends React.Component {
             }
         }, 0);
     }
+
+    // allCities () => {
+    //     receive
+    // }
     
 
     render () {
         //location selector must be dropdown of all cities
+        // console.log(this.props.receiveAllLocations())
         return (
             <div className='location-selector'>
                 <button 
@@ -47,6 +52,7 @@ class LocationSelector extends React.Component {
                 
                 {this.state.showLocations ? (
                     <div className='drop-content'>
+                        
                         <p id='drop-item'>Orlando, FL</p>
                         <p id='drop-item'>New York, NY</p>
                         <p id='drop-item'>San Francisco, CA</p>

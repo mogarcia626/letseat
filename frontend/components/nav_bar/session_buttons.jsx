@@ -7,7 +7,7 @@ const mSTP = ({ session }) => ({
     currentUser: session.currentUser
 })
 const mDTP = dispatch => ({
-    openModal: modal => dispatch(openModal(modal))
+    openModal: modal => dispatch(openModal(modal)),
 });
 
 function SessionButtons({ openModal }) {
@@ -15,7 +15,9 @@ function SessionButtons({ openModal }) {
     return (
         
         <div className='right-nav'>
-            <button className="icon-button" type="submit">
+            <button
+                onClick={() => openModal('search')}
+                className="icon-button">
                 <ImSearch size={16} />
             </button>
             <button 

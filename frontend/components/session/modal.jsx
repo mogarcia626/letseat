@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
+import SearchBar from '../search_bar/search_bar';
 
 const mSTP = state => {
     return {
@@ -29,7 +30,7 @@ function Modal({ modal, closeModal }) {
             component = <SignupFormContainer />;
             break;
         case 'search':
-            component = <SearchBar location="search-modal"/>;
+            component = <SearchBar id='search-form-modal'/>;
             break;
         default:
             return null;
