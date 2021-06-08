@@ -29,11 +29,9 @@ class RestaurantIndex extends React.Component {
    
     render() {
         return(
-            this.props.restaurants.map( (restaurant, i) => {
-                restaurant.name === this.props.filters.city ?
-                <p key={`id-${i}`} >{restaurant.name}</p> :
-                null
-            })
+            this.props.restaurants.map( (restaurant, i) => (
+                <p key={`id-${i}`} >{restaurant.name}</p>
+            ))
         )
     }
 }

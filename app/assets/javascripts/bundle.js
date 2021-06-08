@@ -258,8 +258,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_ALL_RESTAURANTS": () => (/* binding */ RECEIVE_ALL_RESTAURANTS),
 /* harmony export */   "RECEIVE_SINGLE_RESTAURANT": () => (/* binding */ RECEIVE_SINGLE_RESTAURANT),
+/* harmony export */   "CLEAR_ALL_RESTAURANTS": () => (/* binding */ CLEAR_ALL_RESTAURANTS),
 /* harmony export */   "receiveAllRestaurants": () => (/* binding */ receiveAllRestaurants),
 /* harmony export */   "receiveSingleRestaurant": () => (/* binding */ receiveSingleRestaurant),
+/* harmony export */   "clearAllRestaurants": () => (/* binding */ clearAllRestaurants),
 /* harmony export */   "requestAllRestaurants": () => (/* binding */ requestAllRestaurants),
 /* harmony export */   "requestSingleRestaurant": () => (/* binding */ requestSingleRestaurant)
 /* harmony export */ });
@@ -267,6 +269,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_ALL_RESTAURANTS = 'RECEIVE_ALL_RESTAURANTS';
 var RECEIVE_SINGLE_RESTAURANT = 'RECEIVE_SINGLE_RESTAURANT';
+var CLEAR_ALL_RESTAURANTS = 'CLEAR_ALL_RESTAURANTS';
 var receiveAllRestaurants = function receiveAllRestaurants(restaurants) {
   return {
     type: RECEIVE_ALL_RESTAURANTS,
@@ -277,6 +280,11 @@ var receiveSingleRestaurant = function receiveSingleRestaurant(restaurant) {
   return {
     type: RECEIVE_SINGLE_RESTAURANT,
     restaurant: restaurant
+  };
+};
+var clearAllRestaurants = function clearAllRestaurants() {
+  return {
+    type: CLEAR_ALL_RESTAURANTS
   };
 }; // export const createReview = review => dispatch => (
 //   APIUtil.createReview(review).then(review => (
@@ -514,8 +522,10 @@ var LocationSelector = /*#__PURE__*/function (_React$Component) {
     key: "locationSelect",
     value: function locationSelect(e) {
       e.preventDefault();
+      var newFilter = Object.assign({}, this.props.filter, {
+        city: e.currentTarget.value
+      });
       this.props.updateFilter('city', e.currentTarget.value);
-      this.props.requestAllRestaurants(this.props.filters);
     }
   }, {
     key: "render",
@@ -577,8 +587,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _location_selector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./location_selector */ "./frontend/components/nav_bar/location_selector.jsx");
 /* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/filter_actions */ "./frontend/actions/filter_actions.js");
 /* harmony import */ var _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/restaurant_actions */ "./frontend/actions/restaurant_actions.js");
+/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
 
  // import { receiveAllLocations, receiveCurrentLocation } from '../../actions/location_actions';
+
 
 
 
@@ -597,6 +609,9 @@ var mDTP = function mDTP(dispatch) {
     },
     requestAllRestaurants: function requestAllRestaurants(filters) {
       return dispatch((0,_actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_4__.requestAllRestaurants)(filters));
+    },
+    clearAllRestaurants: function clearAllRestaurants() {
+      return dispatch((0,_actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_4__.clearAllRestaurants)());
     }
   };
 };
@@ -961,12 +976,10 @@ var RestaurantIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
-
       return this.props.restaurants.map(function (restaurant, i) {
-        restaurant.name === _this.props.filters.city ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
           key: "id-".concat(i)
-        }, restaurant.name) : null;
+        }, restaurant.name);
       });
     }
   }]);
@@ -1052,7 +1065,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var mSTP = function mSTP(state) {
   return {
-    location: 'default'
+    location: state.ui.filters.city
   };
 };
 
@@ -1911,6 +1924,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/restaurant_actions */ "./frontend/actions/restaurant_actions.js");
 
 
+var _clearRestaurants = Object.freeze({
+  restaurants: null
+});
+
 var restaurantsReducer = function restaurantsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -1919,26 +1936,21 @@ var restaurantsReducer = function restaurantsReducer() {
 
   switch (action.type) {
     case _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ALL_RESTAURANTS:
-      return Object.assign({}, state, action.restaurants);
+      return Object.assign({}, action.restaurants);
 
     case _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SINGLE_RESTAURANT:
       nextState[action.restaurant.id] = action.restaurant;
       return nextState;
+
+    case _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_ALL_RESTAURANTS:
+      return _clearRestaurants;
 
     default:
       return state;
   }
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (restaurantsReducer); // actions 
-// export const receiveAllRestaurants = restaurants => ({
-//     type: RECEIVE_ALL_RESTAURANTS,
-//     restaurants
-// })
-// export const receiveSingleRestaurant = (restaurant) => ({
-//     type: RECEIVE_SINGLE_RESTAURANT,
-//     restaurant,
-// });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (restaurantsReducer);
 
 /***/ }),
 

@@ -23,6 +23,7 @@ class LocationSelector extends React.Component {
     }
 
     componentDidUpdate() {
+        
         const { showDropDown } = this.state;
         
         setTimeout(() => {
@@ -36,8 +37,10 @@ class LocationSelector extends React.Component {
 
     locationSelect(e) {
         e.preventDefault()
-        this.props.updateFilter('city', e.currentTarget.value)
-        this.props.requestAllRestaurants(this.props.filters)
+        const newFilter = Object.assign(
+            {}, this.props.filter, {city: e.currentTarget.value}
+        )
+        this.props.updateFilter('city', e.currentTarget.value)    
     }   
 
     render () {
