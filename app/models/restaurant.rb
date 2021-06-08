@@ -38,5 +38,7 @@ class Restaurant < ApplicationRecord
         end
     end
 
+    
+
 
 end

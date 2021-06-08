@@ -8,9 +8,9 @@ export const receiveAllRestaurants = restaurants => ({
     restaurants
 })
 
-export const receiveSingleRestaurant = (payload) => ({
+export const receiveSingleRestaurant = (restaurant) => ({
     type: RECEIVE_SINGLE_RESTAURANT,
-    payload,
+    restaurant,
 });
 
 // export const createReview = review => dispatch => (

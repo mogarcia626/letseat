@@ -8,13 +8,27 @@ const restaurantsReducer = (state = {}, action) => {
     const nextState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_ALL_RESTAURANTS:
-            return Object.assign({}, action.restaurants, state);
+            return Object.assign({}, state, action.restaurants);
         case RECEIVE_SINGLE_RESTAURANT:
-            nextState[action.payload.restaurant.id] = action.payload.restaurant;
-            return nexState
+            nextState[action.restaurant.id] = action.restaurant;
+            return nextState
         default:
             return state;
     }
 };
 
 export default restaurantsReducer;
+
+
+
+// actions 
+
+// export const receiveAllRestaurants = restaurants => ({
+//     type: RECEIVE_ALL_RESTAURANTS,
+//     restaurants
+// })
+
+// export const receiveSingleRestaurant = (restaurant) => ({
+//     type: RECEIVE_SINGLE_RESTAURANT,
+//     restaurant,
+// });

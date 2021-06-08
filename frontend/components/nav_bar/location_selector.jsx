@@ -7,25 +7,26 @@ class LocationSelector extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showLocations: false,
+            showDropDown: false,
         };
         this.openDropDown = this.openDropDown.bind(this);
         this.closeDropDown = this.closeDropDown.bind(this);
+        this.locationSelect = this.locationSelect.bind(this);
     }
 
     openDropDown() {
-        this.setState({ showLocations: true })
+        this.setState({ showDropDown: true })
     }
 
     closeDropDown() {
-        this.setState({ showLocations: false })
+        this.setState({ showDropDown: false })
     }
 
     componentDidUpdate() {
-        const { showLocations } = this.state;
+        const { showDropDown } = this.state;
         
         setTimeout(() => {
-            if (showLocations) {
+            if (showDropDown) {
                 window.addEventListener("click", this.closeDropDown);
             } else {
                 window.removeEventListener("click", this.closeDropDown);
@@ -33,16 +34,18 @@ class LocationSelector extends React.Component {
         }, 0);
     }
 
-    // allCities () => {
-    //     receive
-    // }
-    
+    locationSelect(e) {
+        e.preventDefault()
+        this.props.updateFilter('city', e.currentTarget.value)
+        this.props.requestAllRestaurants(this.props.filters)
+    }   
 
     render () {
+        // console.log(this.props)
         //location selector must be dropdown of all cities
-        // console.log(this.props.receiveAllLocations())
         return (
             <div className='location-selector'>
+
                 <button 
                     onClick={this.openDropDown}
                     className="location-button">
@@ -50,13 +53,33 @@ class LocationSelector extends React.Component {
                     <BsCaretDownFill size={16} height="24"/>
                 </button>
                 
-                {this.state.showLocations ? (
+                {this.state.showDropDown ? (
                     <div className='drop-content'>
                         
-                        <p id='drop-item'>Orlando, FL</p>
-                        <p id='drop-item'>New York, NY</p>
-                        <p id='drop-item'>San Francisco, CA</p>
-                        <p id='drop-item'>Austin, Tx</p>
+                        <option id='drop-item'
+                            value="Orlando, FL"
+                            onClick={this.locationSelect}>
+                                Orlando, FL
+                        </option>
+                        
+                        <option id='drop-item'
+                            value='New York, NY'
+                            onClick={this.locationSelect}>
+                            New York, NY
+                        </option>
+
+                        <option id='drop-item'
+                            value='San Francisco, CA'
+                            onClick={this.locationSelect}>
+                            San Francisco, CA
+                        </option>
+
+                        <option id='drop-item'
+                            value='Austin, TX'
+                            onClick={this.locationSelect}>
+                            Austin, TX
+                        </option>
+                        
                     </div>
                 ) : null }
             </div>
