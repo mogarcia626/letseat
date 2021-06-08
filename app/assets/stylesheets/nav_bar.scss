@@ -3,15 +3,16 @@
 // #f7986e light
 
 .nav-bar {
+    height: 56px;
+    width: 100%;
+    max-width: 1272px;
+    background-color: #f7d2b7;
+    color:white;
+    margin: 4px 0 12px 0;
+    border-radius: 3px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    position: sticky; top: 8px; left: 5%; right: 5%;
-    height: 56px;
-    max-width: 1281px;
-    background-color: #f7d2b7;
-    color:white;
-    margin-bottom: 16px;
 }
 .right-nav {
     display: flex;
@@ -101,9 +102,9 @@
 }
 
 #session-button-light:hover, #session-button-dark:hover {
-    background-color: rgb(112, 70, 18);
+    background-color: #BF5700;
     color: white;
-    border: rgb(112, 70, 18) 1px solid
+    border: #BF5700 1px solid
 }
 
 .nav-text {

@@ -4,15 +4,27 @@ class Api::RestaurantsController < ApplicationController
     def index
       city = params[:filters][:city]
       cuisine = params[:filters][:cuisine]
-      @restaurants = 'test'
-      @restaurants = Restaurant.apply_filters(city, cuisine)
-      render json: @restaurants
+      restaurants = Restaurant.apply_filters(city, cuisine)
+      @restaurants = restaurants.includes(:reviews)
+      render :index
     end
 
     def show
         @restaurant = Restaurant.find_by(id: id)
-        render json: @restaurant
+        render :show
     end
+    
+    private
+        def restaurant_params
+            params.require(:restaurant).permit(
+                :name, :email, :phone_no, 
+                :street_address, :city,
+                :description, :capacity, :cuisine)
+        end
+
+        def filters
+          params[:filters]
+        end
 
     # def new
     # end
@@ -28,16 +40,4 @@ class Api::RestaurantsController < ApplicationController
 
     # def destroy
     # end
-
-    private
-        def restaurant_params
-            params.require(:restaurant).permit(
-                :name, :email, :phone_no, 
-                :street_address, :city,
-                :description, :capacity, :cuisine)
-        end
-
-        def filters
-          params[:filters]
-        end
 end

@@ -1,42 +1,47 @@
-.search-bar {
+.search-bar-default, .search-bar-orlando, .search-bar-austin,
+.search-bar-san-francisco, .search-bar-new-york{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-size: contain;
-	height: 427px;
-	width: 1281px;
+	min-height: 212px;
+	max-height: 424px;
+	min-width: 636px;
+	max-width: 1272px;
+	width: 100vw;
 }
 
-#default {
+.search-bar-default {
 	background-image: url('/assets/default.png');
-	background-size: contain;
+	background-size: cover;
 }
 
-#orlando {
+.search-bar-orlando {
 	background-image: url('/assets/orlando.png');
-	background-size: contain;
+	background-size: cover;
 	color: white;
 }
 
-#new-york {
+.search-bar-new-york {
 	background-image: url('/assets/newyork.png');
-	background-size: contain;
+	background-size: cover;
 	color: white;
 }
 
-#san-francisco {
+.search-bar-san-francisco {
 	background-image: url('/assets/sanfran.png');
-	background-size: contain;
+	background-size: cover;
 }
 
-#austin {
+.search-bar-austin {
 	background-image: url('/assets/austin.png');
-	background-size: contain;
-	color: white;
+	background-size: cover;
+	color: #BF5700;
 }
 
 #search-form-modal {
 	background-color: white;
+	background-image: none;
+	color: black;
 }
 

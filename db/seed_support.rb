@@ -4,37 +4,37 @@ class Cuisine
     def initialize
         @cuisines = {}
 
-        # @cuisines['thai'] = {
+        # @cuisines['Thai'] = {
         #     first: ['Thai', 'Tomyum', 'Somtum', 'Siam', 'Royal', 'House of', 'Pearl Thai', 'Koon Thai', 'Lemongrass'],
         #     second: ['Thai', 'Bistro', 'Siam', 'Village', 'Orchid', 'Kitchen', 'Basil', 'House', 'Palace'] }        
-        @cuisines['pizza'] = {
+        @cuisines['Pizza'] = {
             first: ['Pizza', 'Slice', 'Pizzeria', 'Antonio\'s', 'Zamboni\'s', 'Red Pepper', 'Mozarella', 'Chicago Pizza', 'Lombardi Bros', 'Luca\'s', 'Ristorante'],
             second: ['Pizza', 'Pizzeria', 'House', 'Bistro', 'Kitchen', 'Harvest', 'Deli'] }
-        # @cuisines['chinese'] = {
+        # @cuisines['Chinese'] = {
         #     first: ['Wah Fung', 'Shanghai', 'Szechuan', 'Hunan', 'Golden', 'Empress', 'Great Wall', 'Shandong', 'Mandarin', 'Chow'],
         #     second: ['Noodle House', 'Tea House', 'Kitchen', 'Bistro', 'Garden', 'Dragon', 'Empress', 'Dumpling'] }        
-        #@cuisines['vietnamese'] ={
+        #@cuisines['Vietnamese'] ={
             # first: ['Banh Mi', 'Pho', 'Saigon', 'Hanoi', 'Lemon Pepper', 'Fresh', 'Vien', 'Huong', 'Mekong'],
             # second: ['Cafe', 'Banh Mi', 'Pho', 'King', 'Vietnamese Cuisine', 'Bistro', 'House', 'Kitchen', 'Deli'] }  
-        # @cuisines['japanese'] = {
+        # @cuisines['Japanese'] = {
         #     first: ['Sushi', 'Shimizu', 'Yojimbo', 'Kiraku', 'Toyosu', 'Banzai', 'Judoku', 'Demon Slayer', 'DomoDomo', 'Umami'],
         #     second: ['Bistro', 'Kitchen', 'Palace', 'Sushi', 'Ramen', 'Umami', 'Cafe', 'Kyoto'] }        
-        # @cuisines['arabic'] = {
+        # @cuisines['Arabic'] = {
         #     first: ['Leyla\'s', 'Rami\'s', 'Moustafa\'s', 'Tajin', 'Camel', 'Kabob', 'Bedouin', 'Reem\'s', 'Za\'atar', 'Qahwah'],
         #     second: ['Bistro', 'Kitchen', 'Cafe', 'Shawarma', 'Eatery', 'Azama', 'Majlis', 'Grill'] }        
-        # @cuisines['steakhouse'] = {
+        # @cuisines['Steakhouses'] = {
         #     first: ['Salt', 'Ranchers', 'Tony\'s', 'Village', 'Quality', 'Texas', 'Wyoming', 'Brazil', 'Prime'],
         #     second: ['Steakhouse', 'Meat Company', 'Company', ' and Charcoal', 'Prime Rib', 'Grill', 'Butchers'] }        
-        @cuisines['latin american'] = {
+        @cuisines['Latin American Cuisine'] = {
             first: ['Cholita', 'Casa', 'Havana', 'Sol', 'Platano', 'Empanada', 'La Bodeguita', 'Cafe', 'Arepa', 'Parada'],
             second: ['Cafe', 'Havana', 'Latina', 'Linda', '', 'Bistro', 'Cafe', 'Caracas', 'Ceviche'] }        
-        # @cuisines['mexican'] = {
+        # @cuisines['Mexican'] = {
         #     first: ['Taqueria', 'Jalisco', 'Hacienda', 'Cocina', 'Molcajete', 'Ole Ole', 'Plato', 'Dos Hermanos', 'Hermanas', 'El Huarache'],
         #     second: ['Tacos', 'Burritos', 'Taqueria', 'Jalisco', 'Azteca', 'Mexicana', 'Barbacoa', 'Gordos', 'de Mazatlan', 'del Sur'] }        
-        # @cuisines['seafood'] = {
+        # @cuisines['Sea Food Restaurants'] = {
         #     first: ['Antonio\'s', 'Louisiana', 'Alaska', 'Peninsula', 'Pacific', 'Atlantic', 'Mariscos', 'Cajun'],
         #     second: ['Seafood Restaurant', 'Seafood Grill', 'Crawfish', 'Fish Market', 'Oyster Company', 'Crab House', 'Crab Kitchen'] }
-        # @cuisines['south asian'] = {
+        # @cuisines['Indian & Pakistani'] = {
         #     first: ['Tandoori', 'Biriyani', 'Masala', 'Lahore', 'Karahi', 'Nihari', 'Pakwan', 'Curry', 'Peshawari'],
         #     second: ['Oven', 'Kitchen', 'Kabob House', 'Bistro', 'Restaurant', 'House', 'Shalimar', 'Leaf'] }
     end  

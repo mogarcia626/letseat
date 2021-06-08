@@ -26,6 +26,8 @@ class Restaurant < ApplicationRecord
     
     has_many_attached :photos
 
+    attr_reader :review_averages,
+
     def self.apply_filters(city, cuisine)
         if city=='' && cuisine==''
             self.all
@@ -38,7 +40,28 @@ class Restaurant < ApplicationRecord
         end
     end
 
+    def review_averages
+        food, service, ambience, val = [0,0], [0,0], [0,0], [0,0]
+        
+        self.reviews.each do |rev|
+            food[0], food[1] = food[0] + rev.food_rating, food[1] + 1
+            service[0], service[1] = service[0] + rev.service_rating, service[1] + 1
+            ambience[0], ambience[1] = ambience[0] + rev.ambience_rating, ambience[1] + 1
+            val[0], val[1] = val[0] + rev.value_rating, val[1] + 1
+        end
+
+            food, service = food[0] / food[1], service[0] / service[1]
+            ambience, val = ambience[0] / ambience[1], val[0] / val[1]
+            average = (food + service + ambience + val) / 4
+            
+            return {
+                average: average,
+                food: food,
+                service: service,
+                ambience: ambience,
+                value: val,
+                count: self.reviews.length
+            }
+    end
     
-
-
 end

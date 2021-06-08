@@ -1,12 +1,8 @@
 import {
     RECEIVE_ALL_RESTAURANTS,
     RECEIVE_SINGLE_RESTAURANT,
-    CLEAR_ALL_RESTAURANTS,
+    RECEIVE_REVIEW,
 } from '../actions/restaurant_actions';
-
-const _clearRestaurants = Object.freeze({
-    restaurants: null
-})
 
 const restaurantsReducer = (state = {}, action) => {
     Object.freeze(state)
@@ -16,9 +12,10 @@ const restaurantsReducer = (state = {}, action) => {
             return Object.assign({}, action.restaurants);
         case RECEIVE_SINGLE_RESTAURANT:
             nextState[action.restaurant.id] = action.restaurant;
-            return nextState
-        case CLEAR_ALL_RESTAURANTS:
-            return _clearRestaurants;
+            return nextState;
+        // case RECEIVE_REVIEW:
+        //     nextState[action.restaurant.id] = action.restaurant;
+        //     return nextState;
         default:
             return state;
     }

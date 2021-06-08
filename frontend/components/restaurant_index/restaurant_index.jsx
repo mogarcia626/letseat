@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {requestAllRestaurants} from '../../actions/restaurant_actions';
 import {selectAllRestaurants} from '../../reducers/selectors';
+import RestaurantSubIndex from './restaurant_subindex'
 
 
 const mSTP = state => ({ 
@@ -27,11 +28,15 @@ class RestaurantIndex extends React.Component {
         this.props.requestAllRestaurants(this.props.filters)
     }
    
+    
+
     render() {
+        // create helper method for randomizing cuizines
         return(
-            this.props.restaurants.map( (restaurant, i) => (
-                <p key={`id-${i}`} >{restaurant.name}</p>
-            ))
+            <div className="index-container">
+                <RestaurantSubIndex filter='cuisine' cuisine='pizza' />
+                <RestaurantSubIndex filter='cuisine' cuisine='latin american' />
+            </div>
         )
     }
 }

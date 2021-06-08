@@ -258,10 +258,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_ALL_RESTAURANTS": () => (/* binding */ RECEIVE_ALL_RESTAURANTS),
 /* harmony export */   "RECEIVE_SINGLE_RESTAURANT": () => (/* binding */ RECEIVE_SINGLE_RESTAURANT),
-/* harmony export */   "CLEAR_ALL_RESTAURANTS": () => (/* binding */ CLEAR_ALL_RESTAURANTS),
+/* harmony export */   "RECEIVE_REVIEW": () => (/* binding */ RECEIVE_REVIEW),
 /* harmony export */   "receiveAllRestaurants": () => (/* binding */ receiveAllRestaurants),
 /* harmony export */   "receiveSingleRestaurant": () => (/* binding */ receiveSingleRestaurant),
-/* harmony export */   "clearAllRestaurants": () => (/* binding */ clearAllRestaurants),
 /* harmony export */   "requestAllRestaurants": () => (/* binding */ requestAllRestaurants),
 /* harmony export */   "requestSingleRestaurant": () => (/* binding */ requestSingleRestaurant)
 /* harmony export */ });
@@ -269,7 +268,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_ALL_RESTAURANTS = 'RECEIVE_ALL_RESTAURANTS';
 var RECEIVE_SINGLE_RESTAURANT = 'RECEIVE_SINGLE_RESTAURANT';
-var CLEAR_ALL_RESTAURANTS = 'CLEAR_ALL_RESTAURANTS';
+var RECEIVE_REVIEW = 'RECEIVE_REVIEW';
 var receiveAllRestaurants = function receiveAllRestaurants(restaurants) {
   return {
     type: RECEIVE_ALL_RESTAURANTS,
@@ -281,12 +280,12 @@ var receiveSingleRestaurant = function receiveSingleRestaurant(restaurant) {
     type: RECEIVE_SINGLE_RESTAURANT,
     restaurant: restaurant
   };
-};
-var clearAllRestaurants = function clearAllRestaurants() {
-  return {
-    type: CLEAR_ALL_RESTAURANTS
-  };
-}; // export const createReview = review => dispatch => (
+}; // export const receiveReview = ({ review, reviewAverages }) => ({
+//     type: RECEIVE_REVIEW,
+//     review,
+//     reviewAverages
+// });
+// export const createReview = review => dispatch => (
 //   APIUtil.createReview(review).then(review => (
 //     dispatch(receiveReview(review))
 //   ))
@@ -413,8 +412,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_modal__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
-    className: "main-body"
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_modal__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
+    className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_bar_search_bar__WEBPACK_IMPORTED_MODULE_3__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_index_restaurant_index__WEBPACK_IMPORTED_MODULE_4__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
     className: "footer-test"
   }, "Footer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Redirect, {
@@ -587,9 +588,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _location_selector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./location_selector */ "./frontend/components/nav_bar/location_selector.jsx");
 /* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/filter_actions */ "./frontend/actions/filter_actions.js");
 /* harmony import */ var _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/restaurant_actions */ "./frontend/actions/restaurant_actions.js");
-/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
-
- // import { receiveAllLocations, receiveCurrentLocation } from '../../actions/location_actions';
 
 
 
@@ -609,9 +607,6 @@ var mDTP = function mDTP(dispatch) {
     },
     requestAllRestaurants: function requestAllRestaurants(filters) {
       return dispatch((0,_actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_4__.requestAllRestaurants)(filters));
-    },
-    clearAllRestaurants: function clearAllRestaurants() {
-      return dispatch((0,_actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_4__.clearAllRestaurants)());
     }
   };
 };
@@ -915,6 +910,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/restaurant_actions */ "./frontend/actions/restaurant_actions.js");
 /* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _restaurant_subindex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./restaurant_subindex */ "./frontend/components/restaurant_index/restaurant_subindex.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -936,6 +932,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -976,11 +973,16 @@ var RestaurantIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return this.props.restaurants.map(function (restaurant, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          key: "id-".concat(i)
-        }, restaurant.name);
-      });
+      // create helper method for randomizing cuizines
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "index-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_subindex__WEBPACK_IMPORTED_MODULE_4__.default, {
+        filter: "cuisine",
+        cuisine: "pizza"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_subindex__WEBPACK_IMPORTED_MODULE_4__.default, {
+        filter: "cuisine",
+        cuisine: "latin american"
+      }));
     }
   }]);
 
@@ -988,6 +990,193 @@ var RestaurantIndex = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP, mDTP)(RestaurantIndex));
+
+/***/ }),
+
+/***/ "./frontend/components/restaurant_index/restaurant_index_item.jsx":
+/*!************************************************************************!*\
+  !*** ./frontend/components/restaurant_index/restaurant_index_item.jsx ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+ // import { connect } from 'react-redux';
+// import { requestAllRestaurants } from '../../actions/restaurant_actions';
+// import { selectAllRestaurants } from '../../reducers/selectors';
+// const mSTP = state => ({
+//     restaurants: selectAllRestaurants(state),
+//     // filters: state.ui.filters,
+// });
+// const mDTP = dispatch => {
+//     return {
+// requestAllRestaurants: filters => dispatch(requestAllRestaurants(filters)),
+//     };
+// };
+
+var RestaurantIndexItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(RestaurantIndexItem, _React$Component);
+
+  var _super = _createSuper(RestaurantIndexItem);
+
+  function RestaurantIndexItem(props) {
+    _classCallCheck(this, RestaurantIndexItem);
+
+    return _super.call(this, props);
+  }
+
+  _createClass(RestaurantIndexItem, [{
+    key: "render",
+    value: function render() {
+      var reviewAverages = this.props.restaurant.reviewAverages;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "index-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "[Image Here]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.props.restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(reviewAverages['average'], " out of 5")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(reviewAverages['count'], " reviews"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.props.restaurant.cuisine), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.props.restaurant.city));
+    }
+  }]);
+
+  return RestaurantIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RestaurantIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/restaurant_index/restaurant_subindex.jsx":
+/*!**********************************************************************!*\
+  !*** ./frontend/components/restaurant_index/restaurant_subindex.jsx ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _restaurant_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./restaurant_index_item */ "./frontend/components/restaurant_index/restaurant_index_item.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    restaurants: (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__.selectAllRestaurants)(state)
+  };
+}; // const mDTP = dispatch => {
+//     return {
+//         // requestAllRestaurants: filters => dispatch(requestAllRestaurants(filters)),
+//     };
+// };
+
+
+var RestaurantSubIndex = /*#__PURE__*/function (_React$Component) {
+  _inherits(RestaurantSubIndex, _React$Component);
+
+  var _super = _createSuper(RestaurantSubIndex);
+
+  function RestaurantSubIndex(props) {
+    var _this;
+
+    _classCallCheck(this, RestaurantSubIndex);
+
+    _this = _super.call(this, props);
+    _this.cuisineFilter = _this.cuisineFilter.bind(_assertThisInitialized(_this));
+    _this.components = _this.components.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(RestaurantSubIndex, [{
+    key: "cuisineFilter",
+    value: function cuisineFilter() {
+      var _this2 = this;
+
+      var restaurantList = this.props.restaurants.filter(function (rest) {
+        return rest.cuisine === _this2.props.cuisine;
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, this.props.cuisine), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "sub-index-container"
+      }, restaurantList.map(function (restaurant, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_index_item__WEBPACK_IMPORTED_MODULE_3__.default, {
+          key: i,
+          restaurant: restaurant
+        });
+      })));
+    }
+  }, {
+    key: "components",
+    value: function components() {
+      switch (this.props.filter) {
+        case 'cuisine':
+          return this.cuisineFilter();
+          break;
+
+        default:
+          break;
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.components());
+    }
+  }]);
+
+  return RestaurantSubIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mSTP)(RestaurantSubIndex));
 
 /***/ }),
 
@@ -1085,6 +1274,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.selectBackground = _this.selectBackground.bind(_assertThisInitialized(_this));
+    _this.selectComponentId = _this.selectComponentId.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1093,37 +1283,35 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     value: function selectBackground() {
       switch (this.props.location) {
         case 'Orlando, FL':
-          return 'orlando';
-          break;
+          return 'search-bar-orlando';
 
         case 'New York, NY':
-          return 'new-york';
-          break;
+          return 'search-bar-new-york';
 
         case 'San Francisco, CA':
-          return 'san-francisco';
-          break;
+          return 'search-bar-san-francisco';
 
         case 'Austin, TX':
-          return 'austin';
-          break;
-
-        case 'search-modal':
-          return 'search-form-modal';
-          break;
+          return 'search-bar-austin';
 
         default:
-          return 'default';
+          return 'search-bar-default';
       }
 
       ;
     }
   }, {
+    key: "selectComponentId",
+    value: function selectComponentId() {
+      var compId = this.props.id ? this.props.id : null;
+      return compId;
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "search-bar",
-        id: this.selectBackground()
+        className: this.selectBackground(),
+        id: this.selectComponentId()
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Find your table for any occasion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_form_container__WEBPACK_IMPORTED_MODULE_2__.default, null));
     }
   }]);
@@ -1277,7 +1465,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _search_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./search_form */ "./frontend/components/search_bar/search_form.jsx");
 
 
- // import { receiveAllLocations, receiveCurrentLocation } from '../../actions/location_actions';
 
 
 
@@ -1287,8 +1474,6 @@ var mapStateToProps = function mapStateToProps() {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    // receiveAllLocations: () => dispatch(receiveAllLocations()),
-    // receiveCurrentLocation: () => dispatch(receiveCurrentLocation(location)),
     closeModal: function closeModal() {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.closeModal)());
     }
@@ -1802,15 +1987,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _restaurants_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./restaurants_reducer */ "./frontend/reducers/restaurants_reducer.js");
+/* harmony import */ var _reviews_reducer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reviews_reducer.js */ "./frontend/reducers/reviews_reducer.js");
+/* harmony import */ var _reviews_reducer_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_reviews_reducer_js__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
-var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
-  restaurants: _restaurants_reducer__WEBPACK_IMPORTED_MODULE_1__.default
+  restaurants: _restaurants_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
+  reviews: (_reviews_reducer_js__WEBPACK_IMPORTED_MODULE_2___default())
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
 
@@ -1838,10 +2027,10 @@ var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
 
 /***/ }),
 
-/***/ "./frontend/reducers/filter_reducer.js":
-/*!*********************************************!*\
-  !*** ./frontend/reducers/filter_reducer.js ***!
-  \*********************************************/
+/***/ "./frontend/reducers/filters_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/filters_reducer.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1924,10 +2113,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/restaurant_actions */ "./frontend/actions/restaurant_actions.js");
 
 
-var _clearRestaurants = Object.freeze({
-  restaurants: null
-});
-
 var restaurantsReducer = function restaurantsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -1941,9 +2126,9 @@ var restaurantsReducer = function restaurantsReducer() {
     case _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SINGLE_RESTAURANT:
       nextState[action.restaurant.id] = action.restaurant;
       return nextState;
-
-    case _actions_restaurant_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_ALL_RESTAURANTS:
-      return _clearRestaurants;
+    // case RECEIVE_REVIEW:
+    //     nextState[action.restaurant.id] = action.restaurant;
+    //     return nextState;
 
     default:
       return state;
@@ -1951,6 +2136,32 @@ var restaurantsReducer = function restaurantsReducer() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (restaurantsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/reviews_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/reviews_reducer.js ***!
+  \**********************************************/
+/***/ (() => {
+
+// import {
+//     RECEIVE_RESTAURANT,
+//     RECEIVE_REVIEW,
+// } from '../actions/restaurant_actions';
+// const reviewsReducer = (state = {}, action) => {
+//     Object.freeze(state);
+//     switch (action.type) {
+//         case RECEIVE_RESTAURANT:
+//             return Object.assign({}, state, action.reviews);
+//         case RECEIVE_REVIEW:
+//             const { review } = action;
+//             return Object.assign({}, state, { [review.id]: review });
+//         default:
+//             return state;
+//     }
+// }
+// export default reviewsReducer;
 
 /***/ }),
 
@@ -2098,13 +2309,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _modals_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modals_reducer */ "./frontend/reducers/modals_reducer.js");
-/* harmony import */ var _filter_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filter_reducer */ "./frontend/reducers/filter_reducer.js");
+/* harmony import */ var _filters_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filters_reducer */ "./frontend/reducers/filters_reducer.js");
 
 
 
 var uiReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
   modal: _modals_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
-  filters: _filter_reducer__WEBPACK_IMPORTED_MODULE_1__.default
+  filters: _filters_reducer__WEBPACK_IMPORTED_MODULE_1__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (uiReducer);
 
@@ -47988,9 +48199,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/session_api_util */ "./frontend/util/session_api_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -48015,7 +48224,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  window.dispatch = store.dispatch; // window.fetchRestaurants = store.dispatch(fetchRestaurants())
+
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__.default, {
     store: store

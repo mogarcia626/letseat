@@ -18,35 +18,33 @@ class SearchBar extends React.Component {
     constructor(props) {
         super(props)
         
-        
-        this.selectBackground = this.selectBackground.bind(this);
+        this.selectBackground = this.selectBackground.bind(this)
+        this.selectComponentId = this.selectComponentId.bind(this);
     } 
 
     selectBackground() {
-        switch (this.props.location) {
+        switch (this.props.location) {         
             case 'Orlando, FL':
-                return 'orlando'
-                break;
+                return 'search-bar-orlando'
             case 'New York, NY':
-                return 'new-york'
-                break;
+                return 'search-bar-new-york'
             case 'San Francisco, CA':
-                return 'san-francisco'
-                break;
+                return 'search-bar-san-francisco'
             case 'Austin, TX':
-                return 'austin'
-                break;
-            case 'search-modal':
-                return 'search-form-modal'
-                break;         
+                return 'search-bar-austin'
             default:
-                return 'default';
+                return 'search-bar-default';
         };
-    };    
+    };  
+    
+    selectComponentId() {
+        let compId = this.props.id ? this.props.id : null
+        return compId
+    }
     
     render() {
         return (
-            <div className='search-bar' id={this.selectBackground()}  >
+            <div className={this.selectBackground()} id={this.selectComponentId()}>
                 <h1>
                     Find your table for any occasion
                 </h1>

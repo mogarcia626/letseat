@@ -9,14 +9,12 @@ import RestaurantIndex from './restaurant_index/restaurant_index'
 
 
 const App = () => (
-    <div>
+    <div className='container'>
         <Modal />
 
-        <header>
-            <NavBar />
-        </header>
-
-        <main className='main-body'>
+        <NavBar />
+       
+        <main className='container'>
             <SearchBar />
             <RestaurantIndex />
         </main>
