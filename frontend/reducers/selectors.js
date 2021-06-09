@@ -3,5 +3,14 @@ export const selectAllRestaurants = (state) => {
 }
 
 export const selectAllLocations = (state) => {
-    return Object.values(state.entities.restaurants)
+    return Object.values(state.entities.restaurants.locations.unique)
+}
+
+export const selectReviewsForRestaurant = (state) => {
+    return Object.values(state.entities.reviews)
+}
+
+
+export const selectRestaurant = ({ restaurants }, restaurantId) => {
+    return restaurants[restaurantId]
 }

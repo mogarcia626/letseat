@@ -1,19 +1,18 @@
-// import {
-//     RECEIVE_RESTAURANT,
-//     RECEIVE_REVIEW,
-// } from '../actions/restaurant_actions';
+import {
+    RECEIVE_SINGLE_RESTAURANT,
+} from '../actions/restaurant_actions';
 
-// const reviewsReducer = (state = {}, action) => {
-//     Object.freeze(state);
-//     switch (action.type) {
-//         case RECEIVE_RESTAURANT:
-//             return Object.assign({}, state, action.reviews);
-//         case RECEIVE_REVIEW:
-//             const { review } = action;
-//             return Object.assign({}, state, { [review.id]: review });
-//         default:
-//             return state;
-//     }
-// }
+const reviewsReducer = (state = {}, action) => {
 
-// export default reviewsReducer;
+    Object.freeze(state);
+    const nextState = Object.assign({}, state)
+
+    switch (action.type) {
+        case RECEIVE_SINGLE_RESTAURANT:
+            return Object.assign(nextState, action.reviews)
+        default:
+            return state;    
+    }
+}
+
+export default reviewsReducer;

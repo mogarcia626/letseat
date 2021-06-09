@@ -52,6 +52,11 @@ end
 restaurants_arr = []
 food = Cuisine.new.cuisines
 
+# attach a photo to restaurant instance using:
+# restaurantinstance.photos.attach(
+#     io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/pizza/pizza14.jpg"), 
+#     filename: "pizza14.jpg")    
+
 # Generates Restaurants in Orlando
 food.keys.each do |cuisine|
     restaurants_arr = []

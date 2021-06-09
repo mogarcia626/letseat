@@ -1,21 +1,4 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import { requestAllRestaurants } from '../../actions/restaurant_actions';
-// import { selectAllRestaurants } from '../../reducers/selectors';
-
-
-// const mSTP = state => ({
-//     restaurants: selectAllRestaurants(state),
-//     // filters: state.ui.filters,
-
-// });
-
-// const mDTP = dispatch => {
-//     return {
-        // requestAllRestaurants: filters => dispatch(requestAllRestaurants(filters)),
-
-//     };
-// };
 
 class RestaurantIndexItem extends React.Component {
     constructor(props) {

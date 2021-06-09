@@ -4,13 +4,15 @@ class Api::RestaurantsController < ApplicationController
     def index
       city = params[:filters][:city]
       cuisine = params[:filters][:cuisine]
-      restaurants = Restaurant.apply_filters(city, cuisine)
-      @restaurants = restaurants.includes(:reviews)
+      @restaurants = Restaurant.apply_filters(city, cuisine)
       render :index
     end
 
     def show
-        @restaurant = Restaurant.find_by(id: id)
+      @restaurant = Restaurant.find_by(id: params[:id])
+      @reviews = @retaurant.reviews
+      debugger
+        @users = @reviews.map{ |review| review.user }
         render :show
     end
     

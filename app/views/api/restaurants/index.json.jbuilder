@@ -1,9 +1,7 @@
-
-
 @restaurants.each do |restaurant|
-
   json.set! restaurant.id do
-    json.partial! 'restaurant', restaurant: restaurant 
+    json.extract! restaurant, :id, :name, :email, :phone_no, :street_address, :city, 
+    :description, :capacity, :cuisine, :review_averages
   end
 
   

@@ -13,9 +13,6 @@ const restaurantsReducer = (state = {}, action) => {
         case RECEIVE_SINGLE_RESTAURANT:
             nextState[action.restaurant.id] = action.restaurant;
             return nextState;
-        // case RECEIVE_REVIEW:
-        //     nextState[action.restaurant.id] = action.restaurant;
-        //     return nextState;
         default:
             return state;
     }

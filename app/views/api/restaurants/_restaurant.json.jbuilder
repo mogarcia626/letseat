@@ -1,8 +1,6 @@
 json.extract! restaurant, :id, :name, :email, :phone_no, :street_address, :city, 
 :description, :capacity, :cuisine, :review_averages
 
-# json.review_averages restaurant.review_averages
-
 
 
 

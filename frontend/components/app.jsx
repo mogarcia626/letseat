@@ -6,6 +6,7 @@ import NavBar from './nav_bar/nav_bar';
 import Modal from './session/modal';
 import SearchBar from './search_bar/search_bar';
 import RestaurantIndex from './restaurant_index/restaurant_index'
+import RestaurantShowContainer from './restaurant_show/restaurant_show_container';
 
 
 const App = () => (
@@ -24,8 +25,9 @@ const App = () => (
         <footer className='footer-test' >
             Footer           
         </footer>
-        <Switch>
 
+        <Switch>
+            <Route path="/restaurants/:restaurantId" component={RestaurantShowContainer} />
             <Redirect to="/" />
         </Switch>
     </div>
