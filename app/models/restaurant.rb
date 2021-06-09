@@ -22,6 +22,7 @@ class Restaurant < ApplicationRecord
     has_many :reservations, class_name: :Reservation, foreign_key: :restaurant_id
     belongs_to :owner, class_name: :User, foreign_key: :owner_id
     has_many :reviews, through: :reservations, source: :review
+    has_many :reviewers, through: :reviews, source: :user
     has_one :schedule, class_name: :Schedule, foreign_key: :restaurant_id
     
     has_many_attached :photos

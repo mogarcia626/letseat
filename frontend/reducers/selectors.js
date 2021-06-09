@@ -6,11 +6,10 @@ export const selectAllLocations = (state) => {
     return Object.values(state.entities.restaurants.locations.unique)
 }
 
-export const selectReviewsForRestaurant = (state) => {
-    return Object.values(state.entities.reviews)
+export const selectReviewsForRestaurant = (entities) => {
+    return entities.reviews
 }
 
-
-export const selectRestaurant = ({ restaurants }, restaurantId) => {
-    return restaurants[restaurantId]
+export const selectSingleRestaurant = ({ restaurants }, restaurantId) => {
+    return Object.assign({}, restaurants[restaurantId])
 }

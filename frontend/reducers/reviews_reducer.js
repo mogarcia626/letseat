@@ -5,11 +5,12 @@ import {
 const reviewsReducer = (state = {}, action) => {
 
     Object.freeze(state);
-    const nextState = Object.assign({}, state)
+    const nextState = Object.assign({}, state) 
 
     switch (action.type) {
         case RECEIVE_SINGLE_RESTAURANT:
-            return Object.assign(nextState, action.reviews)
+                
+            return Object.assign({}, state, action.restaurant.reviews)
         default:
             return state;    
     }

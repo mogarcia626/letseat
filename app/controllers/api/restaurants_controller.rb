@@ -10,10 +10,9 @@ class Api::RestaurantsController < ApplicationController
 
     def show
       @restaurant = Restaurant.find_by(id: params[:id])
-      @reviews = @retaurant.reviews
-      debugger
-        @users = @reviews.map{ |review| review.user }
-        render :show
+      @reviews = @restaurant.reviews
+      @reviewers = @restaurant.reviewers
+      render :show
     end
     
     private
