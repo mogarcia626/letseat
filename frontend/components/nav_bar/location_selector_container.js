@@ -1,10 +1,9 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import LocationSelector from './location_selector';
 import { updateFilter } from '../../actions/filter_actions';
 import { requestAllRestaurants } from '../../actions/restaurant_actions';
+import LocationSelector from './location_selector';
 
-const mSTP = state => {
+const mSTP = (state) => {
     return {
         filters: state.ui.filters,
     };

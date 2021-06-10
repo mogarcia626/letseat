@@ -9,7 +9,6 @@ const reviewsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_SINGLE_RESTAURANT:
-                
             return Object.assign({}, state, action.restaurant.reviews)
         default:
             return state;    

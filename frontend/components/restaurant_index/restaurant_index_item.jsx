@@ -13,20 +13,20 @@ class RestaurantIndexItem extends React.Component {
     }
 
     render() {
-        let reviewAverages = this.props.restaurant.reviewAverages
+        let restaurant = this.props.restaurant
         return(
         <div 
             className='index-item'
             onClick={this.handleClick}
         >
             <h2>[Image Here]</h2>
-            <p>{this.props.restaurant.name}</p>
+            <p>{restaurant.name}</p>
             <div>
-                <p>{`${reviewAverages['average']} out of 5`}</p>
-                <p>{`${reviewAverages['count']} reviews`}</p>
+                <p>{`${restaurant.reviewAverages.average} out of 5`}</p>
+                <p>{`${restaurant.reviewAverages.count} reviews`}</p>
             </div>
-                <p>{this.props.restaurant.cuisine}</p>
-                <p>{this.props.restaurant.city}</p>
+                <p>{restaurant.cuisine}</p>
+                <p>{restaurant.city}</p>
 
         </div>    
         )      

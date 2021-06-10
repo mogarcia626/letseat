@@ -1,6 +1,7 @@
 import React from 'react';
 import { TiLocation } from 'react-icons/ti';
 import { BsCaretDownFill } from 'react-icons/bs';
+import { useHistory } from "react-router-dom";
 
 
 class LocationSelector extends React.Component {
@@ -36,11 +37,9 @@ class LocationSelector extends React.Component {
     }
 
     locationSelect(e) {
+        debugger
         e.preventDefault()
-        const newFilter = Object.assign(
-            {}, this.props.filter, {city: e.currentTarget.value}
-        )
-        this.props.updateFilter('city', e.currentTarget.value)    
+        this.props.updateFilter('city', e.currentTarget.value)
     }   
 
     render () {

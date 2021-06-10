@@ -10,8 +10,8 @@ class Api::RestaurantsController < ApplicationController
 
     def show
       @restaurant = Restaurant.find_by(id: params[:id])
-      @reviews = @restaurant.reviews
-      @reviewers = @restaurant.reviewers
+      reviews = @restaurant.reviews
+      @reviews = reviews.includes(:reviewer)
       render :show
     end
     

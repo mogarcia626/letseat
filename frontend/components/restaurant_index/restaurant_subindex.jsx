@@ -32,12 +32,16 @@ class RestaurantSubIndex extends React.Component {
         return (
             <div>
                 <h3>{this.props.cuisine}</h3>
+
                 <div className='sub-index-container'>
-                {restaurantList.map((restaurant, i) => (
-                    <RestaurantIndexItem key={i}
-                        restaurant={restaurant}
-                    />
-                ))}
+                {restaurantList.map((restaurant, i) => {
+                    return (
+                        <RestaurantIndexItem
+                            key={i}
+                            restaurant={restaurant}
+                        />
+                    )
+                })}
                 </div>
             </div>
         )

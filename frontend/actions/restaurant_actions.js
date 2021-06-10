@@ -11,11 +11,11 @@ export const receiveAllRestaurants = restaurants => ({
 
 export const receiveSingleRestaurant = (restaurant) => ({
     type: RECEIVE_SINGLE_RESTAURANT,
-    restaurant,
+    restaurant
 });
 
 // export const receiveReviews = (restaurantId) => ({
-//     type: RECEIVE_REVIEWs,
+//     type: RECEIVE_REVIEWS,
 //     reviews
 // });
 

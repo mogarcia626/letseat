@@ -52,15 +52,11 @@ end
 restaurants_arr = []
 food = Cuisine.new.cuisines
 
-# attach a photo to restaurant instance using:
-# restaurantinstance.photos.attach(
-#     io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/pizza/pizza14.jpg"), 
-#     filename: "pizza14.jpg")    
 
 # Generates Restaurants in Orlando
 food.keys.each do |cuisine|
     restaurants_arr = []
-    1.times do
+    2.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -84,13 +80,39 @@ food.keys.each do |cuisine|
             capacity: rand(45)+15,
             cuisine: cuisine,
             owner_id: rand(20) + 1
-        )
+            )
+        end
     end
-end
 
-# Generates Restaurants in San Francisco
-food.keys.each do |cuisine|
-    1.times do
+
+
+    # attach a photo to restaurant instance using:
+
+    
+    orlando_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', "Thai")
+
+    attached = []
+    orlando_thai_restaurants.each do |rest|
+        until attached.length = 3
+            num = rand(14)
+            attached << num if attached.include?(num)
+        end
+        num = ''
+        num = rand(14)
+        attached << num
+
+
+
+
+
+        rest.photos.attach(
+            io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/pizza/pizza13.jpg"), 
+            filename: "pizza13.jpg")    
+    end
+    
+    # Generates Restaurants in San Francisco
+    food.keys.each do |cuisine|
+        1.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
