@@ -26,6 +26,7 @@ class RestaurantSubIndex extends React.Component {
     
 
     cuisineFilter() {
+        debugger
         let restaurantList = this.props.restaurants.filter(rest => (
             rest.cuisine === this.props.cuisine)
         )
@@ -37,8 +38,8 @@ class RestaurantSubIndex extends React.Component {
                 {restaurantList.map((restaurant, i) => {
                     return (
                         <RestaurantIndexItem
-                            key={i}
-                            restaurant={restaurant}
+                        key={i}
+                        restaurant={ restaurant }
                         />
                     )
                 })}

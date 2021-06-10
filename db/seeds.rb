@@ -56,7 +56,7 @@ food = Cuisine.new.cuisines
 # Generates Restaurants in Orlando
 food.keys.each do |cuisine|
     restaurants_arr = []
-    2.times do
+    5.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -69,7 +69,7 @@ food.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    1.times do
+    2.times do
         Restaurant.create!(
             name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -84,35 +84,10 @@ food.keys.each do |cuisine|
         end
     end
 
-
-
-    # attach a photo to restaurant instance using:
-
-    
-    orlando_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', "Thai")
-
-    attached = []
-    orlando_thai_restaurants.each do |rest|
-        until attached.length = 3
-            num = rand(14)
-            attached << num if attached.include?(num)
-        end
-        num = ''
-        num = rand(14)
-        attached << num
-
-
-
-
-
-        rest.photos.attach(
-            io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/pizza/pizza13.jpg"), 
-            filename: "pizza13.jpg")    
-    end
     
     # Generates Restaurants in San Francisco
     food.keys.each do |cuisine|
-        1.times do
+        5.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -125,9 +100,9 @@ food.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    1.times do
+    2.times do
         Restaurant.create!(
-            name: generate_single_name(food, cuisine, restaurants_arr),
+                name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
             street_address: "#{Faker::Address.street_address} San Francisco, CA #{Faker::Address.zip}",
@@ -142,7 +117,7 @@ end
 
 # Generates Restaurants in New York
 food.keys.each do |cuisine|
-    1.times do
+    5.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -155,7 +130,7 @@ food.keys.each do |cuisine|
             owner_id: rand(20) + 1
         )
     end
-    1.times do
+    2.times do
         Restaurant.create!(
             name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -171,34 +146,34 @@ food.keys.each do |cuisine|
 end
 
 # Generates Restaurants in Austin
-food.keys.each do |cuisine|
-    1.times do
-        Restaurant.create!(
-            name: generate_double_name(food, cuisine, restaurants_arr),
-            email: 'letseatdemo@gmail.com',
-            phone_no: "#{Faker::PhoneNumber.cell_phone}",
-            street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
-            city: 'Austin, TX',
-            description:"#{Faker::Restaurant.description}",
-            capacity: rand(45)+15,
-            cuisine: cuisine,
-            owner_id: rand(20) + 1
-        )
-    end
-    1.times do
-        Restaurant.create!(
-            name: generate_single_name(food, cuisine, restaurants_arr),
-            email: 'letseatdemo@gmail.com',
-            phone_no: "#{Faker::PhoneNumber.cell_phone}",
-            street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
-            city: 'Austin, TX',
-            description:"#{Faker::Restaurant.description}",
-            capacity: rand(45)+15,
-            cuisine: cuisine,
-            owner_id: rand(20) + 1
-        )
-    end
-end
+# food.keys.each do |cuisine|
+#     1.times do
+#         Restaurant.create!(
+    #             name: generate_double_name(food, cuisine, restaurants_arr),
+#             email: 'letseatdemo@gmail.com',
+#             phone_no: "#{Faker::PhoneNumber.cell_phone}",
+#             street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
+#             city: 'Austin, TX',
+#             description:"#{Faker::Restaurant.description}",
+#             capacity: rand(45)+15,
+#             cuisine: cuisine,
+#             owner_id: rand(20) + 1
+#         )
+#     end
+#     1.times do
+#         Restaurant.create!(
+    #             name: generate_single_name(food, cuisine, restaurants_arr),
+#             email: 'letseatdemo@gmail.com',
+#             phone_no: "#{Faker::PhoneNumber.cell_phone}",
+#             street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
+#             city: 'Austin, TX',
+#             description:"#{Faker::Restaurant.description}",
+#             capacity: rand(45)+15,
+#             cuisine: cuisine,
+#             owner_id: rand(20) + 1
+#         )
+#     end
+# end
 
 #Generates a schedule for each restaurant
 sched = 0
@@ -234,7 +209,7 @@ Restaurant.all.ids.each do |rest_id|
         sunday: day[rand(2)],
         sunday_open: open + rand(2),
         sunday_close: close
-    )
+        )
     
     sched = Schedule.find_by_id(count)
     sched.monday_open = nil if sched.monday == 'Closed'
@@ -266,13 +241,146 @@ end
 Reservation.all.ids.each do |res_id|
     Review.create!(
         comment: Faker::Restaurant.review,
-        food_rating: rand(6),
+        food_rating: rand(3)+3,
         service_rating: rand(6),
-        ambience_rating: rand(6),
-        value_rating: rand(6),
+        ambience_rating: rand(4)+2,
+        value_rating: rand(5)+1,
         reservation_id: res_id
-    )
+        )
 end
+
+#Orlando Restaurants by Cuisine
+orlando_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Thai')
+orlando_pizza_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Pizza' )
+orlando_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Chinese')
+orlando_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Japanese' )
+orlando_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Seafood & Steakhouses')
+orlando_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Latin American Cuisine')
+orlando_all_resaurants = [orlando_thai_restaurants, orlando_pizza_restaurants, orlando_chinese_restaurants, orlando_japanese_restaurants, orlando_latin_restaurants, orlando_steak_restaurants]
+
+#NY Restaurants by Cuisine
+ny_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Thai')
+ny_pizza_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Pizza' )
+ny_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Chinese')
+ny_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Japanese' )
+ny_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Seafood & Steakhouses')
+ny_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Latin American Cuisine')
+ny_all_resaurants = [ny_thai_restaurants, ny_pizza_restaurants, ny_chinese_restaurants, ny_japanese_restaurants, ny_latin_restaurants, ny_steak_restaurants]
+
+#SF Restaurants by Cuisine
+sf_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Thai')
+sf_pizza_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Pizza' )
+sf_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Chinese')
+sf_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Japanese' )
+sf_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Seafood & Steakhouses')
+sf_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Latin American Cuisine')
+sf_all_resaurants = [sf_thai_restaurants, sf_pizza_restaurants, sf_chinese_restaurants, sf_japanese_restaurants, sf_latin_restaurants, sf_steak_restaurants]
+
+#All Restaurants by Cuisine
+all_thai_restaurants = [orlando_thai_resaurants, ny_thai_resaurants, sf_thai_resaurants]
+all_pizza_restaurants = [orlando_pizza_resaurants, ny_pizza_resaurants, sf_pizza_resaurants]
+all_chinese_restaurants = [orlando_chinese_resaurants, ny_chinese_resaurants, sf_chinese_resaurants]
+all_japanese_restaurants = [orlando_japanese_resaurants, ny_japanese_resaurants, sf_japanese_resaurants]
+all_latin_restaurants = [orlando_latin_resaurants, ny_latin_resaurants, sf_latin_resaurants]
+all_steak_restaurants = [orlando_steak_resaurants, ny_steak_resaurants, sf_steak_resaurants]
+
+#All Restaurants by city or by cuisine
+all_restaurants = [orlando_all_resaurants, ny_all_resaurants, sf_all_resaurants]
+all_cuisines = [all_thai_restaurants, all_pizza_restaurants, all_chinese_restaurants, all_japanese_restaurants, all_latin_restaurants, all_steak_restaurants]
+
+#Attach main seating photo
+attached = []
+num=0
+
+all_restaurants.each do |city|
+    attached = []
+    city.each do |cuisine|
+        cuisine.each do |rest|
+            until attached.length = 7
+                num = rand(41)+1
+                unless attached.include?(num)
+                    attached << num 
+                    rest.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/seating/seat#{num}.jpg"), filename: "seat#{num}.png")
+                end
+            end
+        end
+    end
+end
+
+# # of images
+# #thai = 29
+# all_thai_restaurants.each do |city|
+#     city.each do |restaurant|
+#         attached = []
+#         num = rand(29)+1
+#         attached << unless attached.include?(num)
+#         attached.each do |add|
+#             rest.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/seating/thai#{add}.jpg"), filename: "thai#{add}.png")
+#         end
+#     end
+# end
+
+# # pizza = 
+# all_pizza_restaurants.each do |city|
+#     city.each do |restaurant|
+#         attached = []
+#         num = rand(29)+1
+#         attached << unless attached.include?(num)
+#         attached.each do |add|
+#             rest.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/seating/pizza#{add}.jpg"), filename: "pizza#{add}.png")
+#         end
+#     end
+# end
+
+# # chinese = 
+# all_chinese_restaurants.each do |city|
+#     city.each do |restaurant|
+#         attached = []
+#         num = rand(29)+1
+#         attached << unless attached.include?(num)
+#         attached.each do |add|
+#             rest.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/seating/chinese#{add}.jpg"), filename: "chinese#{add}.png")
+#         end
+#     end
+# end
+
+# # japanese = 
+# all_japanese_restaurants.each do |city|
+#     city.each do |restaurant|
+#         attached = []
+#         num = rand(29)+1
+#         attached << unless attached.include?(num)
+#         attached.each do |add|
+#             rest.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/seating/japanese#{add}.jpg"), filename: "japanese#{add}.png")
+#         end
+#     end
+# end
+
+# # latin = 
+# all_latin_restaurants.each do |city|
+#     city.each do |restaurant|
+#         attached = []
+#         num = rand(29)+1
+#         attached << unless attached.include?(num)
+#         attached.each do |add|
+#             rest.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/seating/latin#{add}.jpg"), filename: "latin#{add}.png")
+#         end
+#     end
+# end
+
+# # steak = 
+# all_steak_restaurants.each do |city|
+#     city.each do |restaurant|
+#         attached = []
+#         num = rand(29)+1
+#         attached << unless attached.include?(num)
+#         attached.each do |add|
+#             rest.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/seating/steak#{add}.jpg"), filename: "steak#{add}.png")
+#         end
+#     end
+end
+
+
 
 
 

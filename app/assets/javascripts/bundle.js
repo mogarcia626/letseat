@@ -989,9 +989,13 @@ var RestaurantIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(RestaurantIndex);
 
   function RestaurantIndex(props) {
+    var _this;
+
     _classCallCheck(this, RestaurantIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.randomCuisine = _this.randomCuisine.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(RestaurantIndex, [{
@@ -1000,17 +1004,52 @@ var RestaurantIndex = /*#__PURE__*/function (_React$Component) {
       this.props.requestAllRestaurants(this.props.filters);
     }
   }, {
+    key: "randomCuisine",
+    value: function randomCuisine(num) {
+      var cuisineArr = ['Thai', 'Pizza', 'Chinese', 'Japanese', 'Seafood & Steakhouses', 'Latin American Cuisine'];
+      var cuisList = [];
+
+      while (cuisList.length <= num) {
+        var rand = Math.floor(Math.random() * (cuisineArr.length - 1));
+        cuisList.push(cuisineArr[rand]);
+        cuisineArr.splice(rand, rand);
+      }
+
+      return cuisList;
+    }
+  }, {
+    key: "randomRating",
+    value: function randomRating(num) {
+      var ratingArr = ['value', 'food', 'ambience', 'service'];
+      ratingList = [];
+
+      while (ratingList.length <= num) {
+        var rand = Math.floor(Math.random() * (ratingineArr.length - 1));
+        ratingList.push(ratingineArr[rand]);
+        ratingineArr.splice(rand, rand);
+      }
+
+      return ratingList;
+    }
+  }, {
     key: "render",
     value: function render() {
-      // create helper method for randomizing cuizines
+      var cuisList = this.randomCuisine(4);
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "index-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_subindex__WEBPACK_IMPORTED_MODULE_4__.default, {
         filter: "cuisine",
-        cuisine: "pizza"
+        cuisine: cuisList[1]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_subindex__WEBPACK_IMPORTED_MODULE_4__.default, {
         filter: "cuisine",
-        cuisine: "latin american"
+        cuisine: cuisList[0]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_subindex__WEBPACK_IMPORTED_MODULE_4__.default, {
+        filter: "cuisine",
+        cuisine: cuisList[3]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_subindex__WEBPACK_IMPORTED_MODULE_4__.default, {
+        filter: "cuisine",
+        cuisine: cuisList[2]
       }));
     }
   }]);
@@ -1173,6 +1212,7 @@ var RestaurantSubIndex = /*#__PURE__*/function (_React$Component) {
     value: function cuisineFilter() {
       var _this2 = this;
 
+      debugger;
       var restaurantList = this.props.restaurants.filter(function (rest) {
         return rest.cuisine === _this2.props.cuisine;
       });
