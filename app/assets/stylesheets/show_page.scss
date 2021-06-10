@@ -1,0 +1,44 @@
+.banner-default, .banner-thai, .banner-pizza,
+.banner-chinese, .banner-japanese, .banner-steak,
+.banner-sea, .banner-latin{
+	min-height: 212px;
+	max-height: 424px;
+	min-width: 636px;
+	max-width: 1272px;
+	width: 100vw;
+}
+
+.banner-thai {
+	background-image: url('/assets/thai.png');
+	background-size: cover;
+}
+
+.banner-pizza {
+	background-image: url('/assets/pizza.png');
+	background-size: cover;
+}
+
+.banner-chinese {
+	background-image: url('/assets/chinese.png');
+	background-size: cover;
+}
+
+.banner-japanese {
+	background-image: url('/assets/japanese.png');
+	background-size: cover;
+}
+
+.banner-steak {
+	background-image: url('/assets/steak.png');
+	background-size: cover;
+}
+
+.banner-sea {
+	background-image: url('/assets/sea.png');
+	background-size: cover;
+}
+
+.banner-latin {
+	background-image: url('/assets/latin.png');
+	background-size: cover;
+}
