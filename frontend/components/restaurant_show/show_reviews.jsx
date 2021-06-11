@@ -4,7 +4,6 @@ import RatingIcon from '../restaurant_index/index_item/rating-icon'
 function ShowReviews(props) {
     // reviews = { this.props.reviews }
     // ratings = { this.props.restaurant.reviewAverages }
-    // debugger
     return(
         <div>
             <h2>What {props.ratings.count} people are saying</h2>

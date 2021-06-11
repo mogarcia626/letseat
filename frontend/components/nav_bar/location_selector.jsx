@@ -41,7 +41,6 @@ class LocationSelector extends React.Component {
     }   
 
     render () {
-        // console.log(this.props)
         //location selector must be dropdown of all cities
         return (
             <div className='location-selector'>

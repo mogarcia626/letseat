@@ -4,7 +4,6 @@ import { BsStarHalf, BsStarFill, BsStar } from 'react-icons/bs';
 function StarIcon(props) {
 
     if (props.class === 'half') {
-        // debugger
         return (
             <div>
                 <BsStarHalf className='star' />

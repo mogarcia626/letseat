@@ -59,7 +59,6 @@ class RestaurantShow extends React.Component {
                     {/* <ShowPhotos photos={this.props.restaurant.photoUrls} />     */}
 
                     <ShowReviews
-                    // debugger
                         // reviews={this.state.reviews}
                         ratings={this.props.restaurant.reviewAverages}
                     />
