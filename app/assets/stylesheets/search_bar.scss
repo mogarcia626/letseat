@@ -4,8 +4,8 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	min-height: 212px;
-	max-height: 424px;
+	min-height: 318px;
+	max-height: 636px;
 	min-width: 636px;
 	max-width: 1272px;
 	width: 100vw;
@@ -44,4 +44,10 @@
 	background-image: none;
 	color: black;
 }
+
+.banner-title {
+	margin: 16px;
+	font-size: 40px;
+}
+
 

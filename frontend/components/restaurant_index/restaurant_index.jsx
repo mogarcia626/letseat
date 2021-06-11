@@ -30,14 +30,12 @@ class RestaurantIndex extends React.Component {
     }
 
     randomCuisine(num) {
-        let cuisineArr = ['Thai', 'Pizza', 'Chinese', 'Japanese', 'Seafood & Steakhouses', 'Latin American Cuisine']
+        let cuisineArr = ['Thai', 'Chinese', 'Japanese', 'Seafood & Steakhouses', 'Latin American Cuisine']
         let cuisList = []
         while (cuisList.length <= num) {
             let rand = Math.floor(Math.random() * (cuisineArr.length - 1))
             cuisList.push(cuisineArr[rand])
-            debugger
             cuisineArr = cuisineArr.slice(0, rand).concat(cuisineArr.slice(rand+1))
-            debugger
         }
         return cuisList        
     }
@@ -61,7 +59,7 @@ class RestaurantIndex extends React.Component {
         
         return(
             <div className="index-container">
-                <RestaurantSubIndex filter='cuisine' cuisine={cuisList[1]} />
+                <RestaurantSubIndex filter='cuisine' cuisine={'Thai'} />
                 <RestaurantSubIndex filter='cuisine' cuisine={cuisList[0]} />
                 <RestaurantSubIndex filter='cuisine' cuisine={cuisList[3]} />
                 <RestaurantSubIndex filter='cuisine' cuisine={cuisList[2]} />

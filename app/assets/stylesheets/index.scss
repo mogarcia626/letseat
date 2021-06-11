@@ -1,35 +1,31 @@
 .index-container {
-    border: black solid 2px;
     display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
+	min-width: 636px;
+	max-width: 1200px;
+	width: 100vw;
     margin: 16px 0 16px 0;
+    // padding: 24px
 }
 
 .sub-index-container {
-    border: black solid 2px;
-    display: grid;
-    overflow-x: scroll;
-    min-width: 610px;
-    max-width: 1220px;
-    margin: 16px 0;
-    padding: 20px 0;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 250PX;
-    grid-column-gap: 1em;
+    min-width: 636px;
+	max-width: 1200px;
+    margin-bottom: 40px;
 }
 
-.index-item {
-    border: black solid 2px;
+.sub-index-title {
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 28px 0;
+}
+
+.sub-index-grid {    
     display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-size: contain;
-	width: 188px;
-    height: 220px;
-    // margin: 12px;
-    // padding: 16px;
+    flex-direction: row;
+    overflow-x: scroll;   
+    max-width: 100%;
+
 }

@@ -26,7 +26,11 @@ class NavBar extends React.Component {
                 <div className='left-nav'>
                     <Link to="/" className='nav-logo'>
                         <img src={window.logo} alt="Letseat logo" className='logo' />
-                        <h3>Letseat</h3>
+
+                        <h3 className='logo-text'>
+                            Letseat
+                        </h3>
+                        
                     </Link>
                     <LocationSelectorContainer />                   
                 </div>

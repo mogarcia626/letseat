@@ -1,5 +1,6 @@
 import React from 'react';
 import ShowBanner from './show_banner';
+import ShowRatingSummary from './show_rating_summary'
 
 class RestaurantShow extends React.Component {
     constructor(props) {
@@ -20,8 +21,6 @@ class RestaurantShow extends React.Component {
         switch (this.props.location.restaurant.cuisine) {
             case 'Thai':
                 return 'banner-thai'
-            case 'Pizza':
-                return 'banner-pizza'
             case 'Chinese':
                 return 'banner-chinese'
             case 'Japanese':
@@ -38,14 +37,22 @@ class RestaurantShow extends React.Component {
 
     render() {   
         this.restaurant = this.props.restaurant
+
         if (this.state.loading) {
             return null
         } else {
+            
             return (
                 <div>
                     <ShowBanner cuisine={this.restaurant.cuisine}/>
-                    <h1>{this.restaurant.name}</h1>
-                    <p>{this.restaurant.cuisine}</p>
+                    <h1 className='show-header'>{this.restaurant.name}</h1>
+
+                    <ShowRatingSummary
+                        ratings={this.props.restaurant.reviewAverages}
+                        cuisine={this.props.restaurant.cuisine}
+                    />
+
+                    <p>{this.restaurant.description}</p>
                     <p>{this.restaurant.city}</p>
                     
                     <div>

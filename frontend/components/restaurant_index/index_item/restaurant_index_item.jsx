@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import RatingIcon from './rating-icon'
 
 class RestaurantIndexItem extends React.Component {
     constructor(props) {
@@ -19,14 +20,21 @@ class RestaurantIndexItem extends React.Component {
             className='index-item'
             onClick={this.handleClick}
         >
-            <h2>[Image Here]</h2>
-            <p>{restaurant.name}</p>
-            <div>
-                <p>{`${restaurant.reviewAverages.average} out of 5`}</p>
+            <div className='index-image-container'>
+                <img className='index-image' src={restaurant.photoUrls[0]} alt="" />
+            </div>
+            <p className='show-title'>{restaurant.name}</p>
+
+            <div className='subindex-review-summary'>
+                <RatingIcon rating={restaurant.reviewAverages.average}/>
                 <p>{`${restaurant.reviewAverages.count} reviews`}</p>
             </div>
+
+            <div className='filter-summary'>
                 <p>{restaurant.cuisine}</p>
+                    <p> &bull; </p>
                 <p>{restaurant.city}</p>
+            </div>
 
         </div>    
         )      

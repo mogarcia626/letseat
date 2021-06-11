@@ -1,11 +1,8 @@
 
 json.restaurant do
   json.extract! @restaurant, :id, :name, :email, :phone_no, :street_address, :city, 
-    :description, :capacity, :cuisine, :photos, :review_averages
-  @restaurant.photos.each_with_index do |photo, i|
-        json.set! "photo#{i}"
-        url_for(photo)
-  end
+    :description, :capacity, :cuisine, :review_averages
+  json.photoUrls @restaurant.photos.map {|photo| url_for(photo)}
 end
 
 json.reviews do
@@ -19,6 +16,7 @@ json.reviews do
     end  
   end  
 end  
+
 
 
 

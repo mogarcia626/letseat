@@ -45,7 +45,7 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className={this.selectBackground()} id={this.selectComponentId()}>
-                <h1>
+                <h1 className='banner-title'>
                     Find your table for any occasion
                 </h1>
                 <SearchFormContainer />

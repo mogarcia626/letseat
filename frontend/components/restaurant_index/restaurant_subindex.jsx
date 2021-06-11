@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {selectAllRestaurants} from '../../reducers/selectors';
-import RestaurantIndexItem from './restaurant_index_item';
+import RestaurantIndexItem from './index_item/restaurant_index_item';
 
 
 const mSTP = state => ({ 
@@ -19,22 +19,27 @@ const mSTP = state => ({
 class RestaurantSubIndex extends React.Component {
     constructor(props) {
         super(props)
-        
+        this.refWindow = React.createRef()
         this.cuisineFilter = this.cuisineFilter.bind(this);
         this.components = this.components.bind(this);
+        this.scroll = this.scroll.bind(this);
     }
     
 
     cuisineFilter() {
-        debugger
         let restaurantList = this.props.restaurants.filter(rest => (
             rest.cuisine === this.props.cuisine)
         )
         return (
-            <div>
-                <h3>{this.props.cuisine}</h3>
+            <div className='sub-index-container'>
 
-                <div className='sub-index-container'>
+                <p className='sub-index-title'>
+                    {this.props.cuisine}
+                </p>
+
+                <hr className="solid" />
+
+                <div className='sub-index-grid'>
                 {restaurantList.map((restaurant, i) => {
                     return (
                         <RestaurantIndexItem
@@ -47,6 +52,10 @@ class RestaurantSubIndex extends React.Component {
             </div>
         )
     }
+
+    scroll = (scrollOffset) => {
+        this.refWindow.current.scrollLeft += scrollOffset;
+    };
     
     components() {
         switch (this.props.filter) {
@@ -62,6 +71,7 @@ class RestaurantSubIndex extends React.Component {
 
         return(
             <div>
+                {/* <button onClick={() => this.scroll(200)}>Right</button> */}
                 {this.components()}                
             </div>
         )
@@ -71,6 +81,4 @@ class RestaurantSubIndex extends React.Component {
 }
 
 export default connect(mSTP)(RestaurantSubIndex);
-
-
 

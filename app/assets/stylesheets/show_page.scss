@@ -1,5 +1,5 @@
-.banner-default, .banner-thai, .banner-pizza,
-.banner-chinese, .banner-japanese, .banner-steak,
+.banner-default, .banner-thai, .banner-chinese,
+.banner-japanese, .banner-steak,
 .banner-sea, .banner-latin{
 	min-height: 212px;
 	max-height: 424px;
@@ -10,11 +10,6 @@
 
 .banner-thai {
 	background-image: url('/assets/thai.png');
-	background-size: cover;
-}
-
-.banner-pizza {
-	background-image: url('/assets/pizza.png');
 	background-size: cover;
 }
 
@@ -41,4 +36,12 @@
 .banner-latin {
 	background-image: url('/assets/latin.png');
 	background-size: cover;
+}
+
+.show-header {
+
+}
+
+.ratings-summary {
+	
 }

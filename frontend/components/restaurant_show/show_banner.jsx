@@ -9,8 +9,6 @@ class ShowBanner extends React.Component {
         switch (this.props.cuisine) {
             case 'Thai':
                 return 'banner-thai'
-            case 'Pizza':
-                return 'banner-pizza'
             case 'Chinese':
                 return 'banner-chinese'
             case 'Japanese':
@@ -28,7 +26,7 @@ class ShowBanner extends React.Component {
     render() {
         return (
             <div className={this.selectBackground()}>
-                <p>welcome</p>
+                <p>.</p>
             </div>
         )
     }
