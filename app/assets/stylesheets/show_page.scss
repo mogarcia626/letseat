@@ -1,8 +1,12 @@
 .banner-default, .banner-thai, .banner-chinese,
 .banner-japanese, .banner-steak,
 .banner-sea, .banner-latin{
-	min-height: 212px;
-	max-height: 424px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 318px;
+	max-height: 636px;
 	min-width: 636px;
 	max-width: 1272px;
 	width: 100vw;
@@ -43,5 +47,5 @@
 }
 
 .ratings-summary {
-	
+
 }

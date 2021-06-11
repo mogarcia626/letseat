@@ -1394,6 +1394,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _show_banner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./show_banner */ "./frontend/components/restaurant_show/show_banner.jsx");
 /* harmony import */ var _show_rating_summary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./show_rating_summary */ "./frontend/components/restaurant_show/show_rating_summary.jsx");
+/* harmony import */ var _show_photos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./show_photos */ "./frontend/components/restaurant_show/show_photos.jsx");
+/* harmony import */ var _show_photos__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_show_photos__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1415,6 +1417,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
 
 
 
@@ -1482,14 +1486,16 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
       if (this.state.loading) {
         return null;
       } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_show_banner__WEBPACK_IMPORTED_MODULE_1__.default, {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_show_banner__WEBPACK_IMPORTED_MODULE_1__.default, {
           cuisine: this.restaurant.cuisine
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
           className: "show-header"
         }, this.restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_show_rating_summary__WEBPACK_IMPORTED_MODULE_2__.default, {
           ratings: this.props.restaurant.reviewAverages,
           cuisine: this.props.restaurant.cuisine
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.restaurant.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.restaurant.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(this.restaurant.reviewAverages.average, " out of 5")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(this.restaurant.reviewAverages.count, " reviews"))));
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.restaurant.description));
       }
     }
   }]);
@@ -1633,6 +1639,16 @@ var ShowBanner = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/restaurant_show/show_photos.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/restaurant_show/show_photos.jsx ***!
+  \*************************************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
 /***/ "./frontend/components/restaurant_show/show_rating_summary.jsx":
 /*!*********************************************************************!*\
   !*** ./frontend/components/restaurant_show/show_rating_summary.jsx ***!
@@ -1649,15 +1665,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function ShowReviewSummary(props) {
+function ShowRatingsSummary(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "ratings-summary"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_index_index_item_rating_icon__WEBPACK_IMPORTED_MODULE_1__.default, {
     rating: props.ratings.average
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.ratings.count, " Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.cuisine));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.ratings.count, " Rreviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.cuisine));
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShowReviewSummary);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShowRatingsSummary);
 
 /***/ }),
 

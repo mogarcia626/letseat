@@ -1,6 +1,8 @@
 import React from 'react';
 import ShowBanner from './show_banner';
 import ShowRatingSummary from './show_rating_summary'
+import ShowPhotos from './show_photos';
+import ShowReviews from './show_banner';
 
 class RestaurantShow extends React.Component {
     constructor(props) {
@@ -43,7 +45,7 @@ class RestaurantShow extends React.Component {
         } else {
             
             return (
-                <div>
+                <div className='container'>
                     <ShowBanner cuisine={this.restaurant.cuisine}/>
                     <h1 className='show-header'>{this.restaurant.name}</h1>
 
@@ -53,12 +55,14 @@ class RestaurantShow extends React.Component {
                     />
 
                     <p>{this.restaurant.description}</p>
-                    <p>{this.restaurant.city}</p>
                     
-                    <div>
-                        <p>{`${this.restaurant.reviewAverages.average} out of 5`}</p>
-                        <p>{`${this.restaurant.reviewAverages.count} reviews`}</p>
-                    </div>            
+                    {/* <ShowPhotos photos={this.props.restaurant.photoUrls} />    
+
+                    <ShowReviews
+                        reviews={this.props.reviews}
+                        ratings={this.props.restaurant.reviewAverages}
+                    /> */}
+
                 </div>
             )        
         }
