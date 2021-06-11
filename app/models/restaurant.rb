@@ -42,18 +42,18 @@ class Restaurant < ApplicationRecord
     end
 
     def review_averages
-        food, service, ambience, val = [0,0], [0,0], [0,0], [0,0]
-        
+        food, service, ambience, val = 0, 0, 0, 0
+        #[rating, count]
         self.reviews.each do |rev|
-            food[0], food[1] = food[0] + rev.food_rating, food[1] + 1
-            service[0], service[1] = service[0] + rev.service_rating, service[1] + 1
-            ambience[0], ambience[1] = ambience[0] + rev.ambience_rating, ambience[1] + 1
-            val[0], val[1] = val[0] + rev.value_rating, val[1] + 1
+            food += rev.food_rating
+            service += rev.service_rating
+            ambience += rev.ambience_rating
+            val += rev.value_rating
         end
-
-            food, service = food[0] / food[1], service[0] / service[1]
-            ambience, val = ambience[0] / ambience[1], val[0] / val[1]
-            average = (food + service + ambience + val) / 4
+            count = reviews.length
+            food, service = food/count, service/count
+            ambience, val = ambience/count, val/count
+            average = (food + service + ambience + val)/4.0
             
             return {
                 average: average,
@@ -61,7 +61,7 @@ class Restaurant < ApplicationRecord
                 service: service,
                 ambience: ambience,
                 value: val,
-                count: self.reviews.length
+                count: count
             }
     end
     

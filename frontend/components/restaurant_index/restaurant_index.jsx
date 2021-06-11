@@ -59,7 +59,7 @@ class RestaurantIndex extends React.Component {
         
         return(
             <div className="index-container">
-                <RestaurantSubIndex filter='cuisine' cuisine={'Thai'} />
+                <RestaurantSubIndex filter='cuisine' cuisine={cuisList[1]} />
                 <RestaurantSubIndex filter='cuisine' cuisine={cuisList[0]} />
                 <RestaurantSubIndex filter='cuisine' cuisine={cuisList[3]} />
                 <RestaurantSubIndex filter='cuisine' cuisine={cuisList[2]} />

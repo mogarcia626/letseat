@@ -1,8 +1,8 @@
 import React from 'react';
 import ShowBanner from './show_banner';
-import ShowRatingSummary from './show_rating_summary'
+import ShowRatingsSummary from './show_rating_summary'
 import ShowPhotos from './show_photos';
-import ShowReviews from './show_banner';
+import ShowReviews from './show_reviews';
 
 class RestaurantShow extends React.Component {
     constructor(props) {
@@ -49,19 +49,20 @@ class RestaurantShow extends React.Component {
                     <ShowBanner cuisine={this.restaurant.cuisine}/>
                     <h1 className='show-header'>{this.restaurant.name}</h1>
 
-                    <ShowRatingSummary
+                    <ShowRatingsSummary
                         ratings={this.props.restaurant.reviewAverages}
                         cuisine={this.props.restaurant.cuisine}
                     />
 
                     <p>{this.restaurant.description}</p>
                     
-                    {/* <ShowPhotos photos={this.props.restaurant.photoUrls} />    
+                    {/* <ShowPhotos photos={this.props.restaurant.photoUrls} />     */}
 
                     <ShowReviews
-                        reviews={this.props.reviews}
+                    // debugger
+                        // reviews={this.state.reviews}
                         ratings={this.props.restaurant.reviewAverages}
-                    /> */}
+                    />
 
                 </div>
             )        
