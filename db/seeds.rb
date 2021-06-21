@@ -1,12 +1,19 @@
 require_relative './seed_support'
 require 'faker'
 require 'time'
+require 'open-uri'
 
 User.delete_all
 Restaurant.delete_all
 Reservation.delete_all
 Review.delete_all
 Schedule.delete_all
+
+seeding_database = 'heroku'  
+#'local' will seed localhost from amazon-dev bucket
+#'heroku' will seed heroku from amazon-prod bucket
+# go to show_page.scss and search_bar.scss and change $source to either 'dev' or 'pro'
+
 
 #Generates 1 Demo User & 5 restaurant owners that will own all seeded restaurants
 #--------------------------------------------------------------------------------------------------------------------------------
@@ -289,7 +296,7 @@ sf_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francis
 sf_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Latin American Cuisine')
 sf_all_restaurants = [sf_thai_restaurants, sf_chinese_restaurants, sf_japanese_restaurants, sf_latin_restaurants, sf_steak_restaurants]
 
-#SF Restaurants by Cuisine
+#Austin Restaurants by Cuisine
 # austin_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Thai')
 # austin_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Chinese')
 # austin_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Japanese' )
@@ -315,7 +322,7 @@ attached = []
 
 #________________________________________________________________
 #Attach main photo to each
-seatcount = 8#23
+seatcount = 24  # 0->23
 
 all_restaurants.each do |city|
     city.each do |cuisine|
@@ -325,95 +332,133 @@ all_restaurants.each do |city|
             until attached.length == len
                 num = rand(seatcount)
                 unless attached.include?(num)
-                    attached << num 
-                    rest.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/seating/seat#{num}.png"), filename: "seat#{num}.png")
+                    attached << num
+                    attached = [] if attached.length == 24
+                    if seeding_database == 'local'
+                        s3_url = open("https://letseat-dev.s3.us-east-2.amazonaws.com/seating/seat#{num}.png")
+                    elsif seeding_database == 'heroku'
+                        s3_url = open("https://letseat-pro.s3.us-east-2.amazonaws.com/seating/seat#{num}.png")
+                    end
+                    rest.photos.attach(io: s3_url, filename: "seat#{num}.png")
                 end
             end
         end
     end
 end
 
+
+
 #________________________________________________________________
 # Attach thai photo
-thaicount = 5 #22
+thaicount = 19 #0->18
 
 all_thai_restaurants.each do |city|
     city.each do |restaurant|
         attached = []
-        until attached.length == 3
+        len = rand(4)+3
+        until attached.length == len
             num = rand(thaicount)
             attached << num unless attached.include?(num)
         end
-        attached.each do |add|
-            restaurant.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/thai/thai#{add}.png"), filename: "thai#{add}.png")
+        attached.each do |photo_idx|
+            if seeding_database == 'local'
+                s3_url = open("https://letseat-dev.s3.us-east-2.amazonaws.com/thai/thai#{photo_idx}.png")
+            elsif seeding_database == 'heroku'
+                s3_url = open("https://letseat-pro.s3.us-east-2.amazonaws.com/thai/thai#{photo_idx}.png")
+            end
+            restaurant.photos.attach(io: s3_url, filename: "thai#{photo_idx}.png")
         end
     end
 end
 
-# #________________________________________________________________
-# # Attach chinese photo
-chinesecount = 5 #14
+#________________________________________________________________
+# Attach chinese photo
+chinesecount = 14 #0->13
 
 all_chinese_restaurants.each do |city|
     city.each do |restaurant|
         attached = []
-        until attached.length == 3
+        len = rand(4)+3
+        until attached.length == len
             num = rand(chinesecount)
             attached << num unless attached.include?(num)
         end
-        attached.each do |add|
-            restaurant.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/chinese/chinese#{add}.png"), filename: "chinese#{add}.png")
-        end
-    end
-end
-    
-# #________________________________________________________________
-# # Attach japanese seating photo
-japanesecount = 5 #15
-
-all_japanese_restaurants.each do |city|
-    city.each do |restaurant|
-        attached = []
-        until attached.length == 3
-            num = rand(japanesecount)
-            attached << num unless attached.include?(num)
-        end
-        attached.each do |add|
-            restaurant.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/japanese/japanese#{add}.png"), filename: "japanese#{add}.png")
-        end
-    end
-end
-    
-# #________________________________________________________________
-# Attach latin seating photo
-latincount = 5 #20
-
-all_latin_restaurants.each do |city|
-    city.each do |restaurant|
-        attached = []
-        until attached.length == 3
-            num = rand(latincount)
-            attached << num unless attached.include?(num)
-        end
-        attached.each do |add|
-            restaurant.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/latin/latin#{add}.png"), filename: "latin#{add}.png")
+        attached.each do |photo_idx|
+            if seeding_database == 'local'
+                s3_url = open("https://letseat-dev.s3.us-east-2.amazonaws.com/chinese/chinese#{photo_idx}.png")
+            elsif seeding_database == 'heroku'
+                s3_url = open("https://letseat-pro.s3.us-east-2.amazonaws.com/chinese/chinese#{photo_idx}.png")
+            end
+            restaurant.photos.attach(io: s3_url, filename: "chinese#{photo_idx}.png")
         end
     end
 end
     
 #________________________________________________________________
-# Attach steak seating photo
-steakcount = 5 #18
+# Attach japanese photo
+japanesecount = 15 #0->14
+
+all_japanese_restaurants.each do |city|
+    city.each do |restaurant|
+        attached = []
+        len = rand(4)+3
+        until attached.length == len
+            num = rand(japanesecount)
+            attached << num unless attached.include?(num)
+        end
+        attached.each do |photo_idx|
+            if seeding_database == 'local'
+                s3_url = open("https://letseat-dev.s3.us-east-2.amazonaws.com/japanese/japanese#{photo_idx}.png")
+            elsif seeding_database == 'heroku'
+                s3_url = open("https://letseat-pro.s3.us-east-2.amazonaws.com/japanese/japanese#{photo_idx}.png")
+            end
+            restaurant.photos.attach(io: s3_url, filename: "japanese#{photo_idx}.png")
+        end
+    end
+end
+    
+#________________________________________________________________
+# Attach latin photo
+latincount = 18 #0->17
+
+all_latin_restaurants.each do |city|
+    city.each do |restaurant|
+        attached = []
+        len = rand(4)+3
+        until attached.length == len
+            num = rand(latincount)
+            attached << num unless attached.include?(num)
+        end
+        attached.each do |photo_idx|
+            if seeding_database == 'local'
+                s3_url = open("https://letseat-dev.s3.us-east-2.amazonaws.com/latin/latin#{photo_idx}.png")
+            elsif seeding_database == 'heroku'
+                s3_url = open("https://letseat-pro.s3.us-east-2.amazonaws.com/latin/latin#{photo_idx}.png")
+            end
+            restaurant.photos.attach(io: s3_url, filename: "latin#{photo_idx}.png")
+        end
+    end
+end
+    
+#________________________________________________________________
+# Attach steak photo
+steakcount = 15 #0->14
     
 all_steak_restaurants.each do |city|
     city.each do |restaurant|
         attached = []
-        until attached.length == 3
+        len = rand(4)+3
+        until attached.length == len
             num = rand(steakcount)
             attached << num unless attached.include?(num)
         end
-        attached.each do |add|
-            restaurant.photos.attach(io: File.open("/mnt/c/Users/Moustafa/Desktop/Photos/letseat/steak/steak#{add}.png"), filename: "steak#{add}.png")
+        attached.each do |photo_idx|
+            if seeding_database == 'local'
+                s3_url = open("https://letseat-dev.s3.us-east-2.amazonaws.com/steak/steak#{photo_idx}.png")
+            elsif seeding_database == 'heroku'
+                s3_url = open("https://letseat-pro.s3.us-east-2.amazonaws.com/steak/steak#{photo_idx}.png")
+            end
+            restaurant.photos.attach(io: s3_url, filename: "steak#{photo_idx}.png")
         end
     end
 end
@@ -421,4 +466,4 @@ end
 
 
 
-
+ 

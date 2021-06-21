@@ -12,33 +12,36 @@
 	width: 100vw;
 }
 
+$source: 'pro';
+
+
 .banner-thai {
-	background-image: url('/assets/thai.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/thai.png');
 	background-size: cover;
 }
 
 .banner-chinese {
-	background-image: url('/assets/chinese.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/chinese.png');
 	background-size: cover;
 }
 
 .banner-japanese {
-	background-image: url('/assets/japanese.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/japanese.png');
 	background-size: cover;
 }
 
 .banner-steak {
-	background-image: url('/assets/steak.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/steak.png');
 	background-size: cover;
 }
 
 .banner-sea {
-	background-image: url('/assets/sea.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/sea.png');
 	background-size: cover;
 }
 
 .banner-latin {
-	background-image: url('/assets/latin.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/latin.png');
 	background-size: cover;
 }
 

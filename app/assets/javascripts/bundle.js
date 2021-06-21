@@ -560,7 +560,6 @@ var LocationSelector = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // console.log(this.props)
       //location selector must be dropdown of all cities
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "location-selector"
@@ -1098,7 +1097,6 @@ __webpack_require__.r(__webpack_exports__);
 
 function StarIcon(props) {
   if (props["class"] === 'half') {
-    // debugger
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_bs__WEBPACK_IMPORTED_MODULE_1__.BsStarHalf, {
       className: "star"
     }));
@@ -1454,32 +1452,6 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "selectBackground",
-    value: function selectBackground() {
-      switch (this.props.location.restaurant.cuisine) {
-        case 'Thai':
-          return 'banner-thai';
-
-        case 'Chinese':
-          return 'banner-chinese';
-
-        case 'Japanese':
-          return 'banner-japanese';
-
-        case 'Sea Food & Steakhouses':
-          var choice = ['steak', 'sea'];
-          return "banner-".concat(choice[Math.floor(Math.random() * 2)]);
-
-        case 'Latin American Cuisine':
-          return 'banner-latin';
-
-        default:
-          return 'banner-default';
-      }
-
-      ;
-    }
-  }, {
     key: "render",
     value: function render() {
       this.restaurant = this.props.restaurant;
@@ -1496,8 +1468,7 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
         }, this.restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_show_rating_summary__WEBPACK_IMPORTED_MODULE_2__.default, {
           ratings: this.props.restaurant.reviewAverages,
           cuisine: this.props.restaurant.cuisine
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.restaurant.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_show_reviews__WEBPACK_IMPORTED_MODULE_4__.default // debugger
-        // reviews={this.state.reviews}
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.restaurant.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_show_reviews__WEBPACK_IMPORTED_MODULE_4__.default // reviews={this.state.reviews}
         , {
           ratings: this.props.restaurant.reviewAverages
         }));
@@ -1534,7 +1505,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, _ref) {
   var match = _ref.match;
-  // debugger
   var restaurantId = parseInt(match.params.restaurantId);
   var restaurant = (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__.selectSingleRestaurant)(state.entities, restaurantId);
   return {
@@ -1701,7 +1671,6 @@ __webpack_require__.r(__webpack_exports__);
 function ShowReviews(props) {
   // reviews = { this.props.reviews }
   // ratings = { this.props.restaurant.reviewAverages }
-  // debugger
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "What ", props.ratings.count, " people are saying"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Overall ratings and reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Reviews can only be made by diners who have eaten at this restaurant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_index_index_item_rating_icon__WEBPACK_IMPORTED_MODULE_1__.default, {
     rating: props.ratings.average
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.ratings.average, " based on recent ratings")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, props.ratings.food), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, props.ratings.service), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Service"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, props.ratings.ambience), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Ambience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, props.ratings.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Value")));

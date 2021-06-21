@@ -50,7 +50,7 @@ class Restaurant < ApplicationRecord
             ambience += rev.ambience_rating
             val += rev.value_rating
         end
-            count = reviews.length
+            count = [1, reviews.length].max #avoid /0 error
             food, service = food/count, service/count
             ambience, val = ambience/count, val/count
             average = (food + service + ambience + val)/4.0

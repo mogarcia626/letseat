@@ -19,24 +19,6 @@ class RestaurantShow extends React.Component {
         }))
     }
 
-    selectBackground() {
-        switch (this.props.location.restaurant.cuisine) {
-            case 'Thai':
-                return 'banner-thai'
-            case 'Chinese':
-                return 'banner-chinese'
-            case 'Japanese':
-                return 'banner-japanese'
-            case 'Sea Food & Steakhouses':
-                let choice = ['steak', 'sea']
-                return `banner-${choice[Math.floor(Math.random()*2)]}`
-            case 'Latin American Cuisine':
-                return 'banner-latin'
-            default:
-                return 'banner-default';
-        };
-    };
-
     render() {   
         this.restaurant = this.props.restaurant
 

@@ -11,32 +11,40 @@
 	width: 100vw;
 }
 
+$source: 'pro'; 
+
 .search-bar-default {
-	background-image: url('/assets/default.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/default.png');
 	background-size: cover;
 }
 
 .search-bar-orlando {
-	background-image: url('/assets/orlando.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/orlando.png');
 	background-size: cover;
 	color: white;
 }
 
 .search-bar-new-york {
-	background-image: url('/assets/newyork.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/newyork.png');
 	background-size: cover;
 	color: white;
 }
 
 .search-bar-san-francisco {
-	background-image: url('/assets/sanfran.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/sanfran.png');
 	background-size: cover;
+	.banner-title {
+		background-color: #5F7CD9;
+	}
 }
 
 .search-bar-austin {
-	background-image: url('/assets/austin.png');
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/austin.png');
 	background-size: cover;
 	color: #BF5700;
+	.banner-title {
+		background-color: #DCD7DC;
+	}
 }
 
 #search-form-modal {
