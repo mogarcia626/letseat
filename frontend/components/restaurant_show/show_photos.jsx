@@ -7,7 +7,7 @@ function ShowPhotos(photos) {
     // const morePhotos = 
 
     return(
-        <div >
+        <div className='show-page-div'>
             <h2 className='show-section-header'>
                 {count} Photos
             </h2>

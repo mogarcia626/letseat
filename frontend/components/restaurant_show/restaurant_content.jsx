@@ -22,7 +22,9 @@ function RestaurantContent(props) {
 
             <p>{props.restaurant.description}</p>
             
-            <ShowPhotos photos={props.restaurant.photoUrls} />    
+            <ShowPhotos 
+                photos={props.restaurant.photoUrls}
+            />    
 
             <ShowReviews
                 reviews={props.reviews}

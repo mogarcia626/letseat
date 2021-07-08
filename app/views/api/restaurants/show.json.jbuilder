@@ -11,9 +11,7 @@ json.reviews do
     json.set! review.id do
       json.extract! review, :comment, :food_rating, :service_rating,
       :ambience_rating, :value_rating, :reservation_id
-      json.set! createdAt do
-        review.createdAt
-      end
+      json.createdAt review.created_at.strftime("%a, %d %b %Y")
       json.reviewer do
         json.extract! review.reviewer, :id, :first_name, :last_name 
       end

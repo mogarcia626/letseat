@@ -8,20 +8,20 @@ import { MdRestaurant } from 'react-icons/md';
 function ShowRatingsSummary(props) {
 
     return(
-        <div id='ratings-summary'>
+        <div className='show-page-div' id='ratings-summary'>
             <div className='ratings-summary-with-icon'>
                 <RatingIcon rating={props.ratings.average} />
-                <p>{props.ratings.average}</p>
+                <p className='show-reviews-text'>{props.ratings.average}</p>
             </div>
 
             <div className='ratings-summary-with-icon'>
                 <GoComment />
-                <p>{props.ratings.count} Reviews</p>
+                <p className='show-reviews-text'>{props.ratings.count} Reviews</p>
             </div>
 
             <div className='ratings-summary-with-icon'>
                 <MdRestaurant />
-                <p>{props.cuisine}</p>
+                <p className='show-reviews-text'>{props.cuisine}</p>
             </div>
         </div>
     )

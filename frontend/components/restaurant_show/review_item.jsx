@@ -4,7 +4,6 @@ import RatingIcon from '../restaurant_index/index_item/rating-icon'
 function ReviewItem(props) {
     const review = props.review
     const average = (review.foodRating + review.serviceRating + review.valueRating + review.ambienceRating) / 4;
-    console.log(typeof review.createdAt)
 
     return(
         <div className='review-item'>

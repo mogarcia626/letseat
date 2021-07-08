@@ -1,6 +1,6 @@
 #show-content {
 	display: flex;
-	justify-content: space-around;	
+	justify-content: center;	
 }
 
 #restaurant-content {
@@ -8,8 +8,14 @@
 	flex-direction: column;
 	justify-content: center;
 	width: 50vw;
+	min-width: 550px;
 	border: 1px solid black;
 	padding: 20px;
+	margin: 0 20px;
+}
+
+.show-page-div	{
+	margin: 24px 0;
 }
 
 #ratings-summary {
@@ -30,6 +36,7 @@
 	width: 25vw;
 	border: 1px solid black;
 	padding: 12px;
+	margin: 0 20px;
 }
 
 .show-header {
@@ -37,26 +44,67 @@
 }
 
 .show-section-header {
+	font-size: 24px;
+	width: 100%;
+	border-bottom: solid #bbb 1px;
+	padding-bottom: 16px;
+	margin-bottom: 16px;
+}
 
+#show-reviews-subheader {
+	font-size: 16px;
+	font-weight: bold;
+	margin: 8px 0;
+	padding: 8px 0;
+}
+
+.show-reviews-text {
+	font-size: 14px;
+}
+
+#show-reviews-average {
+	display: flex;
+	align-items: center;
+	margin: 8px 0;
+	padding: 8px 0;
+}
+
+#show-reviews-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+#show-reviews-subreview {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .review-item {
+	margin: 20px 0;
 	display: flex;
-
 }
 
 .reviewer-info {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
 }
 
 .dot {
 	color: white;
-	height: 25px;
-	width: 25px;
-	background-color: orange;
+	height: 60px;
+	width: 60px;
+	background-color: #df8963;
 	border-radius: 50%;
-	display: inline-block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .review-item-content {
