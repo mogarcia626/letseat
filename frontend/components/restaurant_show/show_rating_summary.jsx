@@ -9,17 +9,17 @@ function ShowRatingsSummary(props) {
 
     return(
         <div id='ratings-summary'>
-            <div>
+            <div className='ratings-summary-with-icon'>
                 <RatingIcon rating={props.ratings.average} />
                 <p>{props.ratings.average}</p>
             </div>
 
-            <div>
+            <div className='ratings-summary-with-icon'>
                 <GoComment />
                 <p>{props.ratings.count} Reviews</p>
             </div>
 
-            <div>
+            <div className='ratings-summary-with-icon'>
                 <MdRestaurant />
                 <p>{props.cuisine}</p>
             </div>

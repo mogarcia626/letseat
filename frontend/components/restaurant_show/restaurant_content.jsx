@@ -5,8 +5,7 @@ import ShowReviews from './show_reviews';
 import ReviewLinks from './review_links';
 
 function RestaurantContent(props) {
-    console.log(props.restaurant)
-    console.log(props.reviews)
+    
     return (
         <div id='restaurant-content'>
             {/* <ReviewLinks /> */}

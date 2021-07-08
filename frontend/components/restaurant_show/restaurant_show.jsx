@@ -1,6 +1,7 @@
 import React from 'react';
 import ShowBanner from './show_banner';
 import RestaurantContent from './restaurant_content';
+import ReservationForm from './reservation_form';
 
 class RestaurantShow extends React.Component {
     constructor(props) {
@@ -18,7 +19,6 @@ class RestaurantShow extends React.Component {
     }
 
     render() {   
-        console.log(this.props.restaurant)
         
         if (this.state.loading) {
             return null
@@ -37,7 +37,7 @@ class RestaurantShow extends React.Component {
                             reviews={this.props.reviews}
                         />
 
-                        {/* <ReservationTab /> */}
+                        <ReservationForm />
                         
                     </div>
                 </div>
