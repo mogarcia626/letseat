@@ -1,8 +1,6 @@
 import React from 'react';
 import ShowBanner from './show_banner';
-import ShowRatingsSummary from './show_rating_summary'
-import ShowPhotos from './show_photos';
-import ShowReviews from './show_reviews';
+import RestaurantContent from './restaurant_content';
 
 class RestaurantShow extends React.Component {
     constructor(props) {
@@ -20,31 +18,28 @@ class RestaurantShow extends React.Component {
     }
 
     render() {   
-        this.restaurant = this.props.restaurant
-
+        console.log(this.props.restaurant)
+        
         if (this.state.loading) {
             return null
         } else {
             
             return (
-                <div className='container'>
-                    <ShowBanner cuisine={this.restaurant.cuisine}/>
-                    <h1 className='show-header'>{this.restaurant.name}</h1>
+                <div>
 
-                    <ShowRatingsSummary
-                        ratings={this.props.restaurant.reviewAverages}
+                    <ShowBanner
                         cuisine={this.props.restaurant.cuisine}
                     />
 
-                    <p>{this.restaurant.description}</p>
-                    
-                    {/* <ShowPhotos photos={this.props.restaurant.photoUrls} />     */}
+                    <div id='show-content'>
+                        <RestaurantContent 
+                            restaurant={this.props.restaurant}
+                            reviews={this.props.reviews}
+                        />
 
-                    <ShowReviews
-                        // reviews={this.state.reviews}
-                        ratings={this.props.restaurant.reviewAverages}
-                    />
-
+                        {/* <ReservationTab /> */}
+                        
+                    </div>
                 </div>
             )        
         }

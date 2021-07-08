@@ -14,7 +14,6 @@
 
 $source: 'pro';
 
-
 .banner-thai {
 	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/thai.png');
 	background-size: cover;
@@ -45,10 +44,20 @@ $source: 'pro';
 	background-size: cover;
 }
 
-.show-header {
-
+#show-content {
+	display: flex;
+	justify-content: center;	
 }
 
-.ratings-summary {
+#restaurant-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 50vw;
+	border: 1px solid black;
+}
 
+#ratings-summary {
+	display: flex;
+	justify-content: space-between;
 }

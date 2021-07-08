@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
-import { selectSingleRestaurant } from '../../reducers/selectors';
+import { selectSingleRestaurant, selectReviewsForRestaurant } from '../../reducers/selectors';
 import {requestSingleRestaurant} from '../../actions/restaurant_actions';
 import RestaurantShow from './restaurant_show';
 
 const mSTP = (state, { match }) => {
     const restaurantId = parseInt(match.params.restaurantId);
     const restaurant = selectSingleRestaurant(state.entities, restaurantId);
+    const reviews = selectReviewsForRestaurant(state.entities)
     return {
         restaurantId,
-        restaurant
+        restaurant,
+        reviews
     }
 };
 
