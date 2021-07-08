@@ -1,4 +1,5 @@
 import React from 'react';
+import ReviewItem from './review_item'
 import RatingIcon from '../restaurant_index/index_item/rating-icon'
 
 function ShowReviews(props) {
@@ -8,7 +9,10 @@ function ShowReviews(props) {
 
     return(
         <div>
-            <h2>What {ratings.count} people are saying</h2>
+            <h2 className='show-section-header'>
+                What {ratings.count} people are saying
+            </h2>
+
             <h3>Overall ratings and reviews</h3>
             <p>Reviews can only be made by diners who have eaten at this restaurant</p>
 
@@ -24,30 +28,12 @@ function ShowReviews(props) {
                 <div>{props.ratings.value}</div><p>Value</p>
             </div>
 
-            {reviewIds.map((id) => {
-                review = props.reviews[id]
-                
-                return(
-                    <div key={id}>
-                        <div>
-                            {review.reviewer.firstName} {review.reviewer.lastName}
-                        </div>
-
-                        <div>
-                            <RatingIcon rating={(review.foodRating + review.serviceRating + review.valueRating + review.ambienceRating)/4} />
-                            <div>
-                                <p>Overall</p><p>{(review.foodRating + review.serviceRating + review.valueRating + review.ambienceRating) / 4}</p>
-                                <p>Food</p><p>{review.foodRating}</p>
-                                <p>Service</p><p>{review.serviceRating}</p>
-                                <p>Ambience</p><p>{review.ambienceRating}</p>
-                            </div>
-                        </div>
-                </div>                
-                )
+            {reviewIds.map( id => {            
+                return <ReviewItem 
+                    key={id}
+                    review={props.reviews[id]} 
+                />
             })}
-
-
-
         </div>
     )
 }

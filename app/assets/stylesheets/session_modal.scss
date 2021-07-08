@@ -40,8 +40,6 @@
   // width: 100%
 }
 
-
-
 .session-modal-input {
   font-size: 1rem;
   width: 96%;  
@@ -65,9 +63,6 @@
 
 .modal-link {
   align-self: center;
-
-  
-
 }
 
 .button-link {
@@ -76,4 +71,7 @@
   background-color: transparent;
   font-family: 'Nunito Sans';
   border: none;
+  &:hover {
+    color: #BF5700;
+  }
 }

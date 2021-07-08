@@ -14,18 +14,25 @@
  *= require_self
  */
 
- // CSS Reset
- @import './reset.scss';
+// CSS Reset
+@import './reset.scss';
  
- // Core
- @import './fonts.scss';
- @import './nav_bar.scss';
- @import './front_page_body.scss';
+// Core
+@import './fonts.scss';
+@import './footer.scss';
+
  
- // Components   
- @import './nav_drop_down.scss';
- @import './session_modal.scss';
- @import './search_bar.scss';
- @import './index.scss';
- @import './index_item.scss';
+// Nav & Modals  
+@import './nav_bar.scss';
+@import './session_modal.scss';
+@import './search_bar.scss';
+@import './search_form.scss';
+
+// Restaurant Index
+@import './index.scss';
+@import './index_item.scss';
+
+// Restaurant Show Page
+@import './show_page.scss';
+@import './show_page_photos.scss';
 

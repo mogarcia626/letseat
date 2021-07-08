@@ -8,8 +8,12 @@ function RestaurantContent(props) {
     
     return (
         <div id='restaurant-content'>
+
             {/* <ReviewLinks /> */}
+            
             <h1 className='show-header'>{props.restaurant.name}</h1>
+
+            <hr className="solid" />
 
             <ShowRatingsSummary
                 ratings={props.restaurant.reviewAverages}
@@ -18,7 +22,7 @@ function RestaurantContent(props) {
 
             <p>{props.restaurant.description}</p>
             
-            {/* <ShowPhotos photos={restaurant.photoUrls} />     */}
+            <ShowPhotos photos={props.restaurant.photoUrls} />    
 
             <ShowReviews
                 reviews={props.reviews}

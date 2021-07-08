@@ -1,0 +1,79 @@
+.banner-default, .banner-thai, .banner-chinese,
+.banner-japanese, .banner-steak,
+.banner-sea, .banner-latin{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 318px;
+	max-height: 636px;
+	min-width: 636px;
+	max-width: 1272px;
+	width: 100vw;
+}
+
+$source: 'pro';
+
+.banner-thai {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/thai.png');
+	background-size: cover;
+}
+
+.banner-chinese {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/chinese.png');
+	background-size: cover;
+}
+
+.banner-japanese {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/japanese.png');
+	background-size: cover;
+}
+
+.banner-steak {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/steak.png');
+	background-size: cover;
+}
+
+.banner-sea {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/sea.png');
+	background-size: cover;
+}
+
+.banner-latin {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/latin.png');
+	background-size: cover;
+}
+
+.photos-preview-container {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.photos-colulmn-two {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 25%;
+	height: 50vh;
+}
+
+.photos-colulmn-one {
+	width: 50%;	
+	height: 50vh;
+}
+
+.show-image {
+
+}
+
+.empty-photo {
+	background-color: #ffffff00;
+}
+
+.x-more-photos {
+	background-color: black;
+	&:hover {
+		background-color: #696969;
+	}
+}
