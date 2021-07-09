@@ -10,9 +10,14 @@ function ReviewItem(props) {
 
             <div className='reviewer-info'>
                 <span className='dot'>{review.reviewer.firstName[0]}{review.reviewer.lastName[0]}</span>
+                <div className='reviewer-name-container'>
                     <p className='show-reviews-text'>
-                        {review.reviewer.firstName} {review.reviewer.lastName}
+                        {review.reviewer.firstName}
                     </p>
+                    <p className='show-reviews-text'>
+                        {review.reviewer.lastName}
+                    </p>
+                </div>
             </div>
 
             <div className='review-item-content'>

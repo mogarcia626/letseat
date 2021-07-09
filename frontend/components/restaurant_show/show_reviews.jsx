@@ -1,51 +1,62 @@
 import React from 'react';
-import ReviewItem from './review_item'
-import RatingIcon from '../restaurant_index/index_item/rating-icon'
+import ReviewItem from './review_item';
+import RatingIcon from '../restaurant_index/index_item/rating-icon';
+import BarGraphRatingsSummary from './bar_graph_ratings_summary';
 
 function ShowReviews(props) {
     const reviewIds = Object.keys(props.reviews);
+    const reviewAvgs = reviewIds.map( id => {            
+        return (
+            (props.reviews[id].foodRating + props.reviews[id].serviceRating + props.reviews[id].valueRating + props.reviews[id].ambienceRating) / 4
+        )
+    })
     const ratings = props.ratings;
     let review;
 
     return(
         <div className='show-page-div'>
-            <h2 className='show-section-header'>
-                What {ratings.count} people are saying
-            </h2>
 
-            <h3 id='show-reviews-subheader'>
-                Overall ratings and reviews
-            </h3>
-            <p className='show-reviews-text'>
-                Reviews can only be made by diners who have eaten at this restaurant
-            </p>
+            <div>
+                <h2 className='show-section-header'>
+                    What {ratings.count} people are saying
+                </h2>
 
-            <div id='show-reviews-average'>
-                <RatingIcon rating={props.ratings.average} />
-                <p>{props.ratings.average} based on recent ratings</p>
+                <h3 id='show-reviews-subheader'>
+                    Overall ratings and reviews
+                </h3>
+                <p className='show-reviews-text'>
+                    Reviews can only be made by diners who have eaten at this restaurant
+                </p>
+
+                <div id='show-reviews-average'>
+                    <RatingIcon rating={props.ratings.average} />
+                    <p>{props.ratings.average} based on recent ratings</p>
+                </div>
+
+                <div id='show-reviews-container'>
+                    <div id='show-reviews-subreview'>
+                        <p className='review-cat-text'>{props.ratings.food}</p>
+                        <p className='show-reviews-text'>Food</p>
+                    </div>
+                    <div className="vert-solid"></div>
+                    <div id='show-reviews-subreview'>
+                        <p className='review-cat-text'>{props.ratings.service}</p>
+                        <p className='show-reviews-text'>Service</p>
+                    </div>
+                    <div className="vert-solid"></div>               
+                    <div id='show-reviews-subreview'>
+                        <p className='review-cat-text'>{props.ratings.ambience}</p>
+                        <p className='show-reviews-text'>Ambience</p>
+                    </div>                
+                    <div className="vert-solid"></div>                
+                    <div id='show-reviews-subreview'>
+                        <p className='review-cat-text'>{props.ratings.value}</p>
+                        <p className='show-reviews-text'>Value</p>
+                    </div>
+                </div>
             </div>
 
-            <div id='show-reviews-container'>
-                <div id='show-reviews-subreview'>
-                    <p>{props.ratings.food}</p>
-                    <p>Food</p>
-                </div>
-                <hr className="vert-solid" />
-                <div id='show-reviews-subreview'>
-                    <p>{props.ratings.service}</p>
-                    <p>Service</p>
-                </div>
-                <hr className="vert-solid" />                
-                <div id='show-reviews-subreview'>
-                    <p>{props.ratings.ambience}</p>
-                    <p>Ambience</p>
-                </div>                
-                <hr className="vert-solid" />                
-                <div id='show-reviews-subreview'>
-                    <p>{props.ratings.value}</p>
-                    <p>Value</p>
-                </div>
-            </div>
+            <BarGraphRatingsSummary reviewAvgs={reviewAvgs} />
 
             {reviewIds.map( id => {            
                 return <ReviewItem 

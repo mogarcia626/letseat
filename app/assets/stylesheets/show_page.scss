@@ -73,8 +73,8 @@
 #show-reviews-container {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
 	align-items: center;
+	height: 40px;
 }
 
 #show-reviews-subreview {
@@ -95,7 +95,13 @@
 	justify-content: flex-start;
 	align-items: center;
 	margin-right: 24px;
+}
 
+.reviewer-name-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .dot {
@@ -120,14 +126,14 @@
 	align-items: center;
 	& > * {
 		display: flex;
-		margin: 12px 8px;
+		margin: 12px 0;
 		font-size: 14px;
 	}
 }
 
 .review-cat-text {
 	font-weight: bold;
-	margin-right: 8px;
+	margin-right: 4px;
 }
 
 .review-cat-num {
@@ -135,9 +141,21 @@
 	color: #BF5700;
 }
 .middot-divider {
-	margin: 0;
+	margin: 0 12px;
 	padding: 0;
 	font-weight: bold;
 	font-size: 18px;
+}
+
+.empty-bar-graph {
+	color: white;
+	height: 20px;
+	width: 150px;
+	border: 1px solid #bbb;
+}
+
+.filled-bar-graph {
+	color: #df8963;
+	height: 20px;
 }
 

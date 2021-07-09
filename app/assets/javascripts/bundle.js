@@ -1378,6 +1378,48 @@ var RestaurantSubIndex = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/restaurant_show/bar_graph_ratings_summary.jsx":
+/*!***************************************************************************!*\
+  !*** ./frontend/components/restaurant_show/bar_graph_ratings_summary.jsx ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+function BarGraphRatingsSummary(props) {
+  console.log(props.reviewAvgs);
+  var total = props.reviewAvgs.length;
+  var five = props.reviewAvgs.filter(function (avg) {
+    return avg >= 4.5;
+  }).length / total;
+  var three = props.reviewAvgs.filter(function (avg) {
+    return avg >= 2.5 && avg < 3.5;
+  }).length / total;
+  var two = props.reviewAvgs.filter(function (avg) {
+    return avg >= 1.5 && avg < 2.5;
+  });
+  var one = props.reviewAvgs.filter(function (avg) {
+    return avg < 1.5;
+  }).length / total;
+  var four = 1 - (five + three + two + one);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "empty-bar-graph"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "filled-bar-graph",
+    style: "width:".concat(five, ";")
+  }))));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BarGraphRatingsSummary);
+
+/***/ }),
+
 /***/ "./frontend/components/restaurant_show/reservation_form.jsx":
 /*!******************************************************************!*\
   !*** ./frontend/components/restaurant_show/reservation_form.jsx ***!
@@ -1650,9 +1692,13 @@ function ReviewItem(props) {
     className: "reviewer-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "dot"
-  }, review.reviewer.firstName[0], review.reviewer.lastName[0]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, review.reviewer.firstName[0], review.reviewer.lastName[0]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "reviewer-name-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "show-reviews-text"
-  }, review.reviewer.firstName, " ", review.reviewer.lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, review.reviewer.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "show-reviews-text"
+  }, review.reviewer.lastName))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "review-item-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "review-item-row"
@@ -1923,17 +1969,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _review_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./review_item */ "./frontend/components/restaurant_show/review_item.jsx");
 /* harmony import */ var _restaurant_index_index_item_rating_icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../restaurant_index/index_item/rating-icon */ "./frontend/components/restaurant_index/index_item/rating-icon.jsx");
+/* harmony import */ var _bar_graph_ratings_summary__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bar_graph_ratings_summary */ "./frontend/components/restaurant_show/bar_graph_ratings_summary.jsx");
+
 
 
 
 
 function ShowReviews(props) {
   var reviewIds = Object.keys(props.reviews);
+  var reviewAvgs = reviewIds.map(function (id) {
+    return (props.reviews[id].foodRating + props.reviews[id].serviceRating + props.reviews[id].valueRating + props.reviews[id].ambienceRating) / 4;
+  });
   var ratings = props.ratings;
   var review;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "show-page-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
     className: "show-section-header"
   }, "What ", ratings.count, " people are saying"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     id: "show-reviews-subheader"
@@ -1947,19 +1998,37 @@ function ShowReviews(props) {
     id: "show-reviews-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "show-reviews-subreview"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.ratings.food), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Food")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-text"
+  }, props.ratings.food), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "show-reviews-text"
+  }, "Food")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "vert-solid"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "show-reviews-subreview"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.ratings.service), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Service")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-text"
+  }, props.ratings.service), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "show-reviews-text"
+  }, "Service")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "vert-solid"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "show-reviews-subreview"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.ratings.ambience), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Ambience")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-text"
+  }, props.ratings.ambience), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "show-reviews-text"
+  }, "Ambience")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "vert-solid"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "show-reviews-subreview"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, props.ratings.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Value"))), reviewIds.map(function (id) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-text"
+  }, props.ratings.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "show-reviews-text"
+  }, "Value")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_bar_graph_ratings_summary__WEBPACK_IMPORTED_MODULE_3__.default, {
+    reviewAvgs: reviewAvgs
+  }), reviewIds.map(function (id) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_review_item__WEBPACK_IMPORTED_MODULE_1__.default, {
       key: id,
       review: props.reviews[id]
