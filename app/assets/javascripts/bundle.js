@@ -1658,7 +1658,9 @@ function ReviewItem(props) {
     className: "review-item-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_restaurant_index_index_item_rating_icon__WEBPACK_IMPORTED_MODULE_1__.default, {
     rating: average
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Reviewed on ", review.createdAt)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "middot-divider"
+  }, "\xB7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Reviewed on ", review.createdAt)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "review-item-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "review-cat-text"

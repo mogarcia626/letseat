@@ -60,6 +60,7 @@
 
 .show-reviews-text {
 	font-size: 14px;
+	align-self: center;
 }
 
 #show-reviews-average {
@@ -91,7 +92,7 @@
 .reviewer-info {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	margin-right: 24px;
 
@@ -106,6 +107,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 12px;
 }
 
 .review-item-content {

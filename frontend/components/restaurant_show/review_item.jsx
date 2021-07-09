@@ -19,7 +19,7 @@ function ReviewItem(props) {
 
                 <div className='review-item-row'>
                     <RatingIcon rating={average} />
-                    <h3>.</h3>
+                    <p className='middot-divider'>&middot;</p>
                     <p>Reviewed on {review.createdAt}</p>
                 </div>
 
