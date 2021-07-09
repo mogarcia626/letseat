@@ -93,6 +93,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-right: 24px;
 
 }
 
@@ -114,5 +115,27 @@
 
 .review-item-row {
 	display: flex;
+	align-items: center;
+	& > * {
+		display: flex;
+		margin: 12px 8px;
+		font-size: 14px;
+	}
+}
+
+.review-cat-text {
+	font-weight: bold;
+	margin-right: 8px;
+}
+
+.review-cat-num {
+	font-weight: bold;
+	color: #BF5700;
+}
+.middot-divider {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	font-size: 18px;
 }
 

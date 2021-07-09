@@ -10,7 +10,9 @@ function ReviewItem(props) {
 
             <div className='reviewer-info'>
                 <span className='dot'>{review.reviewer.firstName[0]}{review.reviewer.lastName[0]}</span>
-                {review.reviewer.firstName} {review.reviewer.lastName}
+                    <p className='show-reviews-text'>
+                        {review.reviewer.firstName} {review.reviewer.lastName}
+                    </p>
             </div>
 
             <div className='review-item-content'>
@@ -22,13 +24,24 @@ function ReviewItem(props) {
                 </div>
 
                 <div className='review-item-row'>
-                    <p>Overall</p><p>{average}</p>
-                    <h3>.</h3>
-                    <p>Food</p><p>{review.foodRating}</p>
-                    <h3>.</h3>
-                    <p>Service</p><p>{review.serviceRating}</p>
-                    <h3>.</h3>
-                    <p>Ambience</p><p>{review.ambienceRating}</p>
+                    <div>
+                        <p className='review-cat-text'>Overall</p>
+                        <p className='review-cat-num'>{average}</p></div>
+                    <p className='middot-divider'>&middot;</p>
+                    <div>
+                        <p className='review-cat-text'>Food</p>
+                        <p className='review-cat-num'>{review.foodRating}</p>
+                    </div>
+                    <p className='middot-divider'>&middot;</p>
+                    <div>
+                        <p className='review-cat-text'>Service</p>
+                        <p className='review-cat-num'>{review.serviceRating}</p>
+                    </div>
+                    <p className='middot-divider'>&middot;</p>
+                    <div>
+                        <p className='review-cat-text'>Ambience</p>
+                        <p className='review-cat-num'>{review.ambienceRating}</p>
+                    </div>
                 </div>
 
                 <p>{review.comment}</p>

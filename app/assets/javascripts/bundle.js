@@ -1650,7 +1650,9 @@ function ReviewItem(props) {
     className: "reviewer-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "dot"
-  }, review.reviewer.firstName[0], review.reviewer.lastName[0]), review.reviewer.firstName, " ", review.reviewer.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, review.reviewer.firstName[0], review.reviewer.lastName[0]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "show-reviews-text"
+  }, review.reviewer.firstName, " ", review.reviewer.lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "review-item-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "review-item-row"
@@ -1658,7 +1660,29 @@ function ReviewItem(props) {
     rating: average
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Reviewed on ", review.createdAt)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "review-item-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Overall"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, average), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, review.foodRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Service"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, review.serviceRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Ambience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, review.ambienceRating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, review.comment)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-text"
+  }, "Overall"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-num"
+  }, average)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "middot-divider"
+  }, "\xB7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-text"
+  }, "Food"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-num"
+  }, review.foodRating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "middot-divider"
+  }, "\xB7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-text"
+  }, "Service"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-num"
+  }, review.serviceRating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "middot-divider"
+  }, "\xB7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-text"
+  }, "Ambience"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "review-cat-num"
+  }, review.ambienceRating))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, review.comment)));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewItem);
