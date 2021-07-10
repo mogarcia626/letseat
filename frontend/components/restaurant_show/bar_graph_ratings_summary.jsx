@@ -1,7 +1,6 @@
 import React from 'react';
 
 function BarGraphRatingsSummary(props) {
-    console.log(props.reviewAvgs)
     const total = props.reviewAvgs.length;
     const five = (props.reviewAvgs.filter( avg => {            
         return  avg >= 4.5        
@@ -19,12 +18,44 @@ function BarGraphRatingsSummary(props) {
 
     return(
         <div>
-            <div>
-                <p>5</p>
+            <div className='bar-graph-container'>
+                <p className='show-reviews-text'>5</p>
                 <span className='empty-bar-graph'>
-                    <span className='filled-bar-graph'
-                        style={`width:${five};`}>
-                    </span>
+                    <div className='filled-bar-graph'
+                        style={{width:five*200}}>
+                    </div>
+                </span>
+            </div>
+                <div className='bar-graph-container'>
+                <p className='show-reviews-text'>4</p>
+                <span className='empty-bar-graph'>
+                    <div className='filled-bar-graph'
+                        style={{width:four*200}}>
+                    </div>
+                </span>
+            </div>
+                <div className='bar-graph-container'>
+                <p className='show-reviews-text'>3</p>
+                <span className='empty-bar-graph'>
+                    <div className='filled-bar-graph'
+                        style={{width:three*200}}>
+                    </div>
+                </span>
+            </div>
+                <div className='bar-graph-container'>
+                <p className='show-reviews-text'>2</p>
+                <span className='empty-bar-graph'>
+                    <div className='filled-bar-graph'
+                        style={{width:two*200}}>
+                    </div>
+                </span>
+            </div>
+                <div className='bar-graph-container'>
+                <p className='show-reviews-text'>1</p>
+                <span className='empty-bar-graph'>
+                    <div className='filled-bar-graph'
+                        style={{width:one*200}}>
+                    </div>
                 </span>
             </div>
         </div>

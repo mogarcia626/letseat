@@ -55,7 +55,6 @@
 	font-size: 16px;
 	font-weight: bold;
 	margin: 8px 0;
-	padding: 8px 0;
 }
 
 .show-reviews-text {
@@ -147,15 +146,22 @@
 	font-size: 18px;
 }
 
+.bar-graph-container {
+	display: flex;
+	flex-direction: row;
+	& > * {
+		margin: 4px 4px;
+	}
+}
+
 .empty-bar-graph {
-	color: white;
-	height: 20px;
-	width: 150px;
+	height: 16px;
+	width: 200px;
 	border: 1px solid #bbb;
 }
 
 .filled-bar-graph {
-	color: #df8963;
-	height: 20px;
+	background-color: #df8963;
+	height: 16px;
 }
 

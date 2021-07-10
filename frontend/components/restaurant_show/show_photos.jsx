@@ -1,52 +1,40 @@
 import React from 'react';
 
-function ShowPhotos(photos) {
-    const count = photos.length;
-    // const fourPhotos = 
-    // const fivePhotos = 
-    // const morePhotos = 
+class ShowPhotos extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-    return(
+    render() {
+        const photos = this.props.photos;
+        const count = photos.length;
+        const photosLayout = [];
+
+        for (let i = 0; i < 4; i++) {
+    
+            if (i===2) {
+                photosLayout.push(<img className='show-middle-image' key={i} src={photos[i]} alt="" />)
+            } else if (photos[i]) {
+                photosLayout.push(<img className='show-image' key={i} src={photos[i]} alt="" />)
+            } else if (photos[i+1]) {
+                photosLayout.push(<div className='x-more-photos' key={i}>+ {count-4} more</div>)
+            } else {
+                photosLayout.push(<div className='empty-photo' key={i}></div>)
+            }                    
+        }
+
+        return(
         <div className='show-page-div'>
             <h2 className='show-section-header'>
-                {count} Photos
+                {photos.length} Photos
             </h2>
 
             <div className='photos-preview-container'>
-
-                <div className='photos-column-two'>
-                    <img className='show-image' src={photos[0]} alt="" />
-                    <img className='show-image' src={photos[1]} alt="" />
-                </div>
-
-                <div className='photos-column-one'>
-                    <img className='show-image' src={photos[2]} alt="" />                    
-                </div>
-
-                {count === 4 ? 
-                    <div className='photos-column-two'>
-                        <img className='show-image' src={photos[3]} alt="" /> 
-                        <div className='empty-photo'></div>
-                    </div>
-                : null }
-
-                {count === 5 ? 
-                    <div className='photos-column-two'>
-                        <img className='show-image' src={photos[3]} alt="" /> 
-                        <img className='show-image' src={photos[4]} alt="" /> 
-                    </div>
-                : null }
-
-                {count > 5 ?
-                    <div className='photos-column-two'>
-                        <img className='show-image' src={photos[3]} alt="" /> 
-                        <div className='x-more-photos'>+ {count-4} more</div>
-                    </div> 
-                : null }
-
+                {photosLayout}
             </div>
         </div>
-    )
+        )
+    }
 }
 
 export default ShowPhotos

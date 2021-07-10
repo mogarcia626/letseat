@@ -15,48 +15,48 @@ function ShowReviews(props) {
 
     return(
         <div className='show-page-div'>
+            <h2 className='show-section-header'>
+                What {ratings.count} people are saying
+            </h2>
+            <h3 id='show-reviews-subheader'>
+                Overall ratings and reviews
+            </h3>
 
-            <div>
-                <h2 className='show-section-header'>
-                    What {ratings.count} people are saying
-                </h2>
+            <div className='bar-graph-container'>
+                <div>
+                    <p className='show-reviews-text'>
+                        Reviews can only be made by diners who have eaten at this restaurant
+                    </p>
 
-                <h3 id='show-reviews-subheader'>
-                    Overall ratings and reviews
-                </h3>
-                <p className='show-reviews-text'>
-                    Reviews can only be made by diners who have eaten at this restaurant
-                </p>
+                    <div id='show-reviews-average'>
+                        <RatingIcon rating={props.ratings.average} />
+                        <p className='show-reviews-text'>{props.ratings.average} based on recent ratings</p>
+                    </div>
 
-                <div id='show-reviews-average'>
-                    <RatingIcon rating={props.ratings.average} />
-                    <p>{props.ratings.average} based on recent ratings</p>
+                    <div id='show-reviews-container'>
+                        <div id='show-reviews-subreview'>
+                            <p className='review-cat-text'>{props.ratings.food}</p>
+                            <p className='show-reviews-text'>Food</p>
+                        </div>
+                        <div className="vert-solid"></div>
+                        <div id='show-reviews-subreview'>
+                            <p className='review-cat-text'>{props.ratings.service}</p>
+                            <p className='show-reviews-text'>Service</p>
+                        </div>
+                        <div className="vert-solid"></div>               
+                        <div id='show-reviews-subreview'>
+                            <p className='review-cat-text'>{props.ratings.ambience}</p>
+                            <p className='show-reviews-text'>Ambience</p>
+                        </div>                
+                        <div className="vert-solid"></div>                
+                        <div id='show-reviews-subreview'>
+                            <p className='review-cat-text'>{props.ratings.value}</p>
+                            <p className='show-reviews-text'>Value</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div id='show-reviews-container'>
-                    <div id='show-reviews-subreview'>
-                        <p className='review-cat-text'>{props.ratings.food}</p>
-                        <p className='show-reviews-text'>Food</p>
-                    </div>
-                    <div className="vert-solid"></div>
-                    <div id='show-reviews-subreview'>
-                        <p className='review-cat-text'>{props.ratings.service}</p>
-                        <p className='show-reviews-text'>Service</p>
-                    </div>
-                    <div className="vert-solid"></div>               
-                    <div id='show-reviews-subreview'>
-                        <p className='review-cat-text'>{props.ratings.ambience}</p>
-                        <p className='show-reviews-text'>Ambience</p>
-                    </div>                
-                    <div className="vert-solid"></div>                
-                    <div id='show-reviews-subreview'>
-                        <p className='review-cat-text'>{props.ratings.value}</p>
-                        <p className='show-reviews-text'>Value</p>
-                    </div>
-                </div>
+                <BarGraphRatingsSummary reviewAvgs={reviewAvgs} />
             </div>
-
-            <BarGraphRatingsSummary reviewAvgs={reviewAvgs} />
 
             {reviewIds.map( id => {            
                 return <ReviewItem 

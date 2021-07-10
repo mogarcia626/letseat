@@ -44,35 +44,40 @@ $source: 'dev';
 	background-size: cover;
 }
 
+// .photos-preview-container {
+// 	width: 100%;
+// 	display: flex;
+// 	justify-content: space-between;
+// }
+
 .photos-preview-container {
 	width: 100%;
-	display: flex;
-	justify-content: space-between;
-}
-
-.photos-colulmn-two {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 25%;
-	height: 50vh;
-}
-
-.photos-colulmn-one {
-	width: 50%;	
-	height: 50vh;
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+  	grid-template-rows: 1fr 1fr;
+	grid-gap: 8px;
 }
 
 .show-image {
+	object-fit: scale-down;
+	height: 50%;
+	width: 100%;
+}
 
+.show-middle-image {
+	object-fit: scale-down;
+	height: 200%;
+	width: 100%
 }
 
 .empty-photo {
 	background-color: #ffffff00;
+	height: 50%;
 }
 
 .x-more-photos {
 	background-color: black;
+	height: 50%;
 	&:hover {
 		background-color: #696969;
 	}
