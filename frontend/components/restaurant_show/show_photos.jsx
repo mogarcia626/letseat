@@ -9,15 +9,26 @@ class ShowPhotos extends React.Component {
         const photos = this.props.photos;
         const count = photos.length;
         const photosLayout = [];
+        let image;
 
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 5; i++) {
     
             if (i===2) {
                 photosLayout.push(<img className='show-middle-image' key={i} src={photos[i]} alt="" />)
+            } else if (i===4 && photos[i+1]) {
+                image = {backgroundImage: "url(" + photos[i] +")"}
+                photosLayout.push(
+                    <div key={i} className='x-more-photos'>
+                        <div
+                            className='image-preview-underlay'
+                            style={image}
+                        >
+                        </div>
+                        <p className='text-on-image'>+ {count-4} more</p>
+                    </div>
+                )
             } else if (photos[i]) {
                 photosLayout.push(<img className='show-image' key={i} src={photos[i]} alt="" />)
-            } else if (photos[i+1]) {
-                photosLayout.push(<div className='x-more-photos' key={i}>+ {count-4} more</div>)
             } else {
                 photosLayout.push(<div className='empty-photo' key={i}></div>)
             }                    

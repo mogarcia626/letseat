@@ -236,7 +236,8 @@ var CLOSE_MODAL = 'CLOSE_MODAL';
 var openModal = function openModal(modal) {
   return {
     type: OPEN_MODAL,
-    modal: modal
+    modal: modal.modal,
+    data: modal.data
   };
 };
 var closeModal = function closeModal() {
@@ -776,20 +777,29 @@ function SessionButtons(_ref2) {
     className: "right-nav"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: function onClick() {
-      return openModal('search');
+      return openModal({
+        modal: 'search',
+        data: null
+      });
     },
     className: "icon-button"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_im__WEBPACK_IMPORTED_MODULE_3__.ImSearch, {
     size: 16
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: function onClick() {
-      return openModal('signup');
+      return openModal({
+        modal: 'signup',
+        data: null
+      });
     },
     className: "session-button",
     id: "session-button-dark"
   }, "Sign Up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: function onClick() {
-      return openModal('login');
+      return openModal({
+        modal: 'login',
+        data: null
+      });
     },
     className: "session-button",
     id: "session-button-light"
@@ -902,7 +912,9 @@ var Welcome = /*#__PURE__*/function (_React$Component) {
         size: 20
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: function onClick() {
-          return _this2.props.openModal('search');
+          return _this2.props.openModal({
+            modal: 'search'
+          });
         },
         className: "icon-button"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_im__WEBPACK_IMPORTED_MODULE_5__.ImSearch, {
@@ -1938,8 +1950,9 @@ var ShowPhotos = /*#__PURE__*/function (_React$Component) {
       var photos = this.props.photos;
       var count = photos.length;
       var photosLayout = [];
+      var image;
 
-      for (var i = 0; i < 4; i++) {
+      for (var i = 0; i < 5; i++) {
         if (i === 2) {
           photosLayout.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
             className: "show-middle-image",
@@ -1947,6 +1960,19 @@ var ShowPhotos = /*#__PURE__*/function (_React$Component) {
             src: photos[i],
             alt: ""
           }));
+        } else if (i === 4 && photos[i + 1]) {
+          image = {
+            backgroundImage: "url(" + photos[i] + ")"
+          };
+          photosLayout.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            key: i,
+            className: "x-more-photos"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "image-preview-underlay",
+            style: image
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+            className: "text-on-image"
+          }, "+ ", count - 4, " more")));
         } else if (photos[i]) {
           photosLayout.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
             className: "show-image",
@@ -1954,11 +1980,6 @@ var ShowPhotos = /*#__PURE__*/function (_React$Component) {
             src: photos[i],
             alt: ""
           }));
-        } else if (photos[i + 1]) {
-          photosLayout.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-            className: "x-more-photos",
-            key: i
-          }, "+ ", count - 4, " more"));
         } else {
           photosLayout.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
             className: "empty-photo",
@@ -2654,7 +2675,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       className: "button-link",
       onClick: function onClick(e) {
         e.preventDefault();
-        dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)('signup'));
+        dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)({
+          modal: 'signup'
+        }));
       }
     }, "Create an account")
   };
@@ -2711,8 +2734,9 @@ function Modal(_ref) {
   }
 
   var component;
+  console.log(modal);
 
-  switch (modal) {
+  switch (modal.modal) {
     case 'login':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_login_form_container__WEBPACK_IMPORTED_MODULE_3__.default, null);
       break;
@@ -2726,6 +2750,9 @@ function Modal(_ref) {
         id: "search-form-modal"
       });
       break;
+    // case 'photo-carousel':
+    //     component = <PhotoCarousel />;
+    //     break;
 
     default:
       return null;
@@ -2959,7 +2986,9 @@ var mDTP = function mDTP(dispatch) {
       className: "button-link",
       onClick: function onClick(e) {
         e.preventDefault();
-        dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)('login'));
+        dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)({
+          modal: 'login'
+        }));
       }
     }, "Login")
   };
@@ -3074,10 +3103,15 @@ __webpack_require__.r(__webpack_exports__);
 var modalReducer = function modalReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  console.log(action);
 
   switch (action.type) {
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.OPEN_MODAL:
-      return action.modal;
+      var newModalState = {
+        modal: action.modal,
+        data: action.data
+      };
+      return newModalState;
 
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.CLOSE_MODAL:
       return null;

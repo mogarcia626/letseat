@@ -10,24 +10,24 @@ const mDTP = dispatch => ({
     openModal: modal => dispatch(openModal(modal)),
 });
 
-function SessionButtons({ openModal }) {
+function SessionButtons({openModal}) {
     
     return (
         
         <div className='right-nav'>
             <button
-                onClick={() => openModal('search')}
+                onClick={() => openModal({modal: 'search', data: null})}
                 className="icon-button">
                 <ImSearch size={16} />
             </button>
             <button 
-                onClick={() => openModal('signup')} 
+                onClick={() => openModal({modal: 'signup', data: null})} 
                 className='session-button'
                 id='session-button-dark'>
                     Sign Up
             </button>
             <button 
-                onClick={() => openModal('login')} 
+                onClick={() => openModal({modal: 'login', data: null})} 
                 className='session-button'
                 id='session-button-light'>
                     Sign In

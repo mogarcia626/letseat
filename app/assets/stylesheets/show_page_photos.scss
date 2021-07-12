@@ -44,41 +44,63 @@ $source: 'dev';
 	background-size: cover;
 }
 
-// .photos-preview-container {
-// 	width: 100%;
-// 	display: flex;
-// 	justify-content: space-between;
-// }
+.show-page-div	{
+	margin: 24px 0;
+	width: 100%;
+}
 
 .photos-preview-container {
-	width: 100%;
-	display: grid;
-	grid-template-columns: 1fr 2fr 1fr;
-  	grid-template-rows: 1fr 1fr;
-	grid-gap: 8px;
+	max-width: 100%;
+	height: 350px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
 }
 
 .show-image {
-	object-fit: scale-down;
+	object-fit: cover;
 	height: 50%;
-	width: 100%;
+	max-width: 33%;
+	cursor: pointer;
 }
 
 .show-middle-image {
-	object-fit: scale-down;
-	height: 200%;
-	width: 100%
+	object-fit: cover;
+	height: 100%;
+	max-width: 33%;
+	cursor: pointer;
 }
 
 .empty-photo {
 	background-color: #ffffff00;
 	height: 50%;
+	max-width: 33%;
 }
 
 .x-more-photos {
-	background-color: black;
+	position: relative;
 	height: 50%;
+	max-width: 33%;
+	cursor: pointer;
+}
+
+.image-preview-underlay {
+	position: absolute;
+	background-size: cover;
+	filter: brightness(50%);
+	width: 100%;
+	height: 100%;
+	z-index: 0;
 	&:hover {
-		background-color: #696969;
+		filter: brightness(35%);
 	}
+}
+
+.text-on-image {
+	position: absolute;
+	top: 40%;
+	left: 30%;
+	z-index: 5;
+	color: white;
+	font-size: 24px;
 }

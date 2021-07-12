@@ -22,7 +22,9 @@ function Modal({ modal, closeModal }) {
         return null;
     }
     let component;
-    switch (modal) {
+
+    console.log(modal)
+    switch (modal.modal) {
         case 'login':
             component = <LoginFormContainer />;
             break;
@@ -32,6 +34,9 @@ function Modal({ modal, closeModal }) {
         case 'search':
             component = <SearchBar id='search-form-modal'/>;
             break;
+        // case 'photo-carousel':
+        //     component = <PhotoCarousel />;
+        //     break;
         default:
             return null;
     }
