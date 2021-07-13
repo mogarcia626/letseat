@@ -1,7 +1,7 @@
 import React from 'react';
 import ShowBanner from './show_banner';
-import RestaurantContent from './restaurant_content';
-import ReservationForm from './show_content/reservation_form/reservation_form';
+import RestaurantContent from './restaurant_content/restaurant_content';
+import ReservationForm from './reservation_form/reservation_form';
 
 class RestaurantShow extends React.Component {
     constructor(props) {

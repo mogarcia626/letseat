@@ -3,7 +3,7 @@ import React from 'react';
 import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
 // import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import NavBar from './nav_bar/nav_bar';
-import Modal from './session/modal';
+import Modal from './general_use/modal';
 import HomePage from './home_page';
 import RestaurantShowContainer from './restaurant_show/restaurant_show_container';
 
