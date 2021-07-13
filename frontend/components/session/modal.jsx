@@ -4,6 +4,7 @@ import { closeModal } from '../../actions/modal_actions';
 import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
 import SearchBar from '../search_bar/search_bar';
+import PhotoModal from '../restaurant_show/photo_modal'
 
 const mSTP = state => {
     return {
@@ -23,7 +24,6 @@ function Modal({ modal, closeModal }) {
     }
     let component;
 
-    console.log(modal)
     switch (modal.modal) {
         case 'login':
             component = <LoginFormContainer />;
@@ -34,9 +34,9 @@ function Modal({ modal, closeModal }) {
         case 'search':
             component = <SearchBar id='search-form-modal'/>;
             break;
-        // case 'photo-carousel':
-        //     component = <PhotoCarousel />;
-        //     break;
+        case 'photo-carousel':
+            component = <PhotoModal />;
+            break;
         default:
             return null;
     }

@@ -1,8 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { openModal } from '../../actions/modal_actions';
+
+const mDTP = dispatch => ({
+    openModal: modal => dispatch(openModal(modal)),
+});
 
 class ShowPhotos extends React.Component {
     constructor(props) {
         super(props);
+        this.handlePhotoClick = this.handlePhotoClick.bind(this);
+    }
+
+    handlePhotoClick(e, i, photos) {
+        e.preventDefault();
+        this.props.openModal({
+            modal: 'photo-carousel', 
+            data: {
+                idx: i,
+                photos: photos
+            }
+        });
     }
 
     render() {
@@ -14,11 +32,19 @@ class ShowPhotos extends React.Component {
         for (let i = 0; i < 5; i++) {
     
             if (i===2) {
-                photosLayout.push(<img className='show-middle-image' key={i} src={photos[i]} alt="" />)
+                photosLayout.push( <img
+                    key={i}
+                    className='show-middle-image'                    
+                    onClick={(e)=> handlePhotoClick(e, i, photos)}
+                    src={photos[i]} />)
             } else if (i===4 && photos[i+1]) {
                 image = {backgroundImage: "url(" + photos[i] +")"}
                 photosLayout.push(
-                    <div key={i} className='x-more-photos'>
+                    <div 
+                    key={i}
+                    className='x-more-photos'
+                    onClick={(e)=> handlePhotoClick(e, i, photos)}
+                >
                         <div
                             className='image-preview-underlay'
                             style={image}
@@ -48,4 +74,4 @@ class ShowPhotos extends React.Component {
     }
 }
 
-export default ShowPhotos
+export default connect(mDTP)(ShowPhotos);

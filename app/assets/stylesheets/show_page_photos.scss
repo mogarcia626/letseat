@@ -104,3 +104,14 @@ $source: 'dev';
 	color: white;
 	font-size: 24px;
 }
+
+.photo-modal-container {
+	display: flex;
+	align-items: center;
+	justify-self: center;
+}
+
+.modal-image {
+	max-height: 70vh;
+	object-fit: cover;
+}
