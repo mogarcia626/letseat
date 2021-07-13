@@ -15,12 +15,12 @@ function ShowRatingsSummary(props) {
             </div>
 
             <div className='ratings-summary-with-icon'>
-                <GoComment />
+                <GoComment style={{marginRight: '4px'}} />
                 <p className='show-reviews-text'>{props.ratings.count} Reviews</p>
             </div>
 
             <div className='ratings-summary-with-icon'>
-                <MdRestaurant />
+                <MdRestaurant style={{marginRight: '4px'}} />
                 <p className='show-reviews-text'>{props.cuisine}</p>
             </div>
         </div>

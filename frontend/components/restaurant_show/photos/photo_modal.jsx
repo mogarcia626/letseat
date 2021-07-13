@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openModal, closeModal } from '../../actions/modal_actions'
+import { openModal, closeModal } from '../../../actions/modal_actions'
 import { RiArrowRightSLine, RiArrowLeftSLine, RiCloseFill } from "react-icons/ri";
 
 const mSTP = ({ ui }) => ({

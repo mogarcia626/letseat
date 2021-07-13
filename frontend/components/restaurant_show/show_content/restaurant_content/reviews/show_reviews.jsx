@@ -1,6 +1,6 @@
 import React from 'react';
-import ReviewItem from './review_item';
-import RatingIcon from '../restaurant_index/index_item/rating-icon';
+import ReviewItem from '../../review_item';
+import RatingIcon from '../../../restaurant_index/index_item/rating-icon';
 import BarGraphRatingsSummary from './bar_graph_ratings_summary';
 
 function ShowReviews(props) {

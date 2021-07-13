@@ -2,14 +2,14 @@ import React from 'react';
 import ShowRatingsSummary from './show_rating_summary'
 import ShowPhotos from './show_photos';
 import ShowReviews from './show_reviews';
-import ReviewLinks from './review_links';
+import ShowNavLinks from './show_nav_links';
 
 function RestaurantContent(props) {
     
     return (
         <div id='restaurant-content'>
 
-            {/* <ReviewLinks /> */}
+            {/* <ShowNavLinks /> */}
             
             <h1 className='show-header'>{props.restaurant.name}</h1>
 
