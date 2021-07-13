@@ -38,14 +38,16 @@ class ShowPhotos extends React.Component {
                     src={photos[i]} />)
             } else if (i===4 && photos[i+1]) {
                 image = {backgroundImage: "url(" + photos[i] +")"}
-                photosLayout.push( <div 
-                    key={i}
-                    className='x-more-photos'
-                    onClick={(e)=> {e.preventDefault(); this.handlePhotoClick(i, photos);}}
-                >
-                    <div className='image-preview-underlay' style={image}></div>
-                    <p className='text-on-image'>+ {count-4} more</p>
-                </div> )
+                photosLayout.push( 
+                    <div 
+                        key={i}
+                        className='x-more-photos'
+                        onClick={(e)=> {e.preventDefault(); this.handlePhotoClick(i, photos);}}
+                    >
+                        <div className='image-preview-underlay' style={image}></div>
+                        <p className='text-on-image'>+ {count-4} more</p>
+                    </div> 
+                )
             } else if (photos[i]) {
                 photosLayout.push(
                     <img

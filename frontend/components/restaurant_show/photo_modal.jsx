@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openModal } from '../../actions/modal_actions'
-import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri";
+import { openModal, closeModal } from '../../actions/modal_actions'
+import { RiArrowRightSLine, RiArrowLeftSLine, RiCloseFill } from "react-icons/ri";
 
 const mSTP = ({ ui }) => ({
     idx: ui.modal.data.idx,
@@ -9,7 +9,8 @@ const mSTP = ({ ui }) => ({
 });
 
 const mDTP = dispatch => ({
-    openModal: modal => dispatch(openModal(modal))
+    openModal: modal => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal())
 });
 
 class PhotoModal extends React.Component {
@@ -52,18 +53,31 @@ class PhotoModal extends React.Component {
     };
     
     render() {
-        console.log(this.props)
         return (
-            <div className='photo-modal-container'>
+            <div className='photo-modal-background'>
+
                 <div className='photo-modal'>
-                    <RiArrowLeftSLine size={48} onClick={this.handleClickLeft}/>
-                    <img 
-                        className='modal-image'
+                    <RiArrowLeftSLine size={48}
+                        className='photo-modal-buttons'
+                        onClick={this.handleClickLeft}
+                    />
+                    
+                    <img className='modal-image'
                         src={this.props.photos[this.props.idx]}
-                        />
-                    <RiArrowRightSLine size={48} onClick={this.handleClickRight}/>
+                    />
+
+                    <RiArrowRightSLine size={48}
+                        className='photo-modal-buttons'
+                        onClick={this.handleClickRight}
+                    />
                 </div>
-            </div>            
+
+                <RiCloseFill size={48}
+                    id='photo-modal-close'
+                    className='photo-modal-buttons'
+                    onClick={this.props.closeModal}
+                />
+        </div>            
         )
     }
 };
