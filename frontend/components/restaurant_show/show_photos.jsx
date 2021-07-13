@@ -12,8 +12,7 @@ class ShowPhotos extends React.Component {
         this.handlePhotoClick = this.handlePhotoClick.bind(this);
     }
 
-    handlePhotoClick(e, i, photos) {
-        e.preventDefault();
+    handlePhotoClick(i, photos) {        
         this.props.openModal({
             modal: 'photo-carousel', 
             data: {
@@ -35,26 +34,27 @@ class ShowPhotos extends React.Component {
                 photosLayout.push( <img
                     key={i}
                     className='show-middle-image'                    
-                    onClick={(e)=> handlePhotoClick(e, i, photos)}
+                    onClick={(e)=> {e.preventDefault(); this.handlePhotoClick(i, photos);}}
                     src={photos[i]} />)
             } else if (i===4 && photos[i+1]) {
                 image = {backgroundImage: "url(" + photos[i] +")"}
-                photosLayout.push(
-                    <div 
+                photosLayout.push( <div 
                     key={i}
                     className='x-more-photos'
-                    onClick={(e)=> handlePhotoClick(e, i, photos)}
+                    onClick={(e)=> {e.preventDefault(); this.handlePhotoClick(i, photos);}}
                 >
-                        <div
-                            className='image-preview-underlay'
-                            style={image}
-                        >
-                        </div>
-                        <p className='text-on-image'>+ {count-4} more</p>
-                    </div>
-                )
+                    <div className='image-preview-underlay' style={image}></div>
+                    <p className='text-on-image'>+ {count-4} more</p>
+                </div> )
             } else if (photos[i]) {
-                photosLayout.push(<img className='show-image' key={i} src={photos[i]} alt="" />)
+                photosLayout.push(
+                    <img
+                        key={i}
+                        className='show-image'
+                        onClick={(e)=> {e.preventDefault(); this.handlePhotoClick(i, photos);}}
+                        src={photos[i]}
+                    />
+                )
             } else {
                 photosLayout.push(<div className='empty-photo' key={i}></div>)
             }                    
@@ -74,4 +74,4 @@ class ShowPhotos extends React.Component {
     }
 }
 
-export default connect(mDTP)(ShowPhotos);
+export default connect(null, mDTP)(ShowPhotos);
