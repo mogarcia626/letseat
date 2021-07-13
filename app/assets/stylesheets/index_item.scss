@@ -8,14 +8,15 @@
 	align-items: flex-start;
 	width: 236px;
     height: 274px;
-    margin-right: 14px;
+    margin: 6px 14px 0 0;
     position: relative;
     top: 0;
     transition: top ease 0.3s;
 }
 
 .index-item:hover {    
-    top: -8px;    
+    top: -6px;   
+    box-shadow: 0 4px 4px #696969; 
 }
 
 .index-image-container {

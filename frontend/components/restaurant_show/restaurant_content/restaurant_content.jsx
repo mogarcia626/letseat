@@ -13,8 +13,6 @@ function RestaurantContent(props) {
             
             <h1 className='show-header' id='Overview'>{props.restaurant.name}</h1>
 
-            <hr className="solid" />
-
             <ShowRatingsSummary
                 ratings={props.restaurant.reviewAverages}
                 cuisine={props.restaurant.cuisine}

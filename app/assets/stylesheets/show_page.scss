@@ -4,20 +4,25 @@
 }
 
 #restaurant-content {
+	position: relative;
+	bottom: 40px;
+	background-color: white;
+	border-radius: 2px;
+	width: 50vw;
+	min-width: 550px;
+	padding: 0 20px 20px;
+	margin: 0 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 50vw;
-	min-width: 550px;
-	border: 1px solid black;
-	padding: 20px;
-	margin: 0 20px;
 }
 
 #nav-link-container {
-	height: 48px;
+	align-self: flex-start;
+	position: sticky;
+	top: -1px;
 	width: 100%;
-	padding: 0.5rem;
+	background-color: white;
 	display: flex;
 	border-bottom: 1px solid #d8d9db;
 }
@@ -31,12 +36,14 @@
 	&:hover {
 		color: #BF5700;
 		border-bottom: 2px solid #BF5700;
+		padding-bottom: 12px;
 	}
 }
 
 #ratings-summary {
 	display: flex;
 	justify-content: flex-start;
+	margin: 16px 0;
 }
 
 .ratings-summary-with-icon {
@@ -46,6 +53,10 @@
 }
 
 #reservation-form {
+	position: relative;
+	bottom: 40px;
+	border-radius: 2px;
+	background-color: white;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -56,13 +67,15 @@
 }
 
 .show-header {
-	padding: 16px 0;
+	font-size: 48px;
+	padding: 24px 0 32px;
+	border-bottom: 1px solid #d8d9db;
 }
 
 .show-section-header {
 	font-size: 24px;
 	width: 100%;
-	border-bottom: solid #bbb 1px;
+	border-bottom: 1px solid #d8d9db;
 	padding: 16px 0 16px;
 	margin-bottom: 16px;
 }
