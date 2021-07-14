@@ -5,7 +5,7 @@
 	align-items: center;
 	min-width: 636px;
 	max-width: 1200px;
-	width: 100vw;
+	width: 100%;
     margin: 16px 0 16px 0;
     // padding: 24px
 }
@@ -13,6 +13,7 @@
 .sub-index-container {
     min-width: 636px;
 	max-width: 1200px;
+    width: 100%;
     margin-bottom: 40px;
 }
 

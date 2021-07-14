@@ -2,10 +2,12 @@ import React from 'react';
 // import { Provider } from 'react-redux';
 import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
 // import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import NavBar from './nav_bar/nav_bar';
 import Modal from './general_use/modal';
-import HomePage from './home_page';
+import NavBar from './nav_bar/nav_bar';
+// import Footer from './general_use/footer';
+import HomePage from './restaurant_home_index/home_page';
 import RestaurantShowContainer from './restaurant_show/restaurant_show_container';
+import RestaurantSearchIndex from './restaurant_search_index/restaurant_search_index';
 
 
 const App = () => (
@@ -16,6 +18,7 @@ const App = () => (
         <Switch>
             <Route exact path="/" component={HomePage}/>
             <Route path="/restaurants/:restaurantId" component={RestaurantShowContainer} />
+            <Route exact path="/restaurants" component={RestaurantSearchIndex} />
             <Redirect to='/' />
         </Switch>
 

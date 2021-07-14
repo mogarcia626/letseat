@@ -9,6 +9,7 @@ Reservation.delete_all
 Review.delete_all
 Schedule.delete_all
 
+# DEV-TO-PRO!
 seeding_database = 'local'  
 #'local' will seed localhost from amazon-dev bucket
 #'heroku' will seed heroku from amazon-prod bucket

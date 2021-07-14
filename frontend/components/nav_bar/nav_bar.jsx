@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom'
 import Welcome from './welcome';
 import SessionButtons from './session_buttons';
 
-
-
-
 const mSTP =  state  => {
     return {
         currentUser: state.entities.users[state.session.id]

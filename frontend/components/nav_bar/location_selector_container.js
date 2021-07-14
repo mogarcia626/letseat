@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateFilter } from '../../actions/filter_actions';
+import { updateLocationFilter } from '../../actions/filter_actions';
 import { requestAllRestaurants } from '../../actions/restaurant_actions';
 import LocationSelector from './location_selector';
 
@@ -11,7 +11,7 @@ const mSTP = (state) => {
 
 const mDTP = dispatch => {
     return {
-        updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
+        updateLocationFilter: (city) => dispatch(updateLocationFilter(city)),
         requestAllRestaurants: filters => dispatch(requestAllRestaurants(filters)),
     };
 };

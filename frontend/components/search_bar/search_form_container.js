@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import SearchForm from './search_form';
 
-const mapStateToProps = () => {
+const mSTP = () => {
     return {
         
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mDTP = dispatch => {
     return {
         closeModal: () => dispatch(closeModal()),        
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
+export default connect(mSTP, mDTP)(SearchForm);
 

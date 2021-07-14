@@ -1,5 +1,5 @@
 class Api::RestaurantsController < ApplicationController
-    # before_action :require_logged_in, only: [:create]
+    # before_action :require_logged_in, only: [:create, :update, :destroy]
 
     def index
       city = params[:filters][:city]
