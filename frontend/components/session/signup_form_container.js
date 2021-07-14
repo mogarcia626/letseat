@@ -20,7 +20,7 @@ const mDTP = dispatch => {
             <button className='button-link'
                 onClick={(e) => {
                     e.preventDefault();
-                    dispatch(openModal('login'))}
+                    dispatch(openModal({modal: 'login'}))}
                 }>
                 Login
             </button>

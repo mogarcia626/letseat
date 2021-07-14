@@ -9,10 +9,11 @@ Reservation.delete_all
 Review.delete_all
 Schedule.delete_all
 
-seeding_database = 'heroku'  
+seeding_database = 'local'  
 #'local' will seed localhost from amazon-dev bucket
 #'heroku' will seed heroku from amazon-prod bucket
-# go to show_page.scss and search_bar.scss and change $source to either 'dev' or 'pro'
+# go to show_pag_photos.scss and search_bar.scss and change $source
+# to either 'dev' or 'pro'
 
 
 #Generates 1 Demo User & 5 restaurant owners that will own all seeded restaurants

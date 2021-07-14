@@ -1,66 +1,49 @@
-.banner-default, .banner-thai, .banner-chinese,
-.banner-japanese, .banner-steak,
-.banner-sea, .banner-latin{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	min-height: 318px;
-	max-height: 636px;
-	min-width: 636px;
-	max-width: 1272px;
-	width: 100vw;
-}
-
-$source: 'pro';
-
-.banner-thai {
-	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/thai.png');
-	background-size: cover;
-}
-
-.banner-chinese {
-	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/chinese.png');
-	background-size: cover;
-}
-
-.banner-japanese {
-	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/japanese.png');
-	background-size: cover;
-}
-
-.banner-steak {
-	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/steak.png');
-	background-size: cover;
-}
-
-.banner-sea {
-	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/sea.png');
-	background-size: cover;
-}
-
-.banner-latin {
-	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/latin.png');
-	background-size: cover;
-}
-
 #show-content {
 	display: flex;
-	justify-content: space-around;	
+	justify-content: center;	
 }
 
 #restaurant-content {
+	position: relative;
+	bottom: 40px;
+	background-color: white;
+	border-radius: 2px;
+	width: 50vw;
+	min-width: 550px;
+	padding: 0 20px 20px;
+	margin: 0 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 50vw;
-	border: 1px solid black;
-	padding: 20px;
+}
+
+#nav-link-container {
+	align-self: flex-start;
+	position: sticky;
+	top: -1px;
+	width: 100%;
+	background-color: white;
+	display: flex;
+	border-bottom: 1px solid #d8d9db;
+}
+
+.show-page-scroll-link {	
+	font-size: 14px;
+	font-weight: 500;
+	align-self: center;
+	padding: 14px 0.5rem;
+	margin-right: 0.5rem;
+	&:hover {
+		color: #BF5700;
+		border-bottom: 2px solid #BF5700;
+		padding-bottom: 12px;
+	}
 }
 
 #ratings-summary {
 	display: flex;
 	justify-content: flex-start;
+	margin: 16px 0;
 }
 
 .ratings-summary-with-icon {
@@ -70,10 +53,144 @@ $source: 'pro';
 }
 
 #reservation-form {
+	position: relative;
+	bottom: 40px;
+	border-radius: 2px;
+	background-color: white;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 25vw;
 	border: 1px solid black;
 	padding: 12px;
+	margin: 0 20px;
 }
+
+.show-header {
+	font-size: 48px;
+	padding: 24px 0 32px;
+	border-bottom: 1px solid #d8d9db;
+}
+
+.show-section-header {
+	font-size: 24px;
+	width: 100%;
+	border-bottom: 1px solid #d8d9db;
+	padding: 16px 0 16px;
+	margin-bottom: 16px;
+}
+
+#show-reviews-subheader {
+	font-size: 16px;
+	font-weight: bold;
+	margin: 8px 0;
+}
+
+.show-reviews-text {
+	font-size: 14px;
+	align-self: center;
+}
+
+#show-reviews-average {
+	display: flex;
+	align-items: center;
+	margin: 8px 0;
+	padding: 8px 0;
+}
+
+#show-reviews-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 40px;
+}
+
+#show-reviews-subreview {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.review-item {
+	margin: 20px 0;
+	display: flex;
+}
+
+.reviewer-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	margin-right: 24px;
+}
+
+.reviewer-name-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.dot {
+	color: white;
+	height: 60px;
+	width: 60px;
+	background-color: #df8963;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.review-item-content {
+	display: flex;
+	flex-direction: column;	
+}
+
+.review-item-row {
+	display: flex;
+	align-items: center;
+	& > * {
+		display: flex;
+		margin: 12px 0;
+		font-size: 14px;
+	}
+}
+
+.review-cat-text {
+	font-weight: bold;
+	margin-right: 4px;
+}
+
+.review-cat-num {
+	font-weight: bold;
+	color: #BF5700;
+}
+.middot-divider {
+	margin: 0 12px;
+	padding: 0;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.bar-graph-container {
+	display: flex;
+	flex-direction: row;
+	& > * {
+		margin: 4px 4px;
+	}
+}
+
+.empty-bar-graph {
+	height: 16px;
+	width: 200px;
+	border: 1px solid #bbb;
+}
+
+.filled-bar-graph {
+	background-color: #df8963;
+	height: 16px;
+}
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import RatingIcon from './rating-icon'
+import RatingIcon from '../../general_use/rating_icon'
 
 class RestaurantIndexItem extends React.Component {
     constructor(props) {

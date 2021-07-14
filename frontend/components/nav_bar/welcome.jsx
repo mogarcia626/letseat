@@ -36,7 +36,7 @@ class Welcome extends React.Component {
                 </button>
 
                 <button
-                    onClick={() => this.props.openModal('search')}
+                    onClick={() => this.props.openModal({modal: 'search'})}
                     className="icon-button">
                     <ImSearch size={16} />
                 </button>

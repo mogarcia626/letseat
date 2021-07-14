@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => {
             <button className='button-link'
                 onClick={(e) => {
                     e.preventDefault();
-                    dispatch(openModal('signup'))
+                    dispatch(openModal({modal: 'signup'}))
                 }
             }>
                 Create an account
