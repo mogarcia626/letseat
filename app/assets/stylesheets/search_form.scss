@@ -16,6 +16,9 @@ justify-content: center;
 }
 
 .dropdown-inputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: white;
     border: none;
     border-radius: 4px;
@@ -24,15 +27,43 @@ justify-content: center;
 }
 
 .search-modal-dropdown-item {
+    position: relative;
     font-family: 'Nunito Sans';
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500 !important;
     border: none;
-    width: 140px;
-    color: black;
+    width: 152px;
+    color: #2d333f !important;
     border-radius: 0;
-    padding: 8px 0 8px 4px;
-    margin-left: 8px;
+    padding: 8px 4px;
+    margin: 0 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .drop-content {
+        position: absolute;
+        top: 36px;
+        left: -12px;
+        width: 100%;
+    }
+
+    #calendar {  
+    }
+    #time-options {        
+        max-height: 360px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    #party-options {
+        max-height: 360px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+
+.search-text {
 }
 
 #left-dropdown-input {

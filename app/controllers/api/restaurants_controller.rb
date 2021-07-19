@@ -3,8 +3,8 @@ class Api::RestaurantsController < ApplicationController
 
     def index
       city = params[:filters][:city]
-      cuisine = params[:filters][:cuisine]
-      @restaurants = Restaurant.apply_filters(city, cuisine)
+      search = params[:filters][:search]
+      @restaurants = Restaurant.apply_filters(city, search)
       render :index
     end
 

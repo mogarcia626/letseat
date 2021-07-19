@@ -1,7 +1,7 @@
 import { requestAllRestaurants } from './restaurant_actions'
 
 export const UPDATE_LOCATION_FILTER = 'UPDATE_FILTER';
-export const UPDATE_CUISINE_FILTER = 'UPDATE_CUISINE_FILTER';
+export const UPDATE_SEARCH_FILTER = 'UPDATE_SEARCH_FILTER';
 
 export const changeLocationFilter = (city) => ({
     type: UPDATE_LOCATION_FILTER,
@@ -13,12 +13,12 @@ export const updateLocationFilter = (city) => (dispatch, getState) => {
     return requestAllRestaurants(getState().ui.filters)(dispatch);
 };
 
-export const changeCuisineFilter = (cuisine) => ({
-    type: UPDATE_CUISINE_FILTER,
-    cuisine
+export const changeSearchFilter = (search) => ({
+    type: UPDATE_SEARCH_FILTER,
+    search
 });
 
-export const updateCuisineFilter = (cuisine) => (dispatch, getState) => {
-    dispatch(changeCuisineFilter(cuisine));
+export const updateSearchFilter = (search) => (dispatch, getState) => {
+    dispatch(changeSearchFilter(search));
     return requestAllRestaurants(getState().ui.filters)(dispatch);
 };

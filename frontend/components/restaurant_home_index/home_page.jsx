@@ -5,7 +5,7 @@ import RestaurantIndex from './restaurant_index'
 const HomePage = () => (
     <div className='container'>
         <SearchBar />
-        <RestaurantIndex />
+        {/* <RestaurantIndex /> */}
     </div>
 );
 

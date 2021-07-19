@@ -39,8 +39,8 @@ class LocationSelector extends React.Component {
         const pro = 'https://let-s-eat.herokuapp.com/#/';
         const dev = 'http://localhost:3000/#/';
         // DEV-TO-PRO!
-        if (window.location.href !== dev) window.location = dev
         this.props.updateLocationFilter(e.currentTarget.value)
+        if (window.location.href !== dev) window.location = dev
     }   
 
     render () {

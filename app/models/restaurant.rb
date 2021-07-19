@@ -29,15 +29,29 @@ class Restaurant < ApplicationRecord
 
     attr_reader :review_averages,
 
-    def self.apply_filters(city, cuisine)
-        if city=='' && cuisine==''
-            self.all
-        elsif city=='' && cuisine
-            self.where("cuisine = ?", cuisine)
-        elsif cuisine=='' && city
-            self.where("city = ?", city)
+    def self.apply_filters(city, search)   
+        # debugger
+        puts "search: #{search ? search : false}"
+        puts "city: #{city ? city : false}"
+        keyword_search = "%#{search}%"
+
+        if city=='' && search==''
+            res = self.all
+            debugger
+            return res
+        elsif city=='' && search
+            res = self.where("cuisine LIKE ? OR name LIKE ? OR city LIKE ?", keyword_search, keyword_search, keyword_search)
+            debugger
+            return res
+        elsif search=='' && city
+            res = self.where("city = ?", city)
+            debugger
+            return res
         else
-            self.where("city = ? AND cuisine = ?", city, cuisine)
+            res = self.where("city = ?", city)
+                .where("cuisine LIKE ? OR name LIKE ? OR city LIKE ?", keyword_search, keyword_search, keyword_search)
+            debugger
+            return res
         end
     end
 

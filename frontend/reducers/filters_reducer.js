@@ -1,9 +1,9 @@
 import { UPDATE_LOCATION_FILTER } from '../actions/filter_actions';
-import { UPDATE_CUISINE_FILTER } from '../actions/filter_actions';
+import { UPDATE_SEARCH_FILTER } from '../actions/filter_actions';
 
 const defaultFilters = Object.freeze({
     city: '',
-    cuisine: '',
+    search: '',
 });
 
 const filtersReducer = (state = defaultFilters, action) => {
@@ -12,8 +12,8 @@ const filtersReducer = (state = defaultFilters, action) => {
     switch (action.type) {
         case UPDATE_LOCATION_FILTER:
             return Object.assign({}, state, {city: action.city})   
-        case UPDATE_CUISINE_FILTER:
-            return Object.assign({}, state, {cuisine: action.cuisine})         
+        case UPDATE_SEARCH_FILTER:
+            return Object.assign({}, state, {search: action.search})         
         default:
             return state;
     }

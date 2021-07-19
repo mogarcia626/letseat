@@ -8,7 +8,9 @@
 #  restaurant_id :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  time          :integer
+#  time          :string
+#  day           :string
+#  year          :string
 #
 require 'test_helper'
 

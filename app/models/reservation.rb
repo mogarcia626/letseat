@@ -8,7 +8,9 @@
 #  restaurant_id :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  time          :integer
+#  time          :string
+#  day           :string
+#  year          :string
 #
 class Reservation < ApplicationRecord
     validates :time, :party_size, presence: true
