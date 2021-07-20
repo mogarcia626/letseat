@@ -16,13 +16,14 @@ export const fetchReservation = id => (
 );
 
 // Create a Reservation
-export const createReservation = reservation => (
-    $.ajax({
-        url: '/api/reservations',
+export const createReservation = reservation => {
+    debugger
+    return $.ajax({
+        url: `/api/reservations`,
         method: 'POST',
         data: { reservation }
     })
-);
+};
 
 // Delete a Reservation
 export const deleteReservation = reservation => (

@@ -1,8 +1,7 @@
 import React from 'react';
 import { resTimes, resParty2 } from '../../../util/general_utils';
 import { Calendar } from 'react-date-range';
-import { FiCalendar, FiClock } from 'react-icons/fi';
-import { FaChevronDown, FaRegUser } from 'react-icons/fa';
+import { FaChevronDown } from 'react-icons/fa';
 
 class ReservationForm extends React.Component {
     constructor(props) {
@@ -68,31 +67,98 @@ class ReservationForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (currentUser) {
-            const { date, time, party_size, search } = this.state        
+        if (this.props.user.id) {
+            
+            const { date, time, party_size } = this.state        
             const reservation = {
-                party_size: party_size,
-                user_id: currentuser.id,
-                restaurant_id: params[id],
-                time: date.time,
+                party_size: parseInt(party_size.slice(4)),
+                user_id: this.props.user.id,
+                restaurant_id: parseInt(window.location.hash.slice(14)),
+                time: time,
                 day: date.day,
                 year: date.year,
             };
+            debugger
             this.props.processForm(reservation).then( () => {
-                this.props.openModal('reservation-confirmation');
+                console.log('open confirmation modal')
+                debugger
+                // this.props.openModal({modal:'reservation-confirmation', data: newReservation});
             }) 
         } else {
-            this.openModal(signup)
+            this.props.openModal({modal: 'signup', data: null})
         }    
     }
 
     render() {
+        const { date, time, party_size, showCalendar, showParty, showTimes } = this.state
+        const today = new Date()
+        let maxDate = new Date(today)
+        maxDate.setDate(maxDate.getDate() + 365)
+
         return (            
             <div id='reservation-form'>
                 <h3>Make a Reservation</h3>
-                {/* <form action="" method="post">
+                <form action="" method="post" onSubmit={this.handleSubmit}>
+                    <label>Party Size</label>
 
-                </form> */}
+                        <div onClick={this.openPartyDropdown} >                            
+                            <div className="search-text">
+                                {party_size}
+                            </div>
+
+                            <FaChevronDown size={16}/>
+                            {showParty ?
+                            <div className='drop-content' id='party-options'>
+                                {resParty2.map((party, i) => {
+                                    return (
+                                    <option id='drop-item'
+                                        key={i}
+                                        onClick={this.update('party_size')}
+                                    >{party}</option>
+                                    )
+                                })}
+                            </div>            
+                            : null} 
+                        </div>
+
+                    <label>Date</label>
+                    <div onClick={this.openCalendar}>
+                        <div className="search-text" >{date.day} {date.year}</div> 
+                        <FaChevronDown size={16}/>
+                        {showCalendar ?
+                        <div className='drop-content' id='calendar'>
+                            <Calendar
+                                date={today}
+                                onChange={this.update('date')}
+                                minDate={today}
+                                maxDate={maxDate}
+                            />
+                        </div>                  
+                        : null} 
+                    </div>
+
+                    <label>Time</label>
+                        <div onClick={this.openTimeDropdown} >
+                            <div className="search-text">
+                                {time}
+                            </div>
+                            <FaChevronDown size={16}/>
+                            {showTimes ?
+                            <div className='drop-content' id='time-options'>
+                                {resTimes.map((time, i) => {
+                                    return (
+                                    <option id='drop-item'
+                                        key={i}
+                                        onClick={this.update('time')}
+                                    >{time}</option>
+                                    )
+                                })}
+                            </div>            
+                            : null}                             
+                        </div>
+
+                    <button>Find a table</button>
+                </form>
             </div>
         )
     }
@@ -105,10 +171,7 @@ export default ReservationForm
 //     
 
 //     render() {      
-//         const { date, time, party_size, search, showCalendar, showParty, showTimes } = this.state
-//         const today = new Date()
-//         let maxDate = new Date(today)
-//         maxDate.setDate(maxDate.getDate() + 365)   
+//           
         
 //         return (
 //             <form className="search-modal-form"
@@ -117,47 +180,9 @@ export default ReservationForm
 //                 <div className='search-content'>
 //                     <div className='dropdown-inputs'>
 
-//                         <div className="search-modal-dropdown-item"
-//                             id='left-dropdown-input'
-//                             onClick={this.openCalendar}
-//                         > 
-//                             <FiCalendar size={20}/>
-//                             <div className="search-text" >{date.day} {date.year}</div> 
-//                             <FaChevronDown size={16}/>
-//                             {showCalendar ?
-//                             <div className='drop-content' id='calendar'>
-//                                 <Calendar
-//                                     date={today}
-//                                     onChange={this.update('date')}
-//                                     minDate={today}
-//                                     maxDate={maxDate}
-//                                 />
-//                             </div>                  
-//                             : null} 
-//                         </div>
+//                         
 
-//                         <div
-//                             className="search-modal-dropdown-item"
-//                             onClick={this.openTimeDropdown}
-//                         >
-//                             <FiClock size={20}/>
-//                             <div className="search-text">
-//                                 {time}
-//                             </div>
-//                             <FaChevronDown size={16}/>
-//                             {showTimes ?
-//                             <div className='drop-content' id='time-options'>
-//                                 {resTimes.map((time, i) => {
-//                                     return (
-//                                     <option id='drop-item'
-//                                         key={i}
-//                                         onClick={this.update('time')}
-//                                     >{time}</option>
-//                                     )
-//                                 })}
-//                             </div>            
-//                             : null}                             
-//                         </div>
+//                         
 
 //                         <div  id='right-dropdown-input'
 //                             className="search-modal-dropdown-item"

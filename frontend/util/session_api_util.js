@@ -6,7 +6,6 @@ export const signup = user => (
         data: { user },
     })
 );
-window.signup = signup
 
 // Log In
 export const login = user => (

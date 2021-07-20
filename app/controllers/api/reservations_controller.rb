@@ -16,7 +16,6 @@ class Api::ReservationsController < ApplicationController
     def create
         @reservation = Reservation.new(reservation_params)
         @reservation.user_id = current_user.id
-        @reservation.restaurant_id = params[:restaurant_id]
 
         if @reservation.save
             render "api/reservations/show"
@@ -27,8 +26,8 @@ class Api::ReservationsController < ApplicationController
 
     def destroy
         @reservation = current_user.reservations.find_by(id: params[:id])
-        if @reservation && @reservation.delete 
-            render json: status: 200
+        if @reservation && @reservation.delete
+             render "api/reservations/index"
         else
             render json: @reservation.errors.full_messages, status: 422
         end
@@ -37,7 +36,7 @@ class Api::ReservationsController < ApplicationController
     private
     def reservation_params
         params.require(:reservation).permit(
-            :party_size, :time, :day, :year, :id)
+            :party_size, :time, :day, :year, :id, :restaurant_id)
     end
 
 end

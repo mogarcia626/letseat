@@ -5,6 +5,7 @@ import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
 import SearchBar from '../search_bar/search_bar';
 import PhotoModal from '../restaurant_show/restaurant_content/photos/photo_modal'
+import ReservationConfirmation from '../restaurant_show/reservation_form/reservation_confirmation_modal';
 
 const mSTP = state => {
     return {
@@ -37,8 +38,8 @@ function Modal({ modal, closeModal }) {
         case 'photo-carousel':
             component = <PhotoModal />;
             break;
-        case 'reservaton_confirmation':
-            // component = <ReservationConfirmation />;
+        case 'reservation-confirmation':
+            component = <ReservationConfirmation />;
             break;
         default:
             return null;

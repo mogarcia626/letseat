@@ -1,22 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal, openModal } from '../../../actions/modal_actions';
+import { createReservation } from '../../../util/reservation_api_util';
 import ReservationForm from './reservation_form';
 
 const mSTP = (state) => {
     return {
-        filters: state.ui.filters,
         modal: state.ui.modal,
-        restaurants: state.entities.restaurants
+        user: state.session
     };
 };
 
 const mDTP = dispatch => {
     return {
-        processForm: (reservation) => dispatch(requestAllRestaurants(filters)),
-        
+        processForm: (reservation) => dispatch(createReservation(reservation)),        
         openModal: modal => dispatch(openModal(modal)), 
-        closeModal: () => dispatch(closeModal()),        
+        closeModal: () => dispatch(closeModal()),
+        resetErrors: () => dispatch(resetErrors()),        
     };
 };
 
