@@ -30,30 +30,24 @@ class Restaurant < ApplicationRecord
     attr_reader :review_averages,
 
     def self.apply_filters(city, search)   
-        # debugger
-        puts "search: #{search ? search : false}"
-        puts "city: #{city ? city : false}"
         keyword_search = "%#{search}%"
 
         if city=='' && search==''
-            res = self.all
-            debugger
-            return res
+            self.all
         elsif city=='' && search
-            res = self.where("cuisine LIKE ? OR name LIKE ? OR city LIKE ?", keyword_search, keyword_search, keyword_search)
-            debugger
-            return res
+            self.where("cuisine LIKE ?", keyword_search)
+                .or(self.where("name LIKE ?", keyword_search)
+                .or(self.where("city LIKE ?", keyword_search)))
         elsif search=='' && city
-            res = self.where("city = ?", city)
-            debugger
-            return res
+            self.where("city = ?", city)
         else
-            res = self.where("city = ?", city)
-                .where("cuisine LIKE ? OR name LIKE ? OR city LIKE ?", keyword_search, keyword_search, keyword_search)
-            debugger
-            return res
+            self.where("city = ?", city)
+                .where("cuisine LIKE ?", keyword_search)
+                .or(self.where("name LIKE ?", keyword_search)
+                .or(self.where("city LIKE ?", keyword_search)))
         end
     end
+
 
     def review_averages
         food, service, ambience, val = 0, 0, 0, 0

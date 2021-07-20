@@ -75,11 +75,9 @@ class SearchForm extends React.Component {
         const dev = 'http://localhost:3000/#/restaurants';
         // DEV-TO-PRO!
         this.props.updateSearchFilter(search)
+        this.props.closeModal();            
         window.location = dev;
-        debugger
-        this.props.processForm(this.props.filters).then( () => {
-            this.props.closeModal();            
-        })  
+        
 
         //Redirect to /api/restaurants with data from form passed in as props
         // const restaurant = Object.assign({}, this.state);
