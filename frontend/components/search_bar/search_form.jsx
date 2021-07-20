@@ -85,7 +85,7 @@ class SearchForm extends React.Component {
         // })
     }
 
-    render() {
+    render() {      
         const { date, time, party_size, search, showCalendar, showParty, showTimes } = this.state
         const today = new Date()
         let maxDate = new Date(today)
@@ -106,7 +106,7 @@ class SearchForm extends React.Component {
                             <div className="search-text" >{date.day} {date.year}</div> 
                             <FaChevronDown size={16}/>
                             {showCalendar ?
-                            <div className='drop-content' id='calendar'>
+                            <div className='drop-content' id='calendar' onClick={e => e.stopPropagation()}>
                                 <Calendar
                                     date={today}
                                     onChange={this.update('date')}

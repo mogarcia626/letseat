@@ -37,6 +37,9 @@ function Modal({ modal, closeModal }) {
         case 'photo-carousel':
             component = <PhotoModal />;
             break;
+        case 'reservaton_confirmation':
+            // component = <ReservationConfirmation />;
+            break;
         default:
             return null;
     }

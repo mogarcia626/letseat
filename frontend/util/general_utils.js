@@ -44,3 +44,17 @@ export const resParty = [
     "11 people",
     "12 people",
 ];
+
+export const resParty2 = [
+    "For 2",
+    "For 3",
+    "For 4",
+    "For 5",
+    "For 6",
+    "For 7",
+    "For 8",
+    "For 9",
+    "For 10",
+    "For 11",
+    "For 12",
+];
