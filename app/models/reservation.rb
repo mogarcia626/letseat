@@ -1,4 +1,4 @@
-# == Schema Information
+#  Schema Information
 #
 # Table name: reservations
 #
@@ -19,27 +19,26 @@ class Reservation < ApplicationRecord
     belongs_to :restaurant, class_name: :Restaurant, foreign_key: :restaurant_id
     has_many :review, class_name: :Review, foreign_key: :reservation_id
 
-    # def self.parse_past_and_upcoming(ids)
-    #     now = DateTime.now
-    #     reservations = []
-    #     upcoming = []
-    #     past = []
+    def self.parse_past_and_upcoming(ids)
+        today = Date.today
+        key = ids.keys[0]
+        id = ids.values[0].to_i
+        debugger
+        upcoming = self.where("#{key}_id = ?", id)
+            .where("year >= ? AND month >= ? AND day >= ?", today.year, today.month-1, today.day)
+            .order("year, month, day")
 
-    #     if ids[:user]
-    #         user_id = ids[:user].to_i
-    #         reservations = self.("user_id = ?", user_id)
-    #             .order("year, day, time")
-    #     elsif ids[:restaurant]
-    #         restaruant_id = ids[:restaruant].to_i
-    #         reservations = self.("restaurant_id = ?", restaurant_id)
-    #             .order("year, day, time")
-    #     end
-        
-            
-    #         reservations.each do |reservation|
-    #         if reservation.year.to_i < now.year || reservation
-    #     end
-    # end
+        past = self.where("#{key}_id = ?", id)
+            .where("year < ? ", today.year)
+            .where("year = ? AND month < ?", today.year, today.month-1)
+            .where("year = ? AND month = ? AND day < ?", today.year, today.month-1, today.day)
+            .order("year DESC, month DESC, day DESC")
+        upcoming = [] unless upcoming.first
+        past = [] unless past.first
+        debugger
+        {past: past, upcoming: upcoming}
+    end
+    
 
     # def parse_date
 

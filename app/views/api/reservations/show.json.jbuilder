@@ -1,1 +1,2 @@
-json.extract! @reservation, :id, :party_size, :time, :day, :year
+json.extract! @reservation,
+:id, :party_size, :time, :day, :month, :year

@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { monthArray } from '../../../util/general_utils';
 // import { closeModal } from '../../../actions/modal_actions'
 
 const mSTP = ({ ui }) => ({
     reservation: ui.modal.data,
 });
-
 const mDTP = dispatch => ({
-    // closeModal: () => dispatch(closeModal())
 });
 
 class ReservationConfirmation extends React.Component {
@@ -16,12 +15,13 @@ class ReservationConfirmation extends React.Component {
     }
         
     render() {
+        const res = this.props.reservation
         return (
             <div>
-                <p>{this.props.reservation.id}</p>
-                <p>{this.props.reservation.time}</p>
-                <p>{this.props.reservation.day}</p>
-                <p>{this.props.reservation.partySize}</p>
+                <p>{res.id}</p>
+                <p>{res.time}</p>
+                <p>{monthArray[res.month]} {res.day} {res.year}</p>
+                <p>Party of {res.partySize}</p>
             </div>            
         )
     }

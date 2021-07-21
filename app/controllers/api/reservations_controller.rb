@@ -3,14 +3,10 @@ class Api::ReservationsController < ApplicationController
     before_action :require_logged_in
 
     def index
-        if ids[:user]
-            user_id = ids[:user].to_i
-            @reservations = Reservation.parse_past_and_upcoming(ids)
-        elsif ids[:restaurant].to_i
-            restaurant_id = ids[:restaurant]
-            @reservations = Reservation.find_by(restaurant_id: restaurant_id)
-        end
-        @reservations = [] unless @reservations
+        all =  Reservation.parse_past_and_upcoming(ids)
+        debugger
+        @past_reservations = all[:past]
+        @upcoming_reservations = all[:upcoming]
         render "api/reservations/index"
     end
 
@@ -42,7 +38,7 @@ class Api::ReservationsController < ApplicationController
     private
     def reservation_params
         params.require(:reservation).permit(
-            :party_size, :time, :day, :year, :id, :restaurant_id)
+            :party_size, :time, :day, :month, :year, :user_id, :restaurant_id)
     end
 
     def ids
