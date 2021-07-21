@@ -10,13 +10,10 @@ export const receiveAllReservations = reservations => ({
     reservations
 })
 
-export const receiveSingleReservation = (reservation) => {
-    debugger
-    return {
-        type: RECEIVE_SINGLE_RESERVATION,
-        reservation,
-    }
-};
+export const receiveSingleReservation = reservation => ({
+    type: RECEIVE_SINGLE_RESERVATION,
+    reservation,
+});
 
 export const receiveErrors = errors => ({
     type: RECEIVE_RESERVATION_ERRORS,
@@ -40,10 +37,6 @@ export const requestSingleReservation = id => dispatch => (
 );
 
 export const createReservation = formReservation => dispatch => (
-    APIUtil.createReservation(formReservation)
-        .then(reservation => {
-            debugger
-            dispatch(receiveSingleReservation(reservation))
-        })
+    APIUtil.postReservation(formReservation)
         .fail(errors => dispatch(receiveErrors(errors.responseJSON)))
 );

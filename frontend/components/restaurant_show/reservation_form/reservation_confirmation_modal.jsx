@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import { closeModal } from '../../../actions/modal_actions'
 
 const mSTP = ({ ui }) => ({
-    reservation: entities.reservation,
+    reservation: ui.modal.data,
 });
 
 const mDTP = dispatch => ({
@@ -18,10 +18,10 @@ class ReservationConfirmation extends React.Component {
     render() {
         return (
             <div>
-                <p>{reservation.id}</p>
-                <p>{reservation.time}</p>
-                <p>{reservation.day}</p>
-                <p>{reservation.partySize}</p>
+                <p>{this.props.reservation.id}</p>
+                <p>{this.props.reservation.time}</p>
+                <p>{this.props.reservation.day}</p>
+                <p>{this.props.reservation.partySize}</p>
             </div>            
         )
     }

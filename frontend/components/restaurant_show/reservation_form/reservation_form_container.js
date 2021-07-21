@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal, openModal } from '../../../actions/modal_actions';
-import { createReservation } from '../../../util/reservation_api_util';
+import { createReservation } from '../../../actions/reservation_actions';
 import ReservationForm from './reservation_form';
 
 const mSTP = (state) => {

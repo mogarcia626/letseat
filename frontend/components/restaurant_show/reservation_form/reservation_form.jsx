@@ -78,11 +78,10 @@ class ReservationForm extends React.Component {
                 day: date.day,
                 year: date.year,
             };
-            debugger
-            this.props.processForm(reservation).then( () => {
-                console.log('open confirmation modal')
-                debugger
-                // this.props.openModal({modal:'reservation-confirmation', data: newReservation});
+            this.props.processForm(reservation).then( (reservation) => {
+                console.log('newReservation:')
+                console.log(reservation)
+                this.props.openModal({modal:'reservation-confirmation', data: reservation});
             }) 
         } else {
             this.props.openModal({modal: 'signup', data: null})
