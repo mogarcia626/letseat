@@ -42,24 +42,32 @@ justify-content: center;
     justify-content: space-between;
     align-items: center;
 
-    .drop-content {
+    #calendar {  
+        width: fit-content;
         position: absolute;
-        top: 36px;
+        top: 40px;
         left: -12px;
         width: 100%;
     }
 
-    #calendar {  
-    }
     #time-options {        
-        max-height: 360px;
+        max-height: 300px;
         overflow-x: hidden;
         overflow-y: scroll;
+        top: 40px;
+        left: -16px;
+        width: 120%;
     }
     #party-options {
-        max-height: 360px;
         overflow-x: hidden;
         overflow-y: scroll;
+        max-height: 300px;
+        top: 40px;
+        left: 0;
+        width: 105%;
+        & > * {
+            align-self: center;
+        }
     }
 }
 
