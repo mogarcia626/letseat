@@ -27,7 +27,6 @@ class RestaurantSearchIndex extends React.Component {
     }
     
     componentDidMount() {
-        console.log(this.props.filters)
         this.props.requestAllRestaurants(this.props.filters)
         .then(() => this.setState({
             loading: false,

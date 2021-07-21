@@ -24,8 +24,14 @@ export const resetErrors = () => ({
     type: RESET_RESERVATION_ERRORS,
 });
 
-export const requestAllReservations = filters => dispatch => (
-    APIUtil.fetchReservations(filters).then(reservations => (
+export const requestAllUserReservations = (userId) => dispatch => (
+    APIUtil.fetchReservations({user: userId}).then(reservations => (
+        dispatch(receiveAllReservations(reservations))
+    ))
+);
+
+export const requestAllRestaurantReservations = (restaurantId) => dispatch => (
+    APIUtil.fetchReservations({restaurant: restaurantId}).then(reservations => (
         dispatch(receiveAllReservations(reservations))
     ))
 );

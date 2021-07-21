@@ -1,11 +1,12 @@
 // reservation index
-export const fetchReservations = userId => (
-    $.ajax({
+export const fetchReservations = ids => {
+    // debugger
+    return $.ajax({
         url: '/api/reservations',
         method: 'GET',
-        data: { userId },
+        data: { ids },
     })
-);
+};
 
 // Restaurant info
 export const fetchReservation = id => (

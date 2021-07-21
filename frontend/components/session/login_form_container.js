@@ -1,18 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login, resetErrors } from '../../actions/session_actions';
+import { requestAllUserReservations } from '../../actions/reservation_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import LoginForm from './login_form';
 
-const mapStateToProps = ({ errors }) => {
+const mapStateToProps = (state) => {
     return {
-        errors: errors.session,     
+        errors: state.errors.session,
+        user: state.entities.users,
+        session: state.session
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         processForm: (user) => dispatch(login(user)),
+        requestAllReservations: (userId) => dispatch(requestAllUserReservations(userId)),
         closeModal: () => dispatch(closeModal()),
         resetErrors: () => dispatch(resetErrors()),
         otherForm: (

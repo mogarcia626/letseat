@@ -1,20 +1,22 @@
 import React from 'react';
-import { resTimes, resParty2 } from '../../../util/general_utils';
+import { resTimes, resParty2, monthArray } from '../../../util/general_utils';
 import { Calendar } from 'react-date-range';
 import { FaChevronDown } from 'react-icons/fa';
 
 class ReservationForm extends React.Component {
     constructor(props) {
         super(props)
-        const today = (new Date()).toString().split(' ');
+        const today = new Date()
+        // const today = (new Date());
         this.state = {
             showCalendar: false,
             showTimes: false,
             showParty: false,
             date: {
-                day: today[1] + ' ' + today[2],
-                year: today[3],
-                GMT: today[5],
+                day: today.getDate(),
+                month: today.getMonth(),
+                year: today.getFullYear(),
+                // GMT: ,
             },
             time: '7:00pm',
             party_size: 'For 2',
@@ -36,11 +38,11 @@ class ReservationForm extends React.Component {
     }
     
     getDate(date) {
-        const newDate = date.toString().split(' ');
-        const newDay = newDate[1] + ' ' + newDate[2];
-        const newYear = newDate[3];
-        const newGMT = newDate[5];
-        return {day: newDay, year: newYear, GMT: newGMT}
+        const newDay = date.getDate();
+        const newMonth = date.getMonth();
+        const newYear = date.getFullYear();
+        // const newGMT = date.toString().split(' ')[5];
+        return {day: newDay, month: newMonth, year: newYear}
     }
 
     update(type) {
@@ -69,18 +71,18 @@ class ReservationForm extends React.Component {
         e.preventDefault();
         if (this.props.user.id) {
             
-            const { date, time, party_size } = this.state        
+            const { date, time, party_size } = this.state 
+            console.log(date)       
             const reservation = {
                 party_size: parseInt(party_size.slice(4)),
                 user_id: this.props.user.id,
                 restaurant_id: parseInt(window.location.hash.slice(14)),
                 time: time,
                 day: date.day,
+                month: date.month,
                 year: date.year,
             };
             this.props.processForm(reservation).then( (reservation) => {
-                console.log('newReservation:')
-                console.log(reservation)
                 this.props.openModal({modal:'reservation-confirmation', data: reservation});
             }) 
         } else {
@@ -122,7 +124,7 @@ class ReservationForm extends React.Component {
 
                     <label>Date</label>
                     <div onClick={this.openCalendar}>
-                        <div className="search-text" >{date.day} {date.year}</div> 
+                        <div className="search-text" >{monthArray[date.month]} {date.day} {date.year}</div> 
                         <FaChevronDown size={16}/>
                         {showCalendar ?
                         <div className='drop-content' id='calendar'>

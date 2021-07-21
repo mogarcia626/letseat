@@ -12,7 +12,6 @@ const mSTP = (state) => {
 const mDTP = dispatch => {
     return {
         updateLocationFilter: (city) => dispatch(updateLocationFilter(city)),
-        requestAllRestaurants: filters => dispatch(requestAllRestaurants(filters)),
     };
 };
 
