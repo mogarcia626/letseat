@@ -97,74 +97,77 @@ class ReservationForm extends React.Component {
         maxDate.setDate(maxDate.getDate() + 365)
 
         return (            
-            <div id='res-form'>
+            <div id='make-res'>
                 <h3 className='res-form-title'>Make a Reservation</h3>
-                <form action="" method="post" onSubmit={this.handleSubmit}>
-                    <div className='flex-column'>
-                        <label className='res-input-title'>Party Size</label>
-                        <div className='flex-row' onClick={this.openPartyDropdown} >                            
-                            <div className="res-input-text">
-                                {party_size}
-                            </div>
-                            <FaChevronDown size={16}/>
-                            {showParty ?
-                            <div className='drop-content' id='party-options'>
-                                {resParty2.map((party, i) => {
-                                    return (
-                                    <option id='drop-item'
-                                        key={i}
-                                        onClick={this.update('party_size')}
-                                    >{party}</option>
-                                    )
-                                })}
-                            </div>            
-                            : null} 
-                        </div>
 
-                        <div className='flex-row'>
-                        <div className='flex-column'>
-                        <label className='res-input-title'>Date</label>
-                        <div className='flex-row' onClick={this.openCalendar}>
-                            <div className="res-input-text" >{monthArray[date.month]} {date.day} {date.year}</div> 
-                            <FaChevronDown size={16}/>
-                            {showCalendar ?
-                            <div className='drop-content' id='calendar'>
-                                <Calendar
-                                    date={today}
-                                    onChange={this.update('date')}
-                                    minDate={today}
-                                    maxDate={maxDate}
-                                />
-                            </div>                  
-                            : null} 
-                        </div>
-                        </div>
-
-                        <div className='flex-column'>
-                        <label className='res-input-title'>Time</label>
-                        <div className='flex-row' onClick={this.openTimeDropdown} >
-                            <div className="res-input-text">
-                                {time}
-                            </div>
-                            <FaChevronDown size={16}/>
-                            {showTimes ?
-                            <div className='drop-content' id='time-options'>
-                                {resTimes.map((time, i) => {
-                                    return (
-                                    <option id='drop-item'
-                                        key={i}
-                                        onClick={this.update('time')}
-                                    >{time}</option>
-                                    )
-                                })}
-                            </div>            
-                            : null}                             
-                        </div>
-                        </div>
+                <form action="" method="post"
+                    className='res-form'
+                    onSubmit={this.handleSubmit}
+                >                   
+                        
+                    <label className='res-input-title'>Party Size</label>
+                    <div className='res-input-field'
+                        onClick={this.openPartyDropdown}
+                    >                            
+                        <p className="res-input-text">{party_size}</p>
+                        <FaChevronDown size={12}/>
+                        {showParty ?
+                        <div className='drop-content' id='party-options'>
+                            {resParty2.map((party, i) => {
+                                return (
+                                <option id='drop-item'
+                                    key={i}
+                                    onClick={this.update('party_size')}
+                                >{party}</option>
+                                )
+                            })}
+                        </div>            
+                        : null} 
                     </div>
 
-                    <button>Find a table</button>
+                    <div className='flex-row'>
+                        <div className='res-input-container'>
+                            <label className='res-input-title'>Date</label>
+                            <div className='res-input-field' onClick={this.openCalendar}>
+                                <div className="res-input-text" >{monthArray[date.month]} {date.day} {date.year}</div> 
+                                <FaChevronDown size={12}/>
+                                {showCalendar ?
+                                <div className='drop-content' id='calendar'>
+                                    <Calendar
+                                        date={today}
+                                        onChange={this.update('date')}
+                                        minDate={today}
+                                        maxDate={maxDate}
+                                    />
+                                </div>                  
+                                : null} 
+                            </div>
+                        </div>
+
+                    <div className='res-input-container'>
+                    <label className='res-input-title'>Time</label>
+                    <div className='res-input-field' onClick={this.openTimeDropdown} >
+                        <div className="res-input-text">
+                            {time}
+                        </div>
+                        <FaChevronDown size={12}/>
+                        {showTimes ?
+                        <div className='drop-content' id='time-options'>
+                            {resTimes.map((time, i) => {
+                                return (
+                                <option id='drop-item'
+                                    key={i}
+                                    onClick={this.update('time')}
+                                >{time}</option>
+                                )
+                            })}
+                        </div>            
+                        : null}                             
+                    </div>
+                    </div>
+
                 </div>
+                <button>Find a table</button>
                 </form>
             </div>
         )
