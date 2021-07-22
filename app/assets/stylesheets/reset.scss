@@ -57,8 +57,6 @@ hr.solid {
   height: 100%;
 }
 
-
-
 .container {
     display: flex;
     flex-direction: column;
@@ -67,4 +65,20 @@ hr.solid {
     max-width: 1272;
 	width: 100%;
 }
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
 

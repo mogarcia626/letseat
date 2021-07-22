@@ -1,0 +1,30 @@
+#res-form {
+	position: sticky;
+	top: -1px;
+	display: flex;
+	flex-direction: column;
+	border-radius: 2px;
+	background-color: white;
+	align-items: center;
+	width: 25vw;
+	padding: 12px;
+	margin: 0 20px;
+	border: 1px solid black;
+}
+
+.res-form-title {
+    font-size: 21px;
+}
+
+.res-input-title {
+    font-size: .875rem;
+    font-weight: 500;
+}
+
+#res-input-field {
+
+}
+
+.res-input-text {
+    font-size: .875rem;
+}

@@ -103,7 +103,7 @@ class SearchForm extends React.Component {
                             onClick={this.openCalendar}
                         > 
                             <FiCalendar size={20}/>
-                            <div className="search-text" >{date.day} {date.year}</div> 
+                            <div>{date.day} {date.year}</div> 
                             <FaChevronDown size={16}/>
                             {showCalendar ?
                             <div className='drop-content' id='calendar' onClick={e => e.stopPropagation()}>
@@ -122,7 +122,7 @@ class SearchForm extends React.Component {
                             onClick={this.openTimeDropdown}
                         >
                             <FiClock size={20}/>
-                            <div className="search-text">
+                            <div>
                                 {time}
                             </div>
                             <FaChevronDown size={16}/>
@@ -145,7 +145,7 @@ class SearchForm extends React.Component {
                             onClick={this.openPartyDropdown}
                         >
                             <FaRegUser size={20}/>
-                            <div className="search-text">
+                            <div>
                                 {party_size}
                             </div>
 

@@ -97,16 +97,15 @@ class ReservationForm extends React.Component {
         maxDate.setDate(maxDate.getDate() + 365)
 
         return (            
-            <div id='reservation-form'>
-                <h3>Make a Reservation</h3>
+            <div id='res-form'>
+                <h3 className='res-form-title'>Make a Reservation</h3>
                 <form action="" method="post" onSubmit={this.handleSubmit}>
-                    <label>Party Size</label>
-
-                        <div onClick={this.openPartyDropdown} >                            
-                            <div className="search-text">
+                    <div className='flex-column'>
+                        <label className='res-input-title'>Party Size</label>
+                        <div className='flex-row' onClick={this.openPartyDropdown} >                            
+                            <div className="res-input-text">
                                 {party_size}
                             </div>
-
                             <FaChevronDown size={16}/>
                             {showParty ?
                             <div className='drop-content' id='party-options'>
@@ -122,25 +121,29 @@ class ReservationForm extends React.Component {
                             : null} 
                         </div>
 
-                    <label>Date</label>
-                    <div onClick={this.openCalendar}>
-                        <div className="search-text" >{monthArray[date.month]} {date.day} {date.year}</div> 
-                        <FaChevronDown size={16}/>
-                        {showCalendar ?
-                        <div className='drop-content' id='calendar'>
-                            <Calendar
-                                date={today}
-                                onChange={this.update('date')}
-                                minDate={today}
-                                maxDate={maxDate}
-                            />
-                        </div>                  
-                        : null} 
-                    </div>
+                        <div className='flex-row'>
+                        <div className='flex-column'>
+                        <label className='res-input-title'>Date</label>
+                        <div className='flex-row' onClick={this.openCalendar}>
+                            <div className="res-input-text" >{monthArray[date.month]} {date.day} {date.year}</div> 
+                            <FaChevronDown size={16}/>
+                            {showCalendar ?
+                            <div className='drop-content' id='calendar'>
+                                <Calendar
+                                    date={today}
+                                    onChange={this.update('date')}
+                                    minDate={today}
+                                    maxDate={maxDate}
+                                />
+                            </div>                  
+                            : null} 
+                        </div>
+                        </div>
 
-                    <label>Time</label>
-                        <div onClick={this.openTimeDropdown} >
-                            <div className="search-text">
+                        <div className='flex-column'>
+                        <label className='res-input-title'>Time</label>
+                        <div className='flex-row' onClick={this.openTimeDropdown} >
+                            <div className="res-input-text">
                                 {time}
                             </div>
                             <FaChevronDown size={16}/>
@@ -157,8 +160,11 @@ class ReservationForm extends React.Component {
                             </div>            
                             : null}                             
                         </div>
+                        </div>
+                    </div>
 
                     <button>Find a table</button>
+                </div>
                 </form>
             </div>
         )
@@ -166,67 +172,3 @@ class ReservationForm extends React.Component {
 }
 
 export default ReservationForm
-
-      
-
-//     
-
-//     render() {      
-//           
-        
-//         return (
-//             <form className="search-modal-form"
-//                 onSubmit={this.handleSubmit}
-//             >
-//                 <div className='search-content'>
-//                     <div className='dropdown-inputs'>
-
-//                         
-
-//                         
-
-//                         <div  id='right-dropdown-input'
-//                             className="search-modal-dropdown-item"
-//                             onClick={this.openPartyDropdown}
-//                         >
-//                             <FaRegUser size={20}/>
-//                             <div className="search-text">
-//                                 {party_size}
-//                             </div>
-
-//                             <FaChevronDown size={16}/>
-//                             {showParty ?
-//                             <div className='drop-content' id='party-options'>
-//                                 {resParty.map((party, i) => {
-//                                     return (
-//                                     <option id='drop-item'
-//                                         key={i}
-//                                         onClick={this.update('party_size')}
-//                                     >{party}</option>
-//                                     )
-//                                 })}
-//                             </div>            
-//                             : null} 
-//                         </div>
-                        
-//                     </div>
-//                     <br />
-//                     <input className="search-modal-search"
-//                         placeholder="Location, Restaurant, or Cuisine"
-//                         type="text"
-//                         value={search}
-//                         onChange={this.update('search')}
-//                     />
-//                     <br />
-//                     <button 
-//                         className='search-button'>
-//                             Let's go
-//                     </button>
-
-                    
-//                 </div>
-                
-//             </form>
-//         );
-//     }
-// };
