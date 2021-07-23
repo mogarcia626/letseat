@@ -5,9 +5,10 @@ import { FiCalendar, FiClock } from 'react-icons/fi';
 import { FaRegUser, FaCheckCircle } from 'react-icons/fa';
 // import { closeModal } from '../../../actions/modal_actions'
 
-const mSTP = state => ({
-    reservation: state.ui.modal.data,
-    user: state.entities.users,
+const mSTP = state => ({    
+    reservation: state.ui.modal.data.reservation,
+    user: state.entities.user[state.session.id],
+    restId: state.ui.modal.data.restaurantId,
     restaurant: state.entities.restaurants,
 });
 const mDTP = dispatch => ({
@@ -20,8 +21,9 @@ class ReservationConfirmation extends React.Component {
         
     render() {
         const rez = this.props.reservation
-        const rest = this.props.restaurant
+        const rest = this.props.restaurant[this.props.restId]
         console.log(rest)
+        console.log(this.props.user)
         // console.log(rest.photoUrls[0])
         return (
             <div>

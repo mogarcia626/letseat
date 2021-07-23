@@ -4,10 +4,10 @@ import { closeModal, openModal } from '../../../actions/modal_actions';
 import { createReservation } from '../../../actions/reservation_actions';
 import ReservationForm from './reservation_form';
 
-const mSTP = (state) => {
+const mSTP = state => {
     return {
         modal: state.ui.modal,
-        user: state.session
+        user: state.session,
     };
 };
 

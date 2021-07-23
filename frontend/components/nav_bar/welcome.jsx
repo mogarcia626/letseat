@@ -5,8 +5,8 @@ import { openModal } from '../../actions/modal_actions'
 import { BiCalendarEvent } from "react-icons/bi";
 import { ImSearch } from "react-icons/im";
 
-const mSTP = ({ session, entities: { users } }) => ({
-    currentUser: users[session.id],
+const mSTP = ({ session, entities: { user } }) => ({
+    currentUser: user[session.id],
 });
 
 const mDTP = dispatch => ({

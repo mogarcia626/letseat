@@ -7,7 +7,7 @@ import SessionButtons from './session_buttons';
 
 const mSTP =  state  => {
     return {
-        currentUser: state.entities.users[state.session.id]
+        currentUser: state.entities.user[state.session.id]
     };
 };
 

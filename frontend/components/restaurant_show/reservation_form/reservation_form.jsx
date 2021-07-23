@@ -71,19 +71,23 @@ class ReservationForm extends React.Component {
         e.preventDefault();
         if (this.props.user.id) {
             
-            const { date, time, party_size } = this.state 
-            console.log(date)       
+            const { date, time, party_size } = this.state
             const reservation = {
                 party_size: parseInt(party_size.slice(4)),
                 user_id: this.props.user.id,
-                restaurant_id: parseInt(window.location.hash.slice(14)),
+                restaurant_id: this.props.restaurantId,
                 time: time,
                 day: date.day,
                 month: date.month,
                 year: date.year,
             };
             this.props.processForm(reservation).then( (reservation) => {
-                this.props.openModal({modal:'reservation-confirmation', data: reservation});
+                this.props.openModal({modal:'reservation-confirmation',
+                    data: {
+                        reservation: reservation,
+                        restaurantId: this.props.restaurantId
+                    }
+                });
             }) 
         } else {
             this.props.openModal({modal: 'signup', data: null})

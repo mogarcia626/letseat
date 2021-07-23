@@ -7,7 +7,7 @@ import reservationsReducer from './reservations_reducer.js';
 
 const entitiesReducer = combineReducers(
     {
-        users: usersReducer,
+        user: usersReducer,
         restaurants: restaurantsReducer,
         reviews: reviewsReducer,
         reservations: reservationsReducer,
