@@ -1,17 +1,23 @@
+#restaurant-show{
+	width: 100%;
+	max-width: 1272px;
+}
+
 #show-content {
 	display: flex;
-	justify-content: center;	
+	justify-content: space-evenly;
+	width: 100%;	
+	max-width: 1272px;
 }
 
 #restaurant-content {
 	position: relative;
-	bottom: 40px;
+	bottom: 52px;
 	background-color: white;
 	border-radius: 2px;
-	width: 50vw;
+	width: 50%;
 	min-width: 550px;
 	padding: 0 20px 20px;
-	margin: 0 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -31,12 +37,12 @@
 	font-size: 14px;
 	font-weight: 500;
 	align-self: center;
-	padding: 14px 0.5rem;
+	padding: 20px 0.5rem;
 	margin-right: 0.5rem;
 	&:hover {
 		color: #BF5700;
 		border-bottom: 2px solid #BF5700;
-		padding-bottom: 12px;
+		padding-bottom: 18px;
 	}
 }
 

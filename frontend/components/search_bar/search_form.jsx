@@ -60,8 +60,10 @@ class SearchForm extends React.Component {
         const { showCalendar, showTimes, showParty } = this.state;
         setTimeout(() => {
             if (showParty || showTimes || showCalendar) {
+                console.log(showParty|| showTimes || showCalendar)
                 window.addEventListener("click", this.closeDropdowns);
             } else {
+                console.log(showParty|| showTimes || showCalendar)
                 window.removeEventListener("click", this.closeDropdowns);
             }
         }, 0);

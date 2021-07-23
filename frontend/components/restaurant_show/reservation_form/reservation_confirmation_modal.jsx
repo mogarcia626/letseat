@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { monthArray } from '../../../util/general_utils';
+import { FiCalendar, FiClock } from 'react-icons/fi';
+import { FaRegUser, FaCheckCircle } from 'react-icons/fa';
 // import { closeModal } from '../../../actions/modal_actions'
 
-const mSTP = ({ ui }) => ({
-    reservation: ui.modal.data,
+const mSTP = state => ({
+    reservation: state.ui.modal.data,
+    user: state.entities.users,
+    restaurant: state.entities.restaurants,
 });
 const mDTP = dispatch => ({
 });
@@ -15,13 +19,45 @@ class ReservationConfirmation extends React.Component {
     }
         
     render() {
-        const res = this.props.reservation
+        const rez = this.props.reservation
+        const rest = this.props.restaurant
+        console.log(rest)
+        // console.log(rest.photoUrls[0])
         return (
             <div>
-                <p>{res.id}</p>
-                <p>{res.time}</p>
-                <p>{monthArray[res.month]} {res.day} {res.year}</p>
-                <p>Party of {res.partySize}</p>
+                <div>
+                    <FaCheckCircle />
+                    <div>
+                        <p>Thanks {this.props.user.firstName}! Your reservation is confirmed.</p>
+                        <p>Confirmation #{rez.id}</p>
+                    </div>
+                </div>
+
+                <div>
+                    {/* <img src={rest.photoUrls[0]} /> */}
+                    <div>
+                        <h3>{rest.name}</h3>
+                        <div>
+                            <div>
+                                <FiCalendar />
+                                <p>{rez.month} {rez.day}, {rez.year}</p>
+                            </div>
+                            <div>
+                                <FiClock />
+                                <p>{rez.time}</p>
+                            </div>
+                            <div>
+                                <FaRegUser />
+                                <p>{rez.partySize}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <p>{rez.id}</p>
+                <p>{rez.time}</p>
+                <p>{monthArray[rez.month]} {rez.day} {rez.year}</p>
+                <p>Party of {rez.partySize}</p>
             </div>            
         )
     }

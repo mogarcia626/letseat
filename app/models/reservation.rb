@@ -23,7 +23,6 @@ class Reservation < ApplicationRecord
         today = Date.today
         key = ids.keys[0]
         id = ids.values[0].to_i
-        debugger
         upcoming = self.where("#{key}_id = ?", id)
             .where("year >= ? AND month >= ? AND day >= ?", today.year, today.month-1, today.day)
             .order("year, month, day")
@@ -35,7 +34,6 @@ class Reservation < ApplicationRecord
             .order("year DESC, month DESC, day DESC")
         upcoming = [] unless upcoming.first
         past = [] unless past.first
-        debugger
         {past: past, upcoming: upcoming}
     end
     

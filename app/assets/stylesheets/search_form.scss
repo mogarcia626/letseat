@@ -47,7 +47,6 @@ justify-content: center;
         position: absolute;
         top: 40px;
         left: -12px;
-        width: 100%;
     }
 
     #time-options {        
@@ -57,7 +56,11 @@ justify-content: center;
         top: 40px;
         left: -16px;
         width: 120%;
+        & > * {
+            text-align: center;
+        }
     }
+
     #party-options {
         overflow-x: hidden;
         overflow-y: scroll;
@@ -66,7 +69,7 @@ justify-content: center;
         left: 0;
         width: 105%;
         & > * {
-            align-self: center;
+            text-align: center;
         }
     }
 }

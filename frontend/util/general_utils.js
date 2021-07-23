@@ -61,3 +61,18 @@ export const resParty2 = [
 
 export const monthArray = ['Jan', 'Feb', 'Mar', 'Apr',
 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+export function selectBackground(location) {
+    switch (location) {         
+        case 'Orlando, FL':
+            return 'search-bar-orlando'
+        case 'New York, NY':
+            return 'search-bar-new-york'
+        case 'San Francisco, CA':
+            return 'search-bar-san-francisco'
+        case 'Austin, TX':
+            return 'search-bar-austin'
+        default:
+            return 'search-bar-default';
+    };
+}

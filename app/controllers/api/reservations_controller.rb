@@ -4,7 +4,6 @@ class Api::ReservationsController < ApplicationController
 
     def index
         all =  Reservation.parse_past_and_upcoming(ids)
-        debugger
         @past_reservations = all[:past]
         @upcoming_reservations = all[:upcoming]
         render "api/reservations/index"

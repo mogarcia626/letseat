@@ -1,21 +1,29 @@
+#make-res-container {
+    position: relative;
+    bottom: 52px;
+    background-color: white;
+    border-radius: 2px;
+    width: 30%;
+}
+    
 #make-res {
 	position: sticky;
 	top: -1px;
 	display: flex;
 	flex-direction: column;
-	border-radius: 2px;
-	background-color: white;
 	align-items: center;
-	width: 25vw;
+    justify-content: center;
 	padding: 0 1rem;
-	margin: 0 20px;
-	border: 1px solid black;
+    box-shadow: -2px 0 3px #d8d9db, 2px 2px 3px #d8d9db;
 }
 
 .res-form-title {
+    text-align: center;
     width: 100%;
     font-size: 21px;
-    margin: 1rem 1rem 0 1rem;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 1rem 1rem 0.5rem;
     padding-bottom: 1rem;
     border-bottom: solid 1px #d8d9db;
 }
@@ -30,31 +38,95 @@
     font-size: .875rem;
     font-weight: 500;
     width: 100%;
-    margin-top: 8px;
+    margin: 0.5rem 0;
 }
 
 .res-input-field {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 5px 4px 5px 0;
-    border-bottom: solid 1px #d8d9db
+    margin-bottom: 0.25rem;
+    padding: 12px 0;
+    border-bottom: solid 1px #d8d9db;
+    &:hover {
+        border-bottom: 2px solid #BF5700;
+		padding-bottom: 10px;
+    }
+}
+
+#res-input-second-row {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
 }
 
 .res-input-container {
     display: flex;
     flex-direction: column;
-    width: 50%;
-
-
+    width: 45%;
 }
 
 .res-input-field {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-right: 2px;
 }
 
 .res-input-text {
     font-size: .875rem;
+}
+
+.res-chevron {
+    padding-right: 6px;
+}
+
+.res-button {
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;    
+    color: white;   
+    border-radius: 4px;
+    padding: 12px 28px 12px 28px;
+    margin: 16px 0 24px;
+	background-color: #df8963;     
+	border: solid #df8963 1px;
+    &:hover {
+        background-color: #BF5700;
+    }
+}
+
+#res-party-drop {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 300px;
+    top: 140px;
+    left: 12px;
+    width: 105%;
+    & > * {
+        text-align: left;
+        padding-left: 8px;
+        width: 100%;
+    }
+}
+
+#res-calendar-drop { 
+        width: fit-content;
+        position: absolute;
+        top: 216px;
+        left: 12px; 
+}
+
+#res-time-drop {     
+        max-height: 300px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        top: 216px;
+        right: 16px;
+        width: 50%;   
+        & > * {
+            width: 100%;
+            text-align: center;
+        } 
 }

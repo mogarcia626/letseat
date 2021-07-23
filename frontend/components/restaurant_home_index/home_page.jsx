@@ -1,10 +1,10 @@
 import React from 'react';
-import SearchBar from '../search_bar/search_bar';
+import SearchBarContainer from '../search_bar/search_bar_container';
 import RestaurantIndex from './restaurant_index'
 
 const HomePage = () => (
     <div className='container'>
-        <SearchBar />
+        <SearchBarContainer />
         {/* <RestaurantIndex /> */}
     </div>
 );

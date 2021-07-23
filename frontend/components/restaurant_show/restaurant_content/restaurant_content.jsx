@@ -9,14 +9,14 @@ function RestaurantContent(props) {
     return (
         <div id='restaurant-content'>
 
-            {/* <ShowNavLinks /> */}
+            <ShowNavLinks />
             
             <h1 className='show-header' id='Overview'>{props.restaurant.name}</h1>
 
-            {/* <ShowRatingsSummary
+            <ShowRatingsSummary
                 ratings={props.restaurant.reviewAverages}
                 cuisine={props.restaurant.cuisine}
-            /> */}
+            />
 
             <p>{props.restaurant.description}</p>
             
@@ -24,10 +24,10 @@ function RestaurantContent(props) {
                 photos={props.restaurant.photoUrls}
             />     */}
 
-            {/* <ShowReviews
+            <ShowReviews
                 reviews={props.reviews}
                 ratings={props.restaurant.reviewAverages}
-            /> */}
+            />
         </div>
 
     )

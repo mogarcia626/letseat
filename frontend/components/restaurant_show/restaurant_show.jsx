@@ -25,7 +25,7 @@ class RestaurantShow extends React.Component {
         } else {
             
             return (
-                <div>
+                <div id='restaurant-show'>
                     <ShowBanner
                         cuisine={this.props.restaurant.cuisine}
                     />

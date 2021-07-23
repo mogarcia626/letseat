@@ -96,9 +96,10 @@ class ReservationForm extends React.Component {
         let maxDate = new Date(today)
         maxDate.setDate(maxDate.getDate() + 365)
 
-        return (            
+        return (   
+            <div id='make-res-container'>        
             <div id='make-res'>
-                <h3 className='res-form-title'>Make a Reservation</h3>
+                <p className='res-form-title'>Make a Reservation</p>
 
                 <form action="" method="post"
                     className='res-form'
@@ -110,9 +111,9 @@ class ReservationForm extends React.Component {
                         onClick={this.openPartyDropdown}
                     >                            
                         <p className="res-input-text">{party_size}</p>
-                        <FaChevronDown size={12}/>
+                        <span className='res-chevron'><FaChevronDown size={10}/></span>
                         {showParty ?
-                        <div className='drop-content' id='party-options'>
+                        <div className='drop-content' id='res-party-drop'>
                             {resParty2.map((party, i) => {
                                 return (
                                 <option id='drop-item'
@@ -125,14 +126,14 @@ class ReservationForm extends React.Component {
                         : null} 
                     </div>
 
-                    <div className='flex-row'>
+                    <div id='res-input-second-row'>
                         <div className='res-input-container'>
                             <label className='res-input-title'>Date</label>
                             <div className='res-input-field' onClick={this.openCalendar}>
                                 <div className="res-input-text" >{monthArray[date.month]} {date.day} {date.year}</div> 
-                                <FaChevronDown size={12}/>
+                                <span className='res-chevron'><FaChevronDown size={10}/></span>
                                 {showCalendar ?
-                                <div className='drop-content' id='calendar'>
+                                <div className='drop-content' id='res-calendar-drop'>
                                     <Calendar
                                         date={today}
                                         onChange={this.update('date')}
@@ -150,9 +151,9 @@ class ReservationForm extends React.Component {
                         <div className="res-input-text">
                             {time}
                         </div>
-                        <FaChevronDown size={12}/>
+                        <span className='res-chevron'><FaChevronDown size={10}/></span>
                         {showTimes ?
-                        <div className='drop-content' id='time-options'>
+                        <div className='drop-content' id='res-time-drop'>
                             {resTimes.map((time, i) => {
                                 return (
                                 <option id='drop-item'
@@ -167,9 +168,11 @@ class ReservationForm extends React.Component {
                     </div>
 
                 </div>
-                <button>Find a table</button>
+                <button className='res-button'>Book a Table</button>
+                {/* <button className='res-button'>Find a table</button> */}
                 </form>
             </div>
+            </div> 
         )
     }
 }

@@ -3,21 +3,17 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
-import SearchBar from '../search_bar/search_bar';
+import SearchBarContainer from '../search_bar/search_bar_container';
 import PhotoModal from '../restaurant_show/restaurant_content/photos/photo_modal'
 import ReservationConfirmation from '../restaurant_show/reservation_form/reservation_confirmation_modal';
 
-const mSTP = state => {
-    return {
-        modal: state.ui.modal
-    };
-};
+const mSTP = state => ({
+    modal: state.ui.modal
+});
 
-const mDTP = dispatch => {
-    return {
-        closeModal: () => dispatch(closeModal())
-    };
-};
+const mDTP = dispatch => ({
+    closeModal: () => dispatch(closeModal())
+});
 
 function Modal({ modal, closeModal }) {
     if (!modal) {
@@ -33,7 +29,7 @@ function Modal({ modal, closeModal }) {
             component = <SignupFormContainer />;
             break;
         case 'search':
-            component = <SearchBar id='search-form-modal'/>;
+            component = <SearchBarContainer id='search-form-modal'/>;
             break;
         case 'photo-carousel':
             component = <PhotoModal />;
@@ -45,11 +41,15 @@ function Modal({ modal, closeModal }) {
             return null;
     }
     return (
-        <div className="modal-background" onClick={closeModal}>
-            <div className='modal-container'>
-                <div className="modal-child" onClick={e => e.stopPropagation()}>
-                    {component}
-                </div>
+        <div className="modal-background"
+            onClick={()=>{if(!document.querySelector('.drop-content')) {
+                closeModal()
+            }}}
+        >
+            <div className="modal-child"
+                onClick={e => e.stopPropagation()}
+            >                    
+                {component}
             </div>
         </div>
     );
