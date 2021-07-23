@@ -76,3 +76,10 @@ export function selectBackground(location) {
             return 'search-bar-default';
     };
 }
+
+export const dayArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat']
+
+export function dayOfTheWeek(year, month, day) {
+    const date = new Date(year, month, day)
+    return dayArray[date.getDay()]
+}

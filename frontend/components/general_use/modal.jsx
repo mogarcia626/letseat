@@ -5,7 +5,7 @@ import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
 import SearchBarContainer from '../search_bar/search_bar_container';
 import PhotoModal from '../restaurant_show/restaurant_content/photos/photo_modal'
-import ReservationConfirmation from '../restaurant_show/reservation_form/reservation_confirmation_modal';
+import ReservationConfirmationContainer from '../restaurant_show/reservation_form/reservation_confirmation_container';
 
 const mSTP = state => ({
     modal: state.ui.modal
@@ -35,7 +35,7 @@ function Modal({ modal, closeModal }) {
             component = <PhotoModal />;
             break;
         case 'reservation-confirmation':
-            component = <ReservationConfirmation />;
+            component = <ReservationConfirmationContainer />;
             break;
         default:
             return null;
