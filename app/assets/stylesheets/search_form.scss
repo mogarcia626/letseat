@@ -8,10 +8,9 @@ justify-content: center;
 
 .search-content {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 100%;
     padding: 0 28px;
 }
 
@@ -22,8 +21,8 @@ justify-content: center;
     background-color: white;
     border: none;
     border-radius: 4px;
-    padding: 4px
-
+    padding: 4px;
+    margin: 4px 8px 4px 0;
 }
 
 .search-modal-dropdown-item {
@@ -82,16 +81,29 @@ justify-content: center;
     border-left: #d3d3d3 solid 0.5px;
 }
 
+.search-modal-search-container {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    padding: 0 4px;
+    background-color: white;
+    border: #d3d3d3 solid 1px;
+    border-radius: 4px;
+    margin: 4px 8px 4px;
+}
+
+input:focus {
+    outline: none;
+    border: none;
+}
+
 .search-modal-search {
+    padding: 10px 4px;
+    border: none;
+    width: 85%;    
     font-family: 'Nunito Sans';
     font-size: 16px;
-    font-weight: bold;
-    width: 300px;
-    color: black;
-    padding: 12px 4px;
-    background-color: white;
-    border: none;
-    border-radius: 4px;
+    font-weight: 600;
 }
 
 .search-button {
@@ -102,6 +114,7 @@ justify-content: center;
     padding: 12px 28px 12px 28px;
 	background-color: #df8963;     
 	border: solid #df8963 1px;
+    margin: 4px 0 4px 8px;
 }
 
 .search-button:hover {

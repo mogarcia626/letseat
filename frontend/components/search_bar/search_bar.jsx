@@ -1,7 +1,7 @@
 import React from 'react';
 import { resTimes, resParty, selectBackground } from '../../util/general_utils';
 import { Calendar } from 'react-date-range';
-import { FiCalendar, FiClock } from 'react-icons/fi';
+import { FiSearch, FiCalendar, FiClock } from 'react-icons/fi';
 import { FaChevronDown, FaRegUser } from 'react-icons/fa';
 
 class SearchBar extends React.Component {
@@ -177,12 +177,17 @@ class SearchBar extends React.Component {
                         
                     </div>
                     <br />
-                    <input className="search-modal-search"
-                        placeholder="Location, Restaurant, or Cuisine"
-                        type="text"
-                        value={search}
-                        onChange={this.update('search')}
-                    />
+                    
+                    <div className="search-modal-search-container" >
+                        <FiSearch size={20} />
+                        <input 
+                            className='search-modal-search'
+                            placeholder="Location, Restaurant, or Cuisine"
+                            type="text"
+                            value={search}
+                            onChange={this.update('search')}
+                        />
+                    </div>
                     <br />
                     <button 
                         className='search-button'>

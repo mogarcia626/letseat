@@ -29,23 +29,27 @@ class Restaurant < ApplicationRecord
 
     attr_reader :review_averages,
 
-    def self.apply_filters(city, search)   
-        keyword_search = "%#{search}%"
-
+    def self.apply_filters(city, search)
         if city=='' && search==''
-            self.all
-        elsif city=='' && search
-            self.where("cuisine LIKE ?", keyword_search)
-                .or(self.where("name LIKE ?", keyword_search)
-                .or(self.where("city LIKE ?", keyword_search)))
-        elsif search=='' && city
-            self.where("city = ?", city)
-        else
-            self.where("city = ?", city)
-                .where("cuisine LIKE ?", keyword_search)
-                .or(self.where("name LIKE ?", keyword_search)
-                .or(self.where("city LIKE ?", keyword_search)))
+            return self.all
         end
+
+        if search=='' && city
+            return self.where("city = ?", city)
+        end
+
+        keys = search.split(' ').map {|word, i| word.capitalize }
+
+        if city=='' && search
+            return self.where((['cuisine LIKE ?'] * keys.size).join(' OR '), *keys.map{ |key| "%#{key}%" })
+                .or(self.where((['name LIKE ?'] * keys.size).join(' OR '), *keys.map{ |key| "%#{key}%" })
+                .or(self.where((['name LIKE ?'] * keys.size).join(' OR '), *keys.map{ |key| "%#{key}%" })))
+        end
+        
+        self.where("city = ?", city)
+            .where((['cuisine LIKE ?'] * keys.size).join(' OR '), *keys.map{ |key| "%#{key}%" })
+            .or(self.where((['name LIKE ?'] * keys.size).join(' OR '), *keys.map{ |key| "%#{key}%" })
+            .or(self.where((['name LIKE ?'] * keys.size).join(' OR '), *keys.map{ |key| "%#{key}%" })))
     end
 
 

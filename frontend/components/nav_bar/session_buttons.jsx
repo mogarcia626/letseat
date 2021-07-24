@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
-import { ImSearch } from "react-icons/im";
+import { FiSearch } from "react-icons/fi";
 
 const mSTP = ({ session }) => ({
     currentUser: session.currentUser
@@ -18,7 +18,7 @@ function SessionButtons({openModal}) {
             <button
                 onClick={() => openModal({modal: 'search', data: null})}
                 className="icon-button">
-                <ImSearch size={16} />
+                <FiSearch size={20} />
             </button>
             <button 
                 onClick={() => openModal({modal: 'signup', data: null})} 

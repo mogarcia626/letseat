@@ -101,7 +101,11 @@ class ReservationForm extends React.Component {
         maxDate.setDate(maxDate.getDate() + 365)
 
         return (   
-            <div id='make-res-container'>        
+            <div id='make-res-container'
+                onClick={()=>{if(document.querySelector('.drop-content')) {
+                    this.closeDropdowns()
+                }}}
+            >        
             <div id='make-res'>
                 <p className='res-form-title'>Make a Reservation</p>
 
@@ -137,7 +141,7 @@ class ReservationForm extends React.Component {
                                 <div className="res-input-text" >{monthArray[date.month]} {date.day} {date.year}</div> 
                                 <span className='res-chevron'><FaChevronDown size={10}/></span>
                                 {showCalendar ?
-                                <div className='drop-content' id='res-calendar-drop'>
+                                <div className='drop-content' id='res-calendar-drop' onClick={e => e.stopPropagation()}>
                                     <Calendar
                                         date={today}
                                         onChange={this.update('date')}
