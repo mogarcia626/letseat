@@ -82,6 +82,7 @@ class SearchBar extends React.Component {
         const dev = 'http://localhost:3000/#/restaurants';
         // DEV-TO-PRO!
         this.props.updateSearchFilter(search)
+        this.props.changeTimeFilter(time)
         this.props.closeModal();            
         window.location = dev; 
     }
@@ -179,7 +180,7 @@ class SearchBar extends React.Component {
                     <br />
                     
                     <div className="search-modal-search-container" >
-                        <FiSearch size={20} />
+                        <FiSearch size={20} style={{color:'black'}} />
                         <input 
                             className='search-modal-search'
                             placeholder="Location, Restaurant, or Cuisine"

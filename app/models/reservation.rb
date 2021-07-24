@@ -29,8 +29,8 @@ class Reservation < ApplicationRecord
 
         past = self.where("#{key}_id = ?", id)
             .where("year < ? ", today.year)
-            .where("year = ? AND month < ?", today.year, today.month-1)
-            .where("year = ? AND month = ? AND day < ?", today.year, today.month-1, today.day)
+            .or(self.where("year = ? AND month < ?", today.year, today.month-1)
+            .or(self.where("year = ? AND month = ? AND day < ?", today.year, today.month-1, today.day)))
             .order("year DESC, month DESC, day DESC")
         upcoming = [] unless upcoming.first
         past = [] unless past.first

@@ -1,0 +1,38 @@
+.search-result-container {
+    display: flex;    
+}
+
+.result-image-container {
+    height: 12.55rem;
+    width: 12.55rem;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 16px;
+}
+
+.result-photo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.result-restaurant-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.result-restaurant-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #247f9e;
+}
+
+.result-rating-info {
+    display: flex;
+}
+
+.result-text {
+    font-size: 14px;
+    font-weight: 400;
+}
+

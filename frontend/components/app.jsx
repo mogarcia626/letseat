@@ -8,6 +8,7 @@ import NavBar from './nav_bar/nav_bar';
 import HomePage from './restaurant_home_index/home_page';
 import RestaurantShowContainer from './restaurant_show/restaurant_show_container';
 import RestaurantSearchIndex from './restaurant_search_index/restaurant_search_index';
+import UserProfilePage from './user_profile/user_profile_page';
 
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
         <Switch>
             <Route exact path="/" component={HomePage}/>
             <Route path="/restaurants/:restaurantId" component={RestaurantShowContainer} />
+            <Route path="/user/profile" component={UserProfilePage} />
             <Route exact path="/restaurants" component={RestaurantSearchIndex} />
             <Redirect to='/' />
         </Switch>

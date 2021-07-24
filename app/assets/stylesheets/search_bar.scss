@@ -43,8 +43,9 @@ $source: 'pro';
 	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/austin.png');
 	background-size: cover;
 	color: #BF5700;
+	border-radius: 4px;
 	.banner-title {
-		background-color: #DCD7DC;
+		background-color: rgba(230,235,242,0.4);
 	}
 }
 
