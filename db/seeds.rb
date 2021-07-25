@@ -195,8 +195,8 @@ close = 0
 count = 1
 
 Restaurant.all.ids.each do |rest_id|
-    open = rand(4)+12
-    close = rand(8)+17
+    open = rand(4)+12 + rand(2)/2.0
+    close = rand(8)+17 + rand(2)/2.0
     
     Schedule.create!(
         restaurant_id: rest_id,

@@ -12,6 +12,7 @@ class Api::RestaurantsController < ApplicationController
       @restaurant = Restaurant.find_by(id: params[:id])
       reviews = @restaurant.reviews
       @reviews = reviews.includes(:reviewer)
+      @schedule = @restaurant.schedule
       render :show
     end
     

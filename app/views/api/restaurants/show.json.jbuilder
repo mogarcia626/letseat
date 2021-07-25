@@ -3,6 +3,13 @@ require 'date'
 json.restaurant do
   json.extract! @restaurant, :id, :name, :email, :phone_no, :street_address, :city, 
     :description, :capacity, :cuisine, :review_averages
+
+  json.schedule do
+    json.extract! @schedule, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, 
+    :monday_open, :monday_close, :tuesday_open, :tuesday_close, :wednesday_open, :wednesday_close, :thursday_open, :thursday_close,
+    :friday_open, :friday_close, :saturday_open, :saturday_close, :sunday_open, :sunday_close
+  end
+  
   json.photoUrls @restaurant.photos.map {|photo| url_for(photo)}
 end
 

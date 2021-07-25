@@ -36,6 +36,7 @@ class RestaurantShow extends React.Component {
                         />
                         <ReservationFormContainer
                             restaurantId={this.props.restaurantId}
+                            schedule={this.props.restaurant.schedule}
                         />                        
                     </div>
 

@@ -86,3 +86,35 @@ export function dayOfTheWeek(year, month, day) {
     const date = new Date(year, month, day)
     return dayArray[date.getDay()]
 }
+
+export function time24To12(num) {
+
+    const time = `${num}.0`
+    const timeArr = time.split('.')
+
+    let amPm = 'pm'
+    let hourInt = parseInt(timeArr[0])
+    if (hourInt < 12) {
+        amPm = 'am'
+    } else if (hourInt === 24) {
+        amPm = 'am'
+        hourInt = 12
+    } else {
+        hourInt = hourInt % 12
+    }
+
+    let min;
+    if (timeArr[1].length === 1) {
+        min = parseInt(`${timeArr[1]}0`)*6/10
+    } else {
+        min = parseInt(timeArr[1])*6/10
+    }
+
+    if (min < 10) {
+        min = '0' + min.toString()
+    } else {
+        min.toString()
+    }
+
+    return `${hourInt}:${min}${amPm}`
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import RestaurantSchedule from './restaurant_schedule';
 import { resTimes, resParty2, monthArray } from '../../../util/general_utils';
 import { Calendar } from 'react-date-range';
 import { FaChevronDown } from 'react-icons/fa';
@@ -180,6 +181,9 @@ class ReservationForm extends React.Component {
                 {/* <button className='res-button'>Find a table</button> */}
                 </form>
             </div>
+            
+                <RestaurantSchedule schedule={this.props.schedule} />
+
             </div> 
         )
     }
