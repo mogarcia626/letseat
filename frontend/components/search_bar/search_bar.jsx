@@ -1,5 +1,5 @@
 import React from 'react';
-import { resTimes, resParty, selectBackground } from '../../util/general_utils';
+import { resTimes, resParty, selectBackground, proUrl, devUrl } from '../../util/general_utils';
 import { Calendar } from 'react-date-range';
 import { FiSearch, FiCalendar, FiClock } from 'react-icons/fi';
 import { FaChevronDown, FaRegUser } from 'react-icons/fa';
@@ -77,14 +77,11 @@ class SearchBar extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const { date, time, party_size, search } = this.state
-
-        const pro = 'https://let-s-eat.herokuapp.com/#/restaurants';
-        const dev = 'http://localhost:3000/#/restaurants';
-        // DEV-TO-PRO!
         this.props.updateSearchFilter(search)
         this.props.changeTimeFilter(time)
         this.props.closeModal();            
-        window.location = dev; 
+        // DEV-TO-PRO!
+        window.location = `${devUrl}restaurants`; 
     }
     
     render() {

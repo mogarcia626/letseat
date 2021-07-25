@@ -1,12 +1,15 @@
 import React from 'react';
+import { devUrl, proUrl } from '../../util/general_utils';
 import RatingIcon from '../general_use/rating_icon';
 
 function RestaurantSearchIndexItem(props) {
     const rest = props.restaurant
     const time = props.time
-
     return (        
-        <div className='search-result-container'>
+        <div className='search-result-container'
+            // DEV-TO-PRO!
+            onClick={() => window.location = `${devUrl}restaurants/${rest.id}` }
+        >
             <span className='result-image-container' >
                 <img className='result-photo'
                     src={rest.photoUrls[0]}
@@ -22,11 +25,9 @@ function RestaurantSearchIndexItem(props) {
                     <p className='result-text'>({rest.reviewAverages.count})</p>
                 </div>
 
-                <div className='result-filter-info'>
-                    <p className='result-text'>{rest.cuisine}</p>
-                    <p className='result-text'>&middot;</p>
-                    <p className='result-text'>{rest.city}</p>
-                </div>
+                    <p className='result-text'>
+                        {rest.cuisine} &middot; {rest.city}
+                    </p>
 
 
                 

@@ -1,3 +1,6 @@
+export const proUrl = 'https://let-s-eat.herokuapp.com/#/';
+export const devUrl = 'http://localhost:3000/#/';
+        
 export const restaurantCuisinesList = ['Thai', 'Chinese', 'Japanese', 'Seafood & Steakhouses', 'Latin American Cuisine'];
 
 export const ratingsCategoryList = ['value', 'food', 'ambience', 'service'];

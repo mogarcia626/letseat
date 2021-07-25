@@ -1,5 +1,5 @@
 import React from 'react';
-import { cityList } from '../../util/general_utils';
+import { cityList, devUrl, proUrl } from '../../util/general_utils';
 import { TiLocation } from 'react-icons/ti';
 import { BsCaretDownFill } from 'react-icons/bs';
 
@@ -36,11 +36,9 @@ class LocationSelector extends React.Component {
 
     locationSelect(e) {
         e.preventDefault()
-        const pro = 'https://let-s-eat.herokuapp.com/#/';
-        const dev = 'http://localhost:3000/#/';
         // DEV-TO-PRO!
         this.props.updateLocationFilter(e.currentTarget.value)
-        if (window.location.href !== dev) window.location = dev
+        if (window.location.href !== devUrl) window.location = devUrl
     }   
 
     render () {
