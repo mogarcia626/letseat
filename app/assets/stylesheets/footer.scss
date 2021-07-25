@@ -1,4 +1,6 @@
 .footer-background {
+    position: absolute;
+    bottom: 0;
     width: 100%;
     background-color: #2d333f;
     color: #d8d9db;
@@ -13,15 +15,14 @@
     }
 
     li {
-        padding: 0 0 5px 8px;
+        padding: 0 8px 5px;
     }
 
     .footer-main {
+        display: flex;
+        justify-content: space-between;
         padding: 1% 2%;
-        display: grid;
-        grid-template-columns: 30% 24% 20% 20%;
-        column-gap: 2%;
-
+        
         .footer-section {
             display: flex;
             flex-direction: column;
@@ -37,9 +38,14 @@
             grid-template-columns: 1fr 1fr;
         }
 
+        .about-me-section {
+            display: flex;
+        }
+
         .discover-links a {
             display: grid;
             grid-template-columns: 15% 85%;
+            grid-gap: 5%;
             // padding-left: 8px;
         }
         

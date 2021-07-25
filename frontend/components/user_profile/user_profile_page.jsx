@@ -19,7 +19,7 @@ function UserProfilePage() {
     // console.log('')
     // console.log(ent)
     return (
-        <div className='flex-column' id='profile-page-main'>
+        <div className='content-wrap' id='profile-page-main'>
 
             <div id='profile-page-header'>
                 <p id='profile-header-text'>{user.firstName} {user.lastName}</p>

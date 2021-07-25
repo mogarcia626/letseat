@@ -37,10 +37,8 @@ function Footer() {
                             </ul>
                         </div>
                     </div>
-                </div> 
-            
-                <div></div>
-
+                </div>
+                <div className='about-me-section'>
                 <div className="footer-section">
                     <span className="footer-section-title">OTHER PROJECTS</span>
                     <ul className="projects-list">
@@ -68,6 +66,7 @@ function Footer() {
                             <a href="https://github.com/mogarcia626" target='_blank'><FaGithub className="fab fa-github" />Github</a>
                         </li>
                     </ul>
+                </div>
                 </div>
             </div>
         </div>

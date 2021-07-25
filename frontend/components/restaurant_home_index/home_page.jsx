@@ -3,9 +3,9 @@ import SearchBarContainer from '../search_bar/search_bar_container';
 import RestaurantIndex from './restaurant_index'
 
 const HomePage = () => (
-    <div className='container'>
+    <div className='content-wrap'>
         <SearchBarContainer />
-        {/* <RestaurantIndex /> */}
+        <RestaurantIndex />
     </div>
 );
 

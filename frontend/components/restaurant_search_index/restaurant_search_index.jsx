@@ -28,7 +28,7 @@ class RestaurantSearchIndex extends React.Component {
         } else {
         const restaurants = Object.values(this.props.restaurants)
         return (
-            <div className='flex-column'>
+            <div className='content-wrap'>
                 <SearchBarContainer id='search-form-general'/>
                 <div className='search-result-page-container'>
                     <p id='you-searched-for'>{search}</p>

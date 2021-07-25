@@ -20,9 +20,9 @@ function RestaurantContent(props) {
 
             <p>{props.restaurant.description}</p>
             
-            {/* <ShowPhotos
+            <ShowPhotos
                 photos={props.restaurant.photoUrls}
-            />     */}
+            />    
 
             <ShowReviews
                 reviews={props.reviews}
