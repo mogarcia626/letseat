@@ -81,7 +81,7 @@ class SearchBar extends React.Component {
         this.props.changeTimeFilter(time)
         this.props.closeModal();            
         // DEV-TO-PRO!
-        window.location = `${proUrl}restaurants`; 
+        window.location = `${devUrl}restaurants`; 
     }
     
     render() {

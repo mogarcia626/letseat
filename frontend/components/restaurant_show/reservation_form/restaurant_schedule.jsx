@@ -3,76 +3,78 @@ import { time24To12 } from '../../../util/general_utils'
 import { FiClock } from 'react-icons/fi'
 
 function RestaurantSchedule(props) {
-    const sch = props.sch
-    const week = {
-        Monday: {
+    const sch = props.schedule
+    
+    const week = [
+        {
+            day: 'Monday',
             status: sch.monday,
             open: sch.mondayOpen,
             close: sch.mondayClose,
             text: '',
-        },
-        Tuesday: {
+        }, {
+            day: 'Tuesday',
             status: sch.tuesday,
             open: sch.tuesdayOpen,
             close: sch.tuesdayClose,
             text: '',
-        },
-        Wednesday: {
+        }, {
+            day: 'Wednesday',
             status: sch.wednesday,
             open: sch.wednesdayOpen,
             close: sch.wednesdayClose,
             text: '',
-        },
-        Thursday: {
-            status: sch.Thursday,
-            open: sch.ThursdayOpen,
-            close: sch.ThursdayClose,
+        }, {
+            day: 'Thursday',
+            status: sch.thursday,
+            open: sch.thursdayOpen,
+            close: sch.thursdayClose,
             text: '',
-        },
-        Friday: {
-            status: sch.Friday,
-            open: sch.FridayOpen,
-            close: sch.FridayClose,
+        }, {
+            day: 'Friday',
+            status: sch.friday,
+            open: sch.fridayOpen,
+            close: sch.fridayClose,
             text: '',
-        },
-        Saturday: {
+        }, {
+            day: 'Saturday',
             status: sch.saturday,
             open: sch.saturdayOpen,
             close: sch.saturdayClose,
             text: '',
-        },
-        Sunday: {
+        }, {
+            day: 'Sunday',
             status: sch.sunday,
             open: sch.sundayOpen,
             close: sch.sundayClose,
             text: '',
         },
-    }
+    ]
 
-    Object.keys(week).forEach(day => {
-        if (sch.day.status === 'Closed') {
-            sch[day] = `${day}: Closed`
+    week.forEach(day => {
+        
+        if (day.status === 'Closed') {
+            day.text = `${day.day}: Closed`
         } else {
-            sch[day] = `${day}: ${time24To12(sch[day])}-${time24To12(sch[day])}`
+            day.text = `${day.day}: ${time24To12(day.open)}-${time24To12(day.close)}`
         } 
     });
 
     return (
-        <div>
-            <div>
+        <div id='schedule-container'>
+
+            <div id='schedule-header'>
                 <FiClock />
-                <p>Hours of operation</p>
+                <p id='schedule-title'>Hours of operation</p>
             </div>
 
-            <div>
-                <p>{sch.Monday}</p>
-                {/* <p>{tue}</p>
-                <p>{wed}</p>
-                <p>{thu}</p>
-                <p>{fri}</p>
-                <p>{sat}</p>
-                <p>{sun}</p> */}
+            <div id='schedule-hours'>
+                {week.map( day => (
+                    <p key={day.day} className='schedule-item'>
+                        {day.text}</p>
+                ))}
             </div>
+
         </div>
     )
 }

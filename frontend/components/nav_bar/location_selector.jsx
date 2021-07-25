@@ -38,7 +38,7 @@ class LocationSelector extends React.Component {
         e.preventDefault()
         // DEV-TO-PRO!
         this.props.updateLocationFilter(e.currentTarget.value)
-        if (window.location.href !== proUrl) window.location = proUrl
+        if (window.location.href !== devUrl) window.location = devUrl
     }   
 
     render () {

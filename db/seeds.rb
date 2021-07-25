@@ -10,7 +10,7 @@ Review.delete_all
 Schedule.delete_all
 
 # DEV-TO-PRO!
-seeding_database = 'heroku'  
+seeding_database = 'local'  
 #'local' will seed localhost from amazon-dev bucket
 #'heroku' will seed heroku from amazon-prod bucket
 # go to show_pag_photos.scss and search_bar.scss and change $source

@@ -96,8 +96,7 @@ export function time24To12(num) {
     let hourInt = parseInt(timeArr[0])
     if (hourInt < 12) {
         amPm = 'am'
-    } else if (hourInt === 24) {
-        amPm = 'am'
+    } else if (hourInt === 12) {
         hourInt = 12
     } else {
         hourInt = hourInt % 12

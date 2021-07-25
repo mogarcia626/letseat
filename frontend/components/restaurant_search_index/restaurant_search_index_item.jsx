@@ -8,7 +8,7 @@ function RestaurantSearchIndexItem(props) {
     return (        
         <div className='search-result-container'
             // DEV-TO-PRO!
-            onClick={() => window.location = `${proUrl}restaurants/${rest.id}` }
+            onClick={() => window.location = `${devUrl}restaurants/${rest.id}` }
         >
             <span className='result-image-container' >
                 <img className='result-photo'

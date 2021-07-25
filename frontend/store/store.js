@@ -9,8 +9,8 @@ const configureStore = (preloadedState = {}) => (
         rootReducer,
         preloadedState,
         // DEV-TO-PRO
-        applyMiddleware(thunk))
-        // applyMiddleware(thunk, logger))
+        // applyMiddleware(thunk))
+        applyMiddleware(thunk, logger))
  )
 
 export default configureStore
