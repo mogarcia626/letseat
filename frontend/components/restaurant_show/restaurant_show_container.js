@@ -4,6 +4,7 @@ import {requestSingleRestaurant} from '../../actions/restaurant_actions';
 import RestaurantShow from './restaurant_show';
 
 const mSTP = (state, { match }) => {
+    console.log(match.params)
     const restaurantId = parseInt(match.params.restaurantId);
     const restaurant = selectSingleRestaurant(state.entities, restaurantId);
     const reviews = selectReviewsForRestaurant(state.entities)

@@ -1,4 +1,5 @@
 import React from 'react';
+import { cityList, devUrl, proUrl } from '../../util/general_utils';
 import { TiLocation } from 'react-icons/ti';
 import { BsCaretDownFill } from 'react-icons/bs';
 
@@ -17,13 +18,11 @@ class LocationSelector extends React.Component {
     openDropDown() {
         this.setState({ showDropDown: true })
     }
-
     closeDropDown() {
         this.setState({ showDropDown: false })
     }
 
-    componentDidUpdate() {
-        
+    componentDidUpdate() {        
         const { showDropDown } = this.state;
         
         setTimeout(() => {
@@ -37,11 +36,12 @@ class LocationSelector extends React.Component {
 
     locationSelect(e) {
         e.preventDefault()
-        this.props.updateFilter('city', e.currentTarget.value)
+        // DEV-TO-PRO!
+        this.props.updateLocationFilter(e.currentTarget.value)
+        if (window.location.href !== devUrl) window.location = devUrl
     }   
 
     render () {
-        //location selector must be dropdown of all cities
         return (
             <div className='location-selector'>
 
@@ -54,33 +54,21 @@ class LocationSelector extends React.Component {
                 
                 {this.state.showDropDown ? (
                     <div className='drop-content'>
-                        
-                        <option id='drop-item'
-                            value="Orlando, FL"
-                            onClick={this.locationSelect}>
-                                Orlando, FL
-                        </option>
-                        
-                        <option id='drop-item'
-                            value='New York, NY'
-                            onClick={this.locationSelect}>
-                            New York, NY
-                        </option>
 
-                        <option id='drop-item'
-                            value='San Francisco, CA'
-                            onClick={this.locationSelect}>
-                            San Francisco, CA
-                        </option>
+                        {cityList.map((city, i) => {
+                            return (
+                                <option id='drop-item'
+                                    key={i}
+                                    value={city}
+                                    onClick={this.locationSelect}
+                                >{city}
+                                </option>
+                            )
+                         })}
 
-                        <option id='drop-item'
-                            value='Austin, TX'
-                            onClick={this.locationSelect}>
-                            Austin, TX
-                        </option>
-                        
                     </div>
                 ) : null }
+
             </div>
         )
     }

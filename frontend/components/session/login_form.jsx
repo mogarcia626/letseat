@@ -4,7 +4,7 @@ class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            errors: [], users: {
+            errors: [], user: {
             email: '',
             password: '',
         }};
@@ -22,9 +22,19 @@ class LoginForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user).then(() => {
+            // console.log(this.props.user)
+            // console.log(this.props.session)
             this.props.closeModal();
+            // let userId = this.props.user.id
+            // console.log(this.props.session)
         })
+        .then(() => {
+            this.props.requestAllReservations(this.props.session.id)
+        })
+        // console.log(this.props.session)
     }
+
+    // mogarcia@gmail.com
 
     renderErrors() {
         return (

@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions'
 import { BiCalendarEvent } from "react-icons/bi";
-import { ImSearch } from "react-icons/im";
+import { FiSearch } from "react-icons/fi";
 
-const mSTP = ({ session, entities: { users } }) => ({
-    currentUser: users[session.id],
+const mSTP = ({ session, entities: { user } }) => ({
+    currentUser: user[session.id],
 });
 
 const mDTP = dispatch => ({
@@ -38,7 +38,7 @@ class Welcome extends React.Component {
                 <button
                     onClick={() => this.props.openModal({modal: 'search'})}
                     className="icon-button">
-                    <ImSearch size={16} />
+                    <FiSearch size={20} />
                 </button>
 
                 <button

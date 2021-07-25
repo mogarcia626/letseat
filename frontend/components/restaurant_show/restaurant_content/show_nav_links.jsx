@@ -9,7 +9,6 @@ class ShowNavLinks extends React.Component {
     executeScroll(id) {
         const y = document.getElementById(id).getBoundingClientRect().top + window.pageYOffset - 40;;
         window.scrollTo({top: y, behavior: 'smooth'})
-        // el.scrollIntoView({block: "start", behavior: "smooth"})
     }
 
     render() {

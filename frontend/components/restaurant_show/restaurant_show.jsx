@@ -1,7 +1,7 @@
 import React from 'react';
 import ShowBanner from './show_banner';
 import RestaurantContent from './restaurant_content/restaurant_content';
-import ReservationForm from './reservation_form/reservation_form';
+import ReservationFormContainer from './reservation_form/reservation_form_container';
 
 class RestaurantShow extends React.Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class RestaurantShow extends React.Component {
         } else {
             
             return (
-                <div>
+                <div id='restaurant-show'>
                     <ShowBanner
                         cuisine={this.props.restaurant.cuisine}
                     />
@@ -34,7 +34,9 @@ class RestaurantShow extends React.Component {
                             restaurant={this.props.restaurant}
                             reviews={this.props.reviews}
                         />
-                        <ReservationForm />                        
+                        <ReservationFormContainer
+                            restaurantId={this.props.restaurantId}
+                        />                        
                     </div>
 
                 </div>

@@ -9,6 +9,7 @@ Reservation.delete_all
 Review.delete_all
 Schedule.delete_all
 
+# DEV-TO-PRO!
 seeding_database = 'local'  
 #'local' will seed localhost from amazon-dev bucket
 #'heroku' will seed heroku from amazon-prod bucket
@@ -63,41 +64,41 @@ end
 restaurants_arr = []
 food = Cuisine.new.cuisines
 
-# # Generates Restaurants in Orlando
-# food.keys.each do |cuisine|
-#     restaurants_arr = []
-#     5.times do
-#         Restaurant.create!(
-#             name: generate_double_name(food, cuisine, restaurants_arr),
-#             email: 'letseatdemo@gmail.com',
-#             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-#             street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
-#             city: 'Orlando, FL',
-#             description:"#{Faker::Restaurant.description}",
-#             capacity: rand(45)+15,
-#             cuisine: cuisine,
-#             owner_id: rand(5) + 1
-#         )
-#     end
-#     2.times do
-#         Restaurant.create!(
-#             name: generate_single_name(food, cuisine, restaurants_arr),
-#             email: 'letseatdemo@gmail.com',
-#             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-#             street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
-#             city: 'Orlando, FL',
-#             description:"#{Faker::Restaurant.description}",
-#             capacity: rand(45)+15,
-#             cuisine: cuisine,
-#             owner_id: rand(5) + 1
-#         )
-#     end
-# end
+# Generates Restaurants in Orlando
+food.keys.each do |cuisine|
+    restaurants_arr = []
+    (rand(3)+2).times do
+        Restaurant.create!(
+            name: generate_double_name(food, cuisine, restaurants_arr),
+            email: 'letseatdemo@gmail.com',
+            phone_no: "#{Faker::PhoneNumber.cell_phone}",
+            street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
+            city: 'Orlando, FL',
+            description:"#{Faker::Restaurant.description}",
+            capacity: rand(45)+15,
+            cuisine: cuisine,
+            owner_id: rand(5) + 1
+        )
+    end
+    1.times do
+        Restaurant.create!(
+            name: generate_single_name(food, cuisine, restaurants_arr),
+            email: 'letseatdemo@gmail.com',
+            phone_no: "#{Faker::PhoneNumber.cell_phone}",
+            street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
+            city: 'Orlando, FL',
+            description:"#{Faker::Restaurant.description}",
+            capacity: rand(45)+15,
+            cuisine: cuisine,
+            owner_id: rand(5) + 1
+        )
+    end
+end
 
     
 # Generates Restaurants in San Francisco
 food.keys.each do |cuisine|
-    5.times do
+    rand(3)+4.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -110,9 +111,9 @@ food.keys.each do |cuisine|
             owner_id: rand(5) + 1
         )
     end
-    2.times do
+    1.times do
         Restaurant.create!(
-                name: generate_single_name(food, cuisine, restaurants_arr),
+            name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
             phone_no: "#{Faker::PhoneNumber.cell_phone}",
             street_address: "#{Faker::Address.street_address} San Francisco, CA #{Faker::Address.zip}",
@@ -127,7 +128,7 @@ end
 
 # Generates Restaurants in New York
 food.keys.each do |cuisine|
-    5.times do
+    rand(3)+4.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -140,7 +141,7 @@ food.keys.each do |cuisine|
             owner_id: rand(5) + 1
         )
     end
-    2.times do
+    1.times do
         Restaurant.create!(
             name: generate_single_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -156,84 +157,83 @@ food.keys.each do |cuisine|
 end
 
 # Generates Restaurants in Austin
-# food.keys.each do |cuisine|
-#     5.times do
-#         Restaurant.create!(
-#                 name: generate_double_name(food, cuisine, restaurants_arr),
-#             email: 'letseatdemo@gmail.com',
-#             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-#             street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
-#             city: 'Austin, TX',
-#             description:"#{Faker::Restaurant.description}",
-#             capacity: rand(45)+15,
-#             cuisine: cuisine,
-#             owner_id: rand(5) + 1
-#         )
-#     end
-#     2.times do
-#         Restaurant.create!(
-#             name: generate_single_name(food, cuisine, restaurants_arr),
-#             email: 'letseatdemo@gmail.com',
-#             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-#             street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
-#             city: 'Austin, TX',
-#             description:"#{Faker::Restaurant.description}",
-#             capacity: rand(45)+15,
-#             cuisine: cuisine,
-#             owner_id: rand(5) + 1
-#         )
-#     end
-# end
+food.keys.each do |cuisine|
+    ((rand(3)+2)).times do
+        Restaurant.create!(
+                name: generate_double_name(food, cuisine, restaurants_arr),
+            email: 'letseatdemo@gmail.com',
+            phone_no: "#{Faker::PhoneNumber.cell_phone}",
+            street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
+            city: 'Austin, TX',
+            description:"#{Faker::Restaurant.description}",
+            capacity: rand(45)+15,
+            cuisine: cuisine,
+            owner_id: rand(5) + 1
+        )
+    end
+    1.times do
+        Restaurant.create!(
+            name: generate_single_name(food, cuisine, restaurants_arr),
+            email: 'letseatdemo@gmail.com',
+            phone_no: "#{Faker::PhoneNumber.cell_phone}",
+            street_address: "#{Faker::Address.street_address} Austin, TX #{Faker::Address.zip}",
+            city: 'Austin, TX',
+            description:"#{Faker::Restaurant.description}",
+            capacity: rand(45)+15,
+            cuisine: cuisine,
+            owner_id: rand(5) + 1
+        )
+    end
+end
 
 # #Generates a schedule for each restaurant
 # #--------------------------------------------------------------------------------------------------------------------------------
 
-# sched = 0
-# day = ['Open', 'Closed']
-# open = 0
-# close = 0
-# count = 1
+day = ['Open', 'Closed']
+open = 0
+close = 0
+count = 1
 
-# Restaurant.all.ids.each do |rest_id|
-#     open = rand(8)+8
-#     close = rand(8)+17
+Restaurant.all.ids.each do |rest_id|
+    open = rand(4)+12
+    close = rand(8)+17
     
-#     Schedule.create!(
-#         restaurant_id: rest_id,
-#         monday: day[rand(2)],
-#         monday_open: open,
-#         monday_close:close,
-#         tuesday: day[rand(2)],
-#         tuesday_open: open,
-#         tuesday_close:close,
-#         wednesday: day[rand(2)],
-#         wednesday_open: open,
-#         wednesday_close:close,
-#         thursday: 'Open',
-#         thursday_open: open,
-#         thursday_close:close,
-#         friday: 'Open',
-#         friday_open: open,
-#         friday_close:close + rand(3),
-#         saturday: 'Open',
-#         saturday_open: open + rand(2),
-#         saturday_close:close + rand(3),
-#         sunday: day[rand(2)],
-#         sunday_open: open + rand(2),
-#         sunday_close: close
-#         )
-    
-#     sched = Schedule.find_by_id(count)
-#     sched.monday_open = nil if sched.monday == 'Closed'
-#     sched.monday_close = nil if sched.monday == 'Closed'
-#     sched.tuesday_open = nil if sched.tuesday == 'Closed'
-#     sched.tuesday_close = nil if sched.tuesday == 'Closed'
-#     sched.wednesday_open = nil if sched.wednesday == 'Closed'
-#     sched.wednesday_close = nil if sched.wednesday == 'Closed'
-#     sched.sunday_open = nil if sched.sunday == 'Closed'
-#     sched.sunday_close = nil if sched.sunday == 'Closed'
-#     count += 1
-# end
+    Schedule.create!(
+        restaurant_id: rest_id,
+        monday: day[rand(2)],
+        monday_open: open,
+        monday_close:close,
+        tuesday: day[rand(2)],
+        tuesday_open: open,
+        tuesday_close:close,
+        wednesday: day[rand(2)],
+        wednesday_open: open,
+        wednesday_close:close,
+        thursday: 'Open',
+        thursday_open: open,
+        thursday_close:close,
+        friday: 'Open',
+        friday_open: open,
+        friday_close:close + rand(3),
+        saturday: 'Open',
+        saturday_open: open + rand(2),
+        saturday_close:close + rand(3),
+        sunday: day[rand(2)],
+        sunday_open: open + rand(2),
+        sunday_close: close
+    )    
+end
+sched = 1
+sched = Schedule.find_by_id(count)
+sched.monday_open = nil if sched.monday == 'Closed'
+sched.monday_close = nil if sched.monday == 'Closed'
+sched.tuesday_open = nil if sched.tuesday == 'Closed'
+sched.tuesday_close = nil if sched.tuesday == 'Closed'
+sched.wednesday_open = nil if sched.wednesday == 'Closed'
+sched.wednesday_close = nil if sched.wednesday == 'Closed'
+sched.sunday_open = nil if sched.sunday == 'Closed'
+sched.sunday_close = nil if sched.sunday == 'Closed'
+count += 1
 
 #Generates some past reservations for each restaurant
 #--------------------------------------------------------------------------------------------------------------------------------
@@ -248,7 +248,10 @@ Restaurant.all.ids.each do |rest|
         # diff = sched.thursday_close - open
         diff = 9
         Reservation.create!(
-            time: Time.new(2021, rand(6)+1, rand(27)+1, rand(diff)+open),
+            time: "#{rand(7)+3}:#{rand(2)*3}0pm",
+            day: rand(27)+1,
+            month: rand(7),
+            year: 2021,
             party_size: rand(6)+2,
             user_id: rand(5)+1,
             restaurant_id: rest,
@@ -274,12 +277,12 @@ end
 #--------------------------------------------------------------------------------------------------------------------------------
 
 # #Orlando Restaurants by Cuisine
-# orlando_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Thai')
-# orlando_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Chinese')
-# orlando_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Japanese' )
-# orlando_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Seafood & Steakhouses')
-# orlando_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Latin American Cuisine')
-# orlando_all_restaurants = [orlando_thai_restaurants, orlando_chinese_restaurants, orlando_japanese_restaurants, orlando_latin_restaurants, orlando_steak_restaurants]
+orlando_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Thai')
+orlando_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Chinese')
+orlando_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Japanese' )
+orlando_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Seafood & Steakhouses')
+orlando_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Latin American Cuisine')
+orlando_all_restaurants = [orlando_thai_restaurants, orlando_chinese_restaurants, orlando_japanese_restaurants, orlando_latin_restaurants, orlando_steak_restaurants]
 
 #NY Restaurants by Cuisine
 ny_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Thai')
@@ -298,22 +301,22 @@ sf_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francis
 sf_all_restaurants = [sf_thai_restaurants, sf_chinese_restaurants, sf_japanese_restaurants, sf_latin_restaurants, sf_steak_restaurants]
 
 #Austin Restaurants by Cuisine
-# austin_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Thai')
-# austin_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Chinese')
-# austin_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Japanese' )
-# austin_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Seafood & Steakhouses')
-# austin_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Latin American Cuisine')
-# austin_all_restaurants = [austin_thai_restaurants, austin_chinese_restaurants, austin_japanese_restaurants, austin_latin_restaurants, austin_steak_restaurants]
+austin_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Thai')
+austin_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Chinese')
+austin_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Japanese' )
+austin_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Seafood & Steakhouses')
+austin_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Latin American Cuisine')
+austin_all_restaurants = [austin_thai_restaurants, austin_chinese_restaurants, austin_japanese_restaurants, austin_latin_restaurants, austin_steak_restaurants]
 
 #All Restaurants by Cuisine
-all_thai_restaurants = [ny_thai_restaurants, sf_thai_restaurants] #austin_thai_restaurants, orlando_thai_restaurants,
-all_chinese_restaurants = [ny_chinese_restaurants, sf_chinese_restaurants] #austin_chinese_restaurants,  orlando_chinese_restaurants,
-all_japanese_restaurants = [ny_japanese_restaurants, sf_japanese_restaurants] #austin_japanese_restaurants,  orlando_japanese_restaurants, 
-all_latin_restaurants =  [ny_latin_restaurants, sf_latin_restaurants] #austin_latin_restaurants, orlando_latin_restaurants,
-all_steak_restaurants = [ny_steak_restaurants, sf_steak_restaurants] #austin_steak_restaurants, orlando_steak_restaurants, 
+all_thai_restaurants = [ny_thai_restaurants, austin_thai_restaurants, orlando_thai_restaurants,sf_thai_restaurants] #
+all_chinese_restaurants = [ny_chinese_restaurants, austin_chinese_restaurants, orlando_chinese_restaurants, sf_chinese_restaurants] #
+all_japanese_restaurants = [ny_japanese_restaurants, austin_japanese_restaurants,  orlando_japanese_restaurants, sf_japanese_restaurants] # 
+all_latin_restaurants =  [ny_latin_restaurants, austin_latin_restaurants, orlando_latin_restaurants, sf_latin_restaurants] #
+all_steak_restaurants = [ny_steak_restaurants,austin_steak_restaurants, orlando_steak_restaurants,  sf_steak_restaurants] #
 
 #All Restaurants by city or by cuisine
-all_restaurants = [ny_all_restaurants, sf_all_restaurants] #austin_all_restaurants, orlando_all_restaurants, 
+all_restaurants = [ny_all_restaurants, austin_all_restaurants, orlando_all_restaurants, sf_all_restaurants] #
 all_cuisines = [all_thai_restaurants, all_chinese_restaurants, all_japanese_restaurants, all_latin_restaurants, all_steak_restaurants]
 
 

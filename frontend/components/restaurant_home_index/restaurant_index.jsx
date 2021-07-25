@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {requestAllRestaurants} from '../../actions/restaurant_actions';
 import {selectAllRestaurants} from '../../reducers/selectors';
+import * as UTIL from '../../util/general_utils'
 import RestaurantSubIndex from './restaurant_subindex'
 
 
@@ -30,7 +31,7 @@ class RestaurantIndex extends React.Component {
     }
 
     randomCuisine(num) {
-        let cuisineArr = ['Thai', 'Chinese', 'Japanese', 'Seafood & Steakhouses', 'Latin American Cuisine']
+        let cuisineArr = [...UTIL.restaurantCuisinesList]
         let cuisList = []
         while (cuisList.length <= num) {
             let rand = Math.floor(Math.random() * (cuisineArr.length - 1))
@@ -41,7 +42,7 @@ class RestaurantIndex extends React.Component {
     }
 
     randomRating(num) {
-        const ratingArr = ['value', 'food', 'ambience', 'service']
+        const ratingArr = [...UTIL.ratingsCategoryList]
         ratingList = []
         while (ratingList.length <= num) {
             let rand = Math.floor(Math.random() * (ratingineArr.length - 1))
@@ -49,10 +50,8 @@ class RestaurantIndex extends React.Component {
             ratingineArr.splice(rand, rand)
         }
         return ratingList
-    }
-    
-    
-    
+    }  
+        
     render() {
 
         const cuisList  = this.randomCuisine(4)

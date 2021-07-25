@@ -70,7 +70,7 @@ class RestaurantSubIndex extends React.Component {
     render() {
 
         return(
-            <div>
+            <div className='sub-index-container'>
                 {/* <button onClick={() => this.scroll(200)}>Right</button> */}
                 {this.components()}                
             </div>
