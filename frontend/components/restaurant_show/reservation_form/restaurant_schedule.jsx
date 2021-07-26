@@ -56,7 +56,7 @@ function RestaurantSchedule(props) {
         if (day.status === 'Closed') {
             day.text = `${day.day}: Closed`
         } else {
-            day.text = `${day.day}: ${time24To12(day.open)}-${time24To12(day.close)}`
+            day.text = `${time24To12(day.open)}-${time24To12(day.close)}`
         } 
     });
 
@@ -70,8 +70,10 @@ function RestaurantSchedule(props) {
 
             <div id='schedule-hours'>
                 {week.map( day => (
-                    <p key={day.day} className='schedule-item'>
-                        {day.text}</p>
+                    <div key={day.day} className='schedule-item'>
+                        <p className='schedule-text'>{day.day.slice(0,3)}:</p>
+                        <p className='schedule-text'>{day.text}</p>
+                    </div>
                 ))}
             </div>
 
