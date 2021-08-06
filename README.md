@@ -1,9 +1,10 @@
-# README
+# LETSEAT
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Live Demo](https://let-s-eat.herokuapp.com/)
 
-Things you may want to cover:
+Letseat is a web app, inspired by OpenTable, that allows users to log into their acccounts and book reservations at their favorite participating restaurants.
+
+## Technology
 
 * Ruby version
 
