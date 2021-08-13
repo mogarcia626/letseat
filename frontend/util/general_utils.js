@@ -1,3 +1,5 @@
+import { BiCoinStack } from "react-icons/bi";
+
 export const proUrl = 'https://let-s-eat.herokuapp.com/#/';
 export const devUrl = 'http://localhost:3000/#/';
         
@@ -80,14 +82,28 @@ export function selectBackground(location) {
     };
 }
 
-export const dayArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat']
+export const dayArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+export function convertDay(year, month, day) {
+    const dayObj = {
+        'Sun': 'sunday',
+        'Mon': 'monday',
+        'Tue': 'tuesday',
+        'Wed': 'wednesday',
+        'Thu': 'thursday',
+        'Fri': 'friday',
+        'Sat': 'saturday'
+    }
+    const date = new Date(year, month, day)
+    return dayObj[dayArray[date.getDay()]]
+}
 
 export function dayOfTheWeek(year, month, day) {
     const date = new Date(year, month, day)
     return dayArray[date.getDay()]
 }
 
-export function time24To12(num) {
+export function time24ToAmPm(num) {
 
     const time = `${num}.0`
     const timeArr = time.split('.')
@@ -117,4 +133,36 @@ export function time24To12(num) {
     }
 
     return `${hourInt}:${min}${amPm}`
+}
+
+export function timeAmPmTo24(timeStr) {
+    const arr = timeStr.split(':')
+    const l = arr[1].length - 2
+
+    let hours = parseInt(arr[0])
+    let minutes = parseInt(arr[1].slice(0,l))
+    const amPm = arr[1].slice(l)
+    
+    if (amPm === 'pm' && hours !==12) {
+        hours += 12
+    } else if (hours===12 && amPm === 'am') {
+        hours = 24
+    }
+
+    minutes /= 60.0
+
+    return hours + minutes
+}
+
+export function isTimeAvailable(time, day, schedule) {
+    // console.log(day)
+    
+    let t = timeAmPmTo24(time)
+    // console.log(day)
+    if (schedule[day] === 'Open' && 
+        t >= schedule[`${day}Open`] &&
+        t < schedule[`${day}Close`]
+    ) {
+        return time
+    }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { time24To12 } from '../../../util/general_utils'
+import { time24ToAmPm } from '../../../util/general_utils'
 import { FiClock } from 'react-icons/fi'
 
 function RestaurantSchedule(props) {
@@ -7,43 +7,43 @@ function RestaurantSchedule(props) {
     
     const week = [
         {
-            day: 'Monday',
+            day: 'Mon',
             status: sch.monday,
             open: sch.mondayOpen,
             close: sch.mondayClose,
             text: '',
         }, {
-            day: 'Tuesday',
+            day: 'Tue',
             status: sch.tuesday,
             open: sch.tuesdayOpen,
             close: sch.tuesdayClose,
             text: '',
         }, {
-            day: 'Wednesday',
+            day: 'Wed',
             status: sch.wednesday,
             open: sch.wednesdayOpen,
             close: sch.wednesdayClose,
             text: '',
         }, {
-            day: 'Thursday',
+            day: 'Thu',
             status: sch.thursday,
             open: sch.thursdayOpen,
             close: sch.thursdayClose,
             text: '',
         }, {
-            day: 'Friday',
+            day: 'Fri',
             status: sch.friday,
             open: sch.fridayOpen,
             close: sch.fridayClose,
             text: '',
         }, {
-            day: 'Saturday',
+            day: 'Sat',
             status: sch.saturday,
             open: sch.saturdayOpen,
             close: sch.saturdayClose,
             text: '',
         }, {
-            day: 'Sunday',
+            day: 'Sun',
             status: sch.sunday,
             open: sch.sundayOpen,
             close: sch.sundayClose,
@@ -56,7 +56,7 @@ function RestaurantSchedule(props) {
         if (day.status === 'Closed') {
             day.text = `Closed`
         } else {
-            day.text = `${time24To12(day.open)}-${time24To12(day.close)}`
+            day.text = `${time24ToAmPm(day.open)}-${time24ToAmPm(day.close)}`
         } 
     });
 
@@ -71,7 +71,7 @@ function RestaurantSchedule(props) {
             <div id='schedule-hours'>
                 {week.map( day => (
                     <div key={day.day} className='schedule-item'>
-                        <p className='schedule-text'>{day.day.slice(0,3)}:</p>
+                        <p className='schedule-text'>{day.day}:</p>
                         <p className='schedule-text'>{day.text}</p>
                     </div>
                 ))}

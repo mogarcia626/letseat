@@ -1,6 +1,6 @@
 import React from 'react';
 import RestaurantSchedule from './restaurant_schedule';
-import { resTimes, resParty2, monthArray } from '../../../util/general_utils';
+import { resTimes, resParty2, monthArray, isTimeAvailable, convertDay } from '../../../util/general_utils';
 import { Calendar } from 'react-date-range';
 import { FaChevronDown } from 'react-icons/fa';
 
@@ -78,21 +78,32 @@ class ReservationForm extends React.Component {
     }
 
     timeComponents() {
-        const {time} = this.state
-        const idx = resTimes.indexOf(time)
-        const times = [time]
-        for (let i = 1; i <= 2; i++) {
-            times.push(resTimes[idx + i])
-            times.unshift(resTimes[idx - i])       
+        const {time, date} = this.state
+        let times = [time]
+
+        const day = convertDay(date.year, date.month, date.day)
+        console.log(day)
+        if (this.props.schedule[day] === 'Closed') {
+            times = []
+        } else {
+            const idx = resTimes.indexOf(time)
+            for (let i = 1; i <= 2; i++) {
+                times.push( isTimeAvailable(resTimes[idx + i], day, this.props.schedule) )
+                times.unshift( isTimeAvailable(resTimes[idx - i], day, this.props.schedule) )     
+            }
         }
-        console.log(this.props.schedule)
-        return (
-            <div id='res-time-grid'>
-                {times.map(ele => 
-                    <button className='res-button' value={ele}>{ele}</button>                    
-                )}
-            </div>
-        )
+        console.log(times)
+        if ((times.length) === 0) {
+            return <div>At the moment, there's no online availability within 2.5 hours of {time}.</div>
+        } else {
+            return (
+                <div id='res-time-grid'>
+                    {times.map(ele => 
+                        <button key={ele} className='res-button'>{ele}</button>
+                    )}
+                </div>
+            )
+        }
     }
 
     handleSubmit(e) {
@@ -104,7 +115,7 @@ class ReservationForm extends React.Component {
                 party_size: parseInt(party_size.slice(4)),
                 user_id: this.props.user.id,
                 restaurant_id: this.props.restaurantId,
-                time: e.currentTarget.value,
+                time: e.currentTarget.key,
                 day: date.day,
                 month: date.month,
                 year: date.year,
