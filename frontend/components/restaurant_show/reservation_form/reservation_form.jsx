@@ -30,6 +30,7 @@ class ReservationForm extends React.Component {
         this.handleFindTable = this.handleFindTable.bind(this);
         this.timeComponents = this.timeComponents.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleTimeButtonClick = this.handleTimeButtonClick.bind(this);
     }
 
     openCalendar() { this.setState({ showCalendar: true }) }
@@ -54,11 +55,18 @@ class ReservationForm extends React.Component {
             if (type==='date') {
                 this.setState({ date: this.getDate(e)});
             } else {
+                console.log(e.target.value)
                 this.setState({ [type]: e.target.value });
             }
             this.closeDropdowns();
             this.setState({ showResTimes: false })
         };
+    }
+
+    handleTimeButtonClick(e) {
+        this.setState({ time: e.target.value, showResTimes: false },
+            ()=> this.handleSubmit()
+        )
     }
 
     componentDidUpdate() {
@@ -114,7 +122,7 @@ class ReservationForm extends React.Component {
                             type='submit'
                             value={ele}
                             className='res-button'
-                            onClick={this.update('time')}
+                            onClick={this.handleTimeButtonClick}
                         >
                             {ele}
                         </button>
@@ -124,16 +132,14 @@ class ReservationForm extends React.Component {
         }
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit() {
         if (this.props.user.id) {
-            console.log(e.target)
             const { date, time, party_size } = this.state
             const reservation = {
                 party_size: parseInt(party_size.slice(4)),
                 user_id: this.props.user.id,
                 restaurant_id: this.props.restaurantId,
-                time: e.target.key,
+                time: time,
                 day: date.day,
                 month: date.month,
                 year: date.year,

@@ -25,7 +25,6 @@ class LocationSelector extends React.Component {
 
     componentDidUpdate() {        
         const { showDropDown } = this.state;
-        console.log(showDropDown)
         setTimeout(() => {
             if (showDropDown) {
                 window.addEventListener("click", this.closeDropDown);
