@@ -1,0 +1,151 @@
+.banner-default, .banner-thai, .banner-chinese,
+.banner-japanese, .banner-steak,
+.banner-sea, .banner-latin{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 318px;
+	max-height: 636px;
+	min-width: 636px;
+	max-width: 1272px;
+	width: 100%;
+}
+
+// DEV-TO-PRO!
+$source: 'pro';
+
+.banner-thai {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/thai.png');
+	background-size: cover;
+}
+
+.banner-chinese {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/chinese.png');
+	background-size: cover;
+}
+
+.banner-japanese {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/japanese.png');
+	background-size: cover;
+}
+
+.banner-steak {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/steak.png');
+	background-size: cover;
+}
+
+.banner-sea {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/sea.png');
+	background-size: cover;
+}
+
+.banner-latin {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/banners/latin.png');
+	background-size: cover;
+}
+
+.show-page-div	{
+	margin: 24px 0;
+	width: 100%;
+}
+
+.photos-preview-container {
+	max-width: 100%;
+	height: 360px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.show-image {
+	object-fit: cover;
+	height: 176px;
+	margin-bottom: 4px;
+	width: 33%;
+	cursor: pointer;
+}
+
+.show-middle-image {
+	object-fit: cover;
+	height: 100%;
+	width: 33%;
+	margin: 0 4px;
+	cursor: pointer;
+}
+
+.empty-photo {
+	background-color: #ffffff00;
+	height: 176px;
+	margin-bottom: 4px;
+	width: 33%;
+}
+
+.x-more-photos {
+	position: relative;
+	height: 176px;
+	margin-bottom: 4px;
+	width: 33%;
+	cursor: pointer;
+}
+
+.image-preview-underlay {
+	position: absolute;
+	background-size: cover;
+	filter: brightness(50%);
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	&:hover {
+		filter: brightness(35%);
+	}
+}
+
+.text-on-image {
+	position: absolute;
+	top: 40%;
+	left: 30%;
+	z-index: 5;
+	color: white;
+	font-size: 24px;
+}
+
+.photo-modal-background {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.6);
+	
+}
+
+.photo-modal {
+	display: flex;
+	align-items: center;
+	justify-content: center;	
+	& > * {
+		margin: 0 4px;
+	}
+}
+
+.modal-image {
+	max-height: 90%;
+	object-fit: cover;
+}
+
+#photo-modal-close {
+	position: fixed;
+	top: 36px;
+	right: 36px;
+}
+
+.photo-modal-buttons {
+	color: darkgray;
+	&:hover {
+		color: #696969;
+	}
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
-import { resTimes, resParty, selectBackground, proUrl, devUrl } from '../../util/general_utils';
+import { resTimes, resParty, selectBackground } from '../../util/general_utils';
 import { Calendar } from 'react-date-range';
 import { FiSearch, FiCalendar, FiClock } from 'react-icons/fi';
 import { FaChevronDown, FaRegUser } from 'react-icons/fa';
@@ -80,8 +80,7 @@ class SearchBar extends React.Component {
         const { date, time, party_size, search } = this.state
         this.props.updateSearchFilter(search)
         this.props.changeTimeFilter(time)
-        this.props.closeModal();            
-        // DEV-TO-PRO!
+        this.props.closeModal();        
         this.props.history.replace('restaurants')
     }
     

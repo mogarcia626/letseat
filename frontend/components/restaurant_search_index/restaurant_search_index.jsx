@@ -29,7 +29,7 @@ class RestaurantSearchIndex extends React.Component {
         const restaurants = Object.values(this.props.restaurants)
         return (
             <div className='content-wrap'>
-                <SearchBarContainer id='search-form-general'/>
+                <SearchBarContainer id='search-form-general' hideWelcome={true}/>
                 <div className='search-result-page-container'>
                     <p id='you-searched-for'>{search}</p>
                     <p id='number-restaruants-available'>{restaurants.length} restaurants available{city}</p>

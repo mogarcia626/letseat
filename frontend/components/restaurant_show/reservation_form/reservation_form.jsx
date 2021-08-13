@@ -170,91 +170,87 @@ class ReservationForm extends React.Component {
                     this.closeDropdowns()
                 }}}
             >        
-            <div id='make-res'>
-                <p className='res-form-title'>Make a Reservation</p>
+                <div id='make-res'>
+                    <p className='res-form-title'>Make a Reservation</p>
 
-                <form action="" method="post"
-                    className='res-form'
-                    onSubmit={this.handleSubmit}
-                >                   
-                        
-                    <label className='res-input-title'>Party Size</label>
-                    <div className='res-input-field'
-                        onClick={this.openPartyDropdown}
-                    >                            
-                        <p className="res-input-text">{party_size}</p>
-                        <span className='res-chevron'><FaChevronDown size={10}/></span>
-                        {showParty ?
-                        <div className='drop-content' id='res-party-drop'>
-                            {resParty2.map((party, i) => {
-                                return (
-                                <option id='drop-item'
-                                    key={i}
-                                    onClick={this.update('party_size')}
-                                >{party}</option>
-                                )
-                            })}
-                        </div>            
-                        : null} 
-                    </div>
+                    <form action="" method="post"
+                        className='res-form'
+                        onSubmit={this.handleSubmit}
+                    >                   
+                            
+                        <label className='res-input-title'>Party Size</label>
+                        <div className='res-input-field'
+                            onClick={this.openPartyDropdown}
+                        >                            
+                            <p className="res-input-text">{party_size}</p>
+                            <span className='res-chevron'><FaChevronDown size={10}/></span>
+                            {showParty ?
+                            <div className='drop-content' id='res-party-drop'>
+                                {resParty2.map((party, i) => {
+                                    return (
+                                    <option id='drop-item'
+                                        key={i}
+                                        onClick={this.update('party_size')}
+                                    >{party}</option>
+                                    )
+                                })}
+                            </div>            
+                            : null} 
+                        </div>
 
-                    <div id='res-input-second-row'>
-                        <div className='res-input-container'>
-                            <label className='res-input-title'>Date</label>
-                            <div className='res-input-field' onClick={this.openCalendar}>
-                                <div className="res-input-text" >{monthArray[date.month]} {date.day} {date.year}</div> 
-                                <span className='res-chevron'><FaChevronDown size={10}/></span>
-                                {showCalendar ?
-                                <div className='drop-content' id='res-calendar-drop' onClick={e => e.stopPropagation()}>
-                                    <Calendar
-                                        date={today}
-                                        onChange={this.update('date')}
-                                        minDate={today}
-                                        maxDate={maxDate}
-                                    />
-                                </div>                  
-                                : null} 
+                        <div id='res-input-second-row'>
+                            <div className='res-input-container'>
+                                <label className='res-input-title'>Date</label>
+                                <div className='res-input-field' onClick={this.openCalendar}>
+                                    <div className="res-input-text" >{monthArray[date.month]} {date.day} {date.year}</div> 
+                                    <span className='res-chevron'><FaChevronDown size={10}/></span>
+                                    {showCalendar ?
+                                    <div className='drop-content' id='res-calendar-drop' onClick={e => e.stopPropagation()}>
+                                        <Calendar
+                                            date={today}
+                                            onChange={this.update('date')}
+                                            minDate={today}
+                                            maxDate={maxDate}
+                                        />
+                                    </div>                  
+                                    : null} 
+                                </div>
                             </div>
+
+                        <div className='res-input-container'>
+                        <label className='res-input-title'>Time</label>
+                        <div className='res-input-field' onClick={this.openTimeDropdown} >
+                            <div className="res-input-text">
+                                {time}
+                            </div>
+                            <span className='res-chevron'><FaChevronDown size={10}/></span>
+                            {showTimes ?
+                            <div className='drop-content' id='res-time-drop'>
+                                {resTimes.map((t, i) => {
+                                    return (
+                                    <option id='drop-item'
+                                        key={i}
+                                        onClick={this.update('time')}
+                                    >{t}</option>
+                                    )
+                                })}
+                            </div>            
+                            : null}                             
+                        </div>
                         </div>
 
-                    <div className='res-input-container'>
-                    <label className='res-input-title'>Time</label>
-                    <div className='res-input-field' onClick={this.openTimeDropdown} >
-                        <div className="res-input-text">
-                            {time}
-                        </div>
-                        <span className='res-chevron'><FaChevronDown size={10}/></span>
-                        {showTimes ?
-                        <div className='drop-content' id='res-time-drop'>
-                            {resTimes.map((t, i) => {
-                                return (
-                                <option id='drop-item'
-                                    key={i}
-                                    onClick={this.update('time')}
-                                >{t}</option>
-                                )
-                            })}
-                        </div>            
-                        : null}                             
-                    </div>
                     </div>
 
+                    { showResTimes ?
+                        this.timeComponents() :
+                        <div className='res-button'
+                            onClick = {this.handleFindTable} 
+                        >Find a table</div>                    
+                    }
+                    </form>
                 </div>
-
-                { showResTimes ?
-                    this.timeComponents() :
-                    <div className='res-button'
-                        onClick = {this.handleFindTable} 
-                    >Find a table</div>                    
-                }
-                </form>
-            </div>
             
-                <RestaurantSchedule schedule={this.props.schedule} />
-                <div
-                    id = 'temp-reset-button'
-                    onClick={(e) => this.setState({ showResTimes: false })}
-                >Reset</div>
+                <RestaurantSchedule schedule={this.props.schedule} />                
             </div> 
         )
     }

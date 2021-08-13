@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
-import { devUrl, proUrl } from '../../util/general_utils';
 import RatingIcon from '../general_use/rating_icon';
 
 function RestaurantSearchIndexItem(props) {
@@ -12,7 +11,6 @@ function RestaurantSearchIndexItem(props) {
         // <div className='search-result-container'>
 
         <div className='search-result-container'
-            // DEV-TO-PRO!
             onClick={() => history.push(`restaurants/${rest.id}`) }
         >
             <span className='result-image-container' >

@@ -1,0 +1,31 @@
+.index-container {
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-width: 636px;
+	max-width: 1200px;
+	width: 100%;
+    margin: 16px 0 16px 0;
+}
+
+.sub-index-container {
+    min-width: 636px;
+	max-width: 1200px;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.sub-index-title {
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 1rem 0;
+}
+
+.sub-index-grid {    
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;   
+    max-width: 100%;
+
+}

@@ -12,7 +12,7 @@ import UserProfilePage from './user_profile/user_profile_page';
 
 
 const App = () => (
-    <div className='container'>
+    <div className='container' id='main-app'>
         <Modal />
         <NavBar />       
         

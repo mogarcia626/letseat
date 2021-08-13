@@ -21,7 +21,7 @@ class RestaurantShow extends React.Component {
     render() {   
         
         if (this.state.loading) {
-            return null
+            return <div className="loader"></div>
         } else {
             
             return (
