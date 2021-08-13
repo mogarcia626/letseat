@@ -84,7 +84,7 @@
 }
 
 .res-button {
-    width: 100%;
+    text-align: center;
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 1px;    
@@ -131,6 +131,39 @@
             width: 100%;
             text-align: center;
         } 
+}
+
+#res-time-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 4px;
+    grid-column-gap: 8px;
+    margin: 0.5rem 0;
+    .res-button {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: white;
+        border-radius: 4px;
+        padding: 8px 0px;
+        background-color: #df8963;
+        border: none;
+        margin: 0;
+    }
+}
+
+#temp-reset-button {
+    border: solid black 1px;
+    position: sticky;
+    top: 450px;
+    font-size: 14px;
+    padding: 8px;
+    &:hover {
+        background-color: chocolate;
+        cursor: pointer;
+    }
 }
 
 // Schedule Section

@@ -54,7 +54,7 @@ function RestaurantSchedule(props) {
     week.forEach(day => {
         
         if (day.status === 'Closed') {
-            day.text = `${day.day}: Closed`
+            day.text = `Closed`
         } else {
             day.text = `${time24To12(day.open)}-${time24To12(day.close)}`
         } 

@@ -1,5 +1,6 @@
 import React from 'react';
-import { cityList, devUrl, proUrl } from '../../util/general_utils';
+import { withRouter } from 'react-router-dom'
+import { cityList } from '../../util/general_utils';
 import { TiLocation } from 'react-icons/ti';
 import { BsCaretDownFill } from 'react-icons/bs';
 
@@ -24,7 +25,7 @@ class LocationSelector extends React.Component {
 
     componentDidUpdate() {        
         const { showDropDown } = this.state;
-        
+        console.log(showDropDown)
         setTimeout(() => {
             if (showDropDown) {
                 window.addEventListener("click", this.closeDropDown);
@@ -36,9 +37,10 @@ class LocationSelector extends React.Component {
 
     locationSelect(e) {
         e.preventDefault()
-        // DEV-TO-PRO!
+        this.props.clearSearchFilter()
         this.props.updateLocationFilter(e.currentTarget.value)
-        if (window.location.href !== proUrl) window.location = proUrl
+        
+        if (this.props.location.pathname !== '/') this.props.history.push('/')
     }   
 
     render () {
@@ -74,4 +76,4 @@ class LocationSelector extends React.Component {
     }
 }
 
-export default LocationSelector;
+export default withRouter(LocationSelector);

@@ -8,30 +8,30 @@ export const ratingsCategoryList = ['value', 'food', 'ambience', 'service'];
 export const cityList = ['Orlando, FL', 'New York, NY', 'San Francisco, CA', 'Austin, TX']
 
 export const resTimes = [
-    "12:00 AM", "12:30 AM",
-    "1:00 AM", "1:30 AM",
-    "2:00 AM", "2:30 AM",
-    "3:00 AM", "3:30 AM",
-    "4:00 AM", "4:30 AM",
-    "5:00 AM", "5:30 AM",
-    "6:00 AM", "6:30 AM",
-    "7:00 AM", "7:30 AM",
-    "8:00 AM", "8:30 AM",
-    "9:00 AM", "9:30 AM",
-    "10:00 AM", "10:30 AM",
-    "11:00 AM", "11:30 AM",
-    "12:00 PM", "12:30 PM",
-    "1:00 PM", "1:30 PM",
-    "2:00 PM", "2:30 PM",
-    "3:00 PM", "3:30 PM",
-    "4:00 PM", "4:30 PM",
-    "5:00 PM", "5:30 PM",
-    "6:00 PM", "6:30 PM",
-    "7:00 PM", "7:30 PM",
-    "8:00 PM", "8:30 PM",
-    "9:00 PM", "9:30 PM",
-    "10:00 PM", "10:30 PM",
-    "11:00 PM", "11:30 PM"
+    "12:00am", "12:30am",
+    "1:00am", "1:30am",
+    "2:00am", "2:30am",
+    "3:00am", "3:30am",
+    "4:00am", "4:30am",
+    "5:00am", "5:30am",
+    "6:00am", "6:30am",
+    "7:00am", "7:30am",
+    "8:00am", "8:30am",
+    "9:00am", "9:30am",
+    "10:00am", "10:30am",
+    "11:00am", "11:30am",
+    "12:00pm", "12:30pm",
+    "1:00pm", "1:30pm",
+    "2:00pm", "2:30pm",
+    "3:00pm", "3:30pm",
+    "4:00pm", "4:30pm",
+    "5:00pm", "5:30pm",
+    "6:00pm", "6:30pm",
+    "7:00pm", "7:30pm",
+    "8:00pm", "8:30pm",
+    "9:00pm", "9:30pm",
+    "10:00pm", "10:30pm",
+    "11:00pm", "11:30pm"
 ];
 
 export const resParty = [
@@ -92,11 +92,12 @@ export function time24To12(num) {
     const time = `${num}.0`
     const timeArr = time.split('.')
 
-    let amPm = 'pm'
+    let amPm = 'am'
     let hourInt = parseInt(timeArr[0])
-    if (hourInt < 12) {
-        amPm = 'am'
-    } else if (hourInt === 12) {
+
+    if (hourInt >= 12 && hourInt < 24)  amPm = 'pm'
+
+    if (hourInt === 0 || hourInt === 12 || hourInt === 24) {
         hourInt = 12
     } else {
         hourInt = hourInt % 12

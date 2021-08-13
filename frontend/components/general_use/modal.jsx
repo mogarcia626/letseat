@@ -29,7 +29,7 @@ function Modal({ modal, closeModal }) {
             component = <SignupFormContainer />;
             break;
         case 'search':
-            component = <SearchBarContainer id='search-form-modal'/>;
+            component = <SearchBarContainer id='search-form-modal' />;
             break;
         case 'photo-carousel':
             component = <PhotoModal />;

@@ -24,6 +24,13 @@
     margin: 0 32px;
     border-bottom: solid 1px #d8d9db;   
     cursor: pointer;    
+    &:hover {
+        & > * {
+            position: relative;
+            top: -0.25rem;
+            left: 0.25rem;
+        }
+    }
 }
 
 .result-image-container {

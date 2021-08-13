@@ -21,11 +21,14 @@ class ReservationForm extends React.Component {
             },
             time: '7:00pm',
             party_size: 'For 2',
+            showResTimes: false,
         };        
         this.openCalendar = this.openCalendar.bind(this);
         this.openTimeDropdown = this.openTimeDropdown.bind(this);
         this.openPartyDropdown = this.openPartyDropdown.bind(this);
         this.closeDropdowns = this.closeDropdowns.bind(this);
+        this.handleFindTable = this.handleFindTable.bind(this);
+        this.timeComponents = this.timeComponents.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -54,6 +57,7 @@ class ReservationForm extends React.Component {
                 this.setState({ [type]: e.target.value });
             }
             this.closeDropdowns();
+            this.setState({ showResTimes: false })
         };
     }
 
@@ -68,6 +72,29 @@ class ReservationForm extends React.Component {
         }, 0);
     }
 
+    handleFindTable(e) { 
+        e.preventDefault()
+        this.setState({ showResTimes: true })
+    }
+
+    timeComponents() {
+        const {time} = this.state
+        const idx = resTimes.indexOf(time)
+        const times = [time]
+        for (let i = 1; i <= 2; i++) {
+            times.push(resTimes[idx + i])
+            times.unshift(resTimes[idx - i])       
+        }
+        console.log(this.props.schedule)
+        return (
+            <div id='res-time-grid'>
+                {times.map(ele => 
+                    <button className='res-button' value={ele}>{ele}</button>                    
+                )}
+            </div>
+        )
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         if (this.props.user.id) {
@@ -77,12 +104,13 @@ class ReservationForm extends React.Component {
                 party_size: parseInt(party_size.slice(4)),
                 user_id: this.props.user.id,
                 restaurant_id: this.props.restaurantId,
-                time: time,
+                time: e.currentTarget.value,
                 day: date.day,
                 month: date.month,
                 year: date.year,
             };
             this.props.processForm(reservation).then( (reservation) => {
+                this.setState({ showResTimes: false })
                 this.props.openModal({modal:'reservation-confirmation',
                     data: {
                         reservation: reservation,
@@ -96,7 +124,7 @@ class ReservationForm extends React.Component {
     }
 
     render() {
-        const { date, time, party_size, showCalendar, showParty, showTimes } = this.state
+        const { date, time, party_size, showCalendar, showParty, showTimes, showResTimes} = this.state
         const today = new Date()
         let maxDate = new Date(today)
         maxDate.setDate(maxDate.getDate() + 365)
@@ -163,12 +191,12 @@ class ReservationForm extends React.Component {
                         <span className='res-chevron'><FaChevronDown size={10}/></span>
                         {showTimes ?
                         <div className='drop-content' id='res-time-drop'>
-                            {resTimes.map((time, i) => {
+                            {resTimes.map((t, i) => {
                                 return (
                                 <option id='drop-item'
                                     key={i}
                                     onClick={this.update('time')}
-                                >{time}</option>
+                                >{t}</option>
                                 )
                             })}
                         </div>            
@@ -177,13 +205,21 @@ class ReservationForm extends React.Component {
                     </div>
 
                 </div>
-                <button className='res-button'>Book a Table</button>
-                {/* <button className='res-button'>Find a table</button> */}
+
+                { showResTimes ?
+                    this.timeComponents() :
+                    <div className='res-button'
+                        onClick = {this.handleFindTable} 
+                    >Find a table</div>                    
+                }
                 </form>
             </div>
             
                 <RestaurantSchedule schedule={this.props.schedule} />
-
+                <div
+                    id = 'temp-reset-button'
+                    onClick={(e) => this.setState({ showResTimes: false })}
+                >Reset</div>
             </div> 
         )
     }
