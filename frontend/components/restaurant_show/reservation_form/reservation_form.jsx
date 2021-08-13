@@ -2,7 +2,7 @@ import React from 'react';
 import RestaurantSchedule from './restaurant_schedule';
 import { resTimes, resParty2, monthArray, isTimeAvailable, convertDay } from '../../../util/general_utils';
 import { Calendar } from 'react-date-range';
-import { FaChevronDown } from 'react-icons/fa';
+import { FaChevronDown, FaExclamationCircle } from 'react-icons/fa';
 
 class ReservationForm extends React.Component {
     constructor(props) {
@@ -78,28 +78,46 @@ class ReservationForm extends React.Component {
     }
 
     timeComponents() {
+        const sched = this.props.schedule
         const {time, date} = this.state
-        let times = [time]
-
+        let times = []
         const day = convertDay(date.year, date.month, date.day)
-        console.log(day)
-        if (this.props.schedule[day] === 'Closed') {
+
+        if (isTimeAvailable(time, day, sched)) {times.push(time)}
+
+        if (sched[day] === 'Closed') {
             times = []
         } else {
             const idx = resTimes.indexOf(time)
+            const rotateIdx = (idx, arr) => {
+                return arr[idx % arr.length]
+            }
+
             for (let i = 1; i <= 2; i++) {
-                times.push( isTimeAvailable(resTimes[idx + i], day, this.props.schedule) )
-                times.unshift( isTimeAvailable(resTimes[idx - i], day, this.props.schedule) )     
+                let up = isTimeAvailable(rotateIdx(idx+i, resTimes), day, sched)
+                let down = isTimeAvailable(rotateIdx(idx-i, resTimes), day, sched)
+                if (up) times.push(up);
+                if (down) times.unshift(down);
             }
         }
-        console.log(times)
+        
         if ((times.length) === 0) {
-            return <div>At the moment, there's no online availability within 2.5 hours of {time}.</div>
+            return <div id='none-available-container'>
+                <FaExclamationCircle id='none-svg' size={24} />
+                    <p id='none-available'>At the moment, there's no online availability within 2.5 hours of {time}.</p>
+                </div>
         } else {
             return (
                 <div id='res-time-grid'>
                     {times.map(ele => 
-                        <button key={ele} className='res-button'>{ele}</button>
+                        <button key={ele}
+                            type='submit'
+                            value={ele}
+                            className='res-button'
+                            onClick={this.update('time')}
+                        >
+                            {ele}
+                        </button>
                     )}
                 </div>
             )
@@ -109,13 +127,13 @@ class ReservationForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.props.user.id) {
-            
+            console.log(e.target)
             const { date, time, party_size } = this.state
             const reservation = {
                 party_size: parseInt(party_size.slice(4)),
                 user_id: this.props.user.id,
                 restaurant_id: this.props.restaurantId,
-                time: e.currentTarget.key,
+                time: e.target.key,
                 day: date.day,
                 month: date.month,
                 year: date.year,
