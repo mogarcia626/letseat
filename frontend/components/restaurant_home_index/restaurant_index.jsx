@@ -29,11 +29,11 @@ class RestaurantIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.clearSearchFilter();
-        this.props.requestAllRestaurants(this.props.filters)
+        this.props.clearSearchFilter()
+        .then(this.props.requestAllRestaurants(this.props.filters)
         .then(() => this.setState({
             loading: false,
-        }))
+        })))
     }
 
     randomCuisine(num) {
