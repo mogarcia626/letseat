@@ -81,7 +81,7 @@ class SearchBar extends React.Component {
         this.props.updateSearchFilter(search)
         this.props.changeTimeFilter(time)
         this.props.closeModal();        
-        this.props.history.replace('restaurants')
+        this.props.history.push('/restaurants')
     }
     
     render() {

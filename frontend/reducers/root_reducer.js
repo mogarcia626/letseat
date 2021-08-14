@@ -9,16 +9,15 @@ import uiReducer from './ui_reducer';
 
 const persistConfig = {
     key: 'root',
-    storage,
-    whitelist: ['ui']
+    storage: storage,
+    whitelist: ['ui'],
 }
 
-const rootReducer = combineReducers(
-    {
-        entities: entitiesReducer,
-        session: sessionReducer,
-        errors: errorsReducer,
-        ui: uiReducer,
-    });
+const rootReducer = combineReducers({
+    entities: entitiesReducer,
+    session: sessionReducer,
+    errors: errorsReducer,
+    ui: uiReducer,
+});
 
 export default persistReducer(persistConfig, rootReducer)
