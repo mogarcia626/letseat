@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {requestAllRestaurants} from '../../actions/restaurant_actions';
 import {selectAllRestaurants} from '../../reducers/selectors';
+import { clearSearchFilter } from '../../actions/filter_actions';
 import * as UTIL from '../../util/general_utils'
 import RestaurantSubIndex from './restaurant_subindex'
 
@@ -12,7 +13,8 @@ const mSTP = state => ({
 });
 
 const mDTP = dispatch => ({
-        requestAllRestaurants: filters => dispatch(requestAllRestaurants(filters)),    
+        requestAllRestaurants: filters => dispatch(requestAllRestaurants(filters)),
+        clearSearchFilter: () => dispatch (clearSearchFilter()),
 });
 
 class RestaurantIndex extends React.Component {
@@ -27,6 +29,7 @@ class RestaurantIndex extends React.Component {
     }
 
     componentDidMount() {
+        this.props.clearSearchFilter();
         this.props.requestAllRestaurants(this.props.filters)
         .then(() => this.setState({
             loading: false,
@@ -71,6 +74,7 @@ class RestaurantIndex extends React.Component {
                     {arr.map( num => 
                         <RestaurantSubIndex key={num} filter='cuisine'
                             category={cuisList[num]}
+                            navId={num}
                         />
                     )}
                 </div>

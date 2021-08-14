@@ -10,6 +10,7 @@
 }
 
 .sub-index-container {
+    position: relative;
     min-width: 636px;
 	max-width: 1200px;
     width: 100%;
@@ -25,7 +26,39 @@
 .sub-index-grid {    
     display: flex;
     flex-direction: row;
-    overflow-x: scroll;   
+    overflow-x: hidden;   
     max-width: 100%;
+    scroll-behavior: smooth;
+}
 
+.scroll-left {
+    cursor: pointer;
+    position: absolute;
+    top: 11.5rem;
+    left: -1.3rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    border: 1px solid grey;
+    background: white;
+    box-shadow: 0px 2px 5px #42424293;
+    z-index: 2;
+}
+
+.scroll-right {
+    cursor: pointer;
+    position: absolute;
+    top: 11.5rem;
+    right: -1.3rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    border: 1px solid grey;
+    background: white;
+    box-shadow: 0px 2px 5px #42424293;
+    z-index: 2;
+} 
+
+.scroll-right:hover, .scroll-left:hover {
+    border: 2px solid #BF5700;
 }

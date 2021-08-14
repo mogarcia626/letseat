@@ -21,6 +21,7 @@ class RestaurantSubIndex extends React.Component {
         let restaurantList = this.props.restaurants.filter(rest => (
             rest.cuisine === this.props.category)
         )
+        
         return (
             <div className='sub-index-container'>
                 <p className='sub-index-title'>
@@ -29,7 +30,7 @@ class RestaurantSubIndex extends React.Component {
 
                 <hr className="solid" />
 
-                <div className='sub-index-grid'>
+                <div className='sub-index-grid' id={`scroll-to-${this.props.navId}`}>
                 {restaurantList.map((restaurant, i) => {
                     return (
                         <RestaurantIndexItem
@@ -43,8 +44,9 @@ class RestaurantSubIndex extends React.Component {
         )
     }
 
-    scroll = (scrollOffset) => {
-        this.refWindow.current.scrollLeft += scrollOffset;
+    scroll = (e) => {
+        let subIdx = document.getElementById(`scroll-to-${this.props.navId}`);
+        subIdx.scrollLeft += parseInt(e.target.value);
     };
     
     components() {
@@ -64,13 +66,16 @@ class RestaurantSubIndex extends React.Component {
 
         return(
             <div className='sub-index-container'>
-                {/* <button onClick={() => this.scroll(200)}>Right</button> */}
+                <button className='scroll-left' value={-1000} onClick={this.scroll}>
+                    ❮
+                </button>
+                <button className='scroll-right' value={1000} onClick={this.scroll}>
+                    ❯
+                </button>
                 {this.components()}                
             </div>
         )
     }
-
-
 }
 
 export default connect(mSTP)(RestaurantSubIndex);
