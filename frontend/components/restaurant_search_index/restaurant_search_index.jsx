@@ -7,13 +7,12 @@ import SearchBarContainer from '../search_bar/search_bar_container'
 function RestaurantSearchIndex() {
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(true);
-    console.log(loading)
     const filters = useSelector(state => state.ui.filters)
     const restaurants = useSelector(state => state.entities.restaurants)
 
     useEffect( ()=> {
         dispatch(requestAllRestaurants(filters))
-        .then( ()=> { setLoading(false); console.log(loading) })
+        .then( ()=> setLoading(false))
     }, [])
 
     let { city, search } = filters;
@@ -29,6 +28,7 @@ function RestaurantSearchIndex() {
                 <div className='search-result-page-container'>
                     <p id='you-searched-for'>{search}</p>
                     <p id='number-restaruants-available'>{restArr.length} restaurants available{city}</p>
+                        
                     {restArr.map( restaurant => (
                         <RestaurantSearchIndexItem
                             key={restaurant.id}
@@ -36,6 +36,7 @@ function RestaurantSearchIndex() {
                             time={filters.time}
                         />
                     ))}
+
                 </div>
             }
         </div>

@@ -1,90 +1,63 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import {requestAllRestaurants} from '../../actions/restaurant_actions';
-import {selectAllRestaurants} from '../../reducers/selectors';
 import { clearSearchFilter } from '../../actions/filter_actions';
-import * as UTIL from '../../util/general_utils'
+import { restaurantCuisinesList } from '../../util/general_utils'
 import RestaurantSubIndex from './restaurant_subindex'
 
-
-const mSTP = state => ({ 
-    restaurants: selectAllRestaurants(state),
-    filters: state.ui.filters,
-});
-
-const mDTP = dispatch => ({
-        requestAllRestaurants: filters => dispatch(requestAllRestaurants(filters)),
-        clearSearchFilter: () => dispatch (clearSearchFilter()),
-});
-
-class RestaurantIndex extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            loading: true
-        }        
-        this.randomCuisine = this.randomCuisine.bind(this)
-        // this.randomRating = this.randomRating.bind(this)
-        // this.ratingFilter = this.ratingFilter.bind(this)      
-    }
-
-    componentDidMount() {
-        this.props.clearSearchFilter()
-        .then(this.props.requestAllRestaurants(this.props.filters)
-        .then(() => this.setState({
-            loading: false,
-        })))
-    }
-
-    randomCuisine(num) {
-        const cuisineArr = UTIL.restaurantCuisinesList
-        const cuisList = new Set()
-        while (cuisList.size <= num) {
-            let rand = Math.floor(Math.random() * (cuisineArr.length))
-            cuisList.add(cuisineArr[rand])
-        }
-        return Array.from(cuisList)
-    }
+function RestaurantIndex() {
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(true);
+    const filters = useSelector(state => state.ui.filters)
+    const cuisList = useRef(new Set())    
+    const num = 4;
     
-    // randomRating(num) {
-    //     const ratingArr = Object.keys(UTIL.ratingsCategoryList)
-    //     const ratingList = new Set(['average'])
-    //     while (ratingList.size <= num) {
-    //         let rand = Math.floor(Math.random() * (ratingArr.length))
-    //         ratingList.add(ratingineArr[rand])
-    //     }
-    //     return Array.from(ratingList)
-    // } 
-        
-    render() {
-        const {loading} = this.state
-        if (loading) {
-            return <div className="loader"></div>
-        } else {            
-            const num = 4
-            const arr = []
-            for (let i = 0; i < num; i++) {
-                arr.push(i)
-            }
-            const cuisList  = this.randomCuisine(num)
-            // const ratingList = this.randomRating(num)
-        
-            return (
-                <div className="index-container">
-                    {arr.map( num => 
-                        <RestaurantSubIndex key={num} filter='cuisine'
-                            category={cuisList[num]}
-                            navId={num}
-                        />
-                    )}
-                </div>
-            )
+    useEffect( () => {
+        dispatch(clearSearchFilter());     
+        while (cuisList.current.size <= num) {
+            let rand = Math.floor(Math.random() * (restaurantCuisinesList.length))
+            cuisList.current.add(restaurantCuisinesList[rand])
         }
+        dispatch(requestAllRestaurants(filters))
+        .then(() => {
+            console.log(`queried DB ${count.current} times`)
+            count += 1
+            setLoading(false)          
+        })
+    }, [] )   
+    
+
+    if (loading) {
+            return <div className="loader"></div>
+    } else {     
+        const subIndices = Array.from(cuisList.current).map( (cuis, i) => 
+            <RestaurantSubIndex key={i} filter='cuisine'
+                category={cuis}
+                navId={i}
+            />
+        )
+        return (
+            <div className="index-container">
+                {subIndices}
+            </div>
+        )
     }
 }
 
-export default connect(mSTP, mDTP)(RestaurantIndex);
+export default RestaurantIndex;
+        
+// randomRating(num) {
+//     const ratingArr = Object.keys(UTIL.ratingsCategoryList)
+//     const ratingList = new Set(['average'])
+//     while (ratingList.size <= num) {
+//         let rand = Math.floor(Math.random() * (ratingArr.length))
+//         ratingList.add(ratingineArr[rand])
+//     }
+//     return Array.from(ratingList)
+// } 
 
+// const ratingList = this.randomRating(num)
+ 
 
 // return (
 //     <div className="index-container">

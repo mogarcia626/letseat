@@ -10,8 +10,8 @@ const configureStore = (preloadedState = {}) => {
         rootReducer,
         preloadedState,
         // DEV-TO-PRO
-        applyMiddleware(thunk)
-        // applyMiddleware(thunk, logger)
+        // applyMiddleware(thunk)
+        applyMiddleware(thunk, logger)
     )
     const persistor = persistStore(store)
 
