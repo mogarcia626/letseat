@@ -11,7 +11,7 @@ function RestaurantIndex() {
     const filters = useSelector(state => state.ui.filters)
     const cuisList = useRef(new Set())    
     const num = 4;
-    
+
     useEffect( () => {
         dispatch(clearSearchFilter());     
         while (cuisList.current.size <= num) {
@@ -20,8 +20,6 @@ function RestaurantIndex() {
         }
         dispatch(requestAllRestaurants(filters))
         .then(() => {
-            console.log(`queried DB ${count.current} times`)
-            count += 1
             setLoading(false)          
         })
     }, [] )   
