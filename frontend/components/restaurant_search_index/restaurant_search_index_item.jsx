@@ -1,14 +1,17 @@
 import React from 'react';
-import { devUrl, proUrl } from '../../util/general_utils';
+import { useHistory } from 'react-router-dom'
 import RatingIcon from '../general_use/rating_icon';
 
 function RestaurantSearchIndexItem(props) {
     const rest = props.restaurant
     const time = props.time
-    return (        
+    const history = useHistory()
+    
+    return (   
+        // <div className='search-result-container'>
+
         <div className='search-result-container'
-            // DEV-TO-PRO!
-            onClick={() => window.location = `${proUrl}restaurants/${rest.id}` }
+            onClick={() => history.push(`restaurants/${rest.id}`) }
         >
             <span className='result-image-container' >
                 <img className='result-photo'
@@ -45,6 +48,7 @@ function RestaurantSearchIndexItem(props) {
                 </p>
             </div> */}
         </div>
+        // </div>
     )
 }
 

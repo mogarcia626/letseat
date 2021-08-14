@@ -1,37 +1,43 @@
-export const proUrl = 'https://let-s-eat.herokuapp.com/#/';
-export const devUrl = 'http://localhost:3000/#/';
+import { BiCoinStack } from "react-icons/bi";
         
 export const restaurantCuisinesList = ['Thai', 'Chinese', 'Japanese', 'Seafood & Steakhouses', 'Latin American Cuisine'];
 
-export const ratingsCategoryList = ['value', 'food', 'ambience', 'service'];
+export const ratingsCategoryList = {
+    value: 'Best Value',
+    food: 'Best Food',
+    ambience: 'Best Ambience',
+    service: 'Best Service',
+    count: 'Most Reviewed',
+    average: 'Highest Rated',
+};
 
 export const cityList = ['Orlando, FL', 'New York, NY', 'San Francisco, CA', 'Austin, TX']
 
 export const resTimes = [
-    "12:00 AM", "12:30 AM",
-    "1:00 AM", "1:30 AM",
-    "2:00 AM", "2:30 AM",
-    "3:00 AM", "3:30 AM",
-    "4:00 AM", "4:30 AM",
-    "5:00 AM", "5:30 AM",
-    "6:00 AM", "6:30 AM",
-    "7:00 AM", "7:30 AM",
-    "8:00 AM", "8:30 AM",
-    "9:00 AM", "9:30 AM",
-    "10:00 AM", "10:30 AM",
-    "11:00 AM", "11:30 AM",
-    "12:00 PM", "12:30 PM",
-    "1:00 PM", "1:30 PM",
-    "2:00 PM", "2:30 PM",
-    "3:00 PM", "3:30 PM",
-    "4:00 PM", "4:30 PM",
-    "5:00 PM", "5:30 PM",
-    "6:00 PM", "6:30 PM",
-    "7:00 PM", "7:30 PM",
-    "8:00 PM", "8:30 PM",
-    "9:00 PM", "9:30 PM",
-    "10:00 PM", "10:30 PM",
-    "11:00 PM", "11:30 PM"
+    "12:00pm", "12:30pm",
+    "1:00pm", "1:30pm",
+    "2:00pm", "2:30pm",
+    "3:00pm", "3:30pm",
+    "4:00pm", "4:30pm",
+    "5:00pm", "5:30pm",
+    "6:00pm", "6:30pm",
+    "7:00pm", "7:30pm",
+    "8:00pm", "8:30pm",
+    "9:00pm", "9:30pm",
+    "10:00pm", "10:30pm",
+    "11:00pm", "11:30pm",
+    "12:00am", "12:30am",
+    "1:00am", "1:30am",
+    "2:00am", "2:30am",
+    "3:00am", "3:30am",
+    "4:00am", "4:30am",
+    "5:00am", "5:30am",
+    "6:00am", "6:30am",
+    "7:00am", "7:30am",
+    "8:00am", "8:30am",
+    "9:00am", "9:30am",
+    "10:00am", "10:30am",
+    "11:00am", "11:30am"
 ];
 
 export const resParty = [
@@ -80,23 +86,38 @@ export function selectBackground(location) {
     };
 }
 
-export const dayArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat']
+export const dayArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+export function convertDay(year, month, day) {
+    const dayObj = {
+        'Sun': 'sunday',
+        'Mon': 'monday',
+        'Tue': 'tuesday',
+        'Wed': 'wednesday',
+        'Thu': 'thursday',
+        'Fri': 'friday',
+        'Sat': 'saturday'
+    }
+    const date = new Date(year, month, day)
+    return dayObj[dayArray[date.getDay()]]
+}
 
 export function dayOfTheWeek(year, month, day) {
     const date = new Date(year, month, day)
     return dayArray[date.getDay()]
 }
 
-export function time24To12(num) {
+export function time24ToAmPm(num) {
 
     const time = `${num}.0`
     const timeArr = time.split('.')
 
-    let amPm = 'pm'
+    let amPm = 'am'
     let hourInt = parseInt(timeArr[0])
-    if (hourInt < 12) {
-        amPm = 'am'
-    } else if (hourInt === 12) {
+
+    if (hourInt >= 12 && hourInt < 24)  amPm = 'pm'
+
+    if (hourInt === 0 || hourInt === 12 || hourInt === 24) {
         hourInt = 12
     } else {
         hourInt = hourInt % 12
@@ -116,4 +137,33 @@ export function time24To12(num) {
     }
 
     return `${hourInt}:${min}${amPm}`
+}
+
+export function timeAmPmTo24(timeStr) {
+    const arr = timeStr.split(':')
+    const l = arr[1].length - 2
+
+    let hours = parseInt(arr[0])
+    let minutes = parseInt(arr[1].slice(0,l))
+    const amPm = arr[1].slice(l)
+    
+    if (amPm === 'pm' && hours !==12) {
+        hours += 12
+    } else if (hours===12 && amPm === 'am') {
+        hours = 24
+    }
+
+    minutes /= 60.0
+
+    return hours + minutes
+}
+
+export function isTimeAvailable(time, day, schedule) {    
+    let t = timeAmPmTo24(time)
+    if (schedule[day] === 'Open' && 
+        t >= schedule[`${day}Open`] &&
+        t < schedule[`${day}Close`]
+    ) {
+        return time
+    }
 }

@@ -20,9 +20,10 @@ class RestaurantIndexItem extends React.Component {
             className='index-item'
             onClick={this.handleClick}
         >
+            {/* Uncomment
             <div className='index-image-container'>
                 <img className='index-image' src={restaurant.photoUrls[0]} alt="" />
-            </div>
+            </div> */}
             <p className='show-title'>{restaurant.name}</p>
 
             <div className='subindex-review-summary'>
@@ -32,7 +33,7 @@ class RestaurantIndexItem extends React.Component {
 
             <div className='filter-summary'>
                 <p>{restaurant.cuisine}</p>
-                <p>&#8729;</p>
+                <p>&bull;</p>
                 <p>{restaurant.city}</p>
             </div>
 

@@ -84,7 +84,7 @@
 }
 
 .res-button {
-    width: 100%;
+    text-align: center;
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 1px;    
@@ -133,11 +133,64 @@
         } 
 }
 
+#res-time-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 4px;
+    grid-column-gap: 8px;
+    margin: 0.5rem 0;
+    .res-button {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: white;
+        border-radius: 4px;
+        padding: 8px 0px;
+        background-color: #df8963;
+        border: none;
+        margin: 0;
+        &:hover {
+            background-color: #BF5700;
+        }
+    }
+}
+
+#none-available-container {
+    align-items: flex-start;
+    display: flex;
+    background-color: #f1f2f4;
+    padding: 0.75rem 0;
+    margin: 0.75rem 0;
+    width: 100%;
+}
+
+#none-available {
+    font-size: 14px;
+}
+
+#none-svg {
+    padding: 0 0.5rem
+}
+
+#temp-reset-button {
+    border: solid black 1px;
+    position: sticky;
+    top: 450px;
+    font-size: 14px;
+    padding: 8px;
+    &:hover {
+        background-color: chocolate;
+        cursor: pointer;
+    }
+}
+
 // Schedule Section
 
 #schedule-container {
     position: sticky;
-    top: 290px;
+    top: 18.5rem;
     display: flex;
     flex-direction: column;
     font-size: 14px;

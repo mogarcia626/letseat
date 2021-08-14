@@ -2,7 +2,9 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    width: 90vw;
+    width: 45rem;
+    max-width: 800px;
+    padding-bottom: 1.5rem;
 }
 
 #confirmation-id {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { resTimes, resParty, selectBackground, proUrl, devUrl } from '../../util/general_utils';
+import { withRouter } from 'react-router-dom'
+import { resTimes, resParty, selectBackground } from '../../util/general_utils';
 import { Calendar } from 'react-date-range';
 import { FiSearch, FiCalendar, FiClock } from 'react-icons/fi';
 import { FaChevronDown, FaRegUser } from 'react-icons/fa';
@@ -79,9 +80,8 @@ class SearchBar extends React.Component {
         const { date, time, party_size, search } = this.state
         this.props.updateSearchFilter(search)
         this.props.changeTimeFilter(time)
-        this.props.closeModal();            
-        // DEV-TO-PRO!
-        window.location = `${proUrl}restaurants`; 
+        this.props.closeModal();        
+        this.props.history.push('/restaurants')
     }
     
     render() {
@@ -97,9 +97,11 @@ class SearchBar extends React.Component {
                     this.closeDropdowns()
                 }}}
             >
-                <h1 className='banner-title'>
-                    Find your table for any occasion
-                </h1>
+                {this.props.hideWelcome ? null : 
+                    <h1 className='banner-title'>
+                        Find your table for any occasion
+                    </h1>
+                }
 
                 <form className="search-modal-form"
                     onSubmit={this.handleSubmit}
@@ -198,4 +200,4 @@ class SearchBar extends React.Component {
     }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);

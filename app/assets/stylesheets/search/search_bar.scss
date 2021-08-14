@@ -1,0 +1,76 @@
+.search-bar-default, .search-bar-orlando, .search-bar-austin,
+.search-bar-san-francisco, .search-bar-new-york{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 400px;
+	max-height: 800px;
+	min-width: 800px;
+	max-width: 1600px;
+	width: 100%;
+}
+
+// DEV-TO-PRO!
+$source: 'pro'; 
+
+.search-bar-default {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/default.png');
+	background-size: cover;
+}
+
+.search-bar-orlando {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/orlando.png');
+	background-size: cover;
+	color: white;
+}
+
+.search-bar-new-york {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/newyork.png');
+	background-size: cover;
+	color: white;
+}
+
+.search-bar-san-francisco {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/sanfran.png');
+	background-size: cover;
+	.banner-title {
+		color: white;
+	}
+}
+
+.search-bar-austin {
+	background-image: url('https://letseat-#{$source}.s3.us-east-2.amazonaws.com/city/austin.png');
+	background-size: cover;
+	color: #BF5700;
+	border-radius: 4px;
+	.banner-title {
+		background-color: rgba(230,235,242,0.4);
+	}
+}
+
+#search-form-modal {	
+    min-height: 0;
+    height: fit-content;
+	background-color: white;
+	background-image: none;
+	color: black;
+	padding: 20px
+}
+
+.banner-title {
+	margin: 16px 16px 4px;
+	font-size: 40px;
+}
+
+#search-form-general {		
+    width: 100%;
+    max-width: 1272px;
+    color: white;
+    min-height: 0;
+    height: fit-content;
+    padding: 12px 0;
+    background-image: url(//cdn.otstatic.com/cfe/6/images/dtp-desktop-efc049.png);
+    object-fit: cover;
+}
+

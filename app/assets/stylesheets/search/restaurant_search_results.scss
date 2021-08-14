@@ -1,0 +1,71 @@
+.search-result-page-container {
+    display: flex;
+    flex-direction: column;    
+    max-width: 1600px;;
+    width: 100%;
+    padding: 16px 0;
+}
+
+#you-searched-for {
+    padding: 32px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#number-restaruants-available {
+    padding-bottom: 40px;
+    margin: 0 32px;
+    border-bottom: solid 1px #d8d9db;
+}
+
+.search-result-container {
+    display: flex; 
+    padding: 24px 0 20px;
+    margin: 0 32px;
+    border-bottom: solid 1px #d8d9db;   
+    cursor: pointer;    
+    &:hover {
+        & > * {
+            position: relative;
+            top: -0.25rem;
+            left: 0.25rem;
+        }
+    }
+}
+
+.result-image-container {
+    height: 12.55rem;
+    width: 12.55rem;
+    margin-right: 16px;
+}
+
+.result-photo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.result-restaurant-info {
+    display: flex;
+    flex-direction: column;    
+}
+
+.result-restaurant-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #247f9e;
+    margin: 0 4px 8px;
+}
+
+.result-rating-info {
+    display: flex;
+    align-items: center;
+}
+
+.result-text {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 8px 4px 8px
+}
+
