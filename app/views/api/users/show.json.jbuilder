@@ -5,10 +5,12 @@ json.upcoming do
   @upcoming_reservations.each do |reservation|
     json.set! reservation.id do
 
-      json.extract! reservation, :party_size,
+      json.extract! reservation, :id, :party_size,
       :time, :day, :month, :year, :restaurant_id
 
-      json.name Restaurant.find_by_id(reservation.restaurant_id).name
+      restaurant = Restaurant.find_by_id(reservation.restaurant_id)
+      json.name restaurant.name
+      json.photoUrl = url_for(restaurant.photos.first)
 
     end
   end  
@@ -18,10 +20,12 @@ json.past do
   @past_reservations.each do |reservation|
     json.set! reservation.id do
 
-      json.extract! reservation, :party_size,
+      json.extract! reservation, :id, :party_size,
       :time, :day, :month, :year, :restaurant_id
 
-      json.name Restaurant.find_by_id(reservation.restaurant_id).name
+      restaurant = Restaurant.find_by_id(reservation.restaurant_id)
+      json.name restaurant.name
+      json.photoUrl = url_for(restaurant.photos.first)
 
     end
   end  

@@ -4,10 +4,14 @@ class SignupForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            first_name: '',
-            last_name: '',
-            email: '',
-            password: '',
+            loading: false,
+            errors: [],
+            user: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                password: '',
+            },
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,10 +26,12 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.setState({ loading: true })
         const user = Object.assign({}, this.state);
-        this.props.processForm(user).then( () => {
-            this.props.closeModal();
-        })          
+        this.props.processForm(user).then(
+            () => this.props.closeModal(),
+            () => this.setState({ loading: false })
+        )          
     }
     
     renderErrors() {
@@ -90,8 +96,13 @@ class SignupForm extends React.Component {
                             onChange={this.update('last_name')}
                     />
 
-                    <button className='session-modal-button'>Create Account</button>
-                    
+                    {this.state.loading ? 
+                        <div className="session-modal-button" id='loading-modal-button'>
+                        <div className="spinner"></div></div>
+                            :
+                        <button className='session-modal-button'>Create Account</button>
+                    }
+                                        
                     {this.renderErrors()}
                     
                     <div className='modal-link'>Already have an account?

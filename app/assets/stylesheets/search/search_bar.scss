@@ -55,7 +55,10 @@ $source: 'pro';
 	background-color: white;
 	background-image: none;
 	color: black;
-	padding: 20px
+	padding: 20px;
+	& > * {
+		color: black;
+	}
 }
 
 .banner-title {

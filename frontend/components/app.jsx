@@ -1,7 +1,6 @@
 import React from 'react';
-// import { Provider } from 'react-redux';
 import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
-// import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { ProtectedRoute } from '../util/route_util';
 import Modal from './general_use/modal';
 import NavBar from './nav_bar/nav_bar';
 import Footer from './general_use/footer';
@@ -19,7 +18,7 @@ const App = () => (
         <Switch>
             <Route exact path="/" component={HomePage}/>
             <Route path="/restaurants/:restaurantId" component={RestaurantShowContainer} />
-            <Route path="/user/profile" component={UserProfilePage} />
+            <ProtectedRoute path="/profile" component={UserProfilePage} />
             <Route exact path="/restaurants/" component={RestaurantSearchIndex} />
             <Redirect to='/' />
         </Switch>

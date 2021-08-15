@@ -4,20 +4,12 @@ import UpcomingReservationItem from './upcoming_reservation_item';
 import PastReservationItem from './past_reservation_item';
 
 function UserProfilePage() {
-    const ent =  useSelector((state) => state.entities)
     const reservations = useSelector((state) => state.entities.reservations)
-    const restaurants = useSelector((state) => state.entities.restaurants)
     const user = useSelector((state) => state.entities.user[state.session.id])
-    // console.log('reservations')
-    // console.log(reservations)
-    // console.log('')
-    // console.log('restaurants')
-    // console.log(restaurants)
-    // console.log('')
-    // console.log('user')
-    // console.log(user)
-    // console.log('')
-    // console.log(ent)
+    
+    const upcoming = Object.values(reservations.upcoming);
+    const past = Object.values(reservations.past);
+
     return (
         <div className='content-wrap' id='profile-page-main'>
 
@@ -27,22 +19,22 @@ function UserProfilePage() {
 
             <div className='profile-reservation-section'>
                 <p className='profile-page-title'>Upcoming Reservations</p>
-                {/* {reservations.upcoming.map( reservation => {
-                    <UpcomingReservationItem 
-                        reservation={reservation}
-                        restaurant={restaurants[reservation[restauranId]]}
+                {upcoming.map( reservation =>
+                    <UpcomingReservationItem
+                        key={reservation.id} 
+                        res={reservation}
                     />
-                })} */}
+                )}
             </div>
 
             <div className='profile-reservation-section'>
                 <p className='profile-page-title'>Past Reservations</p>
-                {/* {reservations.past.map( reservation => {
-                    <UpcomingReservationItem 
-                        reservation={reservation}
-                        restaurant={restaurants[reservation[restauranId]]}
+                {past.map( reservation =>
+                    <PastReservationItem
+                        key={reservation.id} 
+                        res={reservation}
                     />
-                })} */}
+                )}
             </div>
             
         </div>

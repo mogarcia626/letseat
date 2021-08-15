@@ -1,24 +1,25 @@
 import React from 'react';
+import { dayOfTheWeek, monthArray } from '../../util/general_utils'
 
-function UpcomingReservationItem(props) {
-    const rest = props.restaurant
-    const rez = props.reservation
+function UpcomingReservationItem({ res }) {
+    const day = dayOfTheWeek(res.year, res.month, res.day)
+    const month = monthArray[res.month]
 
     return (        
         <div className='profile-reservation-photo'>
             <span className='profile-photo-container' >
                 <img className='profile-reservation-photo'
-                    src={rest.photoUrls[0]}
+                    src={res.photoUrl}
                 />
             </span>
             <div className='profile-reservation-info'>
-                <p className='profile-restaurant-title'>{rest.name}</p>
+                <p className='profile-restaurant-title'>{res.name}</p>
                 <p className='profile-text'>
-                    {dayOfTheWeek(rez.year, rez.month, rez.day)}, {monthArray[rez.month]} {rez.day} {rez.year} at {rez.time}
+                    {day}, {month} {res.day} {res.year} at {res.time}
                 </p>
-                <p className='profile-text'>Table for {rez.partySize} people</p>
+                <p className='profile-text'>Table for {res.partySize} people</p>
             </div>
-            {/* <div id='modify-reservation-buttons'>
+            <div id='modify-reservation-buttons'>
                 <p className='profile-text' id='profile-edit-reservation'>
                     View
                 </p>
@@ -28,7 +29,7 @@ function UpcomingReservationItem(props) {
                 <p className='profile-text' id='profile-edit-reservation'>
                     Cancel
                 </p>
-            </div> */}
+            </div>
         </div>
     )
 }

@@ -1,30 +1,31 @@
 import React from 'react';
+import { dayOfTheWeek, monthArray } from '../../util/general_utils'
 import { FiMessageSquare } from 'react-icons/fi'
 
-function PastReservationItem(props) {
-    const rest = props.restaurant
-    const rez = props.reservation
-
+function PastReservationItem({ res }) {
+    const day = dayOfTheWeek(res.year, res.month, res.day)
+    const month = monthArray[res.month]
+    
     return (        
         <div className='profile-reservation-photo'>
             <span className='profile-photo-container' >
                 <img className='profile-reservation-photo'
-                    src={rest.photoUrls[0]}
+                    src={res.photoUrl}
                 />
             </span>
             <div className='profile-reservation-info'>
-                <p className='profile-restaurant-title'>{rest.name}</p>
+                <p className='profile-restaurant-title'>{res.name}</p>
                 <p className='profile-text'>
-                    {dayOfTheWeek(rez.year, rez.month, rez.day)}, {monthArray[rez.month]} {rez.day} {rez.year} at {rez.time}
+                    {day}, {month} {res.day} {res.year} at {res.time}
                 </p>
-                <p className='profile-text'>Table for {rez.partySize} people</p>
+                <p className='profile-text'>Table for {res.partySize} people</p>
             </div>
-            {/* <div id='profile-review-container'>
+            <div id='profile-review-container'>
                 <FiMessageSquare size={20} />
                 <p className='profile-text' id='write-review-text'>
                     Write Review
                 </p>
-            </div> */}
+            </div>
         </div>
     )
 }

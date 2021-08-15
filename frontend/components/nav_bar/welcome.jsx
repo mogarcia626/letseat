@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { logout } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions'
 import ReservationsDropDown from './reservations_dropdown';
@@ -28,9 +29,14 @@ function Welcome( { currentUser } ) {
     return (
         <div className='right-nav'>
 
-            <p className='nav-text'>
-                Welcome {currentUser.firstName}
-            </p>
+            <Link to='/profile' id='nav-profile-link'>
+                <p className='nav-text'>
+                    Welcome {currentUser.firstName}
+                </p>
+                <button className="icon-button">
+                    <FaRegUser size={18} />
+                </button>
+            </Link>
             
             <button className="icon-button" onClick={()=>setShowResList(true)}>
                 <FiCalendar size={20} />

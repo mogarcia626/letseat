@@ -81,8 +81,8 @@
     background-color: transparent;
     border: none;
     color: white;
-    margin: 0;
-    padding: 2px 1px 0 4px;
+    margin: 0 2px;
+    padding: 2px 2px 0;
 }
 
 .session-button {
@@ -116,8 +116,18 @@
 .nav-text {
     font-size: 16px;
     letter-spacing: 0.5px;
-    margin-right: 8px;
-    padding-top: 4px;
+    margin-right: 2px;
+    &:hover {
+        text-decoration: underline;        
+    }
+}
+
+#nav-profile-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    text-decoration: none;
 }
 
 .location-selector {

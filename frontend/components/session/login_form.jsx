@@ -4,10 +4,13 @@ class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            errors: [], user: {
-            email: '',
-            password: '',
-        }};
+            loading: false,
+            errors: [], 
+            user: {
+                email: '',
+                password: '',
+            }
+        };
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -20,10 +23,12 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.setState({ loading: true })
         const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(() => {
-            this.props.closeModal();
-        })
+        this.props.processForm(user).then(
+            () => this.props.closeModal(), 
+            () => this.setState( {loading: false} ) 
+        )        
     }
 
     renderErrors() {
@@ -67,7 +72,12 @@ class LoginForm extends React.Component {
                         onChange={this.update('password')}
                     />
 
-                    <button className="session-modal-button">Sign In</button>
+                    {this.state.loading ? 
+                        <div className="session-modal-button" id='loading-modal-button'>
+                        <div className="spinner"></div></div>
+                            :
+                        <button className="session-modal-button">Sign In</button>
+                    }
 
                     {this.renderErrors()}
                     
