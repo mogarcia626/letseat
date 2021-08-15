@@ -14,12 +14,15 @@ function UserProfilePage() {
         <div className='content-wrap' id='profile-page-main'>
 
             <div id='profile-page-header'>
-                <p id='profile-header-text'>{user.firstName} {user.lastName}</p>
+                <h2>{user.firstName} {user.lastName}</h2>
             </div>
 
             <div className='profile-reservation-section'>
-                <p className='profile-page-title'>Upcoming Reservations</p>
-                {upcoming.map( reservation =>
+                <div className='profile-page-title-container'>
+                    <h3 className='profile-page-title'>Upcoming Reservations</h3>
+                </div>
+                
+                {upcoming.slice(0,2).map( reservation =>
                     <UpcomingReservationItem
                         key={reservation.id} 
                         res={reservation}
@@ -28,7 +31,10 @@ function UserProfilePage() {
             </div>
 
             <div className='profile-reservation-section'>
-                <p className='profile-page-title'>Past Reservations</p>
+                <div className='profile-page-title-container'>
+                    <h3 className='profile-page-title'>Past Reservations</h3>
+                </div>
+
                 {past.map( reservation =>
                     <PastReservationItem
                         key={reservation.id} 

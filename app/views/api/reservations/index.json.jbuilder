@@ -6,7 +6,7 @@
 
     restaurant = Restaurant.find_by_id(reservation.restaurant_id)
     json.name restaurant.name
-    json.photoUrl = url_for(restaurant.photos.first)
+    json.photoUrl url_for(restaurant.photos.first)
     
   end
 end  

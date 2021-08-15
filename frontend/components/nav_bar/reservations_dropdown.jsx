@@ -30,7 +30,7 @@ function ReservationsDropDown() {
 
                         <div className='res-dd-item'>
                             <Link to={`/restaurants/${res.restaurantId}`}
-                                className='ress-dd-restaurant'>
+                                className='res-dd-restaurant'>
                                 {res.name}
                             </Link>
 
