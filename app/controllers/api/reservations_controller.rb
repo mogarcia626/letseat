@@ -2,6 +2,11 @@ class Api::ReservationsController < ApplicationController
 
     before_action :require_logged_in
 
+    def index
+        @upcoming_reservations = Reservation.upcoming_reservations(current_user.id)
+        render "api/reservations/index"
+    end
+
     def show
       @reservation = Reservation.find_by(id: params[:id])
       render :show

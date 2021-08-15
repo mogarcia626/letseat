@@ -8,14 +8,14 @@ import { monthArray } from '../../util/general_utils'
 
 function ReservationsDropDown() {
     const upcoming = useSelector(state => state.entities.reservations.upcoming)
-    const firstThree = Object.values(upcoming).slice(0,3)
+    const firstTwo = Object.values(upcoming).slice(0,2)
     
     return (
         <div id='reservations-dd'>
 
             <p id='res-dd-header'>Upcoming Reservations</p>
 
-            {firstThree.slice(0,4).map((res, i) => (
+            {firstTwo.map((res, i) => (
                 <div key={i} className='res-dd-item-container'>
 
                     <span className='res-dd-store-icon'>

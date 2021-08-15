@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal, openModal } from '../../../actions/modal_actions';
-import { createReservation } from '../../../actions/reservation_actions';
+import { createReservation, requestUpcomingReservations } from '../../../actions/reservation_actions';
 import ReservationForm from './reservation_form';
 
 const mSTP = state => {
@@ -13,7 +13,8 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
     return {
-        processForm: (reservation) => dispatch(createReservation(reservation)),        
+        processForm: (reservation) => dispatch(createReservation(reservation)),
+        requestUpcomingReservations: () => dispatch(requestUpcomingReservations()), 
         openModal: modal => dispatch(openModal(modal)), 
         closeModal: () => dispatch(closeModal()),
         resetErrors: () => dispatch(resetErrors()),        

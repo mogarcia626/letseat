@@ -144,7 +144,9 @@ class ReservationForm extends React.Component {
                 month: date.month,
                 year: date.year,
             };
-            this.props.processForm(reservation).then( (reservation) => {
+            this.props.processForm(reservation)
+            .then(this.props.requestUpcomingReservations())
+            .then( (reservation) => {
                 this.setState({ showResTimes: false })
                 this.props.openModal({modal:'reservation-confirmation',
                     data: {

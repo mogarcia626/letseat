@@ -6,9 +6,8 @@ class Api::SessionsController < ApplicationController
     )
      if @user
       login(@user)
-      all = Reservation.user_past_and_upcoming(@user.id)
-      @past_reservations = all[:past]
-      @upcoming_reservations = all[:upcoming]
+      @past_reservations = Reservation.past_reservations(@user.id)
+      @upcoming_reservations = Reservation.upcoming_reservations(@user.id)
       render "api/users/show"
     else
       render json: ["Invalid email/password combination"], status: 401
