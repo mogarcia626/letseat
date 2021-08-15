@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { logout } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions'
+import ReservationsDropDown from './reservations_dropdown';
 import { FiSearch, FiCalendar } from "react-icons/fi";
 import { FaRegUser } from 'react-icons/fa';
 
@@ -36,7 +37,7 @@ function Welcome( { currentUser } ) {
             </button>
 
             {(!showResList) ? null :
-                <p>Dropdowns Here</p>
+                <ReservationsDropDown />
             }
 
             <button

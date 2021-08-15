@@ -1,3 +1,4 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { selectSingleRestaurant, selectReviewsForRestaurant } from '../../reducers/selectors';
 import {requestSingleRestaurant} from '../../actions/restaurant_actions';

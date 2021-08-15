@@ -19,26 +19,27 @@ class Reservation < ApplicationRecord
     belongs_to :restaurant, class_name: :Restaurant, foreign_key: :restaurant_id
     has_many :review, class_name: :Review, foreign_key: :reservation_id
 
-    def self.parse_past_and_upcoming(ids)
+    def self.user_past_and_upcoming(id)
         today = Date.today
-        key = ids.keys[0]
-        id = ids.values[0].to_i
-        upcoming = self.where("#{key}_id = ?", id)
-            .where("year >= ? AND month >= ? AND day >= ?", today.year, today.month-1, today.day)
+        
+        upcoming = self.where("user_id = ? AND year >= ? AND month >= ? AND day >= ?", id, today.year, today.month-1, today.day)
             .order("year, month, day")
 
-        past = self.where("#{key}_id = ?", id)
-            .where("year < ? ", today.year)
-            .or(self.where("year = ? AND month < ?", today.year, today.month-1)
-            .or(self.where("year = ? AND month = ? AND day < ?", today.year, today.month-1, today.day)))
+        past = self.where("user_id = ? AND year < ? ", id, today.year)
+            .or(self.where("user_id = ? AND year = ? AND month < ?", id, today.year, today.month-1)
+            .or(self.where("user_id = ? AND year = ? AND month = ? AND day < ?", id, today.year, today.month-1, today.day)))
             .order("year DESC, month DESC, day DESC")
         upcoming = [] unless upcoming.first
         past = [] unless past.first
         {past: past, upcoming: upcoming}
     end
     
-
-    # def parse_date
-
+    # def self.rest_past_and_upcoming(id)
     # end
+
+    def mapp(arr)
+        arr.map 
+
+    end
+
 end

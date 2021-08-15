@@ -14,17 +14,6 @@ export const receiveSingleRestaurant = (restaurant) => ({
     restaurant
 });
 
-// export const receiveReviews = (restaurantId) => ({
-//     type: RECEIVE_REVIEWS,
-//     reviews
-// });
-
-// export const createReview = review => dispatch => (
-//   APIUtil.createReview(review).then(review => (
-//     dispatch(receiveReview(review))
-//   ))
-// );
-
 export const requestAllRestaurants = filters => dispatch => (
     APIUtil.fetchRestaurants(filters).then(restaurants => (
         dispatch(receiveAllRestaurants(restaurants))

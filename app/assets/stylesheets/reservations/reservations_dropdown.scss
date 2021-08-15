@@ -1,0 +1,50 @@
+#reservations-dd {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2rem 2rem;
+}
+
+#res-dd-header {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+}
+
+.res-dd-item-container {
+    display: flex;
+}
+
+.res-dd-store-icon {
+    border-radius: 100%;
+    background-color: #2D333F;
+    color: white;
+}
+
+.res-dd-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.ress-dd-restaurant {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    padding-bottom: 4px;
+}
+
+.res-dd-line-item {
+    display: flex;
+    font-size: 14px;
+}
+
+.res-dd-buttons {
+    color: #69A7BC;
+}
+
+.res-dd-cancel-button {
+    color: #DF8963;
+}

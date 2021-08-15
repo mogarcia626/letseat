@@ -22,19 +22,9 @@ class LoginForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user).then(() => {
-            // console.log(this.props.user)
-            // console.log(this.props.session)
             this.props.closeModal();
-            // let userId = this.props.user.id
-            // console.log(this.props.session)
         })
-        .then(() => {
-            this.props.requestAllReservations(this.props.session.id)
-        })
-        // console.log(this.props.session)
     }
-
-    // mogarcia@gmail.com
 
     renderErrors() {
         return (
@@ -82,7 +72,13 @@ class LoginForm extends React.Component {
                     {this.renderErrors()}
                     
                     <div className='modal-link'> New to Letseat?
-                        {this.props.otherForm}
+                        <button className='button-link'
+                            onClick={(e) => {
+                            e.preventDefault();
+                            dispatch(openModal({modal: 'signup'}))}}
+                        >
+                            Create an account
+                        </button>
                     </div>
                 </form>
             </div>
