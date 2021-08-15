@@ -8,55 +8,53 @@ import { monthArray } from '../../util/general_utils'
 
 function ReservationsDropDown() {
     const upcoming = useSelector(state => state.entities.reservations.upcoming)
-
-    const keys = Object.keys(upcoming).slice(0,3)
-    const firstThree = keys.map( key => (upcoming[key]) )
+    const firstThree = Object.values(upcoming).slice(0,3)
     
     return (
         <div id='reservations-dd'>
 
             <p id='res-dd-header'>Upcoming Reservations</p>
 
-            {keys.map(id => (
-                <div className='res-dd-item-container'>
+            {firstThree.slice(0,4).map((res, i) => (
+                <div key={i} className='res-dd-item-container'>
 
                     <span className='res-dd-store-icon'>
-                        <BiStoreAlt />
+                        <BiStoreAlt size={24}/>
                     </span>
 
                     <div className='res-dd-item'>
-                        <Link to={`/restaurants/${upcoming[key].restaurantId}`}
+                        <Link to={`/restaurants/${res.restaurantId}`}
                             className='ress-dd-restaurant'>
-                            {upcoming[key].name}
+                            {res.name}
                         </Link>
 
                         <div className='res-dd-line-item'>
-                            <FaRegUser />
-                            <p>Table for {upcoming[key].partySize} people</p>
+                            <FaRegUser size={16} />
+                            <p className='res-dd-text'>Table for {res.partySize} people</p>
                         </div>
 
                         <div className='res-dd-line-item'>
-                            <FiClock />
-                            <p>{upcoming[key].time}</p>
+                            <FiClock size={16} />
+                            <p className='res-dd-text'>{res.time}</p>
                         </div>
 
                         <div className='res-dd-line-item'>
-                            <FiCalendar />
-                            <p>{monthArray[upcoming[key].month]} {upcoming[key].day}, {upcoming[key].year}</p>
+                            <FiCalendar size={16} />
+                            <p className='res-dd-text'>{monthArray[res.month]} {res.day}, {res.year}</p>
                         </div>
 
                         <div className='res-dd-buttons'>
-                            <p>View</p>
-                            <p>&bull;</p>
-                            <p>Modify</p>
-                            <p>&bull;</p>
+                            <p className='res-modify-button'>View</p>
+                            <p className='bullet-divider'>&bull;</p>
+                            <p className='res-modify-button'>Modify</p>
+                            <p className='bullet-divider'>&bull;</p>
                             <p className='res-dd-cancel-button'>Cancel</p>
                         </div>
 
                     </div>
                 </div>
             ))}
-            <Link to='/profile' className='res-dd-cancel-button'>View all reservations</Link>
+            <Link to='/profile' className='res-dd-profile-link'>View all reservations</Link>
         </div>
     )
 }
