@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createReview, resetErrors } from '../../actions/review_actions'
-import { closeModal } from '../../actions/modal_actions'
-import { dayOfTheWeek, monthArray } from '../../util/general_utils'
-import { FiMessageSquare } from 'react-icons/fi'
+import { createReview, resetErrors } from '../../actions/review_actions';
+import { closeModal } from '../../actions/modal_actions';
+import { dayOfTheWeek, monthArray } from '../../util/general_utils';
+import StarRadio from './star_radio';
+import { FiMessageSquare } from 'react-icons/fi';
 
 function ReviewForm() {
     const dispatch = useDispatch()
@@ -27,10 +28,11 @@ function ReviewForm() {
     const day = dayOfTheWeek(res.year, res.month, res.day)
     const month = monthArray[res.month]
 
-    const [food, setFood] = useState()
-    const [service, setService] = useState()
-    const [ambience, setAmbience] = useState()
-    const [value, setvalue] = useState()
+    const [food_rating, setFoodRating] = useState(0)
+    const [service_rating, setServiceRating] = useState(0)
+    const [ambience_rating, setAmbienceRating] = useState(0)
+    const [value_rating, setvalueRating] = useState(0)
+    const [starSave, setStarSave] = useState(0)
     const [comment, setComment] = useState('')
 
     
@@ -43,7 +45,19 @@ function ReviewForm() {
             setLoading(false)
         )        
     }
-    console.log(comment)
+
+    function starClick(i) {
+        setStarSave(food_rating);
+        setFoodRating(i);
+    }
+
+    function starEnter(i) {
+        setStarSave(food_rating);
+        setFoodRating(i);
+    }
+
+    function starLeave() {setFoodRating(starSave)}
+
     return (
         <div id='review-form'>
             <div className='profile-reservation-item'>            
@@ -65,10 +79,21 @@ function ReviewForm() {
 
                     <form onSubmit={(e) => handleSubmit()}>
 
-                        
+                        <div value={food_rating}>
+                            {[1,2,3,4,5].map(i =>
+                                <div key={i} value={i} 
+                                    onClick={()=> starClick(i) }
+                                    onMouseEnter={()=> starEnter(i) }
+                                    onMouseLeave={()=> starLeave(i) }
+                                >
+                                    <StarRadio key={i} val={i} rating={food_rating} />
+                                </div>
+                            )}
+
+                        </div>
 
                         <textarea rows='8' col='120' value={comment}
-                        onChange={(e)=>setComment(e.currentTarget.value)} />
+                        onChange={(e)=> setComment(e.currentTarget.value)} />
 
                     </form>
                     {/* <div className='write-review'>

@@ -16,11 +16,11 @@ function PastReservationItem({ res }) {
     
     return (        
         <div className='profile-reservation-item'>
-            
+            {/* UNCOMMENT
             <Link to={`/restaurants/${res.restaurantId}`}>
             <img className='profile-reservation-photo'
                 src={res.photoUrl}
-            /></Link>
+            /></Link> */}
 
             <div className='profile-reservation-info'>
 

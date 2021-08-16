@@ -21,21 +21,21 @@ function UserProfilePage() {
                 <div className='profile-page-title-container'>
                     <h3 className='profile-page-title'>Upcoming Reservations</h3>
                 </div>
-                
+                {/* UNCOMMENT
                 {upcoming.map( reservation =>
                     <UpcomingReservationItem
                         key={reservation.id} 
                         res={reservation}
                     />
-                )}
+                )} */}
             </div>
 
             <div className='profile-reservation-section'>
                 <div className='profile-page-title-container'>
                     <h3 className='profile-page-title'>Past Reservations</h3>
                 </div>
-
-                {past.map( reservation =>
+                {/* UNCOMMENT */}
+                {past.slice(0,2).map( reservation =>
                     <PastReservationItem
                         key={reservation.id} 
                         res={reservation}
