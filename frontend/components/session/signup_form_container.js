@@ -15,16 +15,8 @@ const mDTP = dispatch => {
         processForm: (user) => dispatch(signup(user)),
         loginDemo: (user) => dispatch(login(user)),
         closeModal: () => dispatch(closeModal()),
+        openModal: (modal) => dispatch(openModal(modal)),
         resetErrors: () => dispatch(resetErrors()),
-        otherForm: (
-            <button className='button-link'
-                onClick={(e) => {
-                    e.preventDefault();
-                    dispatch(openModal({modal: 'login'}))}
-                }>
-                Login
-            </button>
-        ),
     };
 };
 

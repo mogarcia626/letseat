@@ -9,7 +9,7 @@ function UpcomingReservationItem({ res }) {
     return (        
         <div className='profile-reservation-item'>
             
-            <Link to={`/restaurant/${res.restaurantId}`}>
+            <Link to={`/restaurants/${res.restaurantId}`}>
             <img className='profile-reservation-photo'
                 src={res.photoUrl}
                 alt=""
@@ -17,7 +17,7 @@ function UpcomingReservationItem({ res }) {
                 
             <div className='profile-reservation-info'>
 
-                <Link to={`/restaurant/${res.restaurantId}`}
+                <Link to={`/restaurants/${res.restaurantId}`}
                     className='profile-restaurant-title'
                 >{res.name}</Link>
 

@@ -6,11 +6,12 @@ export const fetchReservations = () => {
     })
 };
 
-// Restaurant info
-export const fetchReservation = id => (
+// Edit Reservation info
+export const putReservation = id => (
     $.ajax({
         url: `/api/reservations/${id}`,
-        method: 'GET',
+        method: 'PUT',
+        data: { reservation }
     })
 );
 

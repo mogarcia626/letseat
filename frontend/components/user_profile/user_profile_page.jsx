@@ -22,7 +22,7 @@ function UserProfilePage() {
                     <h3 className='profile-page-title'>Upcoming Reservations</h3>
                 </div>
                 
-                {upcoming.slice(0,2).map( reservation =>
+                {upcoming.map( reservation =>
                     <UpcomingReservationItem
                         key={reservation.id} 
                         res={reservation}

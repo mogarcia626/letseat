@@ -53,8 +53,11 @@ class SignupForm extends React.Component {
     demoLogin (e) {
         e.preventDefault();
         const user = {email:'letseatdemo+0@gmail.com', password: '1a2b3c'};
-        this.props.loginDemo(user);
-        this.props.closeModal();
+        this.setState({ loading: true })
+        this.props.loginDemo(user).then(
+            () => this.props.closeModal(),
+            () => this.setState( {loading: false} )
+        )
     }
 
     render() {
@@ -106,7 +109,13 @@ class SignupForm extends React.Component {
                     {this.renderErrors()}
                     
                     <div className='modal-link'>Already have an account?
-                        {this.props.otherForm}
+                        <button className='button-link'
+                        onClick={(e) => {
+                            e.preventDefault();
+                            this.props.openModal( {modal: 'login'} )
+                        }}>
+                                Login
+                        </button>
                     </div>
 
                     <div className='modal-link'>

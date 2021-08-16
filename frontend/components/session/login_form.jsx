@@ -31,8 +31,7 @@ class LoginForm extends React.Component {
         )        
     }
 
-    renderErrors() {
-        return (
+    renderErrors() {(
             <ul>
                 {this.props.errors.map((error, i) => (
                     <li key={`err-${i}`}>
@@ -40,8 +39,7 @@ class LoginForm extends React.Component {
                     </li>
                 ))}
             </ul>
-        );
-    }
+    )}
 
     componentWillUnmount() {
         this.props.resetErrors()
@@ -83,10 +81,10 @@ class LoginForm extends React.Component {
                     
                     <div className='modal-link'> New to Letseat?
                         <button className='button-link'
-                            onClick={(e) => {
+                        onClick={(e) => {
                             e.preventDefault();
-                            dispatch(openModal({modal: 'signup'}))}}
-                        >
+                            this.props.openModal( {modal: 'signup'} )
+                        }}>
                             Create an account
                         </button>
                     </div>

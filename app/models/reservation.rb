@@ -1,4 +1,4 @@
-#  Schema Information
+# == Schema Information
 #
 # Table name: reservations
 #
@@ -9,8 +9,11 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  time          :string
-#  day           :string
-#  year          :string
+#  day           :integer
+#  month         :integer
+#  year          :integer
+#
+#  Schema Information
 #
 class Reservation < ApplicationRecord
     validates :time, :party_size, presence: true
@@ -22,9 +25,12 @@ class Reservation < ApplicationRecord
     def self.upcoming_reservations(id)
         today = Date.today
         
-        upcoming = self.where("user_id = ? AND year >= ? AND month >= ? AND day >= ?", id, today.year, today.month-1, today.day)
-            .order("year, month, day")
-
+        upcoming = self.where("user_id = ?", id)
+            .where("year >= ?", today.year)
+            .where("month >= ?", today.month-1)
+            .where("day >= ?", today.day)
+            .order("year, month, day, time")
+            
         upcoming = [] unless upcoming.first
         return upcoming
     end
@@ -35,7 +41,7 @@ class Reservation < ApplicationRecord
         past = self.where("user_id = ? AND year < ? ", id, today.year)
             .or(self.where("user_id = ? AND year = ? AND month < ?", id, today.year, today.month-1)
             .or(self.where("user_id = ? AND year = ? AND month = ? AND day < ?", id, today.year, today.month-1, today.day)))
-            .order("year DESC, month DESC, day DESC")
+            .order("year DESC, month DESC, day DESC, time DESC")
 
         past = [] unless past.first
         return past
