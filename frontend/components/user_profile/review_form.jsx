@@ -31,7 +31,7 @@ function ReviewForm() {
     const [food_rating, setFoodRating] = useState(0)
     const [service_rating, setServiceRating] = useState(0)
     const [ambience_rating, setAmbienceRating] = useState(0)
-    const [value_rating, setvalueRating] = useState(0)
+    const [value_rating, setValueRating] = useState(0)
     const [starSave, setStarSave] = useState(0)
     const [comment, setComment] = useState('')
 
@@ -46,17 +46,36 @@ function ReviewForm() {
         )        
     }
 
-    function starClick(i) {
-        setStarSave(food_rating);
-        setFoodRating(i);
+    function setValue(i, str) {
+        switch (str) {
+            case 'food':
+                setFoodRating(i);
+                break;
+            case 'service':
+                setServiceRating(i);
+                break;
+            case 'ambience':
+                setAmbienceRating(i);
+                break;
+            case 'value':
+                setValueRating(i);
+                break;
+            default: setStarSave(i);
+                break;
+        }
     }
 
-    function starEnter(i) {
-        setStarSave(food_rating);
-        setFoodRating(i);
+    function starClick(str, rating, i) {
+        setValue(rating, 'star');
+        setValue(i, str);
     }
 
-    function starLeave() {setFoodRating(starSave)}
+    function starEnter(str, rating, i) {
+        setValue(rating, 'star');
+        setValue(i, str);
+    }
+
+    function starLeave(str) {setValue(starSave, str)}
 
     return (
         <div id='review-form'>
@@ -79,18 +98,53 @@ function ReviewForm() {
 
                     <form onSubmit={(e) => handleSubmit()}>
 
-                        <div value={food_rating}>
-                            {[1,2,3,4,5].map(i =>
+                        <div className='rating-item-container'><p>Food</p>
+                        <div className='star-review' value={food_rating}>
+                            {[1,2,3,4,5].map( i =>
                                 <div key={i} value={i} 
-                                    onClick={()=> starClick(i) }
-                                    onMouseEnter={()=> starEnter(i) }
-                                    onMouseLeave={()=> starLeave(i) }
-                                >
+                                onClick={()=> starClick('food', food_rating, i) }
+                                onMouseEnter={()=> starEnter('food', food_rating, i) }
+                                onMouseLeave={()=> starLeave('food') }>
                                     <StarRadio key={i} val={i} rating={food_rating} />
                                 </div>
                             )}
+                        </div></div>
 
-                        </div>
+                        <div className='rating-item-container'><p>Service</p>
+                        <div className='star-review' value={service_rating}>
+                            {[1,2,3,4,5].map( i =>
+                                <div key={i} value={i} 
+                                onClick={()=> starClick('service', service_rating, i) }
+                                onMouseEnter={()=> starEnter('service', service_rating, i) }
+                                onMouseLeave={()=> starLeave('service') }>
+                                    <StarRadio key={i} val={i} rating={service_rating} />
+                                </div>
+                            )}
+                        </div></div>
+
+                        <div className='rating-item-container'><p>Ambience</p>
+                        <div className='star-review' value={ambience_rating}>
+                            {[1,2,3,4,5].map( i =>
+                                <div key={i} value={i} 
+                                onClick={()=> starClick('ambience', ambience_rating, i) }
+                                onMouseEnter={()=> starEnter('ambience', ambience_rating, i) }
+                                onMouseLeave={()=> starLeave('ambience') }>
+                                    <StarRadio key={i} val={i} rating={ambience_rating} />
+                                </div>
+                            )}
+                        </div></div>
+
+                        <div className='rating-item-container'><p>Value</p>
+                        <div className='star-review' value={value_rating}>
+                            {[1,2,3,4,5].map( i =>
+                                <div key={i} value={i} 
+                                onClick={()=> starClick('value', value_rating, i) }
+                                onMouseEnter={()=> starEnter('value', value_rating, i) }
+                                onMouseLeave={()=> starLeave('value') }>
+                                    <StarRadio key={i} val={i} rating={value_rating} />
+                                </div>
+                            )}
+                        </div></div>
 
                         <textarea rows='8' col='120' value={comment}
                         onChange={(e)=> setComment(e.currentTarget.value)} />
