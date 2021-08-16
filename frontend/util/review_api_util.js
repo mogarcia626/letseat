@@ -24,3 +24,11 @@ export const putReview = review => (
         data: { review }
     })
 );
+
+// Fetch reviews associated with past reservations
+export const getReviews = () => (
+    $.ajax({
+        url: '/api/reviews',
+        method: 'GET',
+    })
+);

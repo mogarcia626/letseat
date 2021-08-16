@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsStarFill, BsStar } from 'react-icons/bs';
 
-function StarRadio({ val, rating, setRating, setStarSave, starSave }) {
+function StarRadio({ val, rating }) {
     let star = <BsStar size={24} />
     if (rating >= val) star = <BsStarFill size={24} />
 

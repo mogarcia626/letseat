@@ -5,13 +5,11 @@ import reviewsReducer from './reviews_reducer.js';
 import reservationsReducer from './reservations_reducer.js';
 
 
-const entitiesReducer = combineReducers(
-    {
-        user: usersReducer,
-        restaurants: restaurantsReducer,
-        reviews: reviewsReducer,
-        reservations: reservationsReducer,
-
-    });
+const entitiesReducer = combineReducers( {
+    user: usersReducer,
+    restaurants: restaurantsReducer,
+    reviews: reviewsReducer,
+    reservations: reservationsReducer,
+});
 
 export default entitiesReducer

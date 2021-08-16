@@ -1,14 +1,21 @@
-import React from 'react';
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { requestReviews } from '../../actions/review_actions';
 import UpcomingReservationItem from './upcoming_reservation_item';
 import PastReservationItem from './past_reservation_item';
 
 function UserProfilePage() {
+    const dispatch = useDispatch()
     const reservations = useSelector((state) => state.entities.reservations)
+    const reviews = useSelector((state) => state.entities.reviews)
     const user = useSelector((state) => state.entities.user[state.session.id])
     
     const upcoming = Object.values(reservations.upcoming);
     const past = Object.values(reservations.past);
+
+    useEffect( () => {
+        dispatch(requestReviews())
+    }, [])
 
     return (
         <div className='content-wrap' id='profile-page-main'>
@@ -39,6 +46,7 @@ function UserProfilePage() {
                     <PastReservationItem
                         key={reservation.id} 
                         res={reservation}
+                        review={reviews[reservation.id]}
                     />
                 )}
             </div>

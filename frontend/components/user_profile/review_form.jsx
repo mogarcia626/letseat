@@ -8,7 +8,9 @@ import { FiMessageSquare } from 'react-icons/fi';
 
 function ReviewForm() {
     const dispatch = useDispatch()
-    useEffect( () => dispatch(resetErrors()), [])
+    useEffect( () => {
+        return ()=>dispatch(resetErrors())
+    }, [])
     const [loading, setLoading] = useState(false)
 
     const errors = useSelector(state=>state.errors.reviews)
@@ -43,7 +45,7 @@ function ReviewForm() {
         setLoading(true)
         dispatch(createReview(review)).then(
             dispatch(closeModal()),
-            setLoading(false)
+            () => setLoading(false)
         )        
     }
 
@@ -111,7 +113,7 @@ function ReviewForm() {
                                 onClick={()=> starClick('food', food_rating, i) }
                                 onMouseEnter={()=> starEnter('food', food_rating, i) }
                                 onMouseLeave={()=> starLeave('food') }>
-                                    <StarRadio key={i} val={i} rating={food_rating} />
+                                    <StarRadio val={i} rating={food_rating} />
                                 </div>
                             )}
                         </div>
@@ -125,7 +127,7 @@ function ReviewForm() {
                                 onClick={()=> starClick('service', service_rating, i) }
                                 onMouseEnter={()=> starEnter('service', service_rating, i) }
                                 onMouseLeave={()=> starLeave('service') }>
-                                    <StarRadio key={i} val={i} rating={service_rating} />
+                                    <StarRadio val={i} rating={service_rating} />
                                 </div>
                             )}
                         </div>
@@ -139,7 +141,7 @@ function ReviewForm() {
                                 onClick={()=> starClick('ambience', ambience_rating, i) }
                                 onMouseEnter={()=> starEnter('ambience', ambience_rating, i) }
                                 onMouseLeave={()=> starLeave('ambience') }>
-                                    <StarRadio key={i} val={i} rating={ambience_rating} />
+                                    <StarRadio val={i} rating={ambience_rating} />
                                 </div>
                             )}
                         </div>
@@ -153,7 +155,7 @@ function ReviewForm() {
                                 onClick={()=> starClick('value', value_rating, i) }
                                 onMouseEnter={()=> starEnter('value', value_rating, i) }
                                 onMouseLeave={()=> starLeave('value') }>
-                                    <StarRadio key={i} val={i} rating={value_rating} />
+                                    <StarRadio val={i} rating={value_rating} />
                                 </div>
                             )}
                         </div>
@@ -174,6 +176,7 @@ function ReviewForm() {
                 </div>
 
             </form>
+            {renderErrors()}
         </div>
     )
 }

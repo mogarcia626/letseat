@@ -1,6 +1,11 @@
 class Api::ReviewsController < ApplicationController
     before_action :require_logged_in
 
+    def index
+      @reviews = User.find_by(id: current_user.id).reviews
+      render "api/reviews/index"
+    end
+
     def post
         @review = Review.new(review_params)
         if @review.save

@@ -20,7 +20,7 @@ class Reservation < ApplicationRecord
 
     belongs_to :user, class_name: :User, foreign_key: :user_id
     belongs_to :restaurant, class_name: :Restaurant, foreign_key: :restaurant_id
-    has_many :review, class_name: :Review, foreign_key: :reservation_id
+    has_one :review, class_name: :Review, foreign_key: :reservation_id
 
     def self.upcoming_reservations(id)
         today = Date.today

@@ -23,7 +23,7 @@ export const receiveUpcomingReservations = reservations => ({
 // });
 
 export const requestSingleReservation = id => dispatch => (
-    APIUtil.fetchReservation(id).then(reservation => (
+    APIUtil.fetchReservations(id).then(reservation => (
         dispatch(receiveSingleReservation(reservation))
     ))
 );

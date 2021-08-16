@@ -16,7 +16,7 @@ const reservationsReducer = (state = {}, action) => {
         // case RECEIVE_SINGLE_RESERVATION:
         //     return Object.assign({}, {[action.reservation.id]: action.reservation} )
         default:
-            return state;
+            return nextState;
     }
 };
 
