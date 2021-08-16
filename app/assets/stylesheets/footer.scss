@@ -12,11 +12,13 @@
         cursor: pointer;
         &:hover {
             color: white;
+            font-weight: 700;
         }
     }
 
     li {
         padding: 0 8px 5px;
+        font-size: 0.85em;
     }
 
     .footer-main {
@@ -32,6 +34,12 @@
         .footer-section-title {
             color: white;
             padding: 8px ;
+        }
+
+        .footer-section-sub-title {
+            color: white;
+            padding: 0 8px 8px;
+            font-size: 0.9em;
         }
 
         .used-tech {

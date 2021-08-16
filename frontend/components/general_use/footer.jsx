@@ -13,7 +13,7 @@ function Footer() {
                     </span>
                     <div className='used-tech'>
                         <div className='footer-section'>
-                            <span className="footer-section-title">
+                            <span className="footer-section-sub-title">
                                 FRONT END
                             </span>
                             <ul className="tech-list">
@@ -25,7 +25,7 @@ function Footer() {
                             </ul>
                         </div>
                         <div className='footer-section'>
-                            <span className="footer-section-title">
+                            <span className="footer-section-sub-title">
                                 BACK END
                             </span>
                             <ul className="tech-list">
