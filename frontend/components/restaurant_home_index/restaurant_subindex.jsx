@@ -50,10 +50,10 @@ function RestaurantSubIndex({category, filter, navId}) {
 
     return(
         <div className='sub-index-container'>
-            <button className='scroll-left' value={-1000} onClick={()=>scroll()}>
+            <button className='scroll-left' value={-1000} onClick={(e)=>scroll(e)}>
                 ❮
             </button>
-            <button className='scroll-right' value={1000} onClick={()=>scroll()}>
+            <button className='scroll-right' value={1000} onClick={(e)=>scroll(e)}>
                 ❯
             </button>
             {components()}                

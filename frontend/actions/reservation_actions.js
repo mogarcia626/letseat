@@ -25,10 +25,10 @@ export const createReservation = formReservation => dispatch => (
 //     ))
 // );
 
-// export const receiveErrors = errors => ({
-//     type: RECEIVE_RESERVATION_ERRORS,
-//     errors
-// });
+export const receiveErrors = errors => ({
+    type: RECEIVE_RESERVATION_ERRORS,
+    errors
+});
 
 // export const resetErrors = () => ({
 //     type: RESET_RESERVATION_ERRORS,

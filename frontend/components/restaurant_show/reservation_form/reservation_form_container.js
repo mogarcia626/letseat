@@ -13,7 +13,7 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
     return {
-        processForm: (reservation) => dispatch(createReservation(reservation)),
+        createReservation: (reservation) => dispatch(createReservation(reservation)),
         requestAllReservations: (status) => dispatch(requestAllReservations(status)), 
         openModal: modal => dispatch(openModal(modal)), 
         closeModal: () => dispatch(closeModal()),

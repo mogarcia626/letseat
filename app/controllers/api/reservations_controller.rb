@@ -15,11 +15,10 @@ class Api::ReservationsController < ApplicationController
     end
 
     def create
-        reservation = Reservation.new(reservation_params)
-        reservation.user_id = current_user.id
-        if reservation.save
-            @upcoming_reservations = Reservation.upcoming_reservations(current_user.id)
-            render "api/reservations/index"
+        @reservation = Reservation.new(reservation_params)
+        @reservation.user_id = current_user.id
+        if @reservation.save
+            render "api/reservations/show"
         else
             render json: @reservation.errors.full_messages, status: 422
         end
