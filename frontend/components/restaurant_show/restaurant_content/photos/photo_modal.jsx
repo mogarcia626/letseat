@@ -75,7 +75,7 @@ class PhotoModal extends React.Component {
                 <RiCloseFill size={48}
                     id='photo-modal-close'
                     className='photo-modal-buttons'
-                    onClick={this.props.closeModal}
+                    onClick={() => this.props.closeModal()}
                 />
         </div>            
         )

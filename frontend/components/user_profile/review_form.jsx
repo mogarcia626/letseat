@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createReview, resetErrors } from '../../actions/review_actions';
+import { createReview, editReview, resetErrors } from '../../actions/review_actions';
 import { closeModal } from '../../actions/modal_actions';
 import { dayOfTheWeek, monthArray } from '../../util/general_utils';
 import StarRadio from './star_radio';
@@ -11,7 +11,7 @@ function ReviewForm() {
     useEffect( () => {
         return ()=>dispatch(resetErrors())
     }, [])
-    const [loading, setLoading] = useState(false)
+    const [reviewloading, setReviewLoading] = useState(false)
 
     const errors = useSelector(state=>state.errors.reviews)
     function renderErrors() {
@@ -26,27 +26,45 @@ function ReviewForm() {
         } else { return null }
     }
 
-    const res = useSelector(state=> state.ui.modal.data)
+    const res = useSelector(state=> state.ui.modal.data.res)
+    const action = useSelector(state=> state.ui.modal.data.action)
+    let existingReview = useSelector(state=> state.ui.modal.data.existingReview)
+    if (!existingReview) existingReview = {id: null, food_rating: 0, service_rating: 0, ambience_rating:0, value_rating:0, comment:''}
+
     const day = dayOfTheWeek(res.year, res.month, res.day)
     const month = monthArray[res.month]
 
-    const [food_rating, setFoodRating] = useState(0)
-    const [service_rating, setServiceRating] = useState(0)
-    const [ambience_rating, setAmbienceRating] = useState(0)
-    const [value_rating, setValueRating] = useState(0)
+    const [comment, setComment] = useState(existingReview.comment)
+    const [food_rating, setFoodRating] = useState(existingReview.foodRating)
+    const [service_rating, setServiceRating] = useState(existingReview.serviceRating)
+    const [ambience_rating, setAmbienceRating] = useState(existingReview.ambienceRating)
+    const [value_rating, setValueRating] = useState(existingReview.valueRating)
     const [starSave, setStarSave] = useState(0)
-    const [comment, setComment] = useState('')
     const [reservation_id, setId] = useState(res.id)
 
     
     function handleSubmit(e) {
         e.preventDefault();
-        const review = Object.assign({}, this.state )
-        setLoading(true)
-        dispatch(createReview(review)).then(
-            dispatch(closeModal()),
-            () => setLoading(false)
-        )        
+        const review = {
+            food_rating,
+            service_rating,
+            ambience_rating,
+            value_rating,
+            comment,
+            reservation_id,
+            id: existingReview.id
+        }
+        setReviewLoading(true)
+
+        if (action === 'post') {
+            dispatch(createReview(review))
+            .then( dispatch(closeModal()) )
+            .fail( () => setReviewLoading(false) )
+        } else if (action === 'put') {
+            dispatch(editReview(review))
+            .then( dispatch(closeModal()) )
+            .fail( () => setReviewLoading(false) )
+        }
     }
 
     function setValue(i, str) {
@@ -63,7 +81,8 @@ function ReviewForm() {
             case 'value':
                 setValueRating(i);
                 break;
-            default: setStarSave(i);
+            default:
+                setStarSave(i);
                 break;
         }
     }
@@ -80,6 +99,8 @@ function ReviewForm() {
 
     function starLeave(str) {setValue(starSave, str)}
 
+    console.log(reviewloading)
+    
     return (
         <div id='review-form-container'>
             <div className='profile-reservation-item'>           
@@ -102,7 +123,7 @@ function ReviewForm() {
                 </div>                
             </div>
 
-            <form id='review-form' onSubmit={(e) => handleSubmit()}>
+            <form id='review-form' onSubmit={(e) => handleSubmit(e)}>
                 <div className='rating-item-container'>
                     
                     <div className='rating-category'>
@@ -113,7 +134,7 @@ function ReviewForm() {
                                 onClick={()=> starClick('food', food_rating, i) }
                                 onMouseEnter={()=> starEnter('food', food_rating, i) }
                                 onMouseLeave={()=> starLeave('food') }>
-                                    <StarRadio val={i} rating={food_rating} />
+                                    <StarRadio val={i} size={24} rating={food_rating} />
                                 </div>
                             )}
                         </div>
@@ -127,7 +148,7 @@ function ReviewForm() {
                                 onClick={()=> starClick('service', service_rating, i) }
                                 onMouseEnter={()=> starEnter('service', service_rating, i) }
                                 onMouseLeave={()=> starLeave('service') }>
-                                    <StarRadio val={i} rating={service_rating} />
+                                    <StarRadio val={i} size={24} rating={service_rating} />
                                 </div>
                             )}
                         </div>
@@ -141,7 +162,7 @@ function ReviewForm() {
                                 onClick={()=> starClick('ambience', ambience_rating, i) }
                                 onMouseEnter={()=> starEnter('ambience', ambience_rating, i) }
                                 onMouseLeave={()=> starLeave('ambience') }>
-                                    <StarRadio val={i} rating={ambience_rating} />
+                                    <StarRadio val={i} size={24} rating={ambience_rating} />
                                 </div>
                             )}
                         </div>
@@ -155,7 +176,7 @@ function ReviewForm() {
                                 onClick={()=> starClick('value', value_rating, i) }
                                 onMouseEnter={()=> starEnter('value', value_rating, i) }
                                 onMouseLeave={()=> starLeave('value') }>
-                                    <StarRadio val={i} rating={value_rating} />
+                                    <StarRadio val={i} size={24} rating={value_rating} />
                                 </div>
                             )}
                         </div>
@@ -171,8 +192,11 @@ function ReviewForm() {
 
                     <textarea id='review-textarea' rows='10' col='500' value={comment}
                     onChange={(e)=> setComment(e.currentTarget.value)} />
-
-                    <button id='review-button'>Submit Review</button>
+                    { (action==='post') ? 
+                        <button id='review-button'>Submit Review</button>
+                    :
+                        <button id='review-button'>Update Review</button>
+                    }
                 </div>
 
             </form>

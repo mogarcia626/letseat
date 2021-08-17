@@ -11,17 +11,18 @@ function PastReservationItem({ res, review }) {
     const day = dayOfTheWeek(res.year, res.month, res.day)
     const month = monthArray[res.month]
 
-    function reviewModal() {
-        dispatch(openModal( {modal:'review', data: res} ))
+    function reviewModal(action, existingReview = null) {
+        dispatch(openModal( {modal:'review', data: {res, action, existingReview}} ))
     }
     
-    return (        
+    return (
+        <div className='profile-reservation-container'>     
         <div className='profile-reservation-item'>
-            {/* UNCOMMENT
+            
             <Link to={`/restaurants/${res.restaurantId}`}>
             <img className='profile-reservation-photo'
                 src={res.photoUrl}
-            /></Link> */}
+            /></Link>
 
             <div className='profile-reservation-info'>
 
@@ -36,92 +37,82 @@ function PastReservationItem({ res, review }) {
                     <p className='profile-text'>Table for {res.partySize} people</p>
                 </div>
 
-                { (review) ? 
+                {review ? 
                     <div className='write-review'
-                        onClick={()=>reviewModal()}
+                        onClick={()=>reviewModal('put', review)}
                     >
                         <FiMessageSquare size={20} />
-                        <p>Update Your Review</p>
-
-                        <div id='review-form'>
-                            <div className='rating-item-container'>
-                            
-                                <div className='rating-category'>
-                                    <p className='rating-item-label'>Food</p>
-                                    <div className='star-review'>
-                                        {[1,2,3,4,5].map( i =>
-                                            <div key={i}>
-                                                <StarRadio val={i} rating={review.foodRating} />
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className='rating-category'>
-                                    <p className='rating-item-label'>Service</p>
-                                    <div className='star-review'>
-                                        {[1,2,3,4,5].map( i =>
-                                            <div key={i}>
-                                                <StarRadio val={i} rating={review.serviceRating} />
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className='rating-category'>
-                                    <p className='rating-item-label'>Ambience</p>
-                                    <div className='star-review'>
-                                        {[1,2,3,4,5].map( i =>
-                                            <div key={i} value={i}>
-                                                <StarRadio val={i} rating={review.ambienceRating} />
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className='rating-category'>
-                                    <p className='rating-item-label'>Value</p>
-                                    <div className='star-review'>
-                                        {[1,2,3,4,5].map( i =>
-                                            <div key={i}>
-                                                <StarRadio val={i} rating={review.valueRating} />
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>                    
-                            </div>
-
-                            <div id='review-content'>
-
-                                <div className='write-review' id='review-form-icon'>
-                                    <FiMessageSquare size={20} />
-                                    <p>Write Review</p>
-                                </div>
-
-                                <textarea id='review-textarea' rows='10' col='500' value={comment}
-                                onChange={(e)=> setComment(e.currentTarget.value)} />
-
-                                <button id='review-button'>Submit Review</button>
-                            </div>
-
-                        </div>
-
-
+                        <p>Edit Your Review</p>
                     </div>
-                    :
+                :
                     <div className='write-review'
-                        onClick={()=>reviewModal()}
+                        onClick={()=>reviewModal('post')}
                     >
                         <FiMessageSquare size={20} />
                         <p>Write Review</p>
                     </div>
                 }
+                
             </div>
-
         </div>
+            {!review ? null :
+
+                <div className='profile-review-item'>
+                    <div className='rating-item-container'>
+                    
+                        <div className='rating-category'>
+                            <p className='rating-item-label'>Food</p>
+                            <div className='star-review'>
+                                {[1,2,3,4,5].map( i =>
+                                    <div key={i}>
+                                        <StarRadio val={i} size={16} rating={review.foodRating} />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className='rating-category'>
+                            <p className='rating-item-label'>Service</p>
+                            <div className='star-review'>
+                                {[1,2,3,4,5].map( i =>
+                                    <div key={i}>
+                                        <StarRadio val={i} size={16} rating={review.serviceRating} />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className='rating-category'>
+                            <p className='rating-item-label'>Ambience</p>
+                            <div className='star-review'>
+                                {[1,2,3,4,5].map( i =>
+                                    <div key={i} value={i}>
+                                        <StarRadio val={i} size={16} rating={review.ambienceRating} />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className='rating-category'>
+                            <p className='rating-item-label'>Value</p>
+                            <div className='star-review'>
+                                {[1,2,3,4,5].map( i =>
+                                    <div key={i}>
+                                        <StarRadio val={i} size={16} rating={review.valueRating} />
+                                    </div>
+                                )}
+                            </div>
+                        </div>                    
+                    </div>
+
+                    <div id='review-content'>
+                        <div className='apostrophe'>"<p className='profile-text'>{review.comment}</p>"</div>
+                    </div>
+                </div>
+            }
+
+        </div>   
     )
 }
 
 export default PastReservationItem;
-
-

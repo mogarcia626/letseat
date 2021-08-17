@@ -6,7 +6,8 @@ function UpcomingReservationItem({ res }) {
     const day = dayOfTheWeek(res.year, res.month, res.day)
     const month = monthArray[res.month]
     
-    return (        
+    return (  
+        <div className='profile-reservation-container'>      
         <div className='profile-reservation-item'>
             
             <Link to={`/restaurants/${res.restaurantId}`}>
@@ -39,6 +40,7 @@ function UpcomingReservationItem({ res }) {
                     </p>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

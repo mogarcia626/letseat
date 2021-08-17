@@ -1,8 +1,9 @@
 // reservation index
-export const fetchReservations = () => {
+export const getReservations = status => {
     return $.ajax({
         url: '/api/reservations',
         method: 'GET',
+        data: { status }
     })
 };
 

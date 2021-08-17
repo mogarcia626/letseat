@@ -19,7 +19,8 @@ const reviewsReducer = (state = {}, action) => {
         case RECEIVE_ALL_RESTAURANTS:
             return {}
             break;
-        default: return nextState;    
+        default:
+            return nextState;    
     }
 }
 

@@ -6,7 +6,7 @@ class Api::ReviewsController < ApplicationController
       render "api/reviews/index"
     end
 
-    def post
+    def create
         @review = Review.new(review_params)
         if @review.save
             render "api/reviews/show"

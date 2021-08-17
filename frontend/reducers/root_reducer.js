@@ -10,7 +10,7 @@ import uiReducer from './ui_reducer';
 const persistConfig = {
     key: 'root',
     storage: storage,
-    whitelist: ['ui', 'entities'],
+    whitelist: ['ui'],
 }
 
 const rootReducer = combineReducers({
@@ -21,3 +21,4 @@ const rootReducer = combineReducers({
 });
 
 export default persistReducer(persistConfig, rootReducer)
+

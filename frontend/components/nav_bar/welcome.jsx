@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions'
+import { requestAllReservations } from '../../actions/reservation_actions';
 import ReservationsDropDown from './reservations_dropdown';
 import { FiSearch, FiCalendar } from "react-icons/fi";
 import { FaRegUser } from 'react-icons/fa';
@@ -20,6 +21,14 @@ function Welcome( { currentUser } ) {
             }
         }, 100);
     }, [showResList])
+
+    const userId = useSelector(state => state.session.id)
+
+    useEffect( ()=> {
+        if (userId) {
+            dispatch(requestAllReservations('upcoming'))
+        }
+    }, [userId])
 
     function clickLogout(e) {
         e.preventDefault();

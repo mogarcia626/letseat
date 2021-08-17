@@ -1,3 +1,10 @@
+.profile-reservation-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 4px 0;
+}
+
 #profile-page-main {
     align-items: flex-start;
     background-color: #f6f6f6;
@@ -20,7 +27,7 @@
 
 .profile-page-title-container {
     padding: 0.75rem 0 1.25rem;
-    // border: solid 0.5px lightgray;
+    margin-top: 16px;
     border: solid 1px #f6f6f6;
     border-radius: 4px 4px 2px 2px;
     background-color: white;
@@ -32,9 +39,7 @@
 }
 
 .profile-reservation-item {
-    background-color: white;
-    // border: solid 0.5px lightgray;
-    border: solid 1px #f6f6f6;
+    
     border-radius: 2px;
     padding: 0.75rem 1rem;
     display: flex;
@@ -53,7 +58,7 @@
     flex-direction: column;
     margin: 0 1.5rem;
     justify-content: space-around;
-    padding: 0.25rem 0 1rem;
+    padding: 1rem 0 0.5rem;
     width: 24rem;
 }
 
@@ -73,6 +78,7 @@
 .profile-text {
     color: #666;
     margin: 4px 0;
+    font-weight: 500;
 }
 
 .res-buttons {
@@ -88,7 +94,7 @@
     display:flex;
     align-items: flex-end;
     justify-content: space-between;
-    width: 34%;
+    width: fit-content;
     color: #69A7BC;
     font-weight: 600;
     cursor: pointer;
@@ -98,4 +104,13 @@
         border-bottom: 2px solid #69a7bc;
         padding-bottom: 0;
     }
+    p {
+        margin-left: 4px;
+    }
+}
+
+.apostrophe {
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
 }

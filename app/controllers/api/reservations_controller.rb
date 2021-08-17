@@ -3,7 +3,14 @@ class Api::ReservationsController < ApplicationController
     before_action :require_logged_in
 
     def index
-        @upcoming_reservations = Reservation.upcoming_reservations(current_user.id)
+        if params[:status] == 'upcoming'
+            @upcoming_reservations = Reservation.upcoming_reservations(current_user.id)
+        elsif params[:status] == 'past'
+            @past_reservations = Reservation.past_reservations(current_user.id)
+        else
+            @upcoming_reservations = Reservation.upcoming_reservations(current_user.id)
+            @past_reservations = Reservation.past_reservations(current_user.id)
+        end
         render "api/reservations/index"
     end
 

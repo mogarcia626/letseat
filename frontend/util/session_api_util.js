@@ -24,3 +24,11 @@ export const logout = () => (
         method: 'DELETE',
     })
 );
+
+// Get User
+export const getUser = (id) => (
+    $.ajax({
+        url: `/api/users/${id}`,
+        method: 'GET',
+    })
+);

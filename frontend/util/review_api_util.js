@@ -19,7 +19,7 @@ export const deleteReview = id => (
 // Edit Review info
 export const putReview = review => (
     $.ajax({
-        url: `/api/reviews/${id}`,
+        url: `/api/reviews/${review.id}`,
         method: 'PUT',
         data: { review }
     })
