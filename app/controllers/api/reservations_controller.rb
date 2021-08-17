@@ -3,31 +3,43 @@ class Api::ReservationsController < ApplicationController
     before_action :require_logged_in
 
     def index
-        all =  Reservation.parse_past_and_upcoming(ids)
-        @past_reservations = all[:past]
-        @upcoming_reservations = all[:upcoming]
+        if params[:status] == 'upcoming'
+            @upcoming_reservations = Reservation.upcoming_reservations(current_user.id)
+        elsif params[:status] == 'past'
+            @past_reservations = Reservation.past_reservations(current_user.id)
+        else
+            @upcoming_reservations = Reservation.upcoming_reservations(current_user.id)
+            @past_reservations = Reservation.past_reservations(current_user.id)
+        end
         render "api/reservations/index"
     end
 
-    def show
-      @reservation = Reservation.find_by(id: params[:id])
-      render :show
-    end
-
     def create
-        @reservation = Reservation.new(reservation_params)
-        @reservation.user_id = current_user.id
-        if @reservation.save
-            render "api/reservations/show"
+        reservation = Reservation.new(reservation_params)
+        reservation.user_id = current_user.id
+        if reservation.save
+            @upcoming_reservations = Reservation.upcoming_reservations(current_user.id)
+            render "api/reservations/index"
         else
             render json: @reservation.errors.full_messages, status: 422
         end
     end
 
     def destroy
-        @reservation = current_user.reservations.find_by(id: params[:id])
-        if @reservation && @reservation.delete
-             render "api/reservations/index"
+        reservation = current_user.reservations.find_by(id: params[:id])
+        if reservation && reservation.delete
+            @upcoming_reservations = Reservation.upcoming_reservations(current_user.id)
+            render "api/reservations/index"
+        else
+            render json: @reservation.errors.full_messages, status: 422
+        end
+    end
+
+    def edit
+        reservation = current_user.reservations.find_by(id: params[:id])
+        if reservation.update(reservation_params)
+            @upcoming_reservations = Reservation.upcoming_reservations(current_user.id)
+            render "api/reservations/index"
         else
             render json: @reservation.errors.full_messages, status: 422
         end
@@ -37,10 +49,6 @@ class Api::ReservationsController < ApplicationController
     def reservation_params
         params.require(:reservation).permit(
             :party_size, :time, :day, :month, :year, :user_id, :restaurant_id)
-    end
-
-    def ids
-        params[:ids]
     end
 
 end

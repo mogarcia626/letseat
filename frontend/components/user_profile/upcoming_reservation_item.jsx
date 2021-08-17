@@ -1,34 +1,46 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+import { dayOfTheWeek, monthArray } from '../../util/general_utils'
 
-function UpcomingReservationItem(props) {
-    const rest = props.restaurant
-    const rez = props.reservation
-
-    return (        
-        <div className='profile-reservation-photo'>
-            <span className='profile-photo-container' >
-                <img className='profile-reservation-photo'
-                    src={rest.photoUrls[0]}
-                />
-            </span>
+function UpcomingReservationItem({ res }) {
+    const day = dayOfTheWeek(res.year, res.month, res.day)
+    const month = monthArray[res.month]
+    
+    return (  
+        <div className='profile-reservation-container'>      
+        <div className='profile-reservation-item'>
+            
+            <Link to={`/restaurants/${res.restaurantId}`}>
+            <img className='profile-reservation-photo'
+                src={res.photoUrl}
+                alt=""
+            /></Link>
+                
             <div className='profile-reservation-info'>
-                <p className='profile-restaurant-title'>{rest.name}</p>
-                <p className='profile-text'>
-                    {dayOfTheWeek(rez.year, rez.month, rez.day)}, {monthArray[rez.month]} {rez.day} {rez.year} at {rez.time}
-                </p>
-                <p className='profile-text'>Table for {rez.partySize} people</p>
+
+                <Link to={`/restaurants/${res.restaurantId}`}
+                    className='profile-restaurant-title'
+                >{res.name}</Link>
+
+                <div>
+                    <p className='profile-text'>
+                        {day}, {month} {res.day} {res.year} at {res.time}
+                    </p>
+                    <p className='profile-text'>Table for {res.partySize} people</p>
+                </div>
+                <div className='res-buttons'>
+                    <p className='res-modify-button'>
+                        View
+                    </p>
+                    <p className='res-modify-button'>
+                        Modify
+                    </p>
+                    <p className='res-dd-cancel-button'>
+                        Cancel
+                    </p>
+                </div>
             </div>
-            {/* <div id='modify-reservation-buttons'>
-                <p className='profile-text' id='profile-edit-reservation'>
-                    View
-                </p>
-                <p className='profile-text' id='profile-edit-reservation'>
-                    Modify
-                </p>
-                <p className='profile-text' id='profile-edit-reservation'>
-                    Cancel
-                </p>
-            </div> */}
+        </div>
         </div>
     )
 }

@@ -1,13 +1,16 @@
-import React from 'react';
+ import React from 'react';
 
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            errors: [], user: {
-            email: '',
-            password: '',
-        }};
+            loading: false,
+            errors: [], 
+            user: {
+                email: '',
+                password: '',
+            }
+        };
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -20,24 +23,15 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.setState({ loading: true })
         const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(() => {
-            // console.log(this.props.user)
-            // console.log(this.props.session)
-            this.props.closeModal();
-            // let userId = this.props.user.id
-            // console.log(this.props.session)
-        })
-        .then(() => {
-            this.props.requestAllReservations(this.props.session.id)
-        })
-        // console.log(this.props.session)
+        this.props.processForm(user).then(
+            () => this.props.closeModal(), 
+            () => this.setState( {loading: false} ) 
+        )        
     }
 
-    // mogarcia@gmail.com
-
-    renderErrors() {
-        return (
+    renderErrors() {(
             <ul>
                 {this.props.errors.map((error, i) => (
                     <li key={`err-${i}`}>
@@ -45,8 +39,7 @@ class LoginForm extends React.Component {
                     </li>
                 ))}
             </ul>
-        );
-    }
+    )}
 
     componentWillUnmount() {
         this.props.resetErrors()
@@ -77,12 +70,23 @@ class LoginForm extends React.Component {
                         onChange={this.update('password')}
                     />
 
-                    <button className="session-modal-button">Sign In</button>
+                    {this.state.loading ? 
+                        <div className="session-modal-button" id='loading-modal-button'>
+                        <div className="spinner"></div></div>
+                            :
+                        <button className="session-modal-button">Sign In</button>
+                    }
 
                     {this.renderErrors()}
                     
                     <div className='modal-link'> New to Letseat?
-                        {this.props.otherForm}
+                        <button className='button-link'
+                        onClick={(e) => {
+                            e.preventDefault();
+                            this.props.openModal( {modal: 'signup'} )
+                        }}>
+                            Create an account
+                        </button>
                     </div>
                 </form>
             </div>

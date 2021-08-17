@@ -1,33 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 import { openModal } from '../../actions/modal_actions';
 import { FiSearch } from "react-icons/fi";
 
-const mSTP = ({ session }) => ({
-    currentUser: session.currentUser
-})
-const mDTP = dispatch => ({
-    openModal: modal => dispatch(openModal(modal)),
-});
+function SessionButtons() {
+    const dispatch = useDispatch()
 
-function SessionButtons({openModal}) {
-    
-    return (
-        
+    function modal(modal) {
+        dispatch(openModal( {modal: modal, data: null} ))
+    }
+
+    return (        
         <div className='right-nav'>
             <button
-                onClick={() => openModal({modal: 'search', data: null})}
+                onClick={()=>modal('search')}
                 className="icon-button">
                 <FiSearch size={20} />
             </button>
             <button 
-                onClick={() => openModal({modal: 'signup', data: null})} 
+                onClick={()=>modal('signup')} 
                 className='session-button'
                 id='session-button-dark'>
                     Sign Up
             </button>
             <button 
-                onClick={() => openModal({modal: 'login', data: null})} 
+                onClick={()=>modal('login')} 
                 className='session-button'
                 id='session-button-light'>
                     Sign In
@@ -36,4 +33,4 @@ function SessionButtons({openModal}) {
     )
 }
 
-export default connect(mSTP, mDTP)(SessionButtons);
+export default SessionButtons;

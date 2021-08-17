@@ -1,52 +1,94 @@
-import React from 'react';
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { requestAllReservations } from '../../actions/reservation_actions'
+import { requestReviews } from '../../actions/review_actions';
+import { requestUser } from '../../actions/session_actions';
 import UpcomingReservationItem from './upcoming_reservation_item';
 import PastReservationItem from './past_reservation_item';
 
 function UserProfilePage() {
-    const ent =  useSelector((state) => state.entities)
-    const reservations = useSelector((state) => state.entities.reservations)
-    const restaurants = useSelector((state) => state.entities.restaurants)
-    const user = useSelector((state) => state.entities.user[state.session.id])
-    // console.log('reservations')
-    // console.log(reservations)
-    // console.log('')
-    // console.log('restaurants')
-    // console.log(restaurants)
-    // console.log('')
-    // console.log('user')
-    // console.log(user)
-    // console.log('')
-    // console.log(ent)
-    return (
-        <div className='content-wrap' id='profile-page-main'>
+    const dispatch = useDispatch()
+    const [loading, setLoading] = useState(true);
+    const userId = useSelector(state => state.session.id)    
+    const reservations = useSelector(state => state.entities.reservations)
+    const reviews = useSelector(state => state.entities.reviews)
+    const user = useSelector(state => state.entities.user)
+    
+    useEffect( () => {
+        dispatch(requestAllReservations('all'))
+        .then( () => dispatch(requestReviews()) )
+        .then( () => dispatch(requestUser(userId)) )
+        .then( () => setLoading(false) )
+    }, [])
 
-            <div id='profile-page-header'>
-                <p id='profile-header-text'>{user.firstName} {user.lastName}</p>
-            </div>
+    function upcomingComponents() {
+        if (reservations.upcoming) {
+            const upcoming = Object.values(reservations.upcoming);
+            return (
+                <div>
+                    {upcoming.map( reservation =>
+                        <UpcomingReservationItem
+                            key={reservation.id} 
+                            res={reservation}
+                        />
+                    )}
+                </div>
+            )
+        } else {
+            return <p>You have no upcoming reservations</p>
+        }
+    }
 
-            <div className='profile-reservation-section'>
-                <p className='profile-page-title'>Upcoming Reservations</p>
-                {/* {reservations.upcoming.map( reservation => {
-                    <UpcomingReservationItem 
-                        reservation={reservation}
-                        restaurant={restaurants[reservation[restauranId]]}
+    function pastComponents() {
+        if (reservations.past) {
+            const past = Object.values(reservations.past);
+            return (
+                <div>
+                    {past.slice(0,2).map( reservation =>
+                    <PastReservationItem
+                        key={reservation.id} 
+                        res={reservation}
+                        review={reviews[reservation.id]}
                     />
-                })} */}
-            </div>
+                )}
+                </div>
+            )
+        } else {
+            return <p>You have no past reservations</p>
+        }
+    }
 
-            <div className='profile-reservation-section'>
-                <p className='profile-page-title'>Past Reservations</p>
-                {/* {reservations.past.map( reservation => {
-                    <UpcomingReservationItem 
-                        reservation={reservation}
-                        restaurant={restaurants[reservation[restauranId]]}
-                    />
-                })} */}
+    if (loading) {
+        return <div className="loader"></div>
+    } else {
+        return (
+            <div className='content-wrap' id='profile-page-main'>
+
+                <div id='profile-page-header'>
+                    <h2>{user.firstName} {user.lastName}</h2>
+                </div>
+
+                <div className='profile-reservation-section'>
+                    <div className='profile-page-title-container'>
+                        <h3 className='profile-page-title'>Upcoming Reservations</h3>
+                    </div>
+                    
+                    {upcomingComponents()}
+
+                </div>
+
+                <div className='profile-reservation-section'>
+                    <div className='profile-page-title-container'>
+                        <h3 className='profile-page-title'>Past Reservations</h3>
+                    </div>
+                    
+                    {pastComponents()}
+
+                </div>
+                
             </div>
-            
-        </div>
-    )
+        )
+    }
 }
 
 export default UserProfilePage;

@@ -4,10 +4,14 @@ class SignupForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            first_name: '',
-            last_name: '',
-            email: '',
-            password: '',
+            loading: false,
+            errors: [],
+            user: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                password: '',
+            },
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,10 +26,12 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.setState({ loading: true })
         const user = Object.assign({}, this.state);
-        this.props.processForm(user).then( () => {
-            this.props.closeModal();
-        })          
+        this.props.processForm(user).then(
+            () => this.props.closeModal(),
+            () => this.setState({ loading: false })
+        )          
     }
     
     renderErrors() {
@@ -47,8 +53,11 @@ class SignupForm extends React.Component {
     demoLogin (e) {
         e.preventDefault();
         const user = {email:'letseatdemo+0@gmail.com', password: '1a2b3c'};
-        this.props.loginDemo(user);
-        this.props.closeModal();
+        this.setState({ loading: true })
+        this.props.loginDemo(user).then(
+            () => this.props.closeModal(),
+            () => this.setState( {loading: false} )
+        )
     }
 
     render() {
@@ -90,12 +99,23 @@ class SignupForm extends React.Component {
                             onChange={this.update('last_name')}
                     />
 
-                    <button className='session-modal-button'>Create Account</button>
-                    
+                    {this.state.loading ? 
+                        <div className="session-modal-button" id='loading-modal-button'>
+                        <div className="spinner"></div></div>
+                            :
+                        <button className='session-modal-button'>Create Account</button>
+                    }
+                                        
                     {this.renderErrors()}
                     
                     <div className='modal-link'>Already have an account?
-                        {this.props.otherForm}
+                        <button className='button-link'
+                        onClick={(e) => {
+                            e.preventDefault();
+                            this.props.openModal( {modal: 'login'} )
+                        }}>
+                                Login
+                        </button>
                     </div>
 
                     <div className='modal-link'>

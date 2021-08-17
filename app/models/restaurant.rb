@@ -51,7 +51,6 @@ class Restaurant < ApplicationRecord
         end
     end
 
-
     def review_averages
         food, service, ambience, val = 0, 0, 0, 0
         #[rating, count]

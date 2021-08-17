@@ -1,18 +1,18 @@
 // reservation index
-export const fetchReservations = ids => {
-    // debugger
+export const getReservations = status => {
     return $.ajax({
         url: '/api/reservations',
         method: 'GET',
-        data: { ids },
+        data: { status }
     })
 };
 
-// Restaurant info
-export const fetchReservation = id => (
+// Edit Reservation info
+export const putReservation = id => (
     $.ajax({
         url: `/api/reservations/${id}`,
-        method: 'GET',
+        method: 'PUT',
+        data: { reservation }
     })
 );
 

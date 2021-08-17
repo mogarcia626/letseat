@@ -1,3 +1,4 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { updateLocationFilter, clearSearchFilter } from '../../actions/filter_actions';
 import LocationSelector from './location_selector';

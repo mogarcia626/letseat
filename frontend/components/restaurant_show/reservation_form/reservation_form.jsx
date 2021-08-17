@@ -55,7 +55,6 @@ class ReservationForm extends React.Component {
             if (type==='date') {
                 this.setState({ date: this.getDate(e)});
             } else {
-                console.log(e.target.value)
                 this.setState({ [type]: e.target.value });
             }
             this.closeDropdowns();
@@ -144,7 +143,9 @@ class ReservationForm extends React.Component {
                 month: date.month,
                 year: date.year,
             };
-            this.props.processForm(reservation).then( (reservation) => {
+            this.props.processForm(reservation)
+            .then(this.props.requestUpcomingReservations('upcoming'))
+            .then( (reservation) => {
                 this.setState({ showResTimes: false })
                 this.props.openModal({modal:'reservation-confirmation',
                     data: {

@@ -22,6 +22,7 @@ class RestaurantIndexItem extends React.Component {
         >
             
             <div className='index-image-container'>
+                
                 <img className='index-image' src={restaurant.photoUrls[0]} alt="" />
             </div>
             <p className='show-title'>{restaurant.name}</p>

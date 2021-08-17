@@ -1,0 +1,82 @@
+#review-form-container {
+    background: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+#review-form {
+    padding: 0 1.25rem 0.75rem;
+    display: flex;
+}
+
+.rating-item-container{
+    display:flex;
+    flex-direction: column;
+}
+
+.rating-category {
+    display: flex;
+    flex-direction: column;
+    margin: 0.3rem 1rem 0.3rem 0;
+}
+
+.rating-item-label {
+    font-weight: 700;
+}
+
+.star-review {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#review-content {
+    display: flex;
+    flex-direction: column;    
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-left: 1rem;
+}
+
+#review-form-icon {
+    align-self: flex-start;
+    width: fit-content;
+    align-items: center;
+    &:hover {
+        font-weight: 600;
+        border-bottom: none;
+        padding-bottom: 2px;
+    }
+}
+
+#star-radio {
+    color: #df8963;
+    margin-right: 8px;
+}
+
+#review-textarea {
+    width: 312px;
+    height: 136px;
+}
+
+#review-button{
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #df8963;
+    border: solid #df8963 1px;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0.3em 1em;
+    &:hover {
+        background-color: #BF5700;
+        color: white;
+        border: #BF5700 1px solid
+    }
+}
+
+#title-review-form {
+    font-size: 20px;
+}

@@ -59,6 +59,14 @@
   border-radius: 3px;  
   padding: 0.5rem 0;
   margin: 0.5rem 0;
+  &:hover {
+    background-color: #BF5700;
+    color: white;
+  }
+}
+
+#loading-modal-button:hover {
+  background-color: #df8963;
 }
 
 .modal-link {

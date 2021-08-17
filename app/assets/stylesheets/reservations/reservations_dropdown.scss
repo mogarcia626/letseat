@@ -1,0 +1,116 @@
+#reservations-dd {
+    position: absolute;
+    top: 40px;
+    right: 112px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1.25rem 0.8rem 1.25rem;
+    color: black;
+    width: 16rem;
+    border-radius: 4px;
+    border: solid 1px lightgray;
+    z-index: 15;
+}
+
+#res-dd-header {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+}
+
+.res-dd-none-message {
+    font-size: 14px;
+    padding: 6px 0 8px 0px;
+    border-bottom: solid 1px lightgrey;
+}
+
+.res-dd-item-container {
+    display: flex;    
+    border-bottom: 1px solid lightgrey;
+    padding-top: 8px;
+}
+
+.res-dd-store-icon {
+    border-radius: 100%;
+    background-color: #2D333F;
+    color: white;
+    height: fit-content;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+.res-dd-item {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+}
+
+.res-dd-restaurant {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    padding-bottom: 4px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.res-dd-line-item {
+    display: flex;
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+
+.res-dd-text {
+    margin-left: 8px;
+}
+
+.res-dd-buttons {
+    display: flex;
+    color: #69A7BC;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 8px 0 12px;
+}
+
+.res-dd-cancel-button {
+    color: #BF5700;
+    text-decoration: none;
+    cursor: pointer;
+    justify-content: space-around;
+}
+
+.res-modify-button {
+    cursor: pointer;
+}
+
+.res-modify-button:hover, .res-dd-cancel-button:hover {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.bullet-divider {
+    color: lightgrey;
+    margin: 0 8px;
+}
+
+.res-dd-profile-link {
+    color: #BF5700;
+    text-decoration: none;
+    padding: 16px 0 0 8px;
+    letter-spacing: 0.15px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}

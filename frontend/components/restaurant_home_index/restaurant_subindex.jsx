@@ -1,36 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import {selectAllRestaurants} from '../../reducers/selectors';
+import { useSelector } from 'react-redux';
 import RestaurantIndexItem from './index_item/restaurant_index_item';
 
-const mSTP = state => ({ 
-    restaurants: selectAllRestaurants(state),
-    
-});
+function RestaurantSubIndex({category, filter, navId}) {
+    const restaurants = useSelector(state => state.entities.restaurants)
 
-class RestaurantSubIndex extends React.Component {
-    constructor(props) {
-        super(props)
-        this.refWindow = React.createRef()
-        this.cuisineFilter = this.cuisineFilter.bind(this);
-        this.components = this.components.bind(this);
-        this.scroll = this.scroll.bind(this);
-    }
-
-    cuisineFilter() {
-        let restaurantList = this.props.restaurants.filter(rest => (
-            rest.cuisine === this.props.category)
-        )
-        
+    function cuisineFilter() {
+        let restaurantList = Object.values(restaurants).filter(rest => (
+            rest.cuisine === category)
+        )        
         return (
             <div className='sub-index-container'>
                 <p className='sub-index-title'>
-                    {this.props.category}
+                    {category}
                 </p>
 
                 <hr className="solid" />
 
-                <div className='sub-index-grid' id={`scroll-to-${this.props.navId}`}>
+                <div className='sub-index-grid' id={`scroll-to-${navId}`}>
                 {restaurantList.map((restaurant, i) => {
                     return (
                         <RestaurantIndexItem
@@ -44,51 +31,47 @@ class RestaurantSubIndex extends React.Component {
         )
     }
 
-    scroll = (e) => {
-        let subIdx = document.getElementById(`scroll-to-${this.props.navId}`);
+    function scroll(e) {
+        let subIdx = document.getElementById(`scroll-to-${navId}`);
         subIdx.scrollLeft += parseInt(e.target.value);
     };
     
-    components() {
-        switch (this.props.filter) {
+    function components() {
+        switch (filter) {
             case 'cuisine':
-                return this.cuisineFilter()              
-                break;
+                return cuisineFilter();
             // case 'rating':
-            //     return this.ratingsFilter()              
+            //     return ratingsFilter()              
             //     break;        
             default:
                 break;
         }
     }
 
-    render() {
-
-        return(
-            <div className='sub-index-container'>
-                <button className='scroll-left' value={-1000} onClick={this.scroll}>
-                    ❮
-                </button>
-                <button className='scroll-right' value={1000} onClick={this.scroll}>
-                    ❯
-                </button>
-                {this.components()}                
-            </div>
-        )
-    }
+    return(
+        <div className='sub-index-container'>
+            <button className='scroll-left' value={-1000} onClick={()=>scroll()}>
+                ❮
+            </button>
+            <button className='scroll-right' value={1000} onClick={()=>scroll()}>
+                ❯
+            </button>
+            {components()}                
+        </div>
+    )
 }
 
-export default connect(mSTP)(RestaurantSubIndex);
+export default RestaurantSubIndex;
 
 // ratingsFilter() {
-//         let restaurantList = this.props.restaurants.filter(rest => (
-//             rest.cuisine === this.props.category)
+//         let restaurantList = restaurants.filter(rest => (
+//             rest.cuisine === category)
 //         )
 //         return (
 //             <div className='sub-index-container'>
 
 //                 <p className='sub-index-title'>
-//                     {this.props.category}
+//                     {category}
 //                 </p>
 
 //                 <hr className="solid" />
