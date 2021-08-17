@@ -55,7 +55,6 @@ class ReservationForm extends React.Component {
             if (type==='date') {
                 this.setState({ date: this.getDate(e)});
             } else {
-                console.log(e.target.value)
                 this.setState({ [type]: e.target.value });
             }
             this.closeDropdowns();

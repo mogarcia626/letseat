@@ -80,30 +80,3 @@
 #title-review-form {
     font-size: 20px;
 }
-
-//Existing review summary that appears on past reservations
-
-.profile-review-item {
-    display: flex;
-    padding: 0 1.25rem 0.75rem;
-    .rating-category {
-        margin: 0.125rem 1rem 0.125rem 0;
-    }
-    .rating-item-label {
-        font-weight: 600;
-    }
-    #review-content {
-        margin-left: 1.5rem;
-        padding: 1.5rem;
-        border-radius: 5px;
-        height: fit-content;
-        width: 20rem;
-        border: 1px solid lightgray;
-    }
-    #star-radio{
-        margin-right: 4px;
-    }
-    .rating-item-container  {
-        margin-top: -0.25rem;
-    }
-}

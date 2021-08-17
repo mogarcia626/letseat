@@ -106,7 +106,7 @@ function PastReservationItem({ res, review }) {
                     </div>
 
                     <div id='review-content'>
-                        <div className='apostrophe'>"<p className='profile-text'>{review.comment}</p>"</div>
+                        <p className='apostrophe'>"</p><p className='profile-text'>{review.comment}</p><p className='apostrophe'>"</p>
                     </div>
                 </div>
             }

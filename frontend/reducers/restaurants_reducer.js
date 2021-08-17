@@ -11,7 +11,7 @@ const restaurantsReducer = (state = {}, action) => {
         case RECEIVE_ALL_RESTAURANTS:
             return Object.assign({}, action.restaurants);
         case RECEIVE_SINGLE_RESTAURANT:
-            let restaurant = action.restaurant.restaurant;
+            const restaurant = action.restaurant.restaurant;
             return Object.assign({}, {[restaurant.id]: restaurant} )
         default:
             return state;

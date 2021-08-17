@@ -11,7 +11,7 @@ function ReviewForm() {
     useEffect( () => {
         return ()=>dispatch(resetErrors())
     }, [])
-    const [reviewloading, setReviewLoading] = useState(false)
+    const [reviewLoading, setReviewLoading] = useState(false)
 
     const errors = useSelector(state=>state.errors.reviews)
     function renderErrors() {
@@ -99,7 +99,18 @@ function ReviewForm() {
 
     function starLeave(str) {setValue(starSave, str)}
 
-    console.log(reviewloading)
+    function button() {
+        if (reviewLoading) {
+            return (
+                <div className="session-modal-button" id='loading-modal-button'>
+                    <div className="spinner"></div></div>
+            )
+        } else if (action==='post') {
+            return <button id='review-button'>Submit Review</button>
+        } else {
+            return <button id='review-button'>Update Review</button>
+        }
+    }
     
     return (
         <div id='review-form-container'>
@@ -192,11 +203,9 @@ function ReviewForm() {
 
                     <textarea id='review-textarea' rows='10' col='500' value={comment}
                     onChange={(e)=> setComment(e.currentTarget.value)} />
-                    { (action==='post') ? 
-                        <button id='review-button'>Submit Review</button>
-                    :
-                        <button id='review-button'>Update Review</button>
-                    }
+                    
+                    {button()}
+
                 </div>
 
             </form>

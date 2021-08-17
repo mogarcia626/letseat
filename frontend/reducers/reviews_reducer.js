@@ -14,7 +14,7 @@ const reviewsReducer = (state = {}, action) => {
             return Object.assign(nextState, { [action.review.reservationId]: action.review })
             break;
         case RECEIVE_SINGLE_RESTAURANT:
-            return Object.assign(nextState, action.restaurant.reviews)
+            return Object.assign({}, action.restaurant.reviews)
             break;
         case RECEIVE_ALL_RESTAURANTS:
             return {}

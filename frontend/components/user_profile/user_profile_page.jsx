@@ -25,13 +25,13 @@ function UserProfilePage() {
         if (reservations.upcoming) {
             const upcoming = Object.values(reservations.upcoming);
             return (
-                <div> upcoming goes here
-                    {/* {upcoming.map( reservation =>
+                <div>
+                    {upcoming.map( reservation =>
                         <UpcomingReservationItem
                             key={reservation.id} 
                             res={reservation}
                         />
-                    )} */}
+                    )}
                 </div>
             )
         } else {

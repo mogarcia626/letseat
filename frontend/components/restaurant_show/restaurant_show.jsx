@@ -1,48 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router';
+import {requestSingleRestaurant} from '../../actions/restaurant_actions';
 import ShowBanner from './show_banner';
 import RestaurantContent from './restaurant_content/restaurant_content';
 import ReservationFormContainer from './reservation_form/reservation_form_container';
 
-class RestaurantShow extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            loading: true
-        }
-    }
+function RestaurantShow() {
+    const dispatch = useDispatch()
+    const [loading, setLoading] = useState(true)
+    const location = useLocation()
+    const resId = parseInt(location.pathname.split('/')[2])
 
-    componentDidMount() {
-        this.props.requestSingleRestaurant(this.props.restaurantId)
-        .then(() => this.setState({
-            loading: false,
-        }))
-    }
-
-    render() {   
+    useEffect( ()=> {
+        dispatch(requestSingleRestaurant(resId))
+        .then( () => setLoading(false) )
+    }, [])
         
-        if (this.state.loading) {
-            return <div className="loader"></div>
-        } else {
-            
-            return (
-                <div id='restaurant-show'>
-                    <ShowBanner
-                        cuisine={this.props.restaurant.cuisine}
-                    />
-                    <div id='show-content'>
-                        <RestaurantContent 
-                            restaurant={this.props.restaurant}
-                            reviews={this.props.reviews}
-                        />
-                        <ReservationFormContainer
-                            restaurantId={this.props.restaurantId}
-                            schedule={this.props.restaurant.schedule}
-                        />                        
-                    </div>
+    const restaurant = useSelector(state => state.entities.restaurants[resId])
+    const reviews = useSelector(state => state.entities.reviews)
 
+    if (loading) {
+        return <div className="loader"></div>
+    } else {
+        return (
+            <div id='restaurant-show'>
+                <ShowBanner
+                    cuisine={restaurant.cuisine}
+                />
+                <div id='show-content'>
+                    <RestaurantContent 
+                        restaurant={restaurant}
+                        reviews={reviews}
+                    />
+                    <ReservationFormContainer
+                        restaurantId={resId}
+                        schedule={restaurant.schedule}
+                    />                        
                 </div>
-            )        
-        }
+
+            </div>
+        )        
     }
 }
 

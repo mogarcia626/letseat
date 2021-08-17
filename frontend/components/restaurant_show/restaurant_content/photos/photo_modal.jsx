@@ -1,86 +1,72 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { openModal, closeModal } from '../../../../actions/modal_actions'
 import { RiArrowRightSLine, RiArrowLeftSLine, RiCloseFill } from "react-icons/ri";
 
-const mSTP = ({ ui }) => ({
-    idx: ui.modal.data.idx,
-    photos: ui.modal.data.photos,
-});
+function PhotoModal() {
+    const dispatch = useDispatch()
+    const idx = useSelector(state => state.ui.modal.data.idx)
+    const photos = useSelector(state => state.ui.modal.data.photos)
 
-const mDTP = dispatch => ({
-    openModal: modal => dispatch(openModal(modal)),
-    closeModal: () => dispatch(closeModal())
-});
-
-class PhotoModal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleClickRight = this.handleClickRight.bind(this);
-        this.handleClickLeft = this.handleClickLeft.bind(this);
-    }
-    
-    forward() {
-        if (this.props.idx === this.props.photos.length-1) return 0
-        return this.props.idx + 1
+    function forward() {
+        if (idx === photos.length-1) return 0
+        return idx + 1
     }
 
-    handleClickRight(e) {
+    function backward() {
+        if (idx === 0) return (photos.length-1)
+        return idx - 1
+    }
+
+    function handleClick(e, dir) {
         e.preventDefault();
-        this.props.openModal({
-            modal: 'photo-carousel', 
-            data: {
-                idx: this.forward(),
-                photos: this.props.photos
+        let newIdx;
+        if (dir === 'right') {
+            newIdx = forward()
+        } else {
+            newIdx = backward()
+        }
+        dispatch(openModal(
+            {
+                modal: 'photo-carousel', 
+                data: { idx: newIdx, photos: photos }
             }
-        });
-    };
-
-    backward() {
-        if (this.props.idx === 0) return (this.props.photos.length-1)
-        return this.props.idx - 1
-    }
-
-    handleClickLeft(e) {
-        e.preventDefault();
-        this.props.openModal({
-            modal: 'photo-carousel', 
-            data: {
-                idx: this.backward(),
-                photos: this.props.photos
-            }
-        });
+        ));
     };
     
-    render() {
-        return (
-            <div className='photo-modal-background'>
+    return (
+        <div className='photo-modal-background'>
 
-                <div className='photo-modal'>
-                    <RiArrowLeftSLine size={48}
-                        className='photo-modal-buttons'
-                        onClick={this.handleClickLeft}
-                    />
-                    
-                    <img className='modal-image'
-                        src={this.props.photos[this.props.idx]}
-                    />
+            <div className='photo-modal'>
+                <div onClick={(e) => handleClick(e, 'left')}>
+                <RiArrowLeftSLine size={48}                    
+                    className='photo-modal-buttons'                    
+                />
+                </div>
 
+                <img className='modal-image'
+                    src={photos[idx]}
+                />
+
+                <div onClick={(e) => handleClick(e, 'right')}>
                     <RiArrowRightSLine size={48}
                         className='photo-modal-buttons'
-                        onClick={this.handleClickRight}
                     />
                 </div>
 
-                <RiCloseFill size={48}
-                    id='photo-modal-close'
-                    className='photo-modal-buttons'
-                    onClick={() => this.props.closeModal()}
-                />
-        </div>            
-        )
-    }
+            </div>
+
+            <RiCloseFill size={48}
+                id='photo-modal-close'
+                className='photo-modal-buttons'
+                onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(closeModal());
+                }}
+            />
+    </div>            
+    )
 };
 
-export default connect(mSTP, mDTP)(PhotoModal);
+export default PhotoModal;
 
