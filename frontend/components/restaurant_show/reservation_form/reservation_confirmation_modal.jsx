@@ -10,7 +10,7 @@ function ReservationConfirmation() {
     const {reservation, restaurantId} = useSelector(state => state.ui.modal.data)
     const rest = useSelector(state => state.entities.restaurants[restaurantId])
     const firstName = useSelector(state => state.entities.user[state.session.id].firstName)
-    console.log(reservation)
+    
     return (
         <div id='reservation-confirmation-container'>
             <div id='confirmation-id'>

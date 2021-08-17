@@ -167,3 +167,7 @@ export function isTimeAvailable(time, day, schedule) {
         return time
     }
 }
+
+export function capitalize(str) {
+    return str.slice(0,1).toUpperCase().concat(str.slice(1))
+}

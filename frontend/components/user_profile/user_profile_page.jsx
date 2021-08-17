@@ -44,7 +44,7 @@ function UserProfilePage() {
             const past = Object.values(reservations.past);
             return (
                 <div>
-                    {past.slice(0,2).map( reservation =>
+                    {past.map( reservation =>
                     <PastReservationItem
                         key={reservation.id} 
                         res={reservation}

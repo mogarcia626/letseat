@@ -57,8 +57,19 @@
 }
 
 #review-textarea {
-    width: 312px;
-    height: 136px;
+    width: 24em;
+    min-height: 6em;
+    height: fit-content;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 0.25em 0 0.5em;
+    font-size: 14px;
+    font-family: 'Nunito Sans';
+    &:focus {
+        outline: none;
+        border: 1px solid black;
+    }
 }
 
 #review-button{

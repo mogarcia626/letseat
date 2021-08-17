@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createReview, editReview, resetErrors } from '../../actions/review_actions';
 import { closeModal } from '../../actions/modal_actions';
-import { dayOfTheWeek, monthArray } from '../../util/general_utils';
+import { dayOfTheWeek, monthArray, capitalize } from '../../util/general_utils';
 import StarRadio from './star_radio';
 import { FiMessageSquare } from 'react-icons/fi';
 
@@ -26,36 +26,20 @@ function ReviewForm() {
         } else { return null }
     }
 
-    const res = useSelector(state=> state.ui.modal.data.res)
-    const action = useSelector(state=> state.ui.modal.data.action)
-    let existingReview = useSelector(state=> state.ui.modal.data.existingReview)
-    if (!existingReview) existingReview = {id: null, food_rating: 0, service_rating: 0, ambience_rating:0, value_rating:0, comment:''}
-
+    let {res, action, existingReview} = useSelector(state=> state.ui.modal.data)
+    if (!existingReview) existingReview = {id: undefined, foodRating: 0, serviceRating: 0, ambienceRating:0, valueRating:0, comment:''}
+    
+    existingReview.restaurant_id = res.id
+    
     const day = dayOfTheWeek(res.year, res.month, res.day)
     const month = monthArray[res.month]
-
-    const [comment, setComment] = useState(existingReview.comment)
-    const [food_rating, setFoodRating] = useState(existingReview.foodRating)
-    const [service_rating, setServiceRating] = useState(existingReview.serviceRating)
-    const [ambience_rating, setAmbienceRating] = useState(existingReview.ambienceRating)
-    const [value_rating, setValueRating] = useState(existingReview.valueRating)
-    const [starSave, setStarSave] = useState(0)
-    const [reservation_id, setId] = useState(res.id)
-
     
+    const [review, setReview] = useState(existingReview)
+    const [starSave, setStarSave] = useState(0)
+
     function handleSubmit(e) {
         e.preventDefault();
-        const review = {
-            food_rating,
-            service_rating,
-            ambience_rating,
-            value_rating,
-            comment,
-            reservation_id,
-            id: existingReview.id
-        }
         setReviewLoading(true)
-
         if (action === 'post') {
             dispatch(createReview(review))
             .then( dispatch(closeModal()) )
@@ -67,37 +51,26 @@ function ReviewForm() {
         }
     }
 
-    function setValue(i, str) {
-        switch (str) {
-            case 'food':
-                setFoodRating(i);
-                break;
-            case 'service':
-                setServiceRating(i);
-                break;
-            case 'ambience':
-                setAmbienceRating(i);
-                break;
-            case 'value':
-                setValueRating(i);
-                break;
-            default:
-                setStarSave(i);
-                break;
-        }
+    function setValue(keyStr, val) {
+        setReview( Object.assign({}, review, { [keyStr]: val } ) )
     }
 
-    function starClick(str, rating, i) {
-        setValue(rating, 'star');
-        setValue(i, str);
+    function starClick(e, keyStr, starValue) {
+        e.preventDefault()
+            setStarSave(starValue);
+            setValue(keyStr, starValue);
     }
 
-    function starEnter(str, rating, i) {
-        setValue(rating, 'star');
-        setValue(i, str);
+    function starEnter(e, keyStr, currentRating, starValue) {
+        e.preventDefault()
+        setStarSave(currentRating);
+        setValue(keyStr, starValue);
     }
 
-    function starLeave(str) {setValue(starSave, str)}
+    function starLeave(e, keyStr) {
+        e.preventDefault()
+        setValue(keyStr, starSave)
+    }
 
     function button() {
         if (reviewLoading) {
@@ -111,7 +84,10 @@ function ReviewForm() {
             return <button id='review-button'>Update Review</button>
         }
     }
-    
+
+    const categories = ['food', 'service', 'ambience', 'value']
+    const nums = [1,2,3,4,5]
+
     return (
         <div id='review-form-container'>
             <div className='profile-reservation-item'>           
@@ -136,62 +112,24 @@ function ReviewForm() {
 
             <form id='review-form' onSubmit={(e) => handleSubmit(e)}>
                 <div className='rating-item-container'>
-                    
-                    <div className='rating-category'>
-                        <p className='rating-item-label'>Food</p>
-                        <div className='star-review' value={food_rating}>
-                            {[1,2,3,4,5].map( i =>
-                                <div key={i} value={i} 
-                                onClick={()=> starClick('food', food_rating, i) }
-                                onMouseEnter={()=> starEnter('food', food_rating, i) }
-                                onMouseLeave={()=> starLeave('food') }>
-                                    <StarRadio val={i} size={24} rating={food_rating} />
-                                </div>
-                            )}
-                        </div>
-                    </div>
 
-                    <div className='rating-category'>
-                        <p className='rating-item-label'>Service</p>
-                        <div className='star-review' value={service_rating}>
-                            {[1,2,3,4,5].map( i =>
-                                <div key={i} value={i} 
-                                onClick={()=> starClick('service', service_rating, i) }
-                                onMouseEnter={()=> starEnter('service', service_rating, i) }
-                                onMouseLeave={()=> starLeave('service') }>
-                                    <StarRadio val={i} size={24} rating={service_rating} />
-                                </div>
-                            )}
+                    {categories.map( (cat, idx) => 
+                        <div key={idx} className='rating-category'>
+                            <p className='rating-item-label'>{capitalize(cat)}</p>
+                            <div className='star-review'>
+                                {nums.map( i =>                                    
+                                    <div key={i} value={i} 
+                                        onClick={(e)=> starClick(e, cat.concat('Rating'), i) }
+                                        onMouseEnter={(e)=> starEnter(e, cat.concat('Rating'), review[cat.concat('Rating')], i) }
+                                        onMouseLeave={(e)=> starLeave(e, cat.concat('Rating')) }
+                                    >
+                                        <StarRadio val={i} size={24} rating={review[cat.concat('Rating')]} />
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                    </div>
-
-                    <div className='rating-category'>
-                        <p className='rating-item-label'>Ambience</p>
-                        <div className='star-review' value={ambience_rating}>
-                            {[1,2,3,4,5].map( i =>
-                                <div key={i} value={i} 
-                                onClick={()=> starClick('ambience', ambience_rating, i) }
-                                onMouseEnter={()=> starEnter('ambience', ambience_rating, i) }
-                                onMouseLeave={()=> starLeave('ambience') }>
-                                    <StarRadio val={i} size={24} rating={ambience_rating} />
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className='rating-category'>
-                        <p className='rating-item-label'>Value</p>
-                        <div className='star-review' value={value_rating}>
-                            {[1,2,3,4,5].map( i =>
-                                <div key={i} value={i} 
-                                onClick={()=> starClick('value', value_rating, i) }
-                                onMouseEnter={()=> starEnter('value', value_rating, i) }
-                                onMouseLeave={()=> starLeave('value') }>
-                                    <StarRadio val={i} size={24} rating={value_rating} />
-                                </div>
-                            )}
-                        </div>
-                    </div>                    
+                    )}
+                                        
                 </div>
 
                 <div id='review-content'>
@@ -201,8 +139,8 @@ function ReviewForm() {
                         <p>Write Review</p>
                     </div>
 
-                    <textarea id='review-textarea' rows='10' col='500' value={comment}
-                    onChange={(e)=> setComment(e.currentTarget.value)} />
+                    <textarea id='review-textarea' value={review.comment}
+                    onChange={(e)=> setValue('comment', e.currentTarget.value)} />
                     
                     {button()}
 
@@ -215,3 +153,61 @@ function ReviewForm() {
 }
 
 export default ReviewForm
+
+
+{/* <div className='rating-category'>
+                        <p className='rating-item-label'>Food</p>
+                        <div className='star-review' value={foodRating}>
+                            {[1,2,3,4,5].map( i =>
+                                <div key={i} value={i} 
+                                onClick={()=> starClick('food', foodRating, i) }
+                                onMouseEnter={()=> starEnter('food', foodRating, i) }
+                                onMouseLeave={()=> starLeave('food') }>
+                                    <StarRadio val={i} size={24} rating={foodRating} />
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className='rating-category'>
+                        <p className='rating-item-label'>Service</p>
+                        <div className='star-review' value={serviceRating}>
+                            {[1,2,3,4,5].map( i =>
+                                <div key={i} value={i} 
+                                onClick={()=> starClick('service', serviceRating, i) }
+                                onMouseEnter={()=> starEnter('service', serviceRating, i) }
+                                onMouseLeave={()=> starLeave('service') }>
+                                    <StarRadio val={i} size={24} rating={serviceRating} />
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className='rating-category'>
+                        <p className='rating-item-label'>Ambience</p>
+                        <div className='star-review' value={ambienceRating}>
+                            {[1,2,3,4,5].map( i =>
+                                <div key={i} value={i} 
+                                onClick={()=> starClick('ambience', ambienceRating, i) }
+                                onMouseEnter={()=> starEnter('ambience', ambienceRating, i) }
+                                onMouseLeave={()=> starLeave('ambience') }>
+                                    <StarRadio val={i} size={24} rating={ambienceRating} />
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className='rating-category'>
+                        <p className='rating-item-label'>Value</p>
+                        <div className='star-review' value={valueRating}>
+                            {[1,2,3,4,5].map( i =>
+                                <div key={i} value={i} 
+                                onClick={()=> starClick('value', valueRating, i) }
+                                onMouseEnter={()=> starEnter('value', valueRating, i) }
+                                onMouseLeave={()=> starLeave('value') }>
+                                    <StarRadio val={i} size={24} rating={valueRating} />
+                                </div>
+                            )}
+                        </div>
+                    </div>                     */}
+                
