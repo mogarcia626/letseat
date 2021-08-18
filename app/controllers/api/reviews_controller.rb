@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-    before_action :require_logged_in
+    before_action :require_logged_in, :underscore_params!
 
     def index
       @reviews = User.find_by(id: current_user.id).reviews

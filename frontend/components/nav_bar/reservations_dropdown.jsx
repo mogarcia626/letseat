@@ -48,14 +48,14 @@ function ReservationsDropDown() {
                                 <FiCalendar size={16} />
                                 <p className='res-dd-text'>{monthArray[res.month]} {res.day}, {res.year}</p>
                             </div>
-
+                            {/* UNCOMMENT
                             <div className='res-dd-buttons'>
                                 <p className='res-modify-button'>View</p>
                                 <p className='bullet-divider'>&bull;</p>
                                 <p className='res-modify-button'>Modify</p>
                                 <p className='bullet-divider'>&bull;</p>
                                 <p className='res-dd-cancel-button'>Cancel</p>
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>

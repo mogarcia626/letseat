@@ -91,3 +91,14 @@
 #title-review-form {
     font-size: 20px;
 }
+
+#review-form-container {
+    .profile-reservation-photo:hover {
+        cursor: default;
+    }
+
+    .profile-restaurant-title:hover {
+        cursor: text;
+        text-decoration: none;
+    }
+}

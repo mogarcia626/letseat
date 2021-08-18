@@ -28,6 +28,7 @@ function UpcomingReservationItem({ res }) {
                     </p>
                     <p className='profile-text'>Table for {res.partySize} people</p>
                 </div>
+                {/* UNCOMMENT
                 <div className='res-buttons'>
                     <p className='res-modify-button'>
                         View
@@ -38,7 +39,7 @@ function UpcomingReservationItem({ res }) {
                     <p className='res-dd-cancel-button'>
                         Cancel
                     </p>
-                </div>
+                </div> */}
             </div>
         </div>
         </div>

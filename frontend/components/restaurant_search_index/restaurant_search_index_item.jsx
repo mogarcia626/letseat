@@ -8,8 +8,6 @@ function RestaurantSearchIndexItem(props) {
     const history = useHistory()
     
     return (   
-        // <div className='search-result-container'>
-
         <div className='search-result-container'
             onClick={() => history.push(`restaurants/${rest.id}`) }
         >
@@ -28,27 +26,13 @@ function RestaurantSearchIndexItem(props) {
                     <p className='result-text'>({rest.reviewAverages.count})</p>
                 </div>
 
-                    <p className='result-text'>
-                        {rest.cuisine} &middot; {rest.city}
-                    </p>
-
-
-                
-                <p className='profile-text'></p>
+                <p className='result-text'>
+                    {rest.cuisine} &middot; {rest.city}
+                </p>
+            
             </div>
-            {/* <div id='modify-reservation-buttons'>
-                <p className='profile-text' id='profile-edit-reservation'>
-                    View
-                </p>
-                <p className='profile-text' id='profile-edit-reservation'>
-                    Modify
-                </p>
-                <p className='profile-text' id='profile-edit-reservation'>
-                    Cancel
-                </p>
-            </div> */}
+
         </div>
-        // </div>
     )
 }
 

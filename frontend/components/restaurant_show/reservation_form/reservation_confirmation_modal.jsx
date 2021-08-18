@@ -47,7 +47,8 @@ function ReservationConfirmation() {
                     </div>
                 </div>
             </div>
-            {/* <div className='change-reservation-buttons'>
+            {/* UNCOMMENT
+            <div className='change-reservation-buttons'>
                 <div className='change-reservation-button' id='modify-button'>Modify</div>
                 <div className='change-reservation-button'>Cancel</div>
             </div> */}
