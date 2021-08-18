@@ -2,7 +2,8 @@ import {
     UPDATE_LOCATION_FILTER,
     UPDATE_SEARCH_FILTER,
     CLEAR_SEARCH_FILTER,
-    UPDATE_TIME_FILTER 
+    UPDATE_TIME_FILTER,
+    CLEAR_LOCATION_FILTER,
 } from '../actions/filter_actions';
 
 const defaultFilters = Object.freeze({
@@ -19,7 +20,9 @@ const filtersReducer = (state = defaultFilters, action) => {
         case UPDATE_SEARCH_FILTER:
             return Object.assign({}, state, {search: action.search}) 
         case CLEAR_SEARCH_FILTER:
-            return Object.assign({}, state, {search: ''}) 
+            return Object.assign({}, state, {search: ''})
+        case CLEAR_LOCATION_FILTER:
+            return Object.assign({}, state, {city: ''})
         case UPDATE_TIME_FILTER:
             return Object.assign({}, state, {time: action.time})
         default:

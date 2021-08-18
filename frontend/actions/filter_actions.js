@@ -3,6 +3,7 @@ import { requestAllRestaurants } from './restaurant_actions'
 export const UPDATE_LOCATION_FILTER = 'UPDATE_FILTER';
 export const UPDATE_SEARCH_FILTER = 'UPDATE_SEARCH_FILTER';
 export const CLEAR_SEARCH_FILTER = 'CLEAR_SEARCH_FILTER';
+export const CLEAR_LOCATION_FILTER = 'CLEAR_LOCATION_FILTER';
 export const UPDATE_TIME_FILTER = 'UPDATE_TIME_FILTER';
 
 export const changeLocationFilter = (city) => ({
@@ -22,6 +23,10 @@ export const changeSearchFilter = (search) => ({
 
 export const clearSearchFilter = () => ({
     type: CLEAR_SEARCH_FILTER
+});
+
+export const clearLocationFilter = () => ({
+    type: CLEAR_LOCATION_FILTER
 });
 
 export const updateSearchFilter = (search) => (dispatch, getState) => {

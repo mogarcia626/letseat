@@ -11,19 +11,6 @@ function ReviewForm() {
     useEffect( () => dispatch( resetErrors() ), [])
     const [reviewLoading, setReviewLoading] = useState(false)
 
-    const errors = useSelector(state=>state.errors.reviews)
-    function renderErrors() {
-        if (errors) {
-            return (
-                <ul>
-                    {errors.map( (err, i) => (
-                        <li key={`err-${i}`}>{err}</li>
-                    ))}
-                </ul>
-            )
-        } else { return null }
-    }
-
     let {res, action, existingReview} = useSelector(state=> state.ui.modal.data)
     if (!existingReview) existingReview = {id: undefined, foodRating: 0, serviceRating: 0, ambienceRating:0, valueRating:0, comment:''}    
     existingReview.reservationId = res.id
@@ -68,12 +55,13 @@ function ReviewForm() {
         e.preventDefault()
         setValue(keyStr, starSave)
     }
-
+    
     function button() {
         if (reviewLoading) {
             return (
                 <div className="session-modal-button" id='loading-modal-button'>
-                    <div className="spinner"></div></div>
+                    <div className="spinner"></div>
+                </div>
             )
         } else if (action==='post') {
             return <button id='review-button'>Submit Review</button>
@@ -82,8 +70,21 @@ function ReviewForm() {
         }
     }
 
+    const errors = useSelector(state=>state.errors.reviews)
+    function renderErrors() {
+        if (errors) {
+            return (
+                <ul>
+                    {errors.map( (err, i) => (
+                        <li key={`err-${i}`}>{err}</li>
+                    ))}
+                </ul>
+            )
+        } else { return null }
+    }
+
     const categories = ['food', 'service', 'ambience', 'value']
-    const nums = [1,2,3,4,5]
+    const nums = [1,2,3,4,5]    
 
     return (
         <div id='review-form-container'>

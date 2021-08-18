@@ -5,7 +5,7 @@ class Cuisine
         @cuisines = {}
 
         @cuisines['Thai'] = {
-            first: ['Thai', 'Tomyum', 'Somtum', 'Siam', 'Royal', 'House of', 'Pearl Thai', 'Koon Thai', 'Lemongrass'],
+            first: ['Thai', 'Tomyum', 'Somtum', 'Siam', 'Royal', 'Pearl Thai', 'Lemongrass'],
             second: ['Thai', 'Bistro', 'Siam', 'Village', 'Orchid', 'Kitchen', 'Basil', 'House', 'Somtum'] }        
         @cuisines['Chinese'] = {
             first: ['Wah Fung', 'Shanghai', 'Szechuan', 'Hunan', 'Golden', 'Empress', 'Great Wall', 'Shandong', 'Mandarin', 'Chow'],
@@ -13,12 +13,15 @@ class Cuisine
         @cuisines['Japanese'] = {
             first: ['Shimizu', 'Yojimbo', 'Kiraku', 'Toyosu', 'Banzai', 'Judoku', 'Demon Slayer', 'DomoDomo', 'Umami'],
             second: ['Sushi', 'Ramen', 'Umami', 'Cafe', 'Kyoto', 'Kitchen'] }            
-        @cuisines['Seafood & Steakhouses'] = {
-            first: ['Salt', 'Ranchers', 'Tony\'s', 'Village', 'Quality', 'Texas', 'Wyoming', 'Brazil', 'Prime', 'Antonio\'s', 'Louisiana', 'Alaska', 'Peninsula', 'Pacific', 'Atlantic', 'Mariscos', 'Cajun'],
-            second: ['Steakhouse', 'Meat Company', 'Company', ' and Charcoal', 'Prime Rib', 'Grill', 'Butchers', 'Seafood Restaurant', 'Seafood Grill', 'Crawfish', 'Fish Market', 'Oyster Company', 'Crab House', 'Crab Kitchen'] }        
+        @cuisines['Seafood'] = {
+            first: ['Mediterranean', 'Louisiana', 'Alaska', 'Peninsula', 'Pacific', 'Atlantic', 'Mariscos', 'Cajun'],
+            second: ['Company', 'Grill', 'Seafood Restaurant', 'Seafood Grill', 'Crawfish', 'Fish Market', 'Oyster Company', 'Crab House', 'Crab Kitchen'] }
+        @cuisines['Steakhouses'] = {
+            first: ['Salt', 'Ranchers', 'Tony\'s', 'Village', 'Quality', 'Texas', 'Wyoming', 'Gaucho', 'Prime', 'Antonio\'s'],
+            second: ['Steakhouse', 'Meat Company', 'Company', ' and Charcoal', 'Prime Rib', 'Grill', 'Butchers'] }        
         @cuisines['Latin American Cuisine'] = {
-            first: ['Cholita', 'Casa', 'Havana', 'Sol', 'Platano', 'Empanada', 'La Bodeguita', 'Cafe', 'Arepa', 'Parada', 'Taqueria', 'Jalisco', 'Hacienda', 'Cocina', 'Molcajete', 'Ole Ole', 'Plato', 'Dos Hermanos', 'Hermanas', 'El Huarache'],
-            second: ['Cafe', 'Havana', 'Latina', 'Linda', 'Cafe','Ceviche', 'Azteca', 'Barbacoa', 'Gordos', 'de Mazatlan', 'del Sur'] }        
+            first: ['Cholita', 'Casa', 'Havana', 'Sol', 'Empanadas', 'La Bodeguita', 'Cafe', 'Arepas', 'Parada', 'Taqueria', 'Jalisco', 'Hacienda', 'Cocina', 'Molcajete', 'Ole Ole', 'Plato', 'Dos Hermanos'],
+            second: ['Cafe', 'Havana', 'Latina', 'Linda', 'Cafe', 'Azteca', 'Gordos', 'de Mazatlan', 'del Sur'] }        
     end  
 end
 

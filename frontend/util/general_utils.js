@@ -1,6 +1,6 @@
 import { BiCoinStack } from "react-icons/bi";
         
-export const restaurantCuisinesList = ['Thai', 'Chinese', 'Japanese', 'Seafood & Steakhouses', 'Latin American Cuisine'];
+export const restaurantCuisinesList = ['Thai', 'Chinese', 'Japanese', 'Seafood', 'Steakhouses', 'Latin American Cuisine'];
 
 export const ratingsCategoryList = {
     value: 'Best Value',
@@ -71,8 +71,8 @@ export const resParty2 = [
 export const monthArray = ['Jan', 'Feb', 'Mar', 'Apr',
 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-export function selectBackground(location) {
-    switch (location) {         
+export function selectBackground(filter) {
+    switch (filter) {         
         case 'Orlando, FL':
             return 'search-bar-orlando'
         case 'New York, NY':
@@ -81,6 +81,18 @@ export function selectBackground(location) {
             return 'search-bar-san-francisco'
         case 'Austin, TX':
             return 'search-bar-austin'
+        case 'Thai':
+            return 'banner-thai'
+        case 'Chinese':
+            return 'banner-chinese'
+        case 'Japanese':
+            return 'banner-japanese'
+        case 'Seafood':
+            return `banner-sea`
+        case 'Steakhouses':
+            return `banner-steak`
+        case 'Latin American Cuisine':
+            return 'banner-latin'
         default:
             return 'search-bar-default';
     };

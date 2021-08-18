@@ -1,7 +1,15 @@
-;import React from 'react'
+import React from 'react'
+import {useDispatch} from 'react-redux'
+import { clearLocationFilter } from '../../actions/filter_actions'
 import { FaLinkedin, FaAngellist, FaGithub } from 'react-icons/fa';
 
 function Footer() {
+    const dispatch = useDispatch()
+
+    function resetLocation(e) {
+        e.preventDefault()
+        dispatch( clearLocationFilter() )
+    }
 
      return (
         <div className='footer-background'>
@@ -38,6 +46,9 @@ function Footer() {
                         </div>
                     </div>
                 </div>
+
+                <button id='reset-location-button' onClick={(e) => resetLocation(e)}>RESET LOCATION</button>
+
                 <div className='about-me-section'>
                 <div className="footer-section">
                     <span className="footer-section-title">OTHER PROJECTS</span>
@@ -50,6 +61,7 @@ function Footer() {
                         </li>
                     </ul>
                 </div>
+
 
                 <div className="footer-section">
                     <span className="footer-section-title">

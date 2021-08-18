@@ -10,7 +10,7 @@ Review.delete_all
 Schedule.delete_all
 
 # DEV-TO-PRO!
-seeding_database = 'heroku'  
+seeding_database = 'local'  
 #'local' will seed localhost from amazon-dev bucket
 #'heroku' will seed heroku from amazon-prod bucket
 # go to show_pag_photos.scss and search_bar.scss and change $source
@@ -29,8 +29,8 @@ demo_user = User.create!(
 count = 2
 until count == 6
     User.create!(
-        first_name: "Owner#{count}",
-        last_name: "Example",
+        first_name: Faker::Name.first_name ,
+        last_name: Faker::Name.last_name ,
         email: "letseatdemo+#{count.to_s}@gmail.com",
         password: '1a2b3c'
     )
@@ -98,7 +98,7 @@ end
     
 # Generates Restaurants in San Francisco
 food.keys.each do |cuisine|
-    rand(3)+4.times do
+    rand(3)+6.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -128,7 +128,7 @@ end
 
 # Generates Restaurants in New York
 food.keys.each do |cuisine|
-    rand(3)+4.times do
+    rand(3)+6.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -158,7 +158,7 @@ end
 
 # Generates Restaurants in Austin
 food.keys.each do |cuisine|
-    ((rand(3)+2)).times do
+    ((rand(3)+3)).times do
         Restaurant.create!(
                 name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -241,16 +241,16 @@ count += 1
 
 diff = 0
 Restaurant.all.ids.each do |rest|
-    (rand(20)+1).times do
-        # sched = Restaurant.find_by_id(rest).schedule
-        # open = sched.thursday_open
-        open = 12
-        # diff = sched.thursday_close - open
-        diff = 9
+    (rand(9)+1).times do
+        sched = Restaurant.find_by_id(rest).schedule
+        open = sched.thursday_open
+        # open = 12
+        diff = sched.thursday_close - open
+        # diff = 9
         Reservation.create!(
-            time: "#{rand(7)+3}:#{rand(2)*3}0pm",
+            time: "#{rand(diff)+open}:#{rand(2)*3}0pm",
             day: rand(27)+1,
-            month: rand(7),
+            month: rand(8),
             year: 2021,
             party_size: rand(6)+2,
             user_id: rand(5)+1,
@@ -280,33 +280,37 @@ end
 orlando_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Thai')
 orlando_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Chinese')
 orlando_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Japanese' )
-orlando_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Seafood & Steakhouses')
-orlando_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Latin American Cuisine')
-orlando_all_restaurants = [orlando_thai_restaurants, orlando_chinese_restaurants, orlando_japanese_restaurants, orlando_latin_restaurants, orlando_steak_restaurants]
+orlando_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Latin American Cuisine')
+orlando_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Steakhouses')
+orlando_seafood_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Orlando, FL', 'Seafood')
+orlando_all_restaurants = [orlando_thai_restaurants, orlando_chinese_restaurants, orlando_japanese_restaurants, orlando_latin_restaurants, orlando_steak_restaurants, orlando_seafood_restaurants]
 
 #NY Restaurants by Cuisine
 ny_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Thai')
 ny_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Chinese')
 ny_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Japanese' )
-ny_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Seafood & Steakhouses')
-ny_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Latin American Cuisine')
-ny_all_restaurants = [ny_thai_restaurants, ny_chinese_restaurants, ny_japanese_restaurants, ny_latin_restaurants, ny_steak_restaurants]
+ny_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Latin American Cuisine')
+ny_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Steakhouses')
+ny_seafood_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'New York, NY', 'Seafood')
+ny_all_restaurants = [ny_thai_restaurants, ny_chinese_restaurants, ny_japanese_restaurants, ny_latin_restaurants, ny_steak_restaurants, ny_seafood_restaurants]
 
 #SF Restaurants by Cuisine
 sf_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Thai')
 sf_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Chinese')
 sf_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Japanese' )
-sf_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Seafood & Steakhouses')
-sf_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Latin American Cuisine')
-sf_all_restaurants = [sf_thai_restaurants, sf_chinese_restaurants, sf_japanese_restaurants, sf_latin_restaurants, sf_steak_restaurants]
+sf_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Latin American Cuisine')
+sf_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Steakhouses')
+sf_seafood_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'San Francisco, CA', 'Seafood')
+sf_all_restaurants = [sf_thai_restaurants, sf_chinese_restaurants, sf_japanese_restaurants, sf_latin_restaurants, sf_steak_restaurants, sf_seafood_restaurants]
 
 #Austin Restaurants by Cuisine
 austin_thai_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Thai')
 austin_chinese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Chinese')
 austin_japanese_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Japanese' )
-austin_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Seafood & Steakhouses')
-austin_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Latin American Cuisine')
-austin_all_restaurants = [austin_thai_restaurants, austin_chinese_restaurants, austin_japanese_restaurants, austin_latin_restaurants, austin_steak_restaurants]
+austin_latin_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Latin American Cuisine')
+austin_steak_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Steakhouses')
+austin_seafood_restaurants = Restaurant.where('city = ? AND cuisine = ?', 'Austin, TX', 'Seafood')
+austin_all_restaurants = [austin_thai_restaurants, austin_chinese_restaurants, austin_japanese_restaurants, austin_latin_restaurants, austin_steak_restaurants, austin_seafood_restaurants]
 
 #All Restaurants by Cuisine
 all_thai_restaurants = [ny_thai_restaurants, austin_thai_restaurants, orlando_thai_restaurants,sf_thai_restaurants] #
@@ -314,6 +318,7 @@ all_chinese_restaurants = [ny_chinese_restaurants, austin_chinese_restaurants, o
 all_japanese_restaurants = [ny_japanese_restaurants, austin_japanese_restaurants,  orlando_japanese_restaurants, sf_japanese_restaurants] # 
 all_latin_restaurants =  [ny_latin_restaurants, austin_latin_restaurants, orlando_latin_restaurants, sf_latin_restaurants] #
 all_steak_restaurants = [ny_steak_restaurants,austin_steak_restaurants, orlando_steak_restaurants,  sf_steak_restaurants] #
+all_seafood_restaurants = [ny_seafood_restaurants,austin_seafood_restaurants, orlando_seafood_restaurants,  sf_seafood_restaurants] #
 
 #All Restaurants by city or by cuisine
 all_restaurants = [ny_all_restaurants, austin_all_restaurants, orlando_all_restaurants, sf_all_restaurants] #
@@ -446,7 +451,7 @@ end
     
 #________________________________________________________________
 # Attach steak photo
-steakcount = 15 #0->14
+steakcount = 8 #0->14
     
 all_steak_restaurants.each do |city|
     city.each do |restaurant|
@@ -463,6 +468,29 @@ all_steak_restaurants.each do |city|
                 s3_url = open("https://letseat-pro.s3.us-east-2.amazonaws.com/steak/steak#{photo_idx}.png")
             end
             restaurant.photos.attach(io: s3_url, filename: "steak#{photo_idx}.png")
+        end
+    end
+end
+
+#________________________________________________________________
+# Attach steak photo
+seafoodcount = 7 #0->14
+    
+all_seafood_restaurants.each do |city|
+    city.each do |restaurant|
+        attached = []
+        len = rand(4)+3
+        until attached.length == len
+            num = rand(seafoodcount)
+            attached << num unless attached.include?(num)
+        end
+        attached.each do |photo_idx|
+            if seeding_database == 'local'
+                s3_url = open("https://letseat-dev.s3.us-east-2.amazonaws.com/seafood/seafood#{photo_idx}.png")
+            elsif seeding_database == 'heroku'
+                s3_url = open("https://letseat-pro.s3.us-east-2.amazonaws.com/seafood/seafood#{photo_idx}.png")
+            end
+            restaurant.photos.attach(io: s3_url, filename: "seafood#{photo_idx}.png")
         end
     end
 end
