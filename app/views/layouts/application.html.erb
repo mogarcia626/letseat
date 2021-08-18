@@ -10,13 +10,13 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
-    <%= favicon_link_tag asset_path('favicon.png') %>
+      <meta property="og:title" content="Letseat" />
+      <meta property="og:image" content="<% image_url('letseat.gif') %>" />
+      <meta property="og:description"
+        content="A fullstack reservation booking website inspired by OpenTable. Users can log in book and manage restaurant reservations and leave reviews." />
+      <meta property="og:url" content="http://let-s-eat.herokuapp.com/#/" />
 
-    <meta property="og:title" content="Letseat" />
-    <meta property="og:image" content="<% image_url('letseat.gif') %>" />
-    <meta property="og:description"
-      content="A fullstack reservation booking website inspired by OpenTable. Users can log in book and manage restaurant reservations and leave reviews." />
-    <meta property="og:url" content="https://let-s-eat.herokuapp.com/#/" />
+    <%= favicon_link_tag asset_path('favicon.png') %>
 
     <script type="text/javascript">
       window.logo = '<%= image_url('letseat_logo.png') %>'
