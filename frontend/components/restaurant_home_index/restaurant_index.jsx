@@ -10,7 +10,7 @@ function RestaurantIndex() {
     const [loading, setLoading] = useState(true);
     const filters = useSelector(state => state.ui.filters)
     const cuisList = useRef(new Set())    
-    const num = 4;
+    const num = 5;
 
     useEffect( () => {
         dispatch(clearSearchFilter());     
