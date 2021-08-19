@@ -81,70 +81,70 @@ restaurants_arr = []
 food = Cuisine.new.cuisines
 
 # Generates Restaurants in Orlando
-# food.keys.each do |cuisine|
-#     restaurants_arr = []
-#     (rand(3)+2).times do
-#         Restaurant.create!(
-#             name: generate_double_name(food, cuisine, restaurants_arr),
-#             email: 'letseatdemo@gmail.com',
-#             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-#             street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
-#             city: 'Orlando, FL',
-#             description:"#{Faker::Restaurant.description}",
-#             capacity: rand(45)+15,
-#             cuisine: cuisine,
-#             owner_id: rand(5) + 1
-#         )
-#     end
-#     1.times do
-#         Restaurant.create!(
-#             name: generate_single_name(food, cuisine, restaurants_arr),
-#             email: 'letseatdemo@gmail.com',
-#             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-#             street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
-#             city: 'Orlando, FL',
-#             description:"#{Faker::Restaurant.description}",
-#             capacity: rand(45)+15,
-#             cuisine: cuisine,
-#             owner_id: rand(5) + 1
-#         )
-#     end
-# end
+food.keys.each do |cuisine|
+    restaurants_arr = []
+    (rand(4)+3).times do
+        Restaurant.create!(
+            name: generate_double_name(food, cuisine, restaurants_arr),
+            email: 'letseatdemo@gmail.com',
+            phone_no: "#{Faker::PhoneNumber.cell_phone}",
+            street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
+            city: 'Orlando, FL',
+            description:"#{Faker::Restaurant.description}",
+            capacity: rand(45)+15,
+            cuisine: cuisine,
+            owner_id: rand(5) + 1
+        )
+    end
+    1.times do
+        Restaurant.create!(
+            name: generate_single_name(food, cuisine, restaurants_arr),
+            email: 'letseatdemo@gmail.com',
+            phone_no: "#{Faker::PhoneNumber.cell_phone}",
+            street_address: "#{Faker::Address.street_address} Orlando, Fl #{Faker::Address.zip}",
+            city: 'Orlando, FL',
+            description:"#{Faker::Restaurant.description}",
+            capacity: rand(45)+15,
+            cuisine: cuisine,
+            owner_id: rand(5) + 1
+        )
+    end
+end
 
     
 # Generates Restaurants in San Francisco
-# food.keys.each do |cuisine|
-#     rand(3)+6.times do
-#         Restaurant.create!(
-#             name: generate_double_name(food, cuisine, restaurants_arr),
-#             email: 'letseatdemo@gmail.com',
-#             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-#             street_address: "#{Faker::Address.street_address} San Francisco, CA #{Faker::Address.zip}",
-#             city: 'San Francisco, CA',
-#             description:"#{Faker::Restaurant.description}",
-#             capacity: rand(45)+15,
-#             cuisine: cuisine,
-#             owner_id: rand(5) + 1
-#         )
-#     end
-#     1.times do
-#         Restaurant.create!(
-#             name: generate_single_name(food, cuisine, restaurants_arr),
-#             email: 'letseatdemo@gmail.com',
-#             phone_no: "#{Faker::PhoneNumber.cell_phone}",
-#             street_address: "#{Faker::Address.street_address} San Francisco, CA #{Faker::Address.zip}",
-#             city: 'San Francisco, CA',
-#             description:"#{Faker::Restaurant.description}",
-#             capacity: rand(45)+15,
-#             cuisine: cuisine,
-#             owner_id: rand(5) + 1
-#         )
-#     end
-# end
+food.keys.each do |cuisine|
+    rand(2)+5.times do
+        Restaurant.create!(
+            name: generate_double_name(food, cuisine, restaurants_arr),
+            email: 'letseatdemo@gmail.com',
+            phone_no: "#{Faker::PhoneNumber.cell_phone}",
+            street_address: "#{Faker::Address.street_address} San Francisco, CA #{Faker::Address.zip}",
+            city: 'San Francisco, CA',
+            description:"#{Faker::Restaurant.description}",
+            capacity: rand(45)+15,
+            cuisine: cuisine,
+            owner_id: rand(5) + 1
+        )
+    end
+    1.times do
+        Restaurant.create!(
+            name: generate_single_name(food, cuisine, restaurants_arr),
+            email: 'letseatdemo@gmail.com',
+            phone_no: "#{Faker::PhoneNumber.cell_phone}",
+            street_address: "#{Faker::Address.street_address} San Francisco, CA #{Faker::Address.zip}",
+            city: 'San Francisco, CA',
+            description:"#{Faker::Restaurant.description}",
+            capacity: rand(45)+15,
+            cuisine: cuisine,
+            owner_id: rand(5) + 1
+        )
+    end
+end
 
 # Generates Restaurants in New York
 food.keys.each do |cuisine|
-    rand(3)+6.times do
+    rand(2)+5.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -174,7 +174,7 @@ end
 
 # Generates Restaurants in Austin
 food.keys.each do |cuisine|
-    ((rand(3)+3)).times do
+    ((rand(3)+4)).times do
         Restaurant.create!(
                 name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
