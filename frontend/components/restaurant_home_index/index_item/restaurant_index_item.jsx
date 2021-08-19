@@ -33,9 +33,9 @@ class RestaurantIndexItem extends React.Component {
             </div>
 
             <div className='filter-summary'>
-                <p>{restaurant.cuisine}</p>
-                <p>&bull;</p>
-                <p>{restaurant.city}</p>
+                <p className='left-cuisine'>{restaurant.cuisine}</p>
+                <p className='center-bullet'>&bull;</p>
+                <p className='right-city'>{restaurant.city}</p>
             </div>
 
         </div>    

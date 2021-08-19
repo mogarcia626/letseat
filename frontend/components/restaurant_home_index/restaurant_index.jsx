@@ -13,16 +13,19 @@ function RestaurantIndex() {
     const num = 5;
 
     useEffect( () => {
-        dispatch(clearSearchFilter());     
-        while (cuisList.current.size <= num) {
+        dispatch(clearSearchFilter())
+    }, [])
+
+    useEffect( () => {            
+        while (cuisList.current.size < num) {
             let rand = Math.floor(Math.random() * (restaurantCuisinesList.length))
             cuisList.current.add(restaurantCuisinesList[rand])
-        }
+        }  
         dispatch(requestAllRestaurants(filters))
         .then(() => {
             setLoading(false)          
         })
-    }, [] )   
+    }, [filters] )   
     
 
     if (loading) {

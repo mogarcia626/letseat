@@ -19,7 +19,7 @@ class Cuisine
         @cuisines['Steakhouses'] = {
             first: ['Salt', 'Ranchers', 'Tony\'s', 'Village', 'Quality', 'Texas', 'Wyoming', 'Gaucho', 'Prime', 'Antonio\'s'],
             second: ['Steakhouse', 'Meat Company', 'Company', ' and Charcoal', 'Prime Rib', 'Grill', 'Butchers'] }        
-        @cuisines['Latin American Cuisine'] = {
+        @cuisines['Latin American'] = {
             first: ['Cholita', 'Casa', 'Havana', 'Sol', 'Empanadas', 'La Bodeguita', 'Cafe', 'Arepas', 'Parada', 'Taqueria', 'Jalisco', 'Hacienda', 'Cocina', 'Molcajete', 'Ole Ole', 'Plato', 'Dos Hermanos'],
             second: ['Cafe', 'Havana', 'Latina', 'Linda', 'Cafe', 'Azteca', 'Gordos', 'de Mazatlan', 'del Sur'] }        
     end  

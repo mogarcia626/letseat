@@ -1,6 +1,6 @@
 import { BiCoinStack } from "react-icons/bi";
         
-export const restaurantCuisinesList = ['Thai', 'Chinese', 'Japanese', 'Seafood', 'Steakhouses', 'Latin American Cuisine'];
+export const restaurantCuisinesList = ['Thai', 'Chinese', 'Japanese', 'Seafood', 'Steakhouses', 'Latin American'];
 
 export const ratingsCategoryList = {
     value: 'Best Value',
@@ -91,7 +91,7 @@ export function selectBackground(filter) {
             return `banner-sea`
         case 'Steakhouses':
             return `banner-steak`
-        case 'Latin American Cuisine':
+        case 'Latin American':
             return 'banner-latin'
         default:
             return 'search-bar-default';
