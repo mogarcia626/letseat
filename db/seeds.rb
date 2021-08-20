@@ -10,7 +10,7 @@ Review.delete_all
 Schedule.delete_all
 
 # DEV-TO-PRO!
-seeding_database = 'pro' # will seed localhost from amazon-dev bucket
+seeding_database = 'dev' # will seed localhost from amazon-dev bucket
 # seeding_database = 'pro' #'pro' will seed heroku from amazon-prod bucket
 
 # go to show_pag_photos.scss and search_bar.scss and change $source
@@ -83,7 +83,8 @@ food = Cuisine.new.cuisines
 # Generates Restaurants in Orlando
 food.keys.each do |cuisine|
     restaurants_arr = []
-    (rand(4)+3).times do
+    4.times do
+    # (2).times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -114,7 +115,8 @@ end
     
 # Generates Restaurants in San Francisco
 food.keys.each do |cuisine|
-    rand(2)+5.times do
+    (rand(3)+4).times do
+    # 5.times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -144,7 +146,7 @@ end
 
 # Generates Restaurants in New York
 food.keys.each do |cuisine|
-    rand(2)+5.times do
+    (rand(3)+4).times do
         Restaurant.create!(
             name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',
@@ -174,7 +176,8 @@ end
 
 # Generates Restaurants in Austin
 food.keys.each do |cuisine|
-    ((rand(3)+4)).times do
+    # ((rand(3)+4)).times do
+    4.times do
         Restaurant.create!(
                 name: generate_double_name(food, cuisine, restaurants_arr),
             email: 'letseatdemo@gmail.com',

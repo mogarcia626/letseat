@@ -41,6 +41,7 @@ class Restaurant < ApplicationRecord
         keys = search.split(' ').map {|word, i| word.capitalize }
 
         if city=='' && search==''
+            # return self.all
             return self.where("city = ?", 'New York, NY')
 
         elsif search=='' && city
