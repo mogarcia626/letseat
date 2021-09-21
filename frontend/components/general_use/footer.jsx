@@ -47,7 +47,7 @@ function Footer() {
                     </div>
                 </div>
 
-                {/* <button id='reset-location-button' onClick={(e) => resetLocation(e)}>RESET LOCATION</button> */}
+                <button id='reset-location-button' onClick={(e) => resetLocation(e)}>RESET LOCATION</button>
 
                 <div className='about-me-section'>
                 <div className="footer-section">

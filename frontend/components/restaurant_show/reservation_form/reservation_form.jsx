@@ -163,7 +163,6 @@ class ReservationForm extends React.Component {
         const today = new Date()
         let maxDate = new Date(today)
         maxDate.setDate(maxDate.getDate() + 365)
-        console.log(this.props.schedule)
         return (   
             <div id='make-res-container'
                 onClick={()=>{if(document.querySelector('.drop-content')) {
