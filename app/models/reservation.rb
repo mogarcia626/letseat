@@ -47,12 +47,6 @@ class Reservation < ApplicationRecord
         return past
     end
     
-    # def self.rest_past_and_upcoming(id)
-    # end
-
-    def mapp(arr)
-        arr.map 
-
-    end
 
 end
+

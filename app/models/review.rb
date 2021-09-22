@@ -19,4 +19,6 @@ class Review < ApplicationRecord
     has_one :reviewer, through: :reservation, source: :user
     has_one :restaurant, through: :reservation, source: :restaurant
 
+
+
 end

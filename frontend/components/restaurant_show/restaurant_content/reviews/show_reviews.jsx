@@ -4,7 +4,8 @@ import RatingIcon from '../../../general_use/rating_icon';
 import BarGraphRatingsSummary from './bar_graph_ratings_summary';
 
 function ShowReviews(props) {
-    const reviewIds = Object.keys(props.reviews);
+    const reviewIds = Object.keys(props.reviews).reverse();
+    console.log(reviewIds)
     const reviewAvgs = reviewIds.map( id => {            
         return (
             (props.reviews[id].foodRating + props.reviews[id].serviceRating + props.reviews[id].valueRating + props.reviews[id].ambienceRating) / 4

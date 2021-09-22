@@ -12,8 +12,8 @@ function UserProfilePage() {
     const userId = useSelector(state => state.session.id)    
     const reservations = useSelector(state => state.entities.reservations)
     const reviews = useSelector(state => state.entities.reviews)
-    const user = useSelector(state => state.entities.user)
-    
+    const user = useSelector(state => state.entities.user)[useSelector(state => state.session.id)]
+
     useEffect( () => {
         dispatch(requestAllReservations('all'))
         .then( () => dispatch(requestReviews()) )
@@ -35,7 +35,7 @@ function UserProfilePage() {
                 </div>
             )
         } else {
-            return <p>You have no upcoming reservations</p>
+            return <p className='no-reservations'>You have no upcoming reservations</p>
         }
     }
 
@@ -54,7 +54,7 @@ function UserProfilePage() {
                 </div>
             )
         } else {
-            return <p>You have no past reservations</p>
+            return <p className='no-reservations'>You have no past reservations</p>
         }
     }
 
@@ -65,7 +65,7 @@ function UserProfilePage() {
             <div className='content-wrap' id='profile-page-main'>
 
                 <div id='profile-page-header'>
-                    <h2>{user.firstName} {user.lastName}</h2>
+                    <h2 id='welcome-user'>{user.firstName} {user.lastName}</h2>
                 </div>
 
                 <div className='profile-reservation-section'>
