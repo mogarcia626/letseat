@@ -1,7 +1,6 @@
 # [LETSEAT](https://let-s-eat.herokuapp.com/)
 <img src="https://github.com/mogarcia626/letseat/blob/main/app/assets/images/favicon.png" alt="drawing" width="120"/>
 
-# Introduction
 Letseat is a clone of a reservation booking and management website. Anyone can create or log in to their accounts to browse through and look at reviews and photos of participating restaurants. The user can create, modify, or edit reservations to any restaurant on the site.  After the date of the visit the user can contribute a review of their own.
 (Seed data on this website was randomly generated. The restaurants, their descriptions, schedules, and most reviews may not make sense!)
 
